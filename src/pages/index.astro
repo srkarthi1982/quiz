@@ -1,8 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { actions } from 'astro:actions';
+
+const result: any = await Astro.callAction(actions.countries, {});
 ---
 
 <Layout>
 	<h1>Welcome to Quiz Application</h1>
 	<p>A platform for explore your skills.</p>
+	<ul>
+		{
+			result.data.map((x: any) => <li>{x.name}</li>)
+		}
+	</ul>
 </Layout>
