@@ -6,8 +6,8 @@ const result: any = await Astro.callAction(actions.platforms, {});
 ---
 
 <Layout>
-	<h1>Welcome to Quiz Application</h1>
-	<p>A platform for explore your skills.</p>
+	<h1 class="text-2xl">Welcome to Quiz Application</h1>
+	<p class="text-red-500">A platform for explore your skills.</p>
 	<ul>
 		{
 			result.data.map((x: any) => <li>{x.name}</li>)
