@@ -1,7 +1,12 @@
 {
-  "name": "popular-proxima",
+  "name": "quiz-institute",
   "type": "module",
   "version": "0.0.1",
+  "description": "quiz.institute",
+  "keywords": [],
+  "homepage": "https://quiz.institute",
+  "license": "MIT",
+  "author": "Karthikeyan Ramalingam",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -18,5 +23,8 @@
     "astro": "^5.4.2",
     "micromatch": "^4.0.8",
     "tailwindcss": "^4.0.12"
+  },
+  "devDependencies": {
+    "@types/micromatch": "^4.0.9"
   }
 }

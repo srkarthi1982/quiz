@@ -32,7 +32,7 @@ export const onRequest = defineMiddleware(async ({ locals, url, cookies, redirec
       locals.roleName = name;
       locals.accessCodes = menu_ids;
     }
-π
+    
     const store = cookies.get("store");
     if (store.value !== 'null') {
       const { id, name, package_id, package_name } = JSON.parse(store.value);

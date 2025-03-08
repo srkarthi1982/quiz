@@ -1,0 +1,21 @@
+id,name,slug
+1,Medical,medical
+2,Engineering,engineering
+3,Law,law
+4,Finance,finance
+5,Driving Test,driving-test
+6,Government Exams,government-exams
+7,Logical Reasoning,logical-reasoning
+8,Mathematics,mathematics
+9,Science,science
+10,History,history
+11,Geography,geography
+12,Programming,programming
+13,Soft Skills,soft-skills
+14,Language Tests,language-tests
+15,Business,business
+16,IT Certifications,it-certifications
+17,Marketing,marketing
+18,Physics,physics
+19,Chemistry,chemistry
+20,Biology,biology

@@ -59,12 +59,12 @@ export const server = {
       context.cookies.delete("store", { path: "/", domain });
     }
   }),
-  countries: defineAction({
+  platforms: defineAction({
     accept: 'json',
     input: z.object({ /* ... */ }),
     handler: async () => {
-      const countries = await supabase.from("countries").select("id, name");
-      return countries.data;
+      const platforms = await supabase.from("platforms").select("id, name");
+      return platforms.data;
     },
   })
 }
