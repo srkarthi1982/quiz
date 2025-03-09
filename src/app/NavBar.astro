@@ -1,9 +1,7 @@
 ---
 import { url } from '../lib/data.js';
-import ColorModeSwitcher from '../component/ColorModeSwitcher.astro';
 import ProtectedMenus from './protectedMenus.astro';
 import PublicMenus from './publicMenus.astro';
-import { actions } from 'astro:actions';
 const { user, roleName, accessCodes } = Astro.locals;
 const {active, style} = Astro.props;
 const notifications = [
@@ -17,7 +15,7 @@ const notifications = [
 ---
 <div 
 	x-data="{showMenu: false}" 
-	class="bg-white dark:bg-gray-800 border-b shadow-sm relative z-20 py-3" 
+	class="bg-white border-b shadow-sm relative z-20 py-3" 
 	:class="{ 'sticky top-0 left-0 right-0': atTop, 'relative': !atTop }" 
 	@scroll.window="atTop = (window.pageYOffset < 50) ? false: true">
 	<div class={`${style} flex items-center justify-between mx-auto`}>
@@ -26,7 +24,7 @@ const notifications = [
 				<span x-show="!showMenu"><i class="fas fa-bars"></i></span>
 				<span style="display: none;" x-show="showMenu"><i class="fas fa-times"></i></span>
 			</button>
-			<a href="/" class="flex items-center -ml-2" title="SLT.Institute" aria-label="SLT.Institute">
+			<a href="/" class="flex items-center -ml-2" title="quiz.Institute" aria-label="Quiz.Institute">
 				<div class="flex flex-row gap-1 title text-2xl whitespace-nowrap">
 					<span class="text-primary font-semibold">Quiz </span>
 					<span class="hidden sm:block font-normal">Institute</span> 
@@ -50,7 +48,7 @@ const notifications = [
 					<i class="fas fa-bell"></i>
 				</button>
 				<ul x-show="showNotification" style="display: none;" class="dropdown-box w-72 right-0 top-[50px]">
-					<div class="title text-center border-b p-2 bg-gray-50 dark:bg-gray-700">Notifications</div>
+					<div class="title text-center border-b p-2 bg-gray-50">Notifications</div>
 					{notifications.map(n => (
 						<li>
 							<a href={url('notifications')} class="dropdown-link">
@@ -64,11 +62,10 @@ const notifications = [
 							</a>
 						</li>
 					))}
-					<div class="flex justify-center p-2 bg-gray-50 dark:bg-gray-700">
+					<div class="flex justify-center p-2 bg-gray-50">
 						<a href={url('notifications')} class="btn-default"><i class="fas fa-eye mr-1"></i>View All</a>
 					</div>
 				</ul>
-				<ColorModeSwitcher />
 				<button 
 					x-on:click="showUser = !showUser" x-on:click.away="showUser = false" 
 					class="btn-icon lg active" 
@@ -77,18 +74,16 @@ const notifications = [
 					<i class="fas fa-user"></i>
 				</button>
 				<ul x-show="showUser" style="display: none;" class="dropdown-box right-0 top-[50px]">
-					<div class="bg-gray-50 dark:bg-gray-700 px-4 py-3 overflow-hidden">
+					<div class="bg-gray-50 px-4 py-3 overflow-hidden">
 						<p class="label truncate">{user?.user_metadata?.name}</p>
 						<p class="txt gray truncate">{roleName}</p>
 					</div>
 					<ProtectedMenus active={active} accessCodes={accessCodes} styles="dropdown-link"/>
-					{/* <li><a href={url('api/auth/signout')} data-astro-prefetch="false" class="dropdown-link" title="Logout">Logout</a></li> */}
 					<li><button x-on:click="$store.signout.onSignOut()" data-astro-prefetch="false" class="dropdown-link" title="Logout">Logout</button></li>
 				</ul>
 			</div> :
 			<div class="flex flex-row gap-3">
 				<a href={url('authentication/signin')} class="btn-primary" title="Login">Login</a>
-				<ColorModeSwitcher />
 			</div>
 		}
 	</div>

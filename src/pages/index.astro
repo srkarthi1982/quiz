@@ -49,11 +49,11 @@ const result: any = await Astro.callAction(actions.platforms, {});
 		<ul class="max-w-2xl mx-auto grid grid-cols-2 text-center gray border-b title">
 			<li class="w-full">
 				<a @click.prevent="tab = 'tab1'" href="#" class="inline-block py-3 border-b-2 w-full border-transaprent" 
-				:class="{ 'text-primary-600 dark:text-primary-500 border-primary-600 dark:border-primary-500' : tab === 'tab1' }">Academy</a>
+				:class="{ 'text-primary-600 border-primary-600' : tab === 'tab1' }">Academy</a>
 			</li>
 			<li class="w-full">
 				<a @click.prevent="tab = 'tab2'" href="#" class="inline-block py-3 border-b-2 w-full border-transaprent" 
-				:class="{ 'text-primary-600 dark:text-primary-500 border-primary-600 dark:border-primary-500' : tab === 'tab2' }">Professional Skill</a>
+				:class="{ 'text-primary-600 border-primary-600' : tab === 'tab2' }">Professional Skill</a>
 			</li>
 		</ul>
 		<div class="mt-6">

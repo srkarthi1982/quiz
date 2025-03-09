@@ -19,13 +19,13 @@ const { actions, show, position } = Astro.props;
   <div
     x-show={`${show}`}
     style={`${position}: 0`}
-    class='overflow-hidden z-10 origin-top-right absolute rounded-xl shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5 divide-y divide-gray-100'
+    class='overflow-hidden z-10 origin-top-right absolute rounded-xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100'
     role="menu"
     aria-orientation="vertical"
     aria-labelledby="options-menu"
     x-cloak>
     <ul
-      class="text-sm text-gray-700 dark:text-gray-200"
+      class="text-sm text-gray-700"
       aria-labelledby="actionButton">
       {
         actions.map((a: any) => (

@@ -23,13 +23,6 @@ import Loader from '../component/Loader.astro';
 		<script>import '../alpineStores';</script>
 		<script is:inline>
 			const isStoreExists = name => typeof Alpine?.store(name) !== 'undefined';
-			function onLoad() {
-				const theme = localStorage.getItem('color-theme');
-				const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
-				if (theme === 'dark' || (!('color-theme' in localStorage) && systemTheme.matches))
-					document.documentElement.classList.add('dark');
-				else document.documentElement.classList.remove('dark');
-			}
 			function onPreparation(location) {
 				startLoading();
 				setTimeout(stopLoading, 3000);
@@ -45,8 +38,6 @@ import Loader from '../component/Loader.astro';
 				loading.style.transform = "scaleX(0)";
 				loading.style.transition = "transform 0.2s ease-in";
 			}
-			onLoad();
-			document.addEventListener('astro:page-load', onLoad);	
 			document.addEventListener('astro:before-preparation', e => onPreparation(e.to));
 			document.addEventListener('DOMContentLoaded', () => onPreparation(window.location));
 			window.carousel = function () {
