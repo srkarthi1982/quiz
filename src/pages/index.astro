@@ -6,7 +6,6 @@ import PhotoCard from "../component/PhotoCard.astro";
 //import StoreCard from "../component/StoreCard.astro";
 import { actions } from 'astro:actions';
 const result: any = await Astro.callAction(actions.platforms, {});
-console.log('result', result)
 ---
 <LayoutFull active="home">
 	<!-- banner -->
