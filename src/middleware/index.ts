@@ -8,7 +8,6 @@ import { publicRoutes, redirectRoutes } from "./routes";
 const domain: string = getDomain();
 export const onRequest = defineMiddleware(async ({ locals, url, cookies, redirect }: any, next: any) => {
   if(url.toString().includes('/api/') || url.toString().includes('/_actions/')) return next();
-  console.log(url.toString())
   const accessToken = cookies.get("sb-access-token");
   const refreshToken = cookies.get("sb-refresh-token");
 
@@ -32,15 +31,15 @@ export const onRequest = defineMiddleware(async ({ locals, url, cookies, redirec
       locals.roleName = name;
       locals.accessCodes = menu_ids;
     }
-    
-    const store = cookies.get("store");
-    if (store.value !== 'null') {
-      const { id, name, package_id, package_name } = JSON.parse(store.value);
-      locals.storeId = id;
-      locals.storeName = name;
-      locals.packageId = package_id;
-      locals.packageName = package_name;
-    }
+
+    // const store = cookies.get("store");
+    // if (store.value !== 'null') {
+    //   const { id, name, package_id, package_name } = JSON.parse(store.value);
+    //   locals.storeId = id;
+    //   locals.storeName = name;
+    //   locals.packageId = package_id;
+    //   locals.packageName = package_name;
+    // }
     // Protected routes 
     const menus = cookies.get("menus");
     if (menus.value !== 'null') {

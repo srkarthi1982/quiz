@@ -1,0 +1,77 @@
+---
+import LayoutFull from '../../app/Layout.astro';
+---
+<LayoutFull>
+	<div class="max-w-md mx-auto card mt-2" x-data>
+		<div class="label text-center">Create Account</div>
+		<div class="title text-2xl text-center text-primary">SLT.Institute</div>
+		<div class="divider my-5"></div>
+		<form  id="register-form" @submit.prevent="$store.signup.onSubmit()" class="flex flex-col gap-5">
+			<div class="input-icon">
+				<i class="fas fa-user icon gray left-4"></i>
+				<input 
+					id="name" 
+					name="name" 
+					type="text" 
+					x-model="$store.signup.name" 
+					class="input w-full" 
+					placeholder="Full Name"
+					required
+				/>
+			</div>
+			<div class="input-icon">
+				<i class="fas fa-envelope icon gray left-4"></i>
+				<input 
+					id="email" 
+					name="email" 
+					type="email" 
+					x-model="$store.signup.email" 
+					class="input w-full" 
+					placeholder="name@email.com"
+					required 
+				/>
+			</div>
+			<div class="input-icon">
+				<i class="fas fa-phone icon gray left-4"></i>
+				<input 
+					id="phone" 
+					name="phone" 
+					type="text" 
+					x-model="$store.signup.phone" 
+					class="input w-full" 
+					placeholder="Phone Number"
+					required
+				/>
+			</div>
+			<div class="input-icon" x-data="{ loginShow: false }">
+				<i class="fas fa-key lightgray left-4 icon"></i>
+				<button type="button" @click="loginShow = !loginShow" class="absolute top-2.5 right-4 text gray">
+					<i x-show="loginShow" class="far fa-eye" style="display: none;"></i>
+					<i x-show="!loginShow" class="far fa-eye" ></i>
+				</button>
+				<input 
+					x-model="$store.signup.password"
+					:type=" loginShow ? 'text': 'password' " 
+					class="input w-full" 
+					name="password" 
+					id="password" 
+					placeholder="Your Password" 
+				/>
+			</div>	
+			<div class="flex flex-row gap-2 items-center">
+				<input id="terms" aria-describedby="terms" type="checkbox" class="checkbox" required=""/>
+				<label for="terms" class="text">I accept the 
+					<button  class="link active" type="button">Terms and Policies</button>
+				</label>
+			</div>
+			<div class="flex justify-center">
+				<button type="submit" class="btn-primary full">Create Account</button>
+			</div>
+		</form>
+		<div class="divider my-5"></div>
+		<div class="flex flex-col sm:flex-row justify-center items-center gap-1">
+			<p class="text text-center pr-2">Already have an account?</p>
+			<a href="/authentication/signin" class="link active">Login</a>
+		</div>
+	</div>
+</LayoutFull>

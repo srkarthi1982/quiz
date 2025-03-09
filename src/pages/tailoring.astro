@@ -1,0 +1,33 @@
+---
+import LayoutFull from "../app/Layout.astro";
+import Search from "../component/Search.astro";
+import Pagination from "../component/Pagination.astro";
+import PhotoCard from "../component/PhotoCard.astro";
+import { url } from '../lib/data.js'
+---
+<LayoutFull active="tailoring">
+	<div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+		<div class="title"><i class="fas fa-stroopwafel title"></i> Tailoring (<span x-text="$store.tailoring.total"></span>)</div>
+		<div class="flex flex-row gap-3">
+			<Search storeName="tailoring" ref="searchName" method="search" column="name" placeholder="Search"/>
+			<div class="flex gap-4 justify-center input-group">
+				<a href={url("courses")} class="btn-default first" title="Courses">Courses</a>
+				<a href={url("tailoring")} class="btn-primary last" title="Tailoring">Tailoring</a>
+			</div>
+		</div>
+	</div>
+	<div class="spacer"></div>
+	<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5 lg:gap-7">
+		<template x-for="i in $store.tailoring.items" :key="i.id">
+			<PhotoCard 
+				name="i.name"
+				image="i.image ? `${source}${i.image}` : blank"
+				count="i.price"
+				countText="Rs for Stitching"
+				folder="tailoring"
+			/>
+		</template>
+	</div>
+	<div class="spacer"></div>
+	<Pagination storeName="tailoring" />
+</LayoutFull>

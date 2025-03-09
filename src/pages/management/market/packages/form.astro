@@ -1,0 +1,58 @@
+---
+const {item, hasManage} = Astro.props;
+---
+<form @submit.prevent="$store.packages.onSave()">
+    <div class="flex flex-col gap-3" >
+        <div>
+            <label for="idx" class="label">Order</label>
+            <input type="number" id="idx" name="idx" x-model="$store.packages.item.idx" class="input w-full mt-1" placeholder="Order" required />
+        </div>
+        <div>
+            <label for="name" class="label">Package Name</label>
+            <input type="text" id="name" name="name" x-model="$store.packages.item.name" class="input w-full mt-1" placeholder="Package Name" required />
+        </div>
+        <div>
+            <label for="ad_limit" class="label">Ad Limit</label>
+            <input type="number" id="ad_limit" name="ad_limit" x-model="$store.packages.item.ad_limit" class="input w-full mt-1" placeholder="Ad Limit" required />
+        </div>
+        <div>
+            <label for="feature_limit" class="label">Feature Ad Limit</label>
+            <input type="number" id="feature_limit" name="feature_limit" x-model="$store.packages.item.feature_limit" class="input w-full mt-1" placeholder="Feature Limit" required />
+        </div>
+        <div>
+            <label for="ad_validity" class="label">Ad Validity (Days)</label>
+            <input type="number" id="ad_validity" name="ad_validity" x-model="$store.packages.item.ad_validity" class="input w-full mt-1" placeholder="Ad Validity" required />
+        </div>
+        <div>
+            <label for="package_validity" class="label">Package Validity  (Days)</label>
+            <input type="number" id="package_validity" name="package_validity" x-model="$store.packages.item.package_validity" class="input w-full mt-1" placeholder="Package Validity" required />
+        </div>
+        <div>
+            <label for="price" class="label">Price</label>
+            <input type="number" id="price" name="price" x-model="$store.packages.item.price" class="input w-full mt-1" placeholder="Price" required />
+        </div>
+        <div>
+            <label for="features_count" class="label">Features Limit</label>
+            <input type="number" id="features_count" name="features_count" x-model="$store.packages.item.features_count" class="input w-full mt-1" placeholder="Features Count" required />
+        </div>
+        <div>
+            <label for="images_count" class="label">Images Limit</label>
+            <input type="number" id="images_count" name="images_count" x-model="$store.packages.item.images_count" class="input w-full mt-1" placeholder="Images Count" required />
+        </div>
+        <div class="flex flex-row justify-between">
+            <div>
+                <input id="is_active" name="is_active" x-model="$store.packages.item.is_active" type="checkbox" class="checkbox" class="checkbox" />
+                <label for="is_active" class="text">Active</label>
+            </div>
+            <div>
+                <input id="is_public" name="is_public" x-model="$store.packages.item.is_public" type="checkbox" class="checkbox" class="checkbox" />
+                <label for="is_public" class="text">Public</label>
+            </div>
+        </div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="flex flex-row justify-between gap-4">
+        <button type="button" @click="$store.packages.showDrawer = false" class="btn-default">Cancel</button>
+        { hasManage && <button type="submit" class="btn-primary" x-text={`${item}.id ? 'Update' : 'Create'`}></button>}
+    </div>
+</form>

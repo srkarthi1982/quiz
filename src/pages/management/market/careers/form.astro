@@ -1,0 +1,53 @@
+---
+const {item, hasManage} = Astro.props;
+---
+<form @submit.prevent="$store.careers.onSave()">
+    <div class="flex flex-col gap-3">
+        <div>
+            <label for="status" class="label">Status</label>
+            <select 
+                id="status"
+                class="input w-full" 
+                :value={`$store.careers.item.status_id`}
+                @change="$store.careers.onFormStatusChange(Number($el.value))">
+                <option value=""></option>
+                <template x-for={`i in $store.careers.form.statusList`}>
+                    <option :value="i.id" x-text="i.name"></option>
+                </template>
+            </select>
+        </div>
+        <div>
+            <label for="name" class="label">Name</label>
+            <input type="text" id="name" name="name" x-model="$store.careers.item.name" class="input w-full mt-1" placeholder="Name" required>
+        </div>
+        <div>
+            <label for="email" class="label">Email</label>
+            <input type="text" id="email" name="email" x-model="$store.careers.item.email" class="input w-full mt-1" placeholder="Email">
+        </div>
+        <div>
+            <label for="phone" class="label">Phone</label>
+            <input type="text" id="phone" name="phone" x-model="$store.careers.item.phone" class="input w-full mt-1" placeholder="Phone">
+        </div>
+        <div>
+            <label for="join_as" class="label">JoinAs</label>
+            <input type="text" id="join_as" name="join_as" x-model="$store.careers.item.join_as" class="input w-full mt-1" placeholder="Join As">
+        </div>
+        <div>
+            <label for="address" class="label">Address</label>
+            <input type="text" id="address" name="address" x-model="$store.careers.item.address" class="input w-full mt-1" placeholder="Address">
+        </div>
+        <div>
+            <label for="detail" class="label">Detail</label>
+            <input type="text" id="detail" name="detail" x-model="$store.careers.item.detail" class="input w-full mt-1" placeholder="Detail">
+        </div>
+        <div>
+            <label for="file" class="label">File</label>
+            <input type="text" id="file" name="file" x-model="$store.careers.item.file" class="input w-full mt-1" placeholder="File">
+        </div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="flex flex-row justify-between gap-4">
+        <button type="button" @click="$store.careers.showDrawer = false" class="btn-default">Cancel</button>
+        { hasManage && <button type="submit" class="btn-primary" x-text={`${item}.id ? 'Update' : 'Create'`}></button>}
+    </div>
+</form>

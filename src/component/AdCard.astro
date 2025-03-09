@@ -1,0 +1,30 @@
+---
+import Avatar from "./Avatar.astro";
+const {id, url, image, name, category, subcategory, service, subservice, is_featured, price, price_type, ad_type} = Astro.props;
+---
+<a :href={url} :title={name} class="paper rounded-xl hover overflow-hidden block">
+    <div class="relative border-b" >
+        <span x-show={is_featured} class="btn-primary sm absolute top-2.5 right-2.5 z-10">Featured</span>
+        <span class="btn-default sm absolute bottom-2.5 left-2.5 z-10" x-text={ad_type}></span>
+        <Avatar id={id} name={name} image={image} folder="ads" style="full"/>
+    </div>
+    <div class="p-4">
+        <div class="flex flex-col justify-center gap-1 overflow-hidden text-center">
+            <div class="label truncate" x-text={name}></div>
+            <span x-show={service} class="txt gray truncate">
+                <span x-text={service}></span> - <span x-text={subservice}></span>
+            </span>
+            <span x-show={category} class="txt gray truncate">
+                <span x-text={category}></span> - <span x-text={subcategory}></span>
+            </span>
+        </div>
+        <div class="divider mt-2 mb-3"></div>
+        <div class="flex justify-between items-center gap-4">
+            <div class="btn-default sm" x-text={price_type}></div>
+            <div class="flex flex-row gap-1" x-show={price}>
+                <div class="text gray">Rs.</div>
+                <div class="label" x-text={price}></div>
+            </div>
+        </div>
+    </div>
+</a>

@@ -1,0 +1,34 @@
+---
+import LayoutSidebar from "../../../../app/LayoutFull.astro";
+import Breadcrumb from "../../../../component/Breadcrumb.astro";
+import Tree from './tree.astro';
+const { accessCodes } = Astro.locals;
+const hasManage = accessCodes?.includes("001.01.03.01");
+---
+<LayoutSidebar active="access">
+	<Breadcrumb list={[{ name: "Management", link: "management" },{ name: "Access", link: "" }]}>
+		<div class="flex flex-row gap-3">
+			<div class="flex flex-row gap-2">
+				<select class="input white" @change="$store.access.onRoleChange($el.value)">
+					<template x-for="role in $store.access.roles">
+						<option :value="role.id" x-text="role.name"></option>
+					</template>
+				</select>
+				{hasManage && <button x-bind:disabled="$store.access.role.id === 1" x-on:click="$store.access.onAssign()" class="btn-primary">Assign</button>}
+			</div>
+			<button class="btn-icon white lg" x-on:click="$store.roles.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
+			<button class="btn-icon white lg" x-on:click="$store.access.toggleAll($store.access.toggle = !$store.access.toggle)"><i class="fas fa-arrows-alt-v"></i></button>
+		</div>
+	</Breadcrumb>
+	<div class="card">
+		<Tree item="_domain" items="$store.access.items" hasManage={hasManage}>
+			<Tree line="border-t" item="_module" items="_domain.children" hasManage={hasManage}>
+				<Tree line="border-t" item="_function" items="_module.children" hasManage={hasManage}>
+					<Tree line="border-t" item="_section" items="_function.children" hasManage={hasManage}>
+						<Tree line="border-t" item="_action" items="_section.children" hasManage={hasManage}/>
+					</Tree>
+				</Tree>
+			</Tree>
+		</Tree>
+	</div>
+</LayoutSidebar>

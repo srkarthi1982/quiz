@@ -1,0 +1,24 @@
+---
+const { user } = Astro.locals;
+const { tel, whatsapp, phone } = Astro.props;
+---
+{user ?
+    <div class="flex flex-col gap-3 justify-end">
+        <div class="flex flex-row gap-0 justify-center input-group">
+            <a x-bind:href={tel} class="btn-default first"><i class="fas fa-phone-alt mr-2"></i>Call</a>
+            <a x-bind:href={whatsapp}
+            target="_blank" class="btn-default last"><i class="fab fa-whatsapp mr-2"></i>Whatsapp</a>
+        </div>
+        <div class="flex justify-center">
+            <button type="button" class="btn btn-primary title w-fit" x-text={phone}></button>
+        </div>
+    </div>
+    : 
+    <div class="card flex flex-col justify-center text-center gap-2 border-primary">
+        <div class="text">Join Us to see Seller Info</div>
+        <div class="flex flex-row gap-2 items-center input-group">
+            <a href="/authentication/signin" class="btn-default first">Login</a>
+            <a href="/authentication/signup" class="btn-default last">Register</a>
+        </div>
+    </div>
+}

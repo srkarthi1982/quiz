@@ -1,0 +1,34 @@
+---
+const { storeName, columns } = Astro.props;
+export const partial = true;
+---
+<div class="input-group">
+    <select
+        aria-label="Choose a Column Name for Sorting"
+        class="input white first"
+        name="page"
+        :value={`$store.${storeName}.sorting.sort`}
+        @change={`
+            $store.${storeName}.sorting.sort = $el.value; 
+            $store.${storeName}.pagination.page = 1; 
+            $store.${storeName}.pagination.skip = 0; 
+            $store.${storeName}.getData();
+        `}>
+        <template x-for={`c in $store.${storeName}.${columns}`}>
+            <option :value="c.value" x-text="c.label"></option>
+        </template>
+    </select>
+    <button 
+        class="btn-default last" 
+        aria-label="Order By"
+        @click={`
+            $store.${storeName}.sorting.order = !$store.${storeName}.sorting.order;
+            $store.${storeName}.pagination.page = 1; 
+            $store.${storeName}.pagination.skip = 0; 
+            $store.${storeName}.getData();
+        `}
+        type="button">
+        <span x-show={`$store.${storeName}.sorting.order === true`}><i class="fa-solid fa-arrow-up"></i></span>
+        <span x-show={`$store.${storeName}.sorting.order === false`} style="display: none;"><i class="fa-solid fa-arrow-down"></i></span>
+    </button>
+</div>

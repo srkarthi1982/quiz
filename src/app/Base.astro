@@ -1,0 +1,105 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import "../app.css";
+import "@fortawesome/fontawesome-free/css/all.css";
+import { url } from '../lib/data.js';
+import Toast from '../component/Toast.astro';
+import Loader from '../component/Loader.astro';
+---
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Quiz Institute</title>
+		<ClientRouter />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Quiz Institute - The best platform to test and improve your skills across various domains." />
+		<meta name="keywords" content="quiz, online test, government exams, reasoning, mathematics, science, programming, certifications" />
+		<meta name="author" content="Karthikeyan Ramalingum"/>
+		<meta name="copyright" content="Quiz" />
+		<link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
+		<link rel="sitemap" type="application/xml" href={url('sitemap-index.xml')} />
+		<script>import '../alpineStores';</script>
+		<script is:inline>
+			const isStoreExists = name => typeof Alpine?.store(name) !== 'undefined';
+			function onLoad() {
+				const theme = localStorage.getItem('color-theme');
+				const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+				if (theme === 'dark' || (!('color-theme' in localStorage) && systemTheme.matches))
+					document.documentElement.classList.add('dark');
+				else document.documentElement.classList.remove('dark');
+			}
+			function onPreparation(location) {
+				startLoading();
+				setTimeout(stopLoading, 3000);
+				const name = location.pathname.split('/').findLast(x => x);
+				if(isStoreExists(name)) Alpine.store(name)?.onInit(location);
+				else Alpine.store('home')?.onInit(location);
+			}
+			function startLoading() {
+				loading.style.transform = "scaleX(1)";
+				loading.style.transition = "transform 0.4s ease-out";
+			}
+			function stopLoading() {
+				loading.style.transform = "scaleX(0)";
+				loading.style.transition = "transform 0.2s ease-in";
+			}
+			onLoad();
+			document.addEventListener('astro:page-load', onLoad);	
+			document.addEventListener('astro:before-preparation', e => onPreparation(e.to));
+			document.addEventListener('DOMContentLoaded', () => onPreparation(window.location));
+			window.carousel = function () {
+				return {
+					container: null,
+					prev: null,
+					next: null,
+					init() {
+						this.container = this.$refs.container;
+						if (!this.container) return;
+						this.update();
+						this.container.addEventListener('scroll', this.update.bind(this), { passive: true });
+					},
+					update() {
+						if (!this.container) return;
+						const rect = this.container.getBoundingClientRect();
+						const visibleElements = Array.from(this.container.children).filter((child) => {
+							const childRect = child.getBoundingClientRect();
+							return childRect.left >= rect.left && childRect.right <= rect.right;
+						});
+						if (visibleElements.length > 0) {
+							this.prev = this.getPrevElement(visibleElements);
+							this.next = this.getNextElement(visibleElements);
+						}
+					},
+					getPrevElement(list) {
+						const sibling = list[0].previousElementSibling;
+						return sibling instanceof HTMLElement ? sibling : null;
+					},
+					getNextElement(list) {
+						const sibling = list[list.length - 1].nextElementSibling;
+						return sibling instanceof HTMLElement ? sibling : null;
+					},
+					scrollTo(element) {
+						if (!this.container || !element) return;
+						const nextScrollPosition =
+							element.offsetLeft +
+							element.getBoundingClientRect().width / 2 -
+							this.container.getBoundingClientRect().width / 2;
+						this.container.scroll({
+							left: nextScrollPosition,
+							behavior: 'smooth',
+						});
+					}
+				};
+			}		
+	</script>
+	</head>
+	<body x-data="{atTop: false }">
+		<div id="loading" class="fixed top-0 left-0 w-full h-0.5 bg-primary-600 scale-x-0 origin-left transition-transform duration-400 ease-out z-50"></div>
+		<slot />
+		<Toast />
+		<Loader />
+	</body>
+</html>
+

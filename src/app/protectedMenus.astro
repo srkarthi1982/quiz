@@ -1,0 +1,19 @@
+---
+import { url } from '../lib/data.js'
+const {active, styles, accessCodes, icon } = Astro.props;
+const menus = [
+    { name: 'Management', icon: 'fa-tasks', active: active?.includes('management')! ? 'active' : '', link: 'management', show: accessCodes?.includes("001.00.00.00") },
+    { name: 'Dashboard', icon: 'fa-tachometer-alt', active: active?.includes('dashboard')! ? 'active' : '', link: 'dashboard', show: accessCodes?.includes("002.00.00.00") },
+    { name: 'Profile', icon: 'fa-address-card', active: active?.includes('profile')! ? 'active' : '', link: 'profile', show: accessCodes?.includes("003.00.00.00") },
+    { name: 'Favorites', icon: 'fa-heart', active: active?.includes('favorites')! ? 'active' : '', link: 'favoriteAds', show: accessCodes?.includes("005.00.00.00") },
+    { name: 'Membership', icon: 'fa-id-card-alt', active: active?.includes('membership')! ? 'active' : '', link: 'membership', show: accessCodes?.includes("007.00.00.00") },
+    { name: 'Settings', icon: 'fa-cog', active: active?.includes('settings')! ? 'active' : '', link: 'settings', show: accessCodes?.includes("006.00.00.00") }
+]
+---
+{menus.filter(x => x.show).map((c: any) => (
+    <li>
+        <a class={`${c.active} ${styles}`} href={url(c.link)} title={c.name}>
+            {icon && <i class={`fas ${c.icon} mr-1 ml-1`}></i>}{c.name}
+        </a>
+    </li>
+))}

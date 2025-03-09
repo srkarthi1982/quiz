@@ -1,0 +1,60 @@
+---
+import Layout from "../app/Layout.astro";
+---
+<Layout active="settings">
+    <form class="">
+        <div class="flex flex-row justify-between items-center gap-2">
+            <div class="title"><i class="fas fa-cog mr-2"></i>Notification Settings</div>
+            <button class="btn-primary" type="submit">Update</button>
+        </div>
+        <div class="spacer"></div>
+        <div class="table-responsive">
+            <table class="table border strip">
+                <thead>
+                    <tr>
+                        <th>Notification Type</th>
+                        <th class="w-20">Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><label class="label cursor-pointer" for=register-login>Register / Login</label></td>
+                        <td><input type="checkbox" name=register-login id=register-login class="checkbox block mx-auto" checked></td>
+                    </tr>
+                    <tr>
+                        <td><label class="label cursor-pointer" for="change-password">Change Password</label></td>
+                        <td><input type="checkbox" name="change-password" id="change-password" class="checkbox block mx-auto" checked></td>
+                    </tr>
+                    <tr>
+                        <td><label class="label cursor-pointer" for="store-activated">Store Activated</label></td>
+                        <td><input type="checkbox" name="store-activated" id="store-activated" class="checkbox block mx-auto" checked></td>
+                    </tr>
+                    <tr>
+                        <td><label class="label cursor-pointer" for="verified">Store Verified</label></td>
+                        <td><input type="checkbox" name="verified" id="verified" class="checkbox block mx-auto" checked></td>
+                    </tr>
+                    <tr>
+                        <td><label class="label cursor-pointer" for="ad-created">Ad Created</label></td>
+                        <td><input type="checkbox" name="ad-created" id="ad-created" class="checkbox block mx-auto" checked></td>
+                    </tr>
+                    <tr>
+                        <td><label class="label cursor-pointer" for="ad-approved">Ad Approved</label></td>
+                        <td><input type="checkbox" name="ad-approved" id="ad-approved" class="checkbox block mx-auto" checked></td>
+                    </tr>
+                    <tr>
+                        <td><label class="label cursor-pointer" for="ad-expire">Ad Expire</label></td>
+                        <td><input type="checkbox" name="ad-expire" id="ad-expire" class="checkbox block mx-auto" checked></td>
+                    </tr>
+                    <tr>
+                        <td><label class="label cursor-pointer" for="membership-updated">Membership Updated</label></td>
+                        <td><input type="checkbox" name="membership-updated" id="membership-updated" class="checkbox block mx-auto" checked></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="spacer"></div>
+        <div class="flex justify-end">
+            
+        </div>
+    </form>
+</Layout>

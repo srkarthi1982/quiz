@@ -1,0 +1,37 @@
+---
+export const partial = true;
+const { actions, show, position } = Astro.props;
+---
+<div class="relative inline-block text-left">
+  <div>
+    <button
+      @click={`${show} = !${show}`}
+      @click.away={`${show} = false`}
+      class="btn-icon"
+      type="button"
+      aria-label="Action"
+      aria-expanded="true"
+      aria-haspopup="true">
+      <i class="fa-solid fa-ellipsis-vertical"></i>
+    </button>
+  </div>
+
+  <div
+    x-show={`${show}`}
+    style={`${position}: 0`}
+    class='overflow-hidden z-10 origin-top-right absolute rounded-xl shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5 divide-y divide-gray-100'
+    role="menu"
+    aria-orientation="vertical"
+    aria-labelledby="options-menu"
+    x-cloak>
+    <ul
+      class="text-sm text-gray-700 dark:text-gray-200"
+      aria-labelledby="actionButton">
+      {
+        actions.map((a: any) => (
+          a.show && <li><button x-on:click={a.click} class="dropdown-link">{a.label}</button></li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

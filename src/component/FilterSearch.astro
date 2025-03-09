@@ -1,0 +1,14 @@
+---
+export const partial = true;
+const { storeName, column, ref, method, placeholder } = Astro.props;
+---
+<label for={ref} class="sr-only">Filter by State</label>
+<input 
+    id={ref}
+    type="search" 
+    class="input w-full min-w-20" 
+    placeholder={placeholder} 
+    x-ref={ref} 
+    :value={`$store.${storeName}.filters.${column}`}
+    @input={`$store.${storeName}.${method}('${column}',$refs.${ref}.value)`}
+>

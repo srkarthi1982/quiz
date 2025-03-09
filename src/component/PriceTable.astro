@@ -1,0 +1,29 @@
+---
+export const partial = true;
+const {name, price, ad_limit, feature_limit, ad_validity, package_validity  } = Astro.props;
+---
+<div class="card text-center">
+    <div class="text-primary font-semibold uppercase text-2xl">{name}</div>
+    <div class="divider my-4"></div>
+    <div class="title font-medium uppercase text-2xl">USD. {price} </div>
+    <div class="divider my-4"></div>
+    <div class="flex justify-center items-center gap-2">
+        <div class="text">Ads Limit:</div>
+        <div class="label">{ad_limit}</div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="flex justify-center items-center gap-2">
+        <div class="text">Featured Ads:</div>
+        <div class="label">{feature_limit}</div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="flex justify-center items-center gap-2">
+        <div class="text">Ads Validity:</div>
+        <div class="label">{ad_validity} Days</div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="flex justify-center items-center gap-2">
+        <div class="text">Package Validity:</div>
+        <div class="label">{package_validity} Days</div>
+    </div>
+</div>

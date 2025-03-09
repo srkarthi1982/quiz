@@ -1,0 +1,26 @@
+---
+import { url } from '../lib/data.js';
+const {active} = Astro.props;
+---
+<div class="divider my-5 lg:my-7"></div>
+<footer class="flex flex-col gap-3 mb-3">
+	<div class="flex justify-between items-center flex-col md:flex-row gap-4 md:gap-0">
+		<ul class="flex flex-wrap gap-3 items-center justify-center">
+			<li><a href={url('about')} class={`${active === 'about' ? 'active' : ''} link text-sm`} title="About">About</a></li>
+			<li><a href={url('plans')} class={`${active === 'plans' ? 'active' : ''} link text-sm`} title="Plans" >Plans</a></li>
+			<li><a href={url('faq')} class={`${active === 'faqs' ? 'active' : ''} link text-sm`} title="FAQs" >FAQs</a></li>
+			<li><a href={url('contact')} class={`${active === 'contact' ? 'active' : ''} link text-sm`} title="Contact" >Contact</a></li>
+			<li><a href={url('careers')} class={`${active === 'careers' ? 'active' : ''} link text-sm`} title="Careers" >Careers</a></li>
+			<li><a href={url('policy')} class={`${active === 'policy' ? 'active' : ''} link text-sm`} title="Policy" >Policy</a></li>
+		</ul>
+		<ul class="flex gap-3 justify-end">
+			<li><a target="_blank" href="https://www.facebook.com/" aria-label="Visit our Facebook page" class="btn-icon white" title="Facebook"><i class="fab fa-facebook"></i></a></li>
+			<li><a target="_blank" href="https://www.instagram.com/" aria-label="Visit our Instagram profile" class="btn-icon white" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+			<li><a target="_blank" href="https://youtube.com" aria-label="Visit our YouTube channel" class="btn-icon white" title="Youtube"><i class="fab fa-youtube"></i></a></li>
+		</ul>
+	</div>
+	<div class="flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-2">
+		<p class="txt gray">&copy; {new Date().getFullYear()} quiz.institute | All Rights Reserved.</p>
+		<p class="txt gray">Powered By: <a href="https://infinitemediastudio.com" class="link" title="Infinite Media Studio" target="_blank">Infinite Media Studio</a></p>
+	</div>
+</footer>

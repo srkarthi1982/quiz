@@ -1,0 +1,40 @@
+---
+const {item, hasManage} = Astro.props;
+---
+<form @submit.prevent="$store.contact.onSave()">
+    <div class="flex flex-col gap-3">
+        <div>
+            <label class="label">Status</label>
+            <select 
+                class="input w-full" 
+                :value={`$store.contact.item.status_id`}
+                @change="$store.contact.onFormListChange('status_id', Number($el.value))">
+                <option value=""></option>
+                <template x-for={`i in $store.contact.form.statusList`}>
+                    <option :value="i.id" x-text="i.name"></option>
+                </template>
+            </select>
+        </div>
+        <div>
+            <label for="name" class="label">Name</label>
+            <input type="text" id="name" name="name" x-model="$store.contact.item.name" class="input w-full mt-1" placeholder="Name" disabled />
+        </div>
+        <div>
+            <label for="email" class="label">Email</label>
+            <input type="text" id="email" name="email" x-model="$store.contact.item.email" class="input w-full mt-1" placeholder="Email" disabled />
+        </div>
+        <div>
+            <label for="phone" class="label">Phone</label>
+            <input type="text" id="phone" name="phone" x-model="$store.contact.item.phone" class="input w-full mt-1" placeholder="Phone" disabled />
+        </div>
+        <div>
+            <label for="detail" class="label">Details</label>
+            <textarea id="detail" name="detail" x-model="$store.contact.item.detail" class="input w-full mt-1" placeholder="Details" disabled rows="7"></textarea>
+        </div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="flex flex-row justify-between gap-4">
+        <button type="button" @click="$store.contact.showDrawer = false" class="btn-default">Cancel</button>
+        { hasManage && <button type="submit" class="btn-primary" x-text={`${item}.id ? 'Update' : 'Create'`}></button>}
+    </div>
+</form>

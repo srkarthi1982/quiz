@@ -1,0 +1,37 @@
+---
+import Layout from "../app/Layout.astro";
+import AdCard from "../component/AdCard.astro";
+import Pagination from "../component/Pagination.astro";
+import { url } from '../lib/data.js'
+---
+<Layout active="favorites">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+		<div class="title"><i class="fas fa-heart mr-2"></i>Favorite Ads (1)</div>
+		<div class="flex gap-4 justify-center input-group">
+			<a href={url("favoriteAds")} class="btn-primary first" title="Favorite Ads">Favorite Ads</a>
+			<a href={url("favoriteStores")} class="btn-default last" title="Favorite Stores">Favorite Stores</a>
+		</div>
+	</div>
+	<div class="divider mt-5"></div>
+	<div class="spacer"></div>
+	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 lg:gap-7 items-start">
+		<template x-for="i in $store.ads.items" :key="i.id">
+			<AdCard
+				id="i.id"
+				name="i.name"
+				url="`/ad?adId=${i.id}`" 
+				image="i.image ? `${source}${i.image}` : blank"
+				category="i.category_name"
+				subcategory="i.subcategory_name"
+				service="i.service_name"
+				subservice="i.subservice_name"
+				is_featured={true}
+				price="i.price"
+				price_type="i.price_type_name"
+				ad_type="i.ad_type_name"
+			/>
+		</template>
+	</div>
+	<div class="spacer"></div>
+	<Pagination storeName="ads"/>
+</Layout>

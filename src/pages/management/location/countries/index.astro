@@ -1,0 +1,62 @@
+---
+import LayoutSidebar from '../../../../app/LayoutFull.astro';
+import Drawer from "../../../../component/Drawer.astro";
+import Pagination from "../../../../component/Pagination.astro";
+import Sorting from "../../../../component/Sorting.astro";
+import Breadcrumb from '../../../../component/Breadcrumb.astro';
+import ActionButton from '../../../../component/ActionButton.astro';
+import FilterCheckbox from "../../../../component/FilterCheckbox.astro";
+import FilterSearch from '../../../../component/FilterSearch.astro';
+import Form from "./form.astro";
+const { accessCodes } = Astro.locals;
+const hasManage = accessCodes?.includes('001.03.01.01');
+---
+<LayoutSidebar active="countries">
+	<Breadcrumb list={[{ name: "Management", link: "management" },{ name: "Countries", link: "" }]}>
+		<div class="flex flex-row gap-3">
+			<Sorting storeName="countries" columns="columns" />
+			<button class="btn-icon white lg" x-on:click="$store.countries.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
+			<button class="btn-icon active lg" x-on:click="$store.countries.onInsert()"><i class="fas fa-plus"></i></button>
+		</div>
+	</Breadcrumb>
+	<div class="table-responsive paper">
+		<table class="table border strip">
+			<thead>
+				<tr>
+					<th x-show={`${hasManage}`}></th>
+					<th class="w-full">Name</th>
+					<th>Active</th>
+				</tr>
+				<tr>
+					<th x-show={`${hasManage}`}></th>
+					<th><FilterSearch storeName="countries" ref="searchName" method="search" column="name" placeholder="Name"/></th>
+					<th><FilterCheckbox storeName="countries" column="is_active"/></th>
+				</tr>
+			</thead>
+			<tbody x-show="$store.countries.items.length > 0">
+				<template x-for="r in $store.countries.items" :key="r.id">
+					<tr>
+						<td x-show={`${hasManage}`} class="flex justify-center">
+							<ActionButton position="bottom" show={`r.showAction`} 
+								actions={[
+									{ label: 'Edit', click: `$store.countries.onEdit(r)`, show: hasManage },
+									{ label: 'Delete', click: `$store.countries.onDelete(r)`, show: hasManage },
+									{ label: 'Copy ID', click: `$store.countries.copyId(r.id)`, show: hasManage }
+								]} 
+							/>
+						</td>
+						<td x-text="r.name"></td>
+						 <td class="text-center">
+							<i :class="`fas ${r.is_active ? 'fa-check text-green-500' : 'fa-times text-red-500'}`"></i>
+						 </td>
+					</tr> 
+				</template>    
+			</tbody>
+		</table>
+	</div>
+	<div class="spacer"></div>
+	<Pagination storeName="countries" />
+	<Drawer item="$store.countries.item" title="Country" showDrawer="$store.countries.showDrawer">
+		<Form item="$store.countries.item" hasManage={hasManage} />
+	</Drawer>
+</LayoutSidebar>

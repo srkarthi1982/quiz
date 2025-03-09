@@ -1,0 +1,127 @@
+---
+import LayoutSidebar from '../../../../app/LayoutFull.astro';
+import Drawer from "../../../../component/Drawer.astro";
+import Pagination from "../../../../component/Pagination.astro";
+import Sorting from "../../../../component/Sorting.astro";
+import Breadcrumb from '../../../../component/Breadcrumb.astro';
+import ActionButton from '../../../../component/ActionButton.astro';
+import FilterSearch from '../../../../component/FilterSearch.astro';
+import Form from "./form.astro";
+const { accessCodes } = Astro.locals;
+const hasManage = accessCodes?.includes('001.01.01.01');
+---
+<LayoutSidebar active="users">
+	<Breadcrumb list={[{ name: "Management", link: "management" },{ name: "Users", link: "" }]}>
+		<div class="flex flex-row gap-3">
+			<Sorting storeName="users" columns="columns" />
+			<button class="btn-icon white lg" x-on:click="$store.users.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
+		</div>
+	</Breadcrumb>
+	<div class="table-responsive paper">
+		<table class="table border strip">
+			<thead>
+				<tr>
+					<th class="w-12"}></th>
+					<th class="min-w-60">User Name</th>
+					<th class="min-w-60">Email</th>
+					<th class="w-48">Phone</th>
+					<th class="w-48">Role</th>
+					<th class="w-48">Country</th>
+					<th class="w-48">State</th>
+					<th class="w-48">City</th>
+					<th class="w-36 text-center">Created At</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td><FilterSearch storeName="users" ref="searchName" method="search" column="name" placeholder="Name"/></td>
+					<td><FilterSearch storeName="users" ref="searchEmail" method="search" column="email" placeholder="Email"/></td>
+					<td><FilterSearch storeName="users" ref="searchPhone" method="search" column="phone" placeholder="Phone"/></td>
+					<td class=" min-w-36">
+						<label for="role" class="sr-only">Filter by Role</label>
+						<select 
+							id="role"
+							class="input w-full" 
+							:value="$store.users.filters.role_id"
+							@change="$store.users.onColumnListChange('role_id', Number($el.value))">
+							<option value="">All</option>
+							<template x-for={`i in $store.users.column.roles`}>
+								<option :value="i.id" x-text="i.name"></option>
+							</template>
+						</select>
+					</td>
+					<td class=" min-w-36">
+						<label for="country" class="sr-only">Filter by Country</label>
+						<select 
+							id="country"
+							class="input w-full" 
+							:value="$store.users.filters.country_id"
+							@change="$store.users.onColumnCountryChange(Number($el.value))">
+							<option value="">All</option>
+							<template x-for={`i in $store.users.column.countries`}>
+								<option :value="i.id" x-text="i.name"></option>
+							</template>
+						</select>
+					</td>
+					<td class=" min-w-36">
+						<label for="state" class="sr-only">Filter by State</label>
+						<select 
+							id="state"
+							class="input w-full" 
+							:value="$store.users.filters.state_id"
+							@change="$store.users.onColumnStateChange(Number($el.value))">
+							<option value="">All</option>
+							<template x-for={`i in $store.users.column.states`}>
+								<option :value="i.id" x-text="i.name"></option>
+							</template>
+						</select>
+					</td>
+					<td class=" min-w-36">
+						<label for="city" class="sr-only">Filter by City</label>
+						<select 
+							id="city"
+							class="input w-full" 
+							:value="$store.users.filters.city_id"
+							@change="$store.users.onColumnListChange('city_id', Number($el.value))">
+							<option value="">All</option>
+							<template x-for={`i in $store.users.column.cities`}>
+								<option :value="i.id" x-text="i.name"></option>
+							</template>
+						</select>
+					</td>
+					<td class="text-center">
+						<label for="created_at" class="sr-only">Filter by State</label>
+						<input id="created_at" type="date" @change="$store.users.onColumnListChange('created_at', $el.value)" class="input w-32">
+					</td>
+				</tr>
+			</thead>
+			<tbody x-show="$store.users.items.length > 0">
+				<template x-for="r in $store.users.items" :key="r.id">
+					<tr>
+						<td class="flex justify-center">
+							<ActionButton position="bottom" show={`r.showAction`} 
+								actions={[
+									{ label: 'Edit', click: `$store.users.onEdit(r)`, show: true },
+									{ label: 'Delete', click: `$store.users.onDelete(r)`, show: hasManage },
+									{ label: 'Copy ID', click: `$store.users.copyId(r.id)`, show: hasManage }
+								]} 
+							/>
+						</td>
+						<td x-text="r.name"></td>
+						<td x-text="r.email"></td>
+						<td x-text="r.phone"></td>
+						<td x-text="r.role_name"></td>
+						<td x-text="r.country_name"></td>						
+						<td x-text="r.state_name"></td>						
+						<td x-text="r.city_name"></td>						
+						<td x-text="$store.users.ddmmyyyy(r.created_at)" class="text-center"></td>												 
+					</tr> 
+				</template>    
+			</tbody>
+		</table>
+	</div>
+	<div class="spacer"></div>
+	<Pagination storeName="users" />
+	<Drawer item="$store.users.item" title="User" showDrawer="$store.users.showDrawer">
+		<Form item="$store.users.item" hasManage={hasManage} />
+	</Drawer>
+</LayoutSidebar>

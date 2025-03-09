@@ -1,0 +1,21 @@
+---
+export const partial = true;
+import { url } from '../lib/data.js';
+const { user } = Astro.locals;
+---
+<div class="card mt-5 lg:mt-7">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-3">
+        <div class="flex flex-col items-center md:items-start text-center md:text-left">
+            <div class="title gray">Be Product Seller or Service Provider</div>
+            <div class="title text-xl text-primary">Join Us, Its Free!</div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3">
+            {!user && <a href={url('auth/signin')} class="btn-primary">Get Registered</a>}
+            <div class="flex flex-row gap-3">
+                <a href="https://wa.me/971568347655" aria-label="Chat with us on WhatsApp" target="_blank" class="btn-icon lg active"><i class="fab fa-whatsapp"></i></a>
+                <a href="tel:971568347655" aria-label="Call us at 971568347655" class="btn-icon lg active"><i class="fas fa-phone"></i></a>
+                <a href={url('contact')} aria-label="Contact us via email" class="btn-icon lg active"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+</div>

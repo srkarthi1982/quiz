@@ -1,0 +1,15 @@
+---
+export const partial = true;
+const { storeName, column, list } = Astro.props;
+---
+<select 
+    class="input w-full min-w-20" 
+    @change=`
+        $store.${storeName}.filters.${column} = Number($el.value);
+        $store.${storeName}.getData();
+    `>
+    <option value="">All</option>
+    <template x-for={`item in $store.${storeName}.${list}`}>
+        <option :value="item.id" x-text="item.name"></option>
+    </template>
+</select>

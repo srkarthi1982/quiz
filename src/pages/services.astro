@@ -1,0 +1,30 @@
+---
+import LayoutFull from "../app/Layout.astro";
+import Search from "../component/Search.astro";
+import Pagination from "../component/Pagination.astro";
+import Sorting from "../component/Sorting.astro";
+import PhotoCard from "../component/PhotoCard.astro";
+---
+<LayoutFull active="services">
+	<div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+		<div class="title"><i class="fas fa-list mr-2"></i> Categories (<span x-text="$store.services.total"></span>)</div>
+		<div class="flex flex-row gap-3">
+			<Search storeName="services" ref="searchName" method="search" column="name" placeholder="Search"/>
+			<Sorting storeName="services" columns="publicColumns" />
+		</div>
+	</div>
+	<div class="spacer"></div>
+	<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5 lg:gap-7">
+		<template x-for="i in $store.services.items" :key="i.id">
+			<PhotoCard 
+				name="i.name"
+				url="`/subservices?id=${i.id}&name=${i.name}`" 
+				image="i.image ? `${source}${i.image}` : blank"
+				count="i.counts"
+				folder="services"
+			/>
+		</template>
+	</div>
+	<div class="spacer"></div>
+	<Pagination storeName="services" />
+</LayoutFull>

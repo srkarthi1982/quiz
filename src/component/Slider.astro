@@ -1,0 +1,32 @@
+---
+export const partial = true;
+const {schema, images } = Astro.props;
+const imageSource = `${import.meta.env.SUPABASE_URL}/storage/v1/object/public/${schema}/ads`;
+const list = images.map((image: string) => `${imageSource}/${image}`);
+---
+<div class="w-full relative" x-data={`{ activeImage: "${list[0]}", images: ${JSON.stringify(list)} }`}>
+    <template x-for="image in images" :key="image">
+        <div x-show="activeImage === image" class="paper rounded-xl text text-center overflow-hidden">
+            <img :src="image" alt="Ad Image" class="w-full h-full aspect-square inset-0" />
+        </div>
+    </template>
+    <div class="absolute flex flex-row justify-center items-center gap-2" style="bottom: 10px; left:0; right:0;">
+        <button 
+            :disabled="images.findIndex(x => x === activeImage) === 0" 
+            class="btn-icon white lg" 
+            x-on:click="activeImage = images[images.findIndex(x => x === activeImage) - 1]">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <div class="pill lg">
+            <span x-text="images.findIndex(x => x === activeImage) + 1"></span> of <span x-text="images.length"></span>
+        </div>
+        <button 
+            :disabled="images.findIndex(x => x === activeImage) === (images.length - 1)" 
+            class="btn-icon white lg" 
+            x-on:click="activeImage = images[images.findIndex(x => x === activeImage) + 1]">
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+</div>
+
+

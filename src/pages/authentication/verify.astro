@@ -1,0 +1,30 @@
+---
+import LayoutFull from "../../app/Layout.astro";
+const verified = Astro.url.searchParams.get("verified");
+---
+<LayoutFull>
+    <div class="container">
+        <div class="flex flex-col items-center mx-auto">
+            <div class="card shadow p-5 w-96 my-5">
+                <h1 class="title text-center">Email Varification</h1>
+                <div class="divider my-4"></div>
+                {
+                    verified === "true" ? (
+                        <div class="flex flex-col items-center gap-3 mt-4">
+                            <i class="fas fa-check-circle text-green-500 text-2xl" />
+                            <p class="text text-center">
+                                Your email is verified. Please proceed with Signin
+                            </p>
+                            <div class="divider" />
+                            <a href="/authentication/signin" class="btn btn-primary">Signin</a>
+                        </div>
+                    ) : (
+                        <p class="text text-center">
+                            Registered Successfully. Please check your email for confirmation link to verify your email.
+                        </p>
+                    )
+                }
+            </div>
+        </div>
+    </div>
+</LayoutFull>

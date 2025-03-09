@@ -1,0 +1,33 @@
+---
+const {item, title, showDrawer, style } = Astro.props;
+export const partial = true;
+---
+<div 
+    style="display: none;" 
+    x-show={`${showDrawer}`} 
+    class={`${style} fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform transform bg-white w-80 dark:bg-gray-800`} 
+    x-transition:enter="transition ease-out duration-200" 
+    x-transition:enter-start="translate-x-full" 
+    x-transition:enter-end="translate-x-0" 
+    x-transition:leave="transition ease-in duration-200" 
+    x-transition:leave-start="translate-x-0" 
+    x-transition:leave-end="translate-x-full" 
+    tabindex="-1" aria-labelledby="drawer-right-label">
+    <div class="flex flex-row justify-between items-center">
+        <div id="drawer-right-label" class="title" x-text={`${item}.id ? 'Update ${title}' : 'Create ${title}'`}></div>
+        <button type="button" @click={`${showDrawer} = false`} class="btn-icon"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="divider my-4"></div>
+    <slot/>
+</div>
+<!-- Backdrop -->  
+<div x-show={`${showDrawer}`}  
+    class="fixed inset-0 bg-black opacity-50 z-30" 
+    @click={`${showDrawer} = false`}
+    x-transition:enter="transition ease-out duration-300" 
+    x-transition:enter-start="opacity-0" 
+    x-transition:enter-end="opacity-50" 
+    x-transition:leave="transition ease-in duration-300" 
+    x-transition:leave-start="opacity-50" 
+    x-transition:leave-end="opacity-0">
+</div>

@@ -1,0 +1,85 @@
+---
+import Layout from "../app/Layout.astro";
+import PriceTable from "../component/PriceTable.astro";
+import { supabase } from "../lib/supabase";
+const { roleName, roleId } = Astro.locals;
+const { data:packages, error:packagesError } = await supabase.from("packages").select().order("idx");
+if (packagesError) console.log(packagesError);
+
+const { data:pack, error:packError } = await supabase.from("packages").select().eq('id', Astro.locals.packageId).single();
+if (packError) console.log(packError);
+---
+<Layout active="membership">
+	<div class="flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-3">
+		<div class="title"><i class="fas fa-id-card-alt mr-2"></i>My Membership</div>
+		<div class="flex items-center flex-row gap-3">
+			<div class="text">Your Role: {roleName}</div>
+			{ roleId === 3 && 
+				<button 
+					type="button"
+					class="btn btn-primary">
+					Become Vendor
+				</button>
+			}
+		</div>
+	</div>
+	<div class="divider my-4"></div>
+	<!-- { roleId === 1 || roleId === 3 && -->
+		<div class="card">
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-3">
+				<div class="flex justify-between items-center border-b pb-3">
+					<div class="text gray">Current Package</div>
+					<div class="text-primary-500 text-sm font-medium">{pack?.name}</div>
+				</div>
+				<div class="flex justify-between items-center border-b pb-3">
+					<div class="text gray">Ads Limit</div>
+					<div class="text-primary-500 text-sm font-medium">{pack?.ad_limit} Ads</div>
+				</div>
+				<div class="flex justify-between items-center border-b pb-3">
+					<div class="text gray">Feature Ads Limit</div>
+					<div class="text-primary-500 text-sm font-medium">{pack?.feature_limit} Ads</div>
+				</div>
+				<div class="flex justify-between items-center border-b pb-3">
+					<div class="text gray">Ads Validity</div>
+					<div class="text-primary-500 text-sm font-medium">{pack?.ad_validity} Days</div>
+				</div>
+				<div class="flex justify-between items-center border-b pb-3">
+					<div class="text gray">Package Validity</div>
+					<div class="text-primary-500 text-sm font-medium">{pack?.package_validity} Days</div>
+				</div>
+				<div class="flex justify-between items-center border-b pb-3">
+					<div class="text gray">Package Expiry</div>
+					<div class="text-primary-500 text-sm font-medium">?</div>
+				</div>
+				<div class="flex justify-between items-center border-b pb-3">
+					<div class="text gray">Posted Ads</div>
+					<div class="text-primary-500 text-sm font-medium">? of {pack?.ad_limit}</div>
+				</div>
+				<div class="flex justify-between items-center border-b pb-3">
+					<div class="text gray">Featured Ads</div>
+					<div class="text-primary-500 text-sm font-medium">? of {pack?.feature_limit}</div>
+				</div>
+			</div>
+		</div>
+	<!-- } -->
+	{ roleId === 2 &&
+		<div class="card">
+			<div class="title text-center mb-2">Dear customer, you dont have any membership package for ad posting</div>
+			<div class="label text-center">Request for Become Vendor, and you will get free memberhip package. </div>
+		</div>
+	}
+	<div class="mx-auto text-center pt-10 mb-10">
+		<h2 class="mb-2 text-lg title">Membership Package For Your Business</h2>
+	</div>
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7">
+		{packages?.map((packs) => {
+			return (
+				<PriceTable {...packs}/>
+			);
+		})}
+	</div>
+	<div class="mx-auto text-center pt-10 mb-10">
+		<p class="label mb-2">Please feel free to contact us if you need more custom offers.</p>
+		<button class="btn btn-primary mx-auto">Contact Us for Package Subcription</button>
+	</div>
+</Layout>

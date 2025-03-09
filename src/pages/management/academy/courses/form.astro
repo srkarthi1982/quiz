@@ -1,0 +1,36 @@
+---
+const {item, hasManage} = Astro.props;
+---
+<form @submit.prevent="$store.courses.onSave()">
+    <div class="flex flex-col gap-3">
+        <div>
+            <label for="name" class="label">Name</label>
+            <input type="text" id="name" name="name" x-model="$store.courses.item.name" class="input w-full mt-1" placeholder="Name" required>
+        </div>
+        <div>
+            <label for="duration" class="label">Duration</label>
+            <input type="text" id="duration" name="duration" x-model="$store.courses.item.duration" class="input w-full mt-1" placeholder="Duration" required>
+        </div>
+        <div>
+            <label for="course_fees" class="label">Course Fees</label>
+            <input type="text" id="course_fees" name="course_fees" x-model="$store.courses.item.course_fees" class="input w-full mt-1" placeholder="Course Fees" required>
+        </div>
+        <div>
+            <label for="exam_fees" class="label">Exam Fees</label>
+            <input type="text" id="exam_fees" name="exam_fees" x-model="$store.courses.item.exam_fees" class="input w-full mt-1" placeholder="Exam Fees" required>
+        </div>
+        <div>
+            <label for="detail" class="label">Details</label>
+            <input type="text" id="detail" name="detail" x-model="$store.courses.item.detail" class="input w-full mt-1" placeholder="Detail" required>
+        </div>
+        <div class="flex flex-row gap-2 items-center">
+            <input id="is_active" name="is_active"  x-model="$store.courses.item.is_active" type="checkbox" class="checkbox" class="checkbox" />
+            <label for="is_active" class="text">Active</label>
+        </div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="flex flex-row justify-between gap-4">
+        <button type="button" @click="$store.courses.showDrawer = false" class="btn-default">Cancel</button>
+        { hasManage && <button type="submit" class="btn-primary" x-text={`${item}.id ? 'Update' : 'Create'`}></button>}
+    </div>
+</form>

@@ -1,0 +1,154 @@
+---
+import LayoutFull from "../app/Layout.astro";
+import AdCard from "../component/AdCard.astro";
+import Pagination from "../component/Pagination.astro";
+import Search from "../component/Search.astro";
+import Sorting from "../component/Sorting.astro";
+---
+<LayoutFull active="ads">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+		<div class=" flex flex-row gap-1 items-center">
+			<i class="fas fa-flag title"></i>
+			<span class="title">All Ads</span>
+			<span id="counter" class="title">(<span x-text="$store.ads.total"></span>)</span>
+		</div>
+		<div class="inline-flex gap-3 items-center">
+			<button class="btn-icon white lg" x-on:click="$store.ads.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
+			<select 
+				class="input white" 
+				aria-label="Choose a Verified Stores"
+				x-model={`$store.ads.filters.is_featured`} 
+				:value={`$store.ads.filters.is_featured`} 
+				@change={`$store.ads.filters.is_featured = $el.value; $store.ads.getData();`}>
+				<option value="">All Ads</option>
+				<option value="true">Featured Ads</option>
+			</select>
+			<Sorting storeName="ads" columns="publicColumns" />
+		</div>
+	</div>
+	<div class="spacer"></div>
+	<div class="flex flex-col md:flex-row gap-5 lg:gap-7">
+		<div class="w-full md:w-1/4">
+			<Search storeName="ads" ref="searchName" column="name" placeholder="Search" />
+			<div class="spacer"></div>
+			<div class="card flex flex-col gap-2 mb-5">
+				<div class="title mb-2">Ad Type</div>
+				<div class="flex flex-col gap-2" x-data="{ btn: 'product' }">
+					<template x-for="item in $store.ads.form.ad_types" :key="item.id">
+						<label 
+							:for="item.id" 
+							class="btn-default" 
+							@click.prevent="btn = item.id" 
+							:class="{ 'active' : btn === item.id }">
+							<input :id="item.id" type="radio" name="adType" class="checkbox mr-1" :checked="btn === item.id">
+							<span x-text="item.name"></span>
+						</label>
+					</template>
+				</div>
+			</div>
+			<div class="card flex flex-col gap-3 mb-5" >
+				<!-- x-show="$store.ads.item.ad_type_id == '1'" -->
+				<div class="title">Categories</div>
+				<div class="w-full">
+					<select id="category_id" class="input w-full mt-1"
+						x-model="$store.ads.item.category_id"
+						@change="$store.ads.onFormCategoryChange(Number($el.value))">
+						<option value="">Select Category</option>
+						<template x-for={`i in $store.ads.form.categories`}>
+							<option :value="i.id" x-text="i.name"></option>
+						</template>
+					</select>
+				</div>
+				<div class="w-full">
+					<select id="subcategory_id" class="input w-full mt-1"
+						x-model="$store.ads.item.subcategory_id"
+						@change="$store.ads.onFormListChange('subcategory_id', Number($el.value))">
+						<option value="">Select Sub Category</option>
+						<template x-for="item in $store.ads.form.subcategories">
+							<option :value="item.id" x-text="item.name"></option>
+						</template>
+					</select>
+				</div>
+			</div>
+			<div class="card flex flex-col gap-3 mb-5" >
+				<!-- x-show="$store.ads.item.ad_type_id == '2'" -->
+				<div class="title">Services</div>
+				<div class="w-full">
+					<select id="service_id" class="input w-full mt-1" 
+						x-model="$store.ads.item.service_id"
+						@change="$store.ads.onFormServiceChange(Number($el.value))">
+						<option value="">Select Servcie</option>
+						<template x-for={`i in $store.ads.form.services`}>
+							<option :value="i.id" x-text="i.name"></option>
+						</template>
+					</select>
+				</div>
+				<div class="w-full">
+					<select id="subservice_id" class="input w-full mt-1"
+						x-model="$store.ads.item.subservice_id"
+						@change="$store.ads.onFormListChange('subservice_id', Number($el.value))">
+						<option value="">Select Sub Service</option>
+						<template x-for="item in $store.ads.form.subservices">
+							<option :value="item.id" x-text="item.name"></option>
+						</template>
+					</select>
+				</div>
+			</div>
+			<div class="card flex flex-col gap-3 mb-5">
+				<div class="title">Location</div>
+				<div class="w-full">
+					<select id="country" class="input w-full" 
+					:value="$store.ads.item.country_id"
+					@change="$store.ads.onFormCountryChange(Number($el.value))">
+						<option value="">Select Country</option>
+						<template x-for={`i in $store.ads.form.countries`}>
+							<option :value="i.id" x-text="i.name"></option>
+						</template>
+					</select>     
+				</div>
+				<div class="w-full">
+					<select id="state" class="input w-full" 
+					:value="$store.ads.item.state_id"
+					@change="$store.ads.onFormStateChange(Number($el.value))">
+						<option value="">Select State</option>
+						<template x-for={`i in $store.ads.form.states`}>
+							<option :value="i.id" x-text="i.name"></option>
+						</template>
+					</select>  
+				</div>
+				<div class="w-full">
+					<select id="city" class="input w-full" 
+					:value="$store.ads.item.city_id"
+					@change="$store.ads.onFormCityChange(Number($el.value))">
+						<option value="">Select City</option>
+						<template x-for={`i in $store.ads.form.cities`}>
+							<option :value="i.id" x-text="i.name"></option>
+						</template>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="w-full md:w-3/4" >
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-5 lg:gap-7 items-start">
+				<template x-for="i in $store.ads.items" :key="i.id">
+					<AdCard
+						id="i.id"
+						name="i.name"
+						url="`/ad?adId=${i.id}`" 
+						image="i.image ? `${source}${i.image}` : blank"
+						category="i.category_name"
+						subcategory="i.subcategory_name"
+						service="i.service_name"
+						subservice="i.subservice_name"
+						is_featured={true}
+						price="i.price"
+						price_type="i.price_type_name"
+						ad_type="i.ad_type_name"
+					 />
+				</template>
+			</div>
+			<div class="spacer"></div>
+    		<Pagination storeName="ads"/>
+		</div>
+	</div>
+</LayoutFull>

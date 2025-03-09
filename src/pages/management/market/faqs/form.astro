@@ -1,0 +1,36 @@
+---
+const {item, hasManage} = Astro.props;
+---
+<form @submit.prevent="$store.faqs.onSave()">
+    <div class="flex flex-col gap-3">
+        <div>
+            <label class="label">Topic</label>
+            <select 
+                class="input w-full" 
+                :value={`$store.faqs.item.topic_id`}
+                @change="$store.faqs.onFormListChange('topic_id', Number($el.value))">
+                <option value=""></option>
+                <template x-for={`i in $store.faqs.form.topics`}>
+                    <option :value="i.id" x-text="i.name"></option>
+                </template>
+            </select>
+        </div>
+        <div>
+            <label for="question" class="label">Question</label>
+            <textarea id="question" name="question" x-model="$store.faqs.item.question" class="input w-full mt-1" placeholder="Type question" rows="5" required />
+        </div>
+        <div>
+            <label for="answer" class="label">Answer</label>
+            <textarea id="answer" name="answer" x-model="$store.faqs.item.answer" class="input w-full mt-1" placeholder="Type answer" rows="5" required />
+        </div>        
+        <div class="flex flex-row gap-2 items-center">
+            <input id="is_active" name="is_active" x-model="$store.faqs.item.is_active" type="checkbox" class="checkbox" class="checkbox" />
+            <label for="is_active" class="text">Active</label>
+        </div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="flex flex-row justify-between gap-4">
+        <button type="button" @click="$store.faqs.showDrawer = false" class="btn-default">Cancel</button>
+        { hasManage && <button type="submit" class="btn-primary" x-text={`${item}.id ? 'Update' : 'Create'`}></button>}
+    </div>
+</form>

@@ -1,0 +1,212 @@
+---
+const {item, hasManage} = Astro.props;
+const imageSource = `${import.meta.env.SUPABASE_URL}/storage/v1/object/public/ads/`;
+const defaultImage = `${import.meta.env.SUPABASE_URL}/storage/v1/object/public/images/blank.webp`;
+---
+<form @submit.prevent="$store.ads.onSave()">
+    <div class="flex flex-col gap-4">
+        <div class="flex flex-col sm:flex-row gap-4">
+            <div class="w-full">
+                <label for="store_id" class="label">Stores</label>
+                <select id="store_id" class="input w-full mt-1"
+                 x-model="$store.ads.item.store_id"
+                 @change="$store.ads.onFormListChange('store_id', $el.value)">
+                    <option value="">Select Store</option>
+                    <template x-for="item in $store.ads.form.stores">
+                        <option :value="item.id" x-text="item.name"></option>
+                    </template>
+                </select>
+            </div>
+            <div class="w-full">
+                <label for="ad_type_id" class="label">Ad Type</label>
+                <select id="ad_type_id" class="input w-full mt-1"
+                 x-model="$store.ads.item.ad_type_id"
+                 @change="$store.ads.onFormListChange('ad_type_id', Number($el.value))">
+                    <option value="">Select Type</option>
+                    <template x-for="item in $store.ads.form.ad_types">
+                        <option :value="item.id" x-text="item.name"></option>
+                    </template>
+                </select>
+            </div>
+        </div>
+        <div x-show="$store.ads.item.ad_type_id == '1'" class="flex flex-col sm:flex-row gap-4">
+            <div class="w-full">
+                <label for="category_id" class="label">Categories</label>
+                <select id="category_id" class="input w-full mt-1"
+                    x-model="$store.ads.item.category_id"
+                    @change="$store.ads.onFormCategoryChange(Number($el.value))">
+                    <option value="">Select Category</option>
+                    <template x-for={`i in $store.ads.form.categories`}>
+                        <option :value="i.id" x-text="i.name"></option>
+                    </template>
+                </select>
+            </div>
+            <div class="w-full">
+                <label for="subcategory_id" class="label">Sub Categories</label>
+                <select id="subcategory_id" class="input w-full mt-1"
+                    x-model="$store.ads.item.subcategory_id"
+                    @change="$store.ads.onFormListChange('subcategory_id', Number($el.value))">
+                    <option value="">Select Sub Category</option>
+                    <template x-for="item in $store.ads.form.subcategories">
+                        <option :value="item.id" x-text="item.name"></option>
+                    </template>
+                </select>
+            </div>
+        </div>
+        <div x-show="$store.ads.item.ad_type_id == '2'" class="flex flex-col sm:flex-row gap-4">
+            <div class="w-full">
+                <label for="service_id" class="label">Servcies</label>
+                <select id="service_id" class="input w-full mt-1" 
+                    x-model="$store.ads.item.service_id"
+                    @change="$store.ads.onFormServiceChange(Number($el.value))">
+                    <option value="">Select Servcie</option>
+                    <template x-for={`i in $store.ads.form.services`}>
+                        <option :value="i.id" x-text="i.name"></option>
+                    </template>
+                </select>
+            </div>
+            <div class="w-full">
+                <label for="subservice_id" class="label">Sub Services</label>
+                <select id="subservice_id" class="input w-full mt-1"
+                    x-model="$store.ads.item.subservice_id"
+                    @change="$store.ads.onFormListChange('subservice_id', Number($el.value))">
+                    <option value="">Select Sub Service</option>
+                    <template x-for="item in $store.ads.form.subservices">
+                        <option :value="item.id" x-text="item.name"></option>
+                    </template>
+                </select>
+            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+            <div class="w-full">
+                <label for="price_type" class="label">Price Types</label>
+                <select id="price_type" class="input w-full mt-1"
+                 x-model="$store.ads.item.price_type_id"
+                 @change="$store.ads.onFormListChange('price_type_id', Number($el.value))">
+                    <option value="">Select Type</option>
+                    <template x-for="item in $store.ads.form.price_types">
+                        <option :value="item.id" x-text="item.name"></option>
+                    </template>
+                </select>
+            </div>
+            <div class="w-full">
+                <label for="price" class="label">Price</label>
+                <input type="text" id="price" x-model="$store.ads.item.price" class="input w-full mt-1" placeholder="Price">
+            </div>
+        </div>
+        <div class="w-full">
+            <label for="name" class="label">Ad Title</label>
+            <input type="text" id="name" x-model="$store.ads.item.name" class="input w-full mt-1" placeholder="Title" required>
+        </div>
+        <div class="w-full">
+            <div class="flex justify-between items-center gap-2 mb-2">
+                <div class="flex flex-row items-center gap-2">
+                    <div class="label">Features</div>
+                    <div class="txt gray">(Features Limit: 0)</div>
+                </div>
+                <button 
+                        class="btn-icon"
+                        :class="{ 'active': $store.ads.item.features.length <= 3 }"
+                        type="button"
+                        :disabled="$store.ads.item.features.length > 3"
+                        @click="$store.ads.item.features.push('')">
+                        <i class="fas fa-plus"></i>
+                    </button>
+            </div>
+            <div class="flex flex-col gap-4">
+                <template x-for="(value, index) in $store.ads.item.features" :key="index">
+                    <div class="input-group">
+                        <input 
+                            name="features" 
+                            :id="`$store.ads.item.feature${index}`" 
+                            class="input w-full first" 
+                            x-model="$store.ads.item.features[index]" 
+                            placeholder="Write ad features here"
+                            oninvalid="this.setCustomValidity('Feature is required.')"
+                            oninput="this.setCustomValidity(this.value.length < 5 ? 'Feature required minimum 5 charactors': '')"
+                            minlength="5" maxlength="50" required/>
+                        <button class="btn btn-default last" type="button" :disabled="index === 0" @click="$store.ads.item.features.splice(index, 1);">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </template>
+            </div>
+        </div>
+        <div class="w-full">
+            <label for="description" class="label">Description</label>
+            <textarea id="description" x-model="$store.ads.item.description" class="input w-full mt-1" placeholder="Description"></textarea>
+        </div>
+        <div class="w-full" x-data={`{ defaultImage: '${defaultImage}', imageSource: '${imageSource}'}`}>
+            <div class="flex justify-between items-center gap-2 mb-2">
+                <div class="flex flex-row items-center gap-2">
+                    <div class="label">Images</div>
+                    <div class="txt gray">(Images Limit: 3)</div>
+                </div>
+                <button 
+                    class="btn-icon"
+                    :class="{ 'active': $store.ads.item.images.length <= 2 }"
+                    type="button"
+                    :disabled="$store.ads.item.images.length > 2"
+                    @click="$store.ads.item.images.push(defaultImage)">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <div class="flex flex-col gap-4">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-5">
+                    <template x-for="(value, index) in $store.ads.item.images" :key="index">
+                        <div class="card flex flex-col justify-center relative">
+                                <i class="fas fa-times absolute top-4 right-4" :class="{'hidden': index === 0}"  
+                                @click=`
+                                $store.ads.item.imagesToDelete.push($store.ads.item.images[index]);
+                                $store.ads.item.images.splice(index, 1);
+                                `></i>
+                            <img 
+
+                                :src="$store.ads.item.images[index]"
+                                width={400} 
+                                height={400} 
+                                class="mx-auto" alt="Image Preview" 
+                            />                            
+                            <input type="file" name="images" class="input w-full mt-4" 
+                            :required="value === defaultImage"
+                            @change=`
+                                $event.target.previousElementSibling.src = window.URL.createObjectURL($event.target.files[0]);
+                                $event.target.setCustomValidity('');
+                                $store.ads.item.files.push($event.target.files[0]);
+                            `
+                            oninvalid="this.setCustomValidity('Image is required.')"/>
+                            <input type="hidden" name="files" :disabled="value === defaultImage" :value="value.replace(imageSource,'')" >
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <!-- <div class="flex flex-col gap-4">
+                <div class="input-group">
+                    <input type="file" name="images" class="input w-full first"/>
+                    <button class="btn btn-default last" type="button"><i class="fas fa-times"></i></button>
+                </div>
+            </div> -->
+        </div>
+        <div class="w-full">
+            <div class="flex flex-row justify-between items-center mt-2">
+                <div class="paper rounded-full py-2 px-3 flex flex-row gap-2 items-center">
+                    <input id="is_active" name="is_active" x-model="$store.ads.item.is_active" type="checkbox" class="checkbox" class="checkbox" />
+                    <label for="is_active" class="label cursor-pointer">Active</label>
+                </div>
+                <div class="paper rounded-full py-2 px-3 flex flex-row gap-2 items-center">
+                    <input id="is_featured" name="is_featured" x-model="$store.ads.item.is_featured" type="checkbox" class="checkbox" class="checkbox" />
+                    <label for="is_featured" class="label cursor-pointer">Featured</label>
+                </div>
+                <div class="paper rounded-full py-2 px-3 flex flex-row gap-2 items-center">
+                    <input id="is_verified" name="is_verified" x-model="$store.ads.item.is_verified" type="checkbox" class="checkbox" class="checkbox" />
+                    <label for="is_verified" class="label cursor-pointer">Verified</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="flex flex-row justify-between gap-4">
+        <button type="button" @click="$store.ads.showDrawer = false" class="btn-default">Cancel</button>
+        { hasManage && <button type="submit" class="btn-primary" x-text={`${item}.id ? 'Update' : 'Create'`}></button>}
+    </div>
+</form>

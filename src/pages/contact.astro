@@ -1,0 +1,45 @@
+---
+import LayoutFull from "../app/Layout.astro";
+---
+<LayoutFull active="contact">
+	<div class="flex flex-col md:flex-row gap-5 lg:gap-7">
+		<div class="flex flex-col gap-2 w-full">
+			<div class="title mb-2">Contact Us 24/7</div>
+			<div class="title mb-1">Let us know about you and what you’re up to.</div>
+			<div class="text mb-3">Feel free to contact us anytime.</div>
+			<div class="divider my-5"></div>
+			<div class="flex flex-col gap-2">
+				<div class="text gray flex gap-2"><i class="fas fa-phone text-primary-500"></i> Call Us:</div>
+				<div class="label">+971 568 347 655</div>
+			</div>
+			<div class="divider my-5"></div>
+			<div class="flex flex-col gap-2">
+				<div class="text flex gap-2"><i class="fas fa-envelope text-primary-500"></i>Email Us:</div>
+				<div class="label">info@slt.institute</div>
+				<div class="label">sales@slt.institute</div>
+				<div class="label">admin@slt.institute</div>
+			</div>
+		</div>
+		<div class="card w-full">
+			<form class="flex flex-col gap-4" @submit.prevent="$store.contact.onSave()">
+				<div class="">
+					<label for="name"  class="label">Full Name</label>
+					<input type="text" class="input w-full mt-1" id="name" name="name" x-model="$store.contact.item.name" placeholder="Jhon Doe" required />
+				</div>
+				<div class="">
+					<label for="phone" class="label">Contact</label>
+					<input type="text" class="input w-full mt-1" id="phone" name="phone" x-model="$store.contact.item.phone" placeholder="+971 123456789" required />
+				</div>
+				<div class="">
+					<label for="email" class="label">Email</label>
+					<input type="email" class="input w-full mt-1" id="email" name="email" x-model="$store.contact.item.email" placeholder="name@email.com" required />
+				</div>
+				<div class="">
+					<label for="detail" class="label">Message</label>
+					<textarea class="input w-full mt-1" rows="3" id="detail" name="detail" x-model="$store.contact.item.detail" placeholder="Your message" required></textarea>
+				</div>
+				<button type="submit" class="btn-primary w-fit" title="Submit">Submit</button>
+			</form>
+		</div>
+	</div>
+</LayoutFull>

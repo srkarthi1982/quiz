@@ -1,0 +1,42 @@
+---
+import LayoutFull from "../app/Layout.astro";
+import Search from "../component/Search.astro";
+import Pagination from "../component/Pagination.astro";
+import Sorting from "../component/Sorting.astro";
+import StoreCard from "../component/StoreCard.astro";
+---
+<LayoutFull active="stores">
+	<div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+		<div class="title"><i class="fas fa-store mr-2"></i> Stores (<span x-text="$store.stores.total"></span>)</div>
+		<div class="flex flex-col sm:flex-row justify-between gap-3">
+			<Search storeName="stores" ref="searchName" method="search" column="name" placeholder="Search"/>
+			<div class="flex flex-row gap-3">
+				<select 
+					class="input white" 
+					aria-label="Choose a Verified Stores"
+					x-model={`$store.stores.filters.is_verified`} 
+					:value={`$store.stores.filters.is_verified`} 
+					@change={`$store.stores.filters.is_verified = $el.value; $store.stores.getData();`}
+				>
+				<option value="">All Stores</option>
+				<option value="true" class="text-center">Verified Stores</option>
+			</select>
+			<Sorting storeName="stores" columns="publicColumns" />
+			</div>
+		</div>
+	</div>
+	<div class="spacer"></div>
+	<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5 lg:gap-7">
+		<template x-for="i in $store.stores.items" :key="i.id">
+			<StoreCard
+				name="i.name"
+				is_verified="i.is_verified"
+				count="i.ads_count"
+				url="`/store?id=${i.id}`"
+				image="i.image ? `${source}${i.image}` : blank"
+			/>
+		</template>
+	</div>
+	<div class="spacer"></div>
+	<Pagination storeName="stores" />
+</LayoutFull>

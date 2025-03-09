@@ -1,0 +1,38 @@
+---
+import ActionButton from "../../../../component/ActionButton.astro";
+const { line, item, items, hasManage } = Astro.props;
+---
+<template x-for={`${item} in ${items}`}>
+    <ul class="list-none">
+        <li class={`mb-1 ${line}`}>
+            <div class="flex justify-between items-center m-2 w-full">
+                <button @click={`${item}.open = !${item}.open`} class="flex items-center gap-3">
+                    <i class="fas fa-chevron-right transition-transform transform text" x-show={`${item}.children.length > 0`} :class={`{'rotate-90': ${item}.open}`} ></i>
+                    <span class="paper rounded-full px-1.5 inline-flex items-center justify-center text-sm" :class={`${item}.is_active ? 'text-gray-500' : 'text-red-600'`} x-text={`${item}.idx`}></span>
+                    <span class="text" x-text={`${item}.name`}></span>
+                </button>
+                <div class="flex items-center gap-3">
+                    <span class="txt gray hidden sm:block" x-text={`${item}.value`}></span>
+                    <span class="font-semibold" :class={`${item}.is_active ? 'text-gray-500' : 'text-red-600'`} x-text={`${item}.type`}></span>
+                    {
+                        hasManage &&
+                        <ActionButton 
+                            position="right"
+                            actions={[
+                                { label: 'Create Child', click: `$store.menus.onCreateChild(${item})`, show: hasManage },
+                                { label: 'Edit', click: `$store.menus.onEdit(${item})`, show: hasManage },
+                                { label: 'Delete', click: `$store.menus.onRemove(${item})`, show: hasManage },
+                                { label: 'Copy ID', click: `$store.menus.copyId(${item}.id)`, show: hasManage }
+                                
+                            ]} 
+                            show={`${item}.showAction`} 
+                        />
+                    }
+                </div>
+            </div>
+            <ul x-show={`${item}.open`} class="ml-6 mt-1 list-none">
+                <slot />
+            </ul>
+        </li>
+    </ul>
+</template>

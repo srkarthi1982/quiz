@@ -1,0 +1,18 @@
+---
+export const partial = true;
+const { storeName, column } = Astro.props;
+---
+<select 
+    aria-label={`Choose ${column.replace('_', ' ')} Filter`}
+    class="input w-16" 
+    x-model={`$store.${storeName}.filters.${column}`} 
+    :value={`$store.${storeName}.filters.${column}`} 
+    @change={`
+        $store.${storeName}.pagination = { ...$store.${storeName}.pagination, page: 1 };
+        $store.${storeName}.filters.${column} = $el.value;
+        $store.${storeName}.getData();
+    `}>
+    <option value="" class="text-center">All</option>
+    <option value="true" class="text-center">&#10004;</option>
+    <option value="false" class="text-center">&#10008;</option>
+</select>

@@ -1,0 +1,44 @@
+---
+const {item, hasManage} = Astro.props;
+---
+<form @submit.prevent="$store.cities.onSave()">
+    <div class="flex flex-col gap-3">
+        <div>
+            <label class="label">Country</label>
+            <select 
+                class="input w-full" 
+                :value={`$store.cities.item.country_id`}
+                @change="$store.cities.onFormCountryChange(Number($el.value))">
+                <option value=""></option>
+                <template x-for={`i in $store.cities.form.countries`}>
+                    <option :value="i.id" x-text="i.name"></option>
+                </template>
+            </select>
+        </div>
+        <div>
+            <label class="label">State</label>
+            <select 
+                class="input w-full" 
+                :value={`$store.cities.item.state_id`}
+                @change="$store.cities.onFormListChange('state_id', Number($el.value))">
+                <option value=""></option>
+                <template x-for={`i in $store.cities.form.states`}>
+                    <option :value="i.id" x-text="i.name"></option>
+                </template>
+            </select>
+        </div>
+        <div>
+            <label for="name" class="label">Name</label>
+            <input id="name" name="name" x-model="$store.cities.item.name" class="input w-full mt-1" placeholder="Type name" required />
+        </div>        
+        <div class="flex flex-row gap-2 items-center">
+            <input id="is_active" name="is_active" x-model="$store.cities.item.is_active" type="checkbox" class="checkbox" class="checkbox" />
+            <label for="is_active" class="text">Active</label>
+        </div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="flex flex-row justify-between gap-4">
+        <button type="button" @click="$store.cities.showDrawer = false" class="btn-default">Cancel</button>
+        { hasManage && <button type="submit" class="btn-primary" x-text={`${item}.id ? 'Update' : 'Create'`}></button>}
+    </div>
+</form>

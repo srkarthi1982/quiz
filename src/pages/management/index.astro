@@ -1,0 +1,22 @@
+---
+import LayoutSidebar from '../../app/LayoutFull.astro';
+import Breadcrumb from '../../component/Breadcrumb.astro';
+---
+<LayoutSidebar active="management">
+	<Breadcrumb list={[{name: 'management', link: 'management'}]} />
+	<template x-for="f in $store.management.functions" :key="f.name">
+		<div>
+			<div :id="f.name" class="title my-4" x-text="f.name"></div>	
+			<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-5 lg:gap-7">
+				<template x-for="s in f.sections" :key="s.name">
+					<a :href="s.link" :aria-label="`${s.name} Section`" class="card hover link">
+						<span class="flex flex-col items-center justify-center">
+							<i :class="`fas ${s.icon} text-3xl`"></i>
+							<span class="text-center mt-3 label" x-text="s.name"></span>
+						</span>
+					</a>
+				</template>
+			</div>
+		</div>
+	</template>
+</LayoutSidebar>

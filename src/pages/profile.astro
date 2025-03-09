@@ -1,0 +1,119 @@
+---
+import Layout from '../app/Layout.astro';
+const { user } = Astro.locals;
+---
+<Layout active="profile">
+	<div class="flex flex-col sm:flex-row justify-between items-center gap-2">
+		<div class="title"><i class="fas fa-contact-card mr-2"></i>Profile information</div>
+		<div class="flex flex-row gap-2 items-center">
+			<span class="text gray">Your Role:</span> 
+			<span class="text" x-text="$store.profile.item.role_name"></span>
+			<button x-show="$store.profile.item.role_id === 3" class="btn-primary">Become Vendor</button>
+		</div>
+	</div>
+	<div class="spacer"></div>
+	<form x-data x-init={`$store.profile.getProfile('${user.id}')`} class="card relative" @submit.prevent="$store.profile.onSave()">
+		<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
+			<div class="col-span-1">
+				<label for="name" class="label">Full Name</label>
+            	<input id="name" x-model="$store.profile.item.name" class="input w-full mt-1" placeholder="Name" required />
+			</div>
+			<div class="col-span-1">
+				<label for="email" class="label">Email</label>
+				<input id="email" x-model="$store.profile.item.email" class="input w-full mt-1 disabled" placeholder="name@email.com" readonly />
+			</div>
+			<div class="col-span-1">
+				<label for="phone" class="label">Phone</label>
+            	<input id="phone" x-model="$store.profile.item.phone" class="input w-full mt-1" placeholder="Phone" required />
+			</div>
+			<div class="col-span-1">
+				<label for="country" class="label">Country</label>
+				<select id="country" class="input w-full" 
+				:value="$store.profile.item.country_id"
+				@change="$store.profile.onFormCountryChange(Number($el.value))">
+					<option value="">Select Country</option>
+					<template x-for={`i in $store.profile.form.countries`}>
+						<option :value="i.id" x-text="i.name"></option>
+					</template>
+				</select>     
+			</div>
+			<div class="col-span-1">
+				<label for="state" class="label">State</label>
+				<select id="state" class="input w-full" 
+				:value="$store.profile.item.state_id"
+				@change="$store.profile.onFormStateChange(Number($el.value))">
+					<option value="">Select State</option>
+					<template x-for={`i in $store.profile.form.states`}>
+						<option :value="i.id" x-text="i.name"></option>
+					</template>
+				</select>  
+			</div>
+			<div class="col-span-1">
+				<label for="city" class="label">City</label>
+				<select id="city" class="input w-full" 
+				:value="$store.profile.item.city_id"
+				@change="$store.profile.onFormCityChange(Number($el.value))">
+					<option value="">Select City</option>
+					<template x-for={`i in $store.profile.form.cities`}>
+						<option :value="i.id" x-text="i.name"></option>
+					</template>
+				</select>
+			</div>
+		</div>
+		<div class="divider my-5"></div>
+		<div class="flex justify-between items-center">
+			<div class="txt gray">Join Date: <span x-text="$store.profile.item.created_at"></span></div>
+			<button type="submit" class="btn btn-primary">Update Profile</button>
+		</div>
+	</form>
+	<div class="spacer my-1"></div>
+	<div class="flex flex-row justify-between items-center">
+		<div class="title"><i class="fas fa-key mr-2"></i>Reset Password</div>
+	</div>
+	<div class="spacer"></div>
+	<div class="" x-data>
+		<div id="error-message" class="text-center text-red-500 text-sm"></div>
+		<form id="login-form" @submit.prevent="$store.resetPassword.onSubmit()" class="card">
+			<div class="flex flex-col sm:flex-row gap-4 items-end">
+				
+				<div class="w-full">
+					<label for="oldPassword" class="label">Old Password</label>
+					<div class="input-icon mt-1" x-data="{ oldPassword: false }">
+						<i class="fas fa-key lightgray left-4 icon"></i>
+						<button type="button" @click="oldPassword = !oldPassword" class="absolute top-2.5 right-4 text gray">
+							<i x-show="oldPassword" class="far fa-eye" style="display: none;"></i>
+							<i x-show="!oldPassword" class="far fa-eye" ></i>
+						</button>
+						<input 
+							x-model="$store.resetPassword.password"
+							:type=" oldPassword ? 'text': 'password' " 
+							class="input w-full" 
+							name="password" 
+							id="oldPassword" 
+							placeholder="Your Old Password" 
+						/>
+					</div>
+				</div>
+				<div class="w-full">
+					<label for="newPassword" class="label">New Password</label>
+					<div class="input-icon mt-1" x-data="{ newPassword: false }">
+						<i class="fas fa-key lightgray left-4 icon"></i>
+						<button type="button" @click="newPassword = !newPassword" class="absolute top-2.5 right-4 text gray">
+							<i x-show="newPassword" class="far fa-eye" style="display: none;"></i>
+							<i x-show="!newPassword" class="far fa-eye" ></i>
+						</button>
+						<input 
+							x-model="$store.resetPassword.password"
+							:type=" newPassword ? 'text': 'password' " 
+							class="input w-full" 
+							name="password" 
+							id="newPassword" 
+							placeholder="Your New Password" 
+						/>
+					</div>
+				</div>
+				<div class="w-fit"><button type="submit" class="btn-primary">Reset Password</button></div>
+			</div>
+		</form>
+	</div>
+</Layout>

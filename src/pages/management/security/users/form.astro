@@ -1,0 +1,32 @@
+---
+const {item, hasManage} = Astro.props;
+---
+<form @submit.prevent="$store.users.onSave()">
+    <div class="flex flex-col gap-3">
+        <div>
+            <label for="role" class="label">Role</label>
+            <select id="role" class="input w-full" :value={`$store.users.item.role_id`} @change="$store.users.onFormListChange('role_id', Number($el.value))">
+                <template x-for={`i in $store.users.form.roles`}>
+                    <option :value="i.id" x-text="i.name"></option>
+                </template>
+            </select>
+        </div>
+        <div>
+            <label for="email" class="label">Email</label>
+            <input id="email" x-model="$store.users.item.email" class="input w-full mt-1 disabled" placeholder="name@email.com" readonly />
+        </div>
+        <div>
+            <label for="name" class="label">Full Name</label>
+            <input id="name" x-model="$store.users.item.name" class="input w-full mt-1" placeholder="Name" required />
+        </div>
+        <div>
+            <label for="phone" class="label">Phone</label>
+            <input id="phone" x-model="$store.users.item.phone" class="input w-full mt-1" placeholder="Phone" required />
+        </div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="flex flex-row justify-between gap-4">
+        <button type="button" @click="$store.users.showDrawer = false" class="btn-default">Cancel</button>
+        <button type="submit" class="btn-primary" x-text={`${item}.id ? 'Update' : 'Create'`}></button>
+    </div>
+</form>

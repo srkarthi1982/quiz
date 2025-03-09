@@ -1,0 +1,80 @@
+---
+import LayoutSidebar from '../../../../app/LayoutFull.astro';
+import Drawer from "../../../../component/Drawer.astro";
+import Pagination from "../../../../component/Pagination.astro";
+import Sorting from "../../../../component/Sorting.astro";
+import Breadcrumb from '../../../../component/Breadcrumb.astro';
+import ActionButton from '../../../../component/ActionButton.astro';
+import FilterSearch from '../../../../component/FilterSearch.astro';
+import Form from "./form.astro";
+const { accessCodes } = Astro.locals;
+const hasManage = accessCodes?.includes('001.02.16.01');
+---
+<LayoutSidebar active="contact">
+	<Breadcrumb list={[{ name: "Management", link: "management" },{ name: "Contact", link: "" }]}>
+		<div class="flex flex-row gap-3">
+			<Sorting storeName="contact" columns="columns" />
+			<button class="btn-icon white lg" x-on:click="$store.contact.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
+		</div>
+	</Breadcrumb>
+	<div class="table-responsive paper">
+		<table class="table border strip">
+			<thead>
+				<tr>
+					<th x-show={`${hasManage}`}></th>
+					<th class="min-w-48">Name</th>
+					<th class="min-w-48">Email</th>
+					<th class="min-w-48">Phone</th>
+					<th class="w-full">Detail</th>
+					<th>Status</th>
+					<th>Created On</th>
+				</tr>
+				<tr>
+					<th x-show={`${hasManage}`}></th>
+					<th><FilterSearch storeName="contact" ref="searchName" method="search" column="name" placeholder="Name"/></th>
+					<th><FilterSearch storeName="contact" ref="searchEmail" method="search" column="email" placeholder="Email"/></th>
+					<th><FilterSearch storeName="contact" ref="searchPhone" method="search" column="phone" placeholder="Phone"/></th>
+					<th><FilterSearch storeName="contact" ref="searchDetail" method="search" column="detail" placeholder="Detail"/></th>
+					<th class="min-w-36">
+						<select 
+							class="input w-full" 
+							:value={`$store.contact.filters.status_id`}
+							@change="$store.contact.onColumnListChange('status_id', Number($el.value))">
+							<option value="">All</option>
+							<template x-for={`i in $store.contact.column.statusList`}>
+								<option :value="i.id" x-text="i.name"></option>
+							</template>
+						</select>
+					</th>
+					<th><input name="created_at" type="date" :value={`$store.contact.filters.created_at`} @change="$store.contact.onColumnListChange('created_at', $el.value)" class="input w-32"></th>
+				</tr>
+			</thead>
+			<tbody x-show="$store.contact.items.length > 0">
+				<template x-for="r in $store.contact.items" :key="r.id">
+					<tr>
+						<td x-show={`${hasManage}`} class="flex justify-center">
+							<ActionButton position="bottom" show={`r.showAction`} 
+								actions={[
+									{ label: 'Edit', click: `$store.contact.onEdit(r)`, show: hasManage },
+									{ label: 'Delete', click: `$store.contact.onDelete(r)`, show: hasManage },
+									{ label: 'Copy ID', click: `$store.contact.copyId(r.id)`, show: hasManage }
+								]} 
+							/>
+						</td>
+						<td x-text="r.name"></td>
+						<td x-text="r.email"></td>
+						<td x-text="r.phone"></td>
+						<td x-text="r.detail"></td>
+						<td x-text="r.status_name"></td>						
+						<td x-text="$store.contact.ddmmyyyy(r.created_at)"></td>						
+					</tr> 
+				</template>    
+			</tbody>
+		</table>
+	</div>
+	<div class="spacer"></div>
+	<Pagination storeName="contact" />
+	<Drawer item="$store.contact.item" title="FAQ" showDrawer="$store.contact.showDrawer">
+		<Form item="$store.contact.item" hasManage={hasManage} />
+	</Drawer>
+</LayoutSidebar>

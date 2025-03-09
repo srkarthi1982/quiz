@@ -1,0 +1,103 @@
+---
+import LayoutFull from "../app/Layout.astro";
+import ContactCard from "../component/ContactCard.astro";
+import StoreCard from "../component/StoreCard.astro";
+const adId = Astro.url.searchParams.get('adId');
+---
+<LayoutFull active="ads">
+    <div x-init={`$store.ad.getAd('${adId}')`} >
+        <div class="flex flex-col md:flex-row gap-5 lg:gap-7">
+            <div class="flex flex-col w-full md:w-2/3 lg:w-3/4">
+                <div class="flex flex-col gap-5 lg:gap-7">
+                    <div class="card">
+                        <div class="flex flex-row justify-between items-center">
+                            <span class="btn-default sm" x-text="$store.ad.item.ad_type_name"></span>
+                            <span class="btn-primary sm" x-show="$store.ad.item.is_featured">Featured</span>
+                        </div>
+                        <div class="divider my-4"></div>
+                        <div class="title" x-text="$store.ad.item.name"></div>
+                        <div class="divider my-4"></div>
+                        <div class="flex flex-row gap-3">
+                            <div x-show="$store.ad.item.service_name" class="flex flex-col gap-1">
+                                <div class="txt gray">Service</div>
+                                <div class="btn-default sm" x-text="$store.ad.item.service_name"></div>
+                            </div>
+                            <div x-show="$store.ad.item.subservice_name" class="flex flex-col gap-1">
+                                <div class="txt gray">Sub Service</div>
+                                <div class="btn-default sm" x-text="$store.ad.item.subservice_name"></div>
+                            </div>
+                            <div x-show="$store.ad.item.category_name" class="flex flex-col gap-1">
+                                <div class="txt gray">Category</div>
+                                <div class="btn-default sm" x-text="$store.ad.item.category_name"></div>
+                            </div>
+                            <div x-show="$store.ad.item.subcategory_name" class="flex flex-col gap-1">
+                                <div class="txt gray">Sub Category</div>
+                                <div class="btn-default sm" x-text="$store.ad.item.subcategory_name"></div>
+                            </div>
+                        </div>
+                        <div class="divider my-4"></div>
+                        <div class="flex flex-col gap-1">
+                            <div class="txt gray">Price</div>
+                            <div class="flex flex-row items-center gap-2">
+                                <div class="text" x-text="$store.ad.item.price_type_name"></div>
+                                <div class="btn-default sm">Rs. <span x-text="$store.ad.item.price"></span></div>
+                            </div>
+                        </div>
+                        <div class="divider my-4"></div>
+                        <div class="text flex flex-row gap-1 items-center">
+                            <i class="fas fa-map-marker-alt text-primary"></i>
+                            <span x-text="$store.ad.item.city_name"></span>, 
+                            <span x-text="$store.ad.item.country_name"></span>.
+                        </div>
+                        <div class="divider my-4"></div>
+                        <div class="flex flex-row justify-between gap-3 items-center">
+                            <p class="text"><span x-text="$store.ad.item.views_count"></span> Views</p>
+                            <p class="txt gray">Posted at: <span x-text="$store.ad.item.created_at"></span></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="label">Ad Features</div>
+                        <div class="divider my-4"></div>
+                        <div class="flex flex-col gap-2">
+                            <!-- {features?.map((feature: any) =>  -->
+                                <div class="flex flex-row gap-2 items-center">
+                                    <i class="fas fa-check text-primary-500"></i>
+                                    <div class="text">{"feature"}</div>
+                                </div>
+                            <!-- )} -->
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="label">Ad Details</div>
+                        <div class="divider my-4"></div>
+                        <p class="text mb-3" x-text="$store.ad.item.description"></p> 
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/3 lg:w-1/4">
+                <div class="card">
+                    <div class="label">Vendor Details</div>
+                    <div class="spacer"></div>
+                    <StoreCard
+                        name="$store.ad.item.store.name"
+                        is_verified="$store.ad.item.store.is_verified"
+                        count="$store.ad.item.store.ads_count"
+                        url="`/store?id=${$store.ad.item.store.id}`"
+                        image="$store.ad.item.store.image ? `${source}${$store.ad.item.store.image}` : blank"
+                    />
+                    <div class="spacer"></div>
+                    <ContactCard 
+                        tel="`tel:${$store.ad.item.store.phone}`"
+                        whatsapp="`https://wa.me/${$store.ad.item.store.phone}`"
+                        phone="$store.ad.item.store.phone"
+                    />
+                </div>
+                <div class="spacer"></div>
+                <div class="card flex flex-row justify-center gap-3">
+                    <button type="button" class="btn btn-default white" name="Share"><i class="fas fa-share-alt mr-2" />Share</button>
+                    <button type="button" class="btn-default white" name="Favorites"><i class="fas fa-star mr-2" />Favourite</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</LayoutFull>

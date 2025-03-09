@@ -1,0 +1,40 @@
+---
+import Avatar from "../../../../component/Avatar.astro";
+const {item, hasManage} = Astro.props;
+---
+<form @submit.prevent="$store.tailoring.onSave();document.getElementById('file').value = '';">
+    <div class="flex flex-col gap-3">
+        <Avatar 
+            id="formImage" 
+            name="$store.tailoring.item.name" 
+            image="$store.tailoring.item.image ? `${source}${$store.tailoring.item.image}` : blank" 
+            folder="tailoring" 
+            style="xl rounded-lg"
+        />
+        <div>
+            <label for="file" class="label">Image</label>
+            <input type="file" id="file" name="file" class="input w-full mt-1" placeholder="Image File" 
+            @change=`
+                formImage.src = window.URL.createObjectURL($event.target.files[0]);
+                $store.tailoring.onFormListChange('file', $event.target.files[0]);
+            `/>
+        </div>
+        <div>
+            <label for="name" class="label">Name</label>
+            <input type="text" id="name" name="name" x-model="$store.tailoring.item.name" class="input w-full mt-1" placeholder="Type name" required>
+        </div>
+        <div>
+            <label for="price" class="label">Price</label>
+            <input type="number" id="price" name="price" x-model="$store.tailoring.item.price" class="input w-full mt-1" placeholder="Type price" required>
+        </div>
+        <div class="flex flex-row gap-2 items-center">
+            <input id="is_active" name="is_active" x-model="$store.tailoring.item.is_active" type="checkbox" class="checkbox" class="checkbox" />
+            <label for="is_active" class="text">Active</label>
+        </div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="flex flex-row justify-between gap-4">
+        <button type="button" @click="$store.tailoring.showDrawer = false;document.getElementById('file').value = '';" class="btn-default">Cancel</button>
+        { hasManage && <button type="submit" class="btn-primary" x-text={`${item}.id ? 'Update' : 'Create'`}></button>}
+    </div>
+</form>

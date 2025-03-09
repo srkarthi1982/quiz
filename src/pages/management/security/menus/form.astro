@@ -1,0 +1,50 @@
+---
+const { item } = Astro.props;
+---
+<form @submit.prevent="$store.menus.onSave()">
+    <div class="flex flex-col gap-3">
+        <div>
+            <label for="idx" class="label">Idx</label>
+            <input type="number" name="idx" x-model="$store.menus.item.idx" class="input w-full" placeholder="Idx" required />
+        </div>
+        <div>
+            <label for="value" class="label">Value</label>
+            <input type="text" name="value" x-model="$store.menus.item.value" class="input w-full" placeholder="Value" required />
+        </div>
+        <div>
+            <label for="parent_id" class="label">Parent Id</label>
+            <input type="text" name="parent_id" x-model="$store.menus.item.parent_id" class="input w-full" placeholder="Link" />
+        </div>
+        <div>
+            <label for="name" class="label">Name</label>
+            <input type="text" name="name" x-model="$store.menus.item.name" class="input w-full" placeholder="Label" required />
+        </div>
+        <div>
+            <label for="link" class="label">Link</label>
+            <input type="text" name="link" x-model="$store.menus.item.link" class="input w-full" placeholder="Link" />
+        </div>
+        <div>
+            <label for="type" class="label">Type</label>
+            <select id="type" name="type" x-model="$store.menus.item.type" class="input white w-full">
+                <option value="D">Domain</option>
+                <option value="M">Module</option>
+                <option value="F">Function</option>
+                <option value="S">Section</option>
+                <option value="A">Action</option>
+            </select>
+        </div>
+        <div>
+            <label for="link" class="label">Icon</label>
+            <input type="text" name="icon" x-model="$store.menus.item.icon" class="input w-full" placeholder="Icon" />
+        </div>
+        <div>
+            <input id="is_active" name="is_active" x-model="$store.menus.item.is_active" type="checkbox" class="checkbox"/>
+            <label for="is_active" class="text">Active</label>
+        </div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="flex flex-row justify-between gap-4">
+        <button type="button" @click="$store.menus.showDrawer = false" class="btn-default">Cancel</button>
+        <button type="submit" class="btn-primary" x-text={`${item}.id ? 'Update' : 'Create'`}></button>
+    </div>
+</form>

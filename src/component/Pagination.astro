@@ -1,0 +1,70 @@
+---
+const { storeName } = Astro.props;
+export const partial = true;
+---
+<div class="flex flex-row items-center justify-between gap-3" aria-label="Table navigation">
+    <div class="flex flex-row items-center gap-2">
+        <select
+            aria-label="Choose Number of Records per Page"
+            class="input white min-w-12"
+            :value={`$store.${storeName}.pagination.take`}
+            @change={`
+            $store.${storeName}.pagination.take = Number($el.value); 
+            $store.${storeName}.pagination.page = 1;
+            $store.${storeName}.getData();
+        `}>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+        <div class="text">
+            <span class="label" x-text={`$store.${storeName}.pageValues.start`}></span> -
+            <span class="label" x-text={`$store.${storeName}.pageValues.end`}></span> of
+            <span class="label" x-text={`$store.${storeName}.total`}></span>
+        </div>
+    </div>
+    <ul class="input-group">
+        <li>
+            <button
+                class="btn-icon lg first"
+                aria-label="Previous Button"
+                :class={`{'disabled': $store.${storeName}.pageValues.disablePreviousButton.disabled}`}
+                @click={`
+                    $store.${storeName}.pagination.page = $store.${storeName}.pagination.page - 1;
+                    $store.${storeName}.getData();
+                `}>
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+        </li>
+        <li>
+            <select
+                aria-label="Choose Page Number"
+                class="input white center h-9 min-w-10"
+                name="page"
+                :value={`$store.${storeName}.pagination.page`}
+                @change={`
+                    $store.${storeName}.pagination.page = Number($el.value);
+                    $store.${storeName}.getData();
+                `}>
+                <template x-for={`page in $store.${storeName}.pageValues.pages`}>
+                    <option x-text="page"></option>
+                </template>
+            </select>
+        </li>
+        <li>
+            <button
+                class="btn-icon lg last"
+                aria-label="Next Button"
+                :class={`{'disabled': $store.${storeName}.pageValues.disableNextButton.disabled}`}
+                @click={`
+                    $store.${storeName}.pagination.page = $store.${storeName}.pagination.page + 1;
+                    $store.${storeName}.getData();
+                `}>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </li>
+    </ul>
+</div>

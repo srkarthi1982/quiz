@@ -1,0 +1,15 @@
+---
+export const partial = true;
+const { storeName, column, ref, method, placeholder } = Astro.props;
+---
+<div class="input-icon relative">
+    <i class="fas fa-search left-4 icon"></i>
+    <input 
+        type="search" 
+        class="input w-full white" 
+        placeholder={placeholder} 
+        x-ref={ref} 
+        :value={`$store.${storeName}.filters.${column}`}
+        @input={`$store.${storeName}.${method}('${column}',$refs.${ref}.value)`}
+    >
+</div>

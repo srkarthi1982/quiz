@@ -1,0 +1,25 @@
+---
+import LayoutFull from "../app/Layout.astro";
+import PriceTable from "../component/PriceTable.astro";
+import { supabase } from "../lib/supabase";
+const { data:packages, error:packagesError } = await supabase.from("packages").select().order("idx");
+if (packagesError) console.log(packagesError);
+---
+<LayoutFull active="plans">
+	<div class="title">Membership Plans</div>
+	<div class="spacer"></div>
+	<div class="mx-auto text-center mb-10">
+		<h2 class="mb-2 text-lg title">Membership Plans For Your Business</h2>
+	</div>
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7">
+		{packages?.map((packs) => {
+			return (
+				<PriceTable {...packs}/>
+			);
+		})}
+	</div>
+	<div class="mx-auto text-center pt-10 mb-10">
+		<p class="label mb-2">Please feel free to contact us if you need more custom offers.</p>
+		<button class="btn btn-primary mx-auto">Contact Us for Package Subcription</button>
+	</div>
+</LayoutFull>

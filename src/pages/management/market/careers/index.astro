@@ -1,0 +1,93 @@
+---
+import LayoutSidebar from '../../../../app/LayoutFull.astro';
+import Drawer from "../../../../component/Drawer.astro";
+import Pagination from "../../../../component/Pagination.astro";
+import Sorting from "../../../../component/Sorting.astro";
+import Breadcrumb from '../../../../component/Breadcrumb.astro';
+import ActionButton from '../../../../component/ActionButton.astro';
+import FilterSearch from '../../../../component/FilterSearch.astro';
+import Form from "./form.astro";
+const { accessCodes } = Astro.locals;
+const hasManage = accessCodes?.includes('001.02.17.01');
+---
+<LayoutSidebar active="careers">
+	<Breadcrumb list={[{ name: "Management", link: "management" },{ name: "Careers", link: "" }]}>
+		<div class="flex flex-row gap-3">
+			<Sorting storeName="careers" columns="columns" />
+			<button class="btn-icon white lg" x-on:click="$store.careers.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
+		</div>
+	</Breadcrumb>
+	<div class="table-responsive paper">
+		<table class="table border strip">
+			<thead>
+				<tr>
+					<th x-show={`${hasManage}`}></th>
+					<th class="w-full">Name</th>
+					<th>Email</th>
+					<th>Phone</th>
+					<th>Join As</th>
+					<th>Address</th>
+					<th>File</th>
+					<th>Detail</th>
+					<th>Status</th>
+					<th>Created At</th>
+				</tr>
+				<tr>
+					<th x-show={`${hasManage}`}></th>
+					<th class=" min-w-48"><FilterSearch storeName="careers" ref="searchName" column="name" placeholder="Name"/></th>
+					<th class=" min-w-48"><FilterSearch storeName="careers" ref="searchEmail" column="email" placeholder="Email"/></th>
+					<th class=" min-w-48"><FilterSearch storeName="careers" ref="searchPhone" column="phone" placeholder="Phone"/></th>
+					<th class=" min-w-48"><FilterSearch storeName="careers" ref="searchJoinAs" column="join_as" placeholder="Join As"/></th>
+					<th class=" min-w-48"><FilterSearch storeName="careers" ref="searchAddress" column="address" placeholder="Address"/></th>
+					<th class=" min-w-48"><FilterSearch storeName="careers" ref="searchFile" column="file" placeholder="File"/></th>
+					<th class=" min-w-60"><FilterSearch storeName="careers" ref="searchDetail" column="detail" placeholder="Detail"/></th>
+					<th class="min-w-36">
+						<select 
+							aria-label="Choose a Status"
+							class="input w-full" 
+							:value={`$store.careers.filters.status_id`}
+							@change="$store.careers.onColumnStatusChange(Number($el.value))">
+							<option value="">All</option>
+							<template x-for={`i in $store.careers.column.statusList`}>
+								<option :value="i.id" x-text="i.name"></option>
+							</template>
+						</select>
+					</th>
+					<th>
+						<label for="created_at" class="sr-only">Filter by Created At</label>
+						<input id="created_at" type="date" @change="$store.careers.onDateChange($el.value)" class="input w-32">
+					</th>
+				</tr>
+			</thead>
+			<tbody x-show="$store.careers.items.length > 0">
+				<template x-for="r in $store.careers.items" :key="r.id">
+					<tr>
+						<td x-show={`${hasManage}`} class="flex justify-center">
+							<ActionButton position="bottom" show={`r.showAction`} 
+								actions={[
+									{ label: 'Edit', click: `$store.careers.onEdit(r)`, show: hasManage },
+									{ label: 'Delete', click: `$store.careers.onDelete(r)`, show: hasManage },
+									{ label: 'Copy ID', click: `$store.careers.copyId(r.id)`, show: hasManage }
+								]} 
+							/>
+						</td>
+						<td x-text="r.name"></td>
+						<td x-text="r.email"></td>
+						<td x-text="r.phone"></td>
+						<td x-text="r.join_as"></td>
+						<td x-text="r.address"></td>
+						<td x-text="r.file"></td>
+						<td x-text="r.detail"></td>
+						<td x-text="r.status_name"></td>
+						<td x-text="r.created_at"></td>
+					</tr> 
+				</template>    
+			</tbody>
+		</table>
+	</div>
+	<div class="spacer"></div>
+	<Pagination storeName="careers" />
+	<Drawer item="$store.careers.item" title="Career" showDrawer="$store.careers.showDrawer">
+		<Form item="$store.careers.item" hasManage={hasManage} />
+	</Drawer>
+</LayoutSidebar>

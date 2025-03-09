@@ -1,0 +1,28 @@
+---
+const {url, name, course_fees, exam_fees, duration, detail} = Astro.props;
+---
+<a :href={url} :title={name} class="card hover text-center">
+    <div class="flex flex-col justify-center gap-1 overflow-hidden">
+        <div class="title" x-text={name}></div>
+        <div class="flex flex-row gap-1 justify-center"> 
+            <span class="text gray">Course Fees:</span>
+            <span class="text">Rs.</span>
+            <span class="text" x-text={course_fees}></span>
+        </div>
+        <div class="flex flex-row gap-1 justify-center"> 
+            <span class="text gray">Exam Fees:</span>
+            <span class="text">Rs.</span>
+            <span class="text" x-text={exam_fees}></span>
+        </div>
+        <div class="flex flex-row gap-1 justify-center"> 
+            <span class="text gray">Duration:</span>
+            <span class="text" x-text={duration}></span>
+            <span class="text">Months</span>
+        </div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="flex flex-col gap-1 justify-center"> 
+        <div class="text gray">Course Details:</div>
+        <div class="text truncate" x-text={detail}></div>
+    </div>
+</a>

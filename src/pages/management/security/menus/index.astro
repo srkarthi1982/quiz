@@ -1,0 +1,32 @@
+---
+import LayoutSidebar from "../../../../app/LayoutFull.astro";
+import Breadcrumb from "../../../../component/Breadcrumb.astro";
+import Drawer from "../../../../component/Drawer.astro";
+import Form from "./form.astro";
+import Tree from './tree.astro'
+const { accessCodes } = Astro.locals;
+const hasManage = accessCodes?.includes('001.01.04.01');
+---
+<LayoutSidebar active="menus">
+	<Breadcrumb list={[{ name: "management", link: "management" },{ name: "Menus", link: "" },]}>
+		<div class="flex flex-row gap-3">
+			<button class="btn-icon white lg" x-on:click="$store.menus.toggleAll($store.access.toggle = !$store.access.toggle)"><i class="fas fa-arrows-alt-v"></i></button>
+			<button class="btn-icon white lg" x-on:click="$store.menus.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
+			<button class="btn-icon active lg" x-on:click="$store.menus.onInsert()"><i class="fas fa-plus"></i></button>
+		</div>
+	</Breadcrumb>
+	<div class="card">
+		<Tree item="_domain" items="$store.menus.items" hasManage={hasManage}>
+			<Tree line="border-t" item="_module" items="_domain.children" hasManage={hasManage}>
+				<Tree line="border-t" item="_function" items="_module.children" hasManage={hasManage}>
+					<Tree line="border-t" item="_section" items="_function.children" hasManage={hasManage}>
+						<Tree line="border-t" item="_action" items="_section.children" hasManage={hasManage} />
+					</Tree>
+				</Tree>
+			</Tree>
+		</Tree>
+	</div>
+	<Drawer item="$store.menus.item" title="Menu" showDrawer="$store.menus.showDrawer">
+		<Form item="$store.menus.item" hasManage={hasManage} />
+	</Drawer>
+</LayoutSidebar>

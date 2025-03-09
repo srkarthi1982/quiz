@@ -1,0 +1,13 @@
+---
+import Avatar from "./Avatar.astro";
+const {id, name, url, image, count, countText, folder } = Astro.props;
+---
+<a :href={url} :title={name} class="card hover overflow-hidden block">
+    <div class="flex flex-col justify-center items-center overflow-hidden">
+        <Avatar id={id} name={name} image={image} folder={folder} style="lg rounded-full"/>
+        <div class="text-center flex flex-col overflow-hidden relative mt-2">
+            <label class="label truncate" x-text={name ? name : "No Name"}></label>
+            <div class="txt gray"><span x-text={count ? count : "0"}></span> {countText || 'Ads'}</div>
+        </div>
+    </div>
+</a>

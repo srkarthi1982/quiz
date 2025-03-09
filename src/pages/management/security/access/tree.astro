@@ -1,0 +1,22 @@
+---
+const { line, item, items, hasManage } = Astro.props;
+const disabled = hasManage ? {} : { disabled: true };
+---
+<template x-for={`${item} in ${items}`}>
+    <ul class="list-none">
+        <li class={`mb-1 ${line}`}>
+            <div class="flex flex-row gap-3 items-center m-2 w-full">
+                <button @click={`${item}.open = !${item}.open`} aria-label="Toggle Tree">
+                    <i class="fas fa-chevron-right transition-transform transform text" x-show={`${item}.children.length > 0`} :class={`{'rotate-90': ${item}.open}`} ></i>
+                </button>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" x-model={`${item}.selected`} class="checkbox" {...disabled}>
+                    <span class="text cursor-pointer" x-text={`${item}.name`}></span>
+                </label>
+            </div>
+            <ul x-show={`${item}.open`} class="ml-6 mt-1 list-none">
+                <slot />
+            </ul>
+        </li>
+    </ul>
+</template>

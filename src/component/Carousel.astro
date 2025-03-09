@@ -1,0 +1,11 @@
+<div x-data="window.carousel()" x-init="init()" class="carousel group">
+  <div x-ref="container" class="carousel-container">
+    <slot/>
+  </div>
+  <div @click="scrollTo(prev)" x-show="prev !== null" class="arrow left-0">
+    <i class="fas fa-arrow-left"></i>
+  </div>
+  <div @click="scrollTo(next)" x-show="next !== null" class="arrow right-0">
+    <i class="fas fa-arrow-right"></i>
+  </div>
+</div>

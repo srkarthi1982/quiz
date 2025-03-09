@@ -1,0 +1,13 @@
+---
+import NavBar from './NavBar.astro';
+import Footer from './Footer.astro';
+import Base from './Base.astro';
+const {active} = Astro.props;
+---
+<Base>
+	<NavBar active={active} style="container-full" />
+	<div class="container-full py-5">
+		<slot />
+		<Footer active={active} />
+	</div>
+</Base>

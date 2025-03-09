@@ -1,0 +1,38 @@
+---
+import LayoutFull from "../app/Layout.astro";
+import CourseCard from "../component/CourseCard.astro";
+import Pagination from "../component/Pagination.astro";
+import Search from "../component/Search.astro";
+import { url } from '../lib/data.js'
+---
+<LayoutFull active="academy">
+	<div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+		<div class=" flex flex-row gap-2 items-center">
+			<i class="fas fa-user-graduate title"></i>
+			<span class="title">Courses</span>
+			<span id="counter" class="title">(<span x-text="$store.courses.total"></span>)</span>
+		</div>
+		<div class="flex flex-col sm:flex-row justify-between gap-4">
+			<Search storeName="courses" ref="searchName" column="name" placeholder="Search"/>
+			<div class="flex gap-4 justify-center input-group">
+				<a href={url("courses")} class="btn-primary first" title="Courses">Courses</a>
+				<a href={url("tailoring")} class="btn-default last" title="Tailoring">Tailoring</a>
+			</div>
+		</div>
+	</div>
+	<div class="spacer"></div>
+	<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-5 lg:gap-7">
+		<template x-for="i in $store.courses.items" :key="i.id">
+			<CourseCard 
+				name="i.name"
+				url="`/course?courseId=${i.id}`" 
+				course_fees="i.course_fees"
+				exam_fees="i.exam_fees"
+				duration="i.duration"
+				detail="i.detail"
+			/>
+		</template>
+	</div>
+	<div class="spacer"></div>
+	<Pagination storeName="courses" />
+</LayoutFull>

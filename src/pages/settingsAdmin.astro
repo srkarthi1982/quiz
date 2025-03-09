@@ -1,0 +1,85 @@
+---
+import Layout from "../app/Layout.astro";
+---
+<Layout active="settings">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-2">
+        <div class="title"><i class="fas fa-cog mr-2"></i>Admin Settings</div>
+    </div>
+    <div class="spacer"></div>
+    <form class="card text-center sm:text-left">
+        <div class="title">Homepage Settings</div>
+        <div class="divider my-3"></div>
+        <div class="flex flex-col sm:flex-row gap-2 items-center justify-between">
+            <div class="flex flex-col">
+                <label class="label">Homepage Product Ads</label>
+                <div class="text gray">Product Ads views in carousel as</div>
+            </div>
+            <select name="" id="" class="input">
+                <option value="">Recent</option>
+                <option value="">Featured</option>
+            </select>
+        </div>
+        <div class="divider my-2"></div>
+        <div class="flex flex-col sm:flex-row gap-2 items-center justify-between">
+            <div class="flex flex-col">
+                <label class="label">Homepage Service Ads</label>
+                <div class="text gray">Service Ads views in carousel as</div>
+            </div>
+            <select name="" id="" class="input">
+                <option value="">Recent</option>
+                <option value="">Featured</option>
+            </select>
+        </div>
+        <div class="divider my-2"></div>
+        <div class="flex flex-col sm:flex-row gap-2 items-center justify-between">
+            <div class="flex flex-col">
+                <label class="label">Homepage Stores Carousel</label>
+                <div class="text gray">Stores views in carousel as</div>
+            </div>
+            <select name="" id="" class="input">
+                <option value="">Recent</option>
+                <option value="">Verified</option>
+                <option value="">Most Ads</option>
+            </select>
+        </div>
+        <div class="divider my-2"></div>
+        <div class="flex flex-row justify-center sm:justify-end">
+            <button class="btn btn-primary">Save</button>
+        </div>
+    </form>
+    <div class="spacer"></div>
+    <form class="card text-center sm:text-left">
+        <div class="title">Ads Settings</div>
+        <div class="divider my-3"></div>
+        <div class="flex flex-col sm:flex-row gap-2 items-center justify-between">
+            <div class="flex flex-col">
+                <label class="label">Ads Images</label>
+                <div class="text gray">Count of images in Create Ad Form</div>
+            </div>
+            <input type="number" class="input" value="3">
+        </div>
+
+        <div class="divider my-2"></div>
+        <div class="flex flex-row justify-end">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+    <div class="spacer"></div>
+    <form class="card">
+        <div class="title">Store Settings</div>
+        <div class="divider my-3"></div>
+        <div class="flex items-center justify-between">
+            <div class="flex flex-col flex-grow">
+                <div class="label">Company News</div>
+                <div class="text gray">Get Themesberg news, announcements, and productupdates</div>
+            </div>
+            <label for="" class="relative flex items-center cursor-pointer">
+                <input type="checkbox" id="" class="checkbox" />
+            </label>
+        </div>
+        <div class="divider my-2"></div>
+        <div class="flex flex-row justify-end">
+            <button class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</Layout>
