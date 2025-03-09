@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { supabase } from "../../../lib/supabaseAdmin";
+import { supabaseAdmin } from "../../../lib/supabaseAdmin";
 export const POST: APIRoute = async ({ request }) => {
   const formData = await request.formData();
   const name = formData.get("name")?.toString();
@@ -16,7 +16,7 @@ export const POST: APIRoute = async ({ request }) => {
     state_id: null, 
     city_id: null 
   };
-  const { error } = await supabase.auth.admin.createUser({ email, password, phone, email_confirm: true, user_metadata });
+  const { error } = await supabaseAdmin.auth.admin.createUser({ email, password, phone, email_confirm: true, user_metadata });
   if (error) return new Response(error.message, { status: 404 });
   return new Response("Success", { status: 200 });
 };
