@@ -76,7 +76,6 @@ const notifications = [
 				<ul x-show="showUser" style="display: none;" class="dropdown-box right-0 top-[50px]">
 					<div class="bg-gray-50 px-4 py-3 overflow-hidden">
 						<p class="label truncate">{user?.user_metadata?.name}</p>
-						<p class="txt gray truncate">{roleName}</p>
 					</div>
 					<ProtectedMenus active={active} accessCodes={accessCodes} styles="dropdown-link"/>
 					<li><button x-on:click="$store.signout.onSignOut()" data-astro-prefetch="false" class="dropdown-link" title="Logout">Logout</button></li>

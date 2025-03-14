@@ -1,5 +1,6 @@
-import { getPaginatedResult, remove, save } from "../common/database";
+import { remove, save } from "../common/database";
 import { copyToClipboard, debounce, getTakeValue, getScreenSize, ddmmyyyy } from "../common/utils";
+import { actions } from 'astro:actions';
 export class StoreBase {
     constructor(schema, title, short, view, table, item, filters, sorting, fields, columns) {
         this.schema = schema;
@@ -31,12 +32,18 @@ export class StoreBase {
         return { page: 1, take: getTakeValue(getScreenSize()) };
     }
     async getData() {
-        const result = await getPaginatedResult(this.title, this.schema, this.view, this.fields, this.filters, this.columns, this.pagination, this.sorting);
-        const { success, data, count, pageValues } = result;
-        if (!success) return;
-        this.items = data || [];
-        this.total = count;
-        this.pageValues = pageValues;
+        Alpine.store("loader").show();
+        const { schema, view, fields, filters, columns, pagination, sorting } = this;
+        const result = await actions.getPaginatedResult({ schema, view, fields, filters, columns, pagination, sorting });
+        Alpine.store("loader").hide();
+        const { data, error } = result;
+        if (error) {
+            Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
+            return;
+        }
+        this.items = data.data || [];
+        this.total = data.count;
+        this.pageValues = data.pageValues;
     }
     async onDelete({ id, name }) {
         const result = await remove(id, this.short, this.schema, this.table, name);

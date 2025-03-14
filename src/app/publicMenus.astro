@@ -3,11 +3,10 @@ import { url } from '../lib/data.js'
 const {active, styles, icon } = Astro.props;
 const menus = [
     { name: 'Home', icon: 'fa-home', active: active?.includes('home')! ? 'active' : '', link: ''},
-    { name: 'Platforms', icon: 'fa-school', active: active?.includes('academy')! ? 'active' : '', link: 'courses' },
-    { name: 'Quiz', icon: 'fa-ad', active: active?.includes('ads')! ? 'active' : '', link: 'ads' },
-    { name: 'Categories', icon: 'fa-list', active: active?.includes('categories')! ? 'active' : '', link: 'categories'},
-    { name: 'Pricing', icon: 'fa-store', active: active?.includes('stores')! ? 'active' : '', link: 'stores' },
-    { name: 'About', icon: 'fa-th', active: active?.includes('services')! ? 'active' : '', link: 'services' },
+    { name: 'Platforms', icon: 'fa-school', active: active?.includes('platforms')! ? 'active' : '', link: 'platforms' },
+    { name: 'Categories', icon: 'fa-list', active: active?.includes('platforms')! ? 'active' : '', link: 'platforms'},
+    { name: 'Quiz', icon: 'fa-ad', active: active?.includes('platforms')! ? 'active' : '', link: 'platforms' },
+    { name: 'Pricing', icon: 'fa-store', active: active?.includes('platforms')! ? 'active' : '', link: 'platforms' }
 ]
 ---
 {menus.map((c: any) => (

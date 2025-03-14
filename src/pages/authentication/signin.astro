@@ -3,7 +3,7 @@ import LayoutFull from '../../app/Layout.astro';
 ---
 <LayoutFull>
 	<div class="max-w-md mx-auto card mt-2">
-		<div class="title text-2xl text-center text-primary">Quiz.Institute</div>
+		<div class="title text-2xl text-center text-primary">Login</div>
 		<div class="divider my-5"></div>
 		<div id="error-message" class="text-center text-red-500 text-sm"></div>
 		<form id="login-form" @submit.prevent="$store.signin.onSubmit()" class="flex flex-col gap-4">
@@ -41,10 +41,6 @@ import LayoutFull from '../../app/Layout.astro';
 				<a href="/authentication/forgot-password" class="link text-sm active" >Forgot password?</a>
 			</div>
 			<button type="submit" class="btn-primary full">Sign in</button>
-		</form>
-		<div class="text gray text-center py-2">Or</div>
-		<form action="/api/auth/signin" method="post">
-			<button value="google" name="provider" class="full btn-default" type="submit">Sign in with Google</button>
 		</form>
 		<div class="divider my-5"></div>
 		<div class="flex flex-col sm:flex-row justify-center items-center gap-1">

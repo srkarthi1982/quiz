@@ -3,8 +3,7 @@ import LayoutFull from '../../app/Layout.astro';
 ---
 <LayoutFull>
 	<div class="max-w-md mx-auto card mt-2" x-data>
-		<div class="label text-center">Create Account</div>
-		<div class="title text-2xl text-center text-primary">Quiz.Institute</div>
+		<div class="title text-2xl text-center text-primary">Register</div>
 		<div class="divider my-5"></div>
 		<form  id="register-form" @submit.prevent="$store.signup.onSubmit()" class="flex flex-col gap-5">
 			<div class="input-icon">
@@ -29,18 +28,6 @@ import LayoutFull from '../../app/Layout.astro';
 					class="input w-full" 
 					placeholder="name@email.com"
 					required 
-				/>
-			</div>
-			<div class="input-icon">
-				<i class="fas fa-phone icon gray left-4"></i>
-				<input 
-					id="phone" 
-					name="phone" 
-					type="text" 
-					x-model="$store.signup.phone" 
-					class="input w-full" 
-					placeholder="Phone Number"
-					required
 				/>
 			</div>
 			<div class="input-icon" x-data="{ loginShow: false }">

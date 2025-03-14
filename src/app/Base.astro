@@ -39,51 +39,7 @@ import Loader from '../component/Loader.astro';
 				loading.style.transition = "transform 0.2s ease-in";
 			}
 			document.addEventListener('astro:before-preparation', e => onPreparation(e.to));
-			document.addEventListener('DOMContentLoaded', () => onPreparation(window.location));
-			window.carousel = function () {
-				return {
-					container: null,
-					prev: null,
-					next: null,
-					init() {
-						this.container = this.$refs.container;
-						if (!this.container) return;
-						this.update();
-						this.container.addEventListener('scroll', this.update.bind(this), { passive: true });
-					},
-					update() {
-						if (!this.container) return;
-						const rect = this.container.getBoundingClientRect();
-						const visibleElements = Array.from(this.container.children).filter((child) => {
-							const childRect = child.getBoundingClientRect();
-							return childRect.left >= rect.left && childRect.right <= rect.right;
-						});
-						if (visibleElements.length > 0) {
-							this.prev = this.getPrevElement(visibleElements);
-							this.next = this.getNextElement(visibleElements);
-						}
-					},
-					getPrevElement(list) {
-						const sibling = list[0].previousElementSibling;
-						return sibling instanceof HTMLElement ? sibling : null;
-					},
-					getNextElement(list) {
-						const sibling = list[list.length - 1].nextElementSibling;
-						return sibling instanceof HTMLElement ? sibling : null;
-					},
-					scrollTo(element) {
-						if (!this.container || !element) return;
-						const nextScrollPosition =
-							element.offsetLeft +
-							element.getBoundingClientRect().width / 2 -
-							this.container.getBoundingClientRect().width / 2;
-						this.container.scroll({
-							left: nextScrollPosition,
-							behavior: 'smooth',
-						});
-					}
-				};
-			}		
+			document.addEventListener('DOMContentLoaded', () => onPreparation(window.location));	
 	</script>
 	</head>
 	<body x-data="{atTop: false }">

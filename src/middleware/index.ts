@@ -4,10 +4,9 @@ import { supabase } from "../lib/supabase";
 import micromatch from "micromatch";
 import { getDomain } from "../common/constants";
 import { publicRoutes, redirectRoutes } from "./routes";
-
 const domain: string = getDomain();
 export const onRequest = defineMiddleware(async ({ locals, url, cookies, redirect }: any, next: any) => {
-  if(url.toString().includes('/api/') || url.toString().includes('/_actions/')) return next();
+  if (url.toString().includes('/api/') || url.toString().includes('/_actions/')) return next();
   const accessToken = cookies.get("sb-access-token");
   const refreshToken = cookies.get("sb-refresh-token");
 
@@ -23,7 +22,7 @@ export const onRequest = defineMiddleware(async ({ locals, url, cookies, redirec
     locals.email = data.user?.email;
     cookies.set("sb-access-token", data?.session?.access_token, { sameSite: "strict", domain, path: "/", secure: true });
     cookies.set("sb-refresh-token", data?.session?.refresh_token, { sameSite: "strict", domain, path: "/", secure: true });
-
+    // Roles
     const role = cookies.get("role");
     if (role.value !== 'null') {
       const { id, name, menu_ids } = JSON.parse(role.value);
@@ -31,15 +30,6 @@ export const onRequest = defineMiddleware(async ({ locals, url, cookies, redirec
       locals.roleName = name;
       locals.accessCodes = menu_ids;
     }
-
-    // const store = cookies.get("store");
-    // if (store.value !== 'null') {
-    //   const { id, name, package_id, package_name } = JSON.parse(store.value);
-    //   locals.storeId = id;
-    //   locals.storeName = name;
-    //   locals.packageId = package_id;
-    //   locals.packageName = package_name;
-    // }
     // Protected routes 
     const menus = cookies.get("menus");
     if (menus.value !== 'null') {
@@ -49,17 +39,15 @@ export const onRequest = defineMiddleware(async ({ locals, url, cookies, redirec
         if (menu?.value && !locals.accessCodes.includes(menu?.value)) return redirect("/404");
       }
     }
-  } 
-
+  }
   if (micromatch.isMatch(url.pathname, redirectRoutes)) {
     const accessToken = cookies.get("sb-access-token");
     const refreshToken = cookies.get("sb-refresh-token");
     if (accessToken && refreshToken) return redirect("/");
   }
-  else if(!refreshToken?.value && !accessToken?.value){
-    if(!micromatch.isMatch(url.pathname, publicRoutes)) return redirect("/404");
+  else if (!refreshToken?.value && !accessToken?.value) {
+    if (!micromatch.isMatch(url.pathname, publicRoutes)) return redirect("/404");
   }
-  
   return next();
 }
 );

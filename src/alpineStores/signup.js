@@ -5,13 +5,12 @@ Alpine.store("signup", {
     isLoading: false,
     name: '',
     email: '',
-    phone: '',
     password: '',
     onInit() {},
     async onSubmit() {
         Alpine.store("loader").show();
-        const { name, email, phone, password } = this;
-        const { error } = await actions.signUp({name, email, phone, password});
+        const { name, email, password } = this;
+        const { error } = await actions.signUp({name, email, password});
         Alpine.store("loader").hide();
         if (error) {
             Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');

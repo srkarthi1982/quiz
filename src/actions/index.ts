@@ -1,6 +1,7 @@
 import { ActionError, defineAction } from 'astro:actions';
 import { z } from 'astro:schema';
 import type { DomainMapping } from '../lib/types';
+import { getPagerInfo } from '../common/utils';
 import { supabase } from '../lib/supabase';
 import { supabaseAdmin } from '../lib/supabaseAdmin';
 const environment: string = import.meta.env.ENVIRONMENT || 'DEV';
@@ -32,18 +33,11 @@ export const server = {
     input: z.object({
       email: z.string().email({ message: 'Invalid email address.' }),
       password: z.string().min(5, { message: 'Password must be at least 5 characters long.' }),
-      phone: z.string().min(10, { message: 'Phone must be at least 10 characters long.' }),
       name: z.string().min(5, { message: 'Phone must be at least 5 characters long.' }),
     }),
-    handler: async ({ email, password, phone, name }) => {
-      const user_metadata = { 
-        name, 
-        role_id: 1, 
-        country_id: null, 
-        state_id: null, 
-        city_id: null 
-      };
-      const { error } = await supabaseAdmin.auth.admin.createUser({ email, password, phone, email_confirm: true, user_metadata });
+    handler: async ({ email, password, name }) => {
+      const user_metadata = { name, role_id: 2 };
+      const { error } = await supabaseAdmin.auth.admin.createUser({ email, password, email_confirm: true, user_metadata });
       if (error) throw new ActionError({ code: 'INTERNAL_SERVER_ERROR', message: error.message });
       return "Success"
     }
@@ -56,26 +50,32 @@ export const server = {
       context.cookies.delete("sb-refresh-token", { path: "/", domain });
       context.cookies.delete("role", { path: "/", domain });
       context.cookies.delete("menus", { path: "/", domain });
-      context.cookies.delete("store", { path: "/", domain });
     }
-  }),
-  platforms: defineAction({
-    accept: 'json',
-    input: z.object({ /* ... */ }),
-    handler: async () => {
-      const platforms = await supabase.from("platforms").select("id, name");
-      return platforms.data;
-    },
   }),
   getFunctions: defineAction({
     accept: 'json',
-    input: z.object({
-      schema: z.string().min(6, { message: 'schema is required atleast 6 characters.' }),
-      name: z.string().min(5, { message: 'Name is required.' })
-    }),
-    handler: async ({schema, name}) => {
-      const platforms = await supabase.schema(schema).rpc(name);
+    handler: async ({ schema, name, match }) => {
+      const platforms = await supabase.schema(schema).rpc(name, match);
       return platforms.data;
-    },
+    }
+  }),
+  getPaginatedResult: defineAction({
+    accept: 'json',
+    handler: async ({ schema, view, fields, filters, columns, pagination, sorting }) => {
+      const page = Number(pagination.page);
+      const take = Number(pagination.take);
+      const sort = sorting.sort;
+      const order = Boolean(sorting.order);
+      let query = supabase.schema(schema).from(view).select(fields, { count: "exact" });
+      columns.forEach(({ value, operator }: any) => {
+        const param = filters[value];
+        if (param) query.filter(value, operator, operator === 'ilike' ? `%${param}%` : param);
+      });
+      if (sort !== null) query = query.order(sort, { ascending: order });
+      const { data, count, error } = await query.range(((page - 1) * take), take * page - 1);
+      if (error) return { success: false };
+      const pageValues = getPagerInfo(data, page, take, count);
+      return { data, count, pageValues };
+    }
   })
 }
