@@ -66,5 +66,16 @@ export const server = {
       const platforms = await supabase.from("platforms").select("id, name");
       return platforms.data;
     },
+  }),
+  getFunctions: defineAction({
+    accept: 'json',
+    input: z.object({
+      schema: z.string().min(6, { message: 'schema is required atleast 6 characters.' }),
+      name: z.string().min(5, { message: 'Name is required.' })
+    }),
+    handler: async ({schema, name}) => {
+      const platforms = await supabase.schema(schema).rpc(name);
+      return platforms.data;
+    },
   })
 }

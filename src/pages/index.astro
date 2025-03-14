@@ -1,11 +1,5 @@
 ---
 import LayoutFull from "../app/Layout.astro";
-//import AdCard from "../component/AdCard.astro";
-import Carousel from "../component/Carousel.astro";
-import PhotoCard from "../component/PhotoCard.astro";
-//import StoreCard from "../component/StoreCard.astro";
-import { actions } from 'astro:actions';
-const result: any = await Astro.callAction(actions.platforms, {});
 ---
 <LayoutFull active="home">
 	<!-- banner -->
@@ -24,27 +18,7 @@ const result: any = await Astro.callAction(actions.platforms, {});
 		</div>
 		<div class="spacer my-5"></div>
 	</div>
-	<!-- Ads -->
-	<div class="mb-7">
-		<div class="flex justify-between items-center mb-5">
-			<div class="title">Platforms</div>
-			<a href="/tailoring" class="btn-default">View All</a>
-		</div>
-		<Carousel>
-			<template x-for="i in $store.home.tailoring" :key="i.id">
-				<div class="flex-auto flex-grow-0 flex-shrink-0 justify-center overflow-hidden w-[230px]">
-					<PhotoCard 
-						name="i.name"
-						image="i.image ? `${source}${i.image}` : blank"
-						count="i.price"
-						countText="Rupees Only"
-						folder="tailoring"
-					/>
-				</div>
-			</template>
-		</Carousel>
-	</div>
-	<!-- Categories and Services -->
+	<!-- Platforms -->
 	<div x-data="{ tab: 'tab1' }" class="mb-7">
 		<ul class="max-w-2xl mx-auto grid grid-cols-2 text-center gray border-b title">
 			<li class="w-full">
@@ -58,38 +32,35 @@ const result: any = await Astro.callAction(actions.platforms, {});
 		</ul>
 		<div class="mt-6">
 			<div x-show="tab ==='tab1'" style="display: none;">
-				<Carousel>
-					<template x-for="i in $store.home.categories" :key="i.id">
-						<div class="flex-auto flex-grow-0 flex-shrink-0 justify-center overflow-hidden w-40">
-							<PhotoCard 
-								name="i.name"
-								url="`/subcategories?id=${i.id}&name=${i.name}`" 
-								image="i.image ? `${source}${i.image}` : blank"
-								count="i.counts"
-								folder="categories"
-							/>
+				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+					<template x-for="i in $store.home.academy" :key="i.id">
+						<div class="flex justify-center">
+							<div class="card flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
+								<i :class="`fas ${i.icon} text-3xl text-gray-600 mb-3`"></i>
+								<div class="font-semibold text-lg" x-text="i.name"></div>
+								<div class="text-gray-600 text-sm mt-1" x-text="i.description"></div>
+							</div>
 						</div>
 					</template>
-				</Carousel>
+				</div>
+				
 			</div>
 			<div x-show="tab==='tab2'" style="">
-				<Carousel>
-					<template x-for="i in $store.home.services" :key="i.id">
-						<div class="flex-auto flex-grow-0 flex-shrink-0 justify-center overflow-hidden w-40">
-							<PhotoCard
-								name="i.name"
-								url="`/subservices?id=${i.id}&name=${i.name}`" 
-								image="i.image ? `${source}${i.image}` : blank"
-								count="i.counts"
-								folder="services"
-							/>
+				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+					<template x-for="i in $store.home.professionalSkills" :key="i.id">
+						<div class="flex justify-center">
+							<div class="card flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
+								<i :class="`fas ${i.icon} text-3xl text-gray-600 mb-3`"></i>
+								<div class="font-semibold text-lg" x-text="i.name"></div>
+								<div class="text-gray-600 text-sm mt-1" x-text="i.description"></div>
+							</div>
 						</div>
 					</template>
-				</Carousel>
+				</div>				
 			</div>
 		</div>
 	</div>
-	<!-- Ads -->
+	<!-- Platforms -->
 	
 	<!-- steps -->
 	<div class="mb-5">
@@ -98,22 +69,22 @@ const result: any = await Astro.callAction(actions.platforms, {});
 		</div>
 		<div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-5 lg:gap-7 text-center">
 			<div class="card flex flex-col">
-				<i class="fas fa-registered text-2xl title gray"></i>
+				<i class="fas fa-registered text-3xl title gray"></i>
 				<div class="title text-primary mt-2 mb-1">Free Registration</div>
 				<div class="text gray">Signing up is quick, easy, and completely free. Start your journey in seconds.</div>
 			</div>
 			<div class="card flex flex-col">
-				<i class="fas fa-store text-2xl title gray"></i>
+				<i class="fas fa-store text-3xl title gray"></i>
 				<div class="title text-primary mt-2 mb-1">Choose a Platform</div>
 				<div class="text gray">Select from a wide range of topics, including academic, professional, and skill-based exams.</div>
 			</div>
 			<div class="card flex flex-col">
-				<i class="fas fa-regular fa-rectangle-list text-2xl title gray"></i>
+				<i class="fas fa-regular fa-rectangle-list text-3xl title gray"></i>
 				<div class="title text-primary mt-2 mb-1">Take Tests</div>
 				<div class="text gray">Practice with real-time questions and get instant feedback to improve your knowledge.</div>
 			</div>
 			<div class="card flex flex-col">
-				<i class="fas fa-solid fa-chart-column text-2xl title gray"></i>
+				<i class="fas fa-solid fa-chart-column text-3xl title gray"></i>
 				<div class="title text-primary mt-2 mb-1">Get Results & Improve</div>
 				<div class="text gray">Review your performance, track progress, and enhance your skills for success.</div>
 			</div>

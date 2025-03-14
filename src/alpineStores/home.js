@@ -1,21 +1,19 @@
 import Alpine from 'alpinejs';
-import { getFunction } from '../common/database';
+import { actions } from 'astro:actions';
 class Home {
     constructor(){
-        this.ads = [];
-        this.stores = [];
-        this.categories = [];
-        this.services = [];
-        this.tailoring = []
+        this.platforms = [];
     }
     async onInit() {
-        const { success, data } = await getFunction('public', 'get_home', {});
-        if (!success) return;
-        this.ads = data.ads;
-        this.stores = data.stores;
-        this.categories = data.categories;
-        this.services = data.services;
-        this.tailoring = data.tailoring;
+        Alpine.store("loader").show();
+        const {data, error} = await actions.getFunctions({name: 'get_home', schema: 'public'});
+        Alpine.store("loader").hide();
+        if (error) {
+            Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
+            return;
+        }
+        this.academy = data.platforms.filter(x => x.type === 'A');
+        this.professionalSkills = data.platforms.filter(x => x.type === 'P');
     }
 }
 Alpine.store('home', new Home());
