@@ -14,28 +14,23 @@ const hasManage = accessCodes?.includes('001.01.01.01');
 	<Breadcrumb list={[{ name: "Management", link: "management" },{ name: "Users", link: "" }]}>
 		<div class="flex flex-row gap-3">
 			<Sorting storeName="users" columns="columns" />
-			<button class="btn-icon white lg" x-on:click="$store.users.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
+			<button class="btn-icon white lg" x-on:click="$store.users.onInit()"><i class="fas fa-sync-alt"></i></button>
 		</div>
 	</Breadcrumb>
 	<div class="table-responsive paper">
 		<table class="table border strip">
 			<thead>
 				<tr>
-					<th class="w-12"}></th>
+					<th class="w-12"></th>
 					<th class="min-w-60">User Name</th>
 					<th class="min-w-60">Email</th>
-					<th class="w-48">Phone</th>
 					<th class="w-48">Role</th>
-					<th class="w-48">Country</th>
-					<th class="w-48">State</th>
-					<th class="w-48">City</th>
 					<th class="w-36 text-center">Created At</th>
 				</tr>
 				<tr>
 					<td></td>
 					<td><FilterSearch storeName="users" ref="searchName" method="search" column="name" placeholder="Name"/></td>
 					<td><FilterSearch storeName="users" ref="searchEmail" method="search" column="email" placeholder="Email"/></td>
-					<td><FilterSearch storeName="users" ref="searchPhone" method="search" column="phone" placeholder="Phone"/></td>
 					<td class=" min-w-36">
 						<label for="role" class="sr-only">Filter by Role</label>
 						<select 
@@ -45,45 +40,6 @@ const hasManage = accessCodes?.includes('001.01.01.01');
 							@change="$store.users.onColumnListChange('role_id', Number($el.value))">
 							<option value="">All</option>
 							<template x-for={`i in $store.users.column.roles`}>
-								<option :value="i.id" x-text="i.name"></option>
-							</template>
-						</select>
-					</td>
-					<td class=" min-w-36">
-						<label for="country" class="sr-only">Filter by Country</label>
-						<select 
-							id="country"
-							class="input w-full" 
-							:value="$store.users.filters.country_id"
-							@change="$store.users.onColumnCountryChange(Number($el.value))">
-							<option value="">All</option>
-							<template x-for={`i in $store.users.column.countries`}>
-								<option :value="i.id" x-text="i.name"></option>
-							</template>
-						</select>
-					</td>
-					<td class=" min-w-36">
-						<label for="state" class="sr-only">Filter by State</label>
-						<select 
-							id="state"
-							class="input w-full" 
-							:value="$store.users.filters.state_id"
-							@change="$store.users.onColumnStateChange(Number($el.value))">
-							<option value="">All</option>
-							<template x-for={`i in $store.users.column.states`}>
-								<option :value="i.id" x-text="i.name"></option>
-							</template>
-						</select>
-					</td>
-					<td class=" min-w-36">
-						<label for="city" class="sr-only">Filter by City</label>
-						<select 
-							id="city"
-							class="input w-full" 
-							:value="$store.users.filters.city_id"
-							@change="$store.users.onColumnListChange('city_id', Number($el.value))">
-							<option value="">All</option>
-							<template x-for={`i in $store.users.column.cities`}>
 								<option :value="i.id" x-text="i.name"></option>
 							</template>
 						</select>
@@ -108,11 +64,7 @@ const hasManage = accessCodes?.includes('001.01.01.01');
 						</td>
 						<td x-text="r.name"></td>
 						<td x-text="r.email"></td>
-						<td x-text="r.phone"></td>
 						<td x-text="r.role_name"></td>
-						<td x-text="r.country_name"></td>						
-						<td x-text="r.state_name"></td>						
-						<td x-text="r.city_name"></td>						
 						<td x-text="$store.users.ddmmyyyy(r.created_at)" class="text-center"></td>												 
 					</tr> 
 				</template>    

@@ -16,7 +16,7 @@ const hasManage = accessCodes?.includes("001.01.03.01");
 				</select>
 				{hasManage && <button x-bind:disabled="$store.access.role.id === 1" x-on:click="$store.access.onAssign()" class="btn-primary">Assign</button>}
 			</div>
-			<button class="btn-icon white lg" x-on:click="$store.roles.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
+			<button class="btn-icon white lg" x-on:click="$store.access.onInit()"><i class="fas fa-sync-alt"></i></button>
 			<button class="btn-icon white lg" x-on:click="$store.access.toggleAll($store.access.toggle = !$store.access.toggle)"><i class="fas fa-arrows-alt-v"></i></button>
 		</div>
 	</Breadcrumb>

@@ -55,8 +55,31 @@ export const server = {
   getFunctions: defineAction({
     accept: 'json',
     handler: async ({ schema, name, match }) => {
-      const platforms = await supabase.schema(schema).rpc(name, match);
-      return platforms.data;
+      const { data, error } = await supabase.schema(schema).rpc(name, match);
+      if (error !== null) {
+        if (error) throw new ActionError({ code: 'BAD_REQUEST', message: error.message });
+      }
+      return data;
+    }
+  }),
+  getResult: defineAction({
+    accept: 'json',
+    handler: async ({ schema, table, fields, match, order }) => {
+      const { data, error } = await supabase.schema(schema).from(table).select(fields).match(match).order(order);
+      if (error !== null) {
+        if (error) throw new ActionError({ code: 'BAD_REQUEST', message: error.message });
+      }
+      return data;
+    }
+  }),
+  getSingle: defineAction({
+    accept: 'json',
+    handler: async ({ schema, table, fields, match }) => {
+      const { data, error } = await supabase.schema(schema).from(table).select(fields).match(match).single();
+      if (error !== null) {
+        if (error) throw new ActionError({ code: 'BAD_REQUEST', message: error.message });
+      }
+      return data;
     }
   }),
   getPaginatedResult: defineAction({
@@ -76,6 +99,27 @@ export const server = {
       if (error) return { success: false };
       const pageValues = getPagerInfo(data, page, take, count);
       return { data, count, pageValues };
+    }
+  }),
+  save: defineAction({
+    handler: async ({ id, title, schema, table, params }) => {
+      const { error } = id ?
+        await supabase.schema(schema).from(table).update(params).eq("id", id) :
+        await supabase.schema(schema).from(table).insert(params);
+      if (error !== null) {
+        if (error.code === '23505') throw new ActionError({ code: 'CONFLICT', message: `${title}: '${params.name}' already exists.` });
+        else throw new ActionError({ code: 'BAD_REQUEST', message: error.message });
+      }
+      return true;
+    }
+  }),
+  remove: defineAction({
+    handler: async ({ id, schema, table }) => {
+      const { error } = await supabase.schema(schema).from(table).delete().eq("id", id);
+      if (error !== null) {
+        if (error) throw new ActionError({ code: 'BAD_REQUEST', message: error.message });
+      }
+      return true;
     }
   })
 }

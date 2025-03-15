@@ -19,10 +19,6 @@ const {item, hasManage} = Astro.props;
             <label for="name" class="label">Full Name</label>
             <input id="name" x-model="$store.users.item.name" class="input w-full mt-1" placeholder="Name" required />
         </div>
-        <div>
-            <label for="phone" class="label">Phone</label>
-            <input id="phone" x-model="$store.users.item.phone" class="input w-full mt-1" placeholder="Phone" required />
-        </div>
     </div>
     <div class="divider my-4"></div>
     <div class="flex flex-row justify-between gap-4">

@@ -1,7 +1,10 @@
 export const publicRoutes = [
     "/(|/)",
-    "/categories(|/)",
-    "/subcategories(|/)",
+    "/platforms(|/)",
+    "/subjects(|/)",
+    "/topics(|/)",
+    "/quiz(|/)",
+    "/pricing(|/)",
     "/about(|/)",
     "/contact(|/)",
     "/policy(|/)",

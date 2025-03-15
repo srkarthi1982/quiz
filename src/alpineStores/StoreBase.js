@@ -1,4 +1,3 @@
-import { remove, save } from "../common/database";
 import { copyToClipboard, debounce, getTakeValue, getScreenSize, ddmmyyyy } from "../common/utils";
 import { actions } from 'astro:actions';
 export class StoreBase {
@@ -46,8 +45,14 @@ export class StoreBase {
         this.pageValues = data.pageValues;
     }
     async onDelete({ id, name }) {
-        const result = await remove(id, this.short, this.schema, this.table, name);
-        if (result) this.getData();
+        const { title, schema, table } = this;
+        if (!confirm(`Are you sure? you want to delete this ${title}: '${name}'? `)) return false;
+        Alpine.store("loader").show();
+        const { data, error } = await actions.remove({ id, schema, table });
+        Alpine.store("loader").hide();
+        if (error) { Alpine.store('toast').show(error.message, 'error'); return false; }
+        Alpine.store('toast').show(`${title}: '${name}' deleted successfully.`, 'success');
+        if (data) this.getData();
     }
     openDrawer(item) {
         this.showAction = false;
@@ -55,8 +60,15 @@ export class StoreBase {
         this.showDrawer = true;
     }
     async closeDrawer(id, params) {
-        const result = await save(id, this.short, this.schema, this.table, params);
-        if (!result) return;
+        Alpine.store("loader").show();
+        const { short, schema, table } = this;
+        const {data, error} = await actions.save({ id, title: short, schema, table, params });
+        Alpine.store("loader").hide();
+        if (error) {
+            Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
+            return;
+        }
+        Alpine.store('toast').show(`${short}: '${params.name}' saved successfully.`, 'success');
         this.getData();
         this.showDrawer = false;
     }
