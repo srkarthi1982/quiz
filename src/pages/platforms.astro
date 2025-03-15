@@ -6,7 +6,7 @@ import Sorting from "../component/Sorting.astro";
 ---
 <LayoutFull active="platforms">
 	<div class="flex flex-col sm:flex-row justify-between items-center gap-3">
-		<div class="title"><i class="fas fa-list mr-2"></i> platforms (<span x-text="$store.platforms.total"></span>)</div>
+		<div class="title"><i class="fas fa-list mr-2"></i> Platforms (<span x-text="$store.platforms.total"></span>)</div>
 		<div class="flex flex-row gap-3">
 			<Search storeName="platforms" ref="searchName" method="search" column="name" placeholder="Search"/>
 			<Sorting storeName="platforms" columns="publicColumns" />

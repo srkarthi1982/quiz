@@ -20,7 +20,7 @@ const notifications = [
 	@scroll.window="atTop = (window.pageYOffset < 50) ? false: true">
 	<div class={`${style} flex items-center justify-between mx-auto`}>
 		<div  class="flex items-center justify-start relative">
-			<button @click="showMenu = !showMenu" @click.away="showMenu = false" type="button" class="btn-icon lg md:hidden mr-3">
+			<button title="Toggle Menu" @click="showMenu = !showMenu" @click.away="showMenu = false" type="button" class="btn-icon lg md:hidden mr-3">
 				<span x-show="!showMenu"><i class="fas fa-bars"></i></span>
 				<span style="display: none;" x-show="showMenu"><i class="fas fa-times"></i></span>
 			</button>
