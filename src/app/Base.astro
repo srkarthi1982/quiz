@@ -25,10 +25,9 @@ import Loader from '../component/Loader.astro';
 			const isStoreExists = name => typeof Alpine?.store(name) !== 'undefined';
 			function onPreparation(location) {
 				startLoading();
-				setTimeout(stopLoading, 3000);
+				setTimeout(stopLoading, 1000);
 				const name = location.pathname.split('/').findLast(x => x);
 				if(isStoreExists(name)) Alpine.store(name)?.onInit(location);
-				else Alpine.store('home')?.onInit(location);
 			}
 			function startLoading() {
 				loading.style.transform = "scaleX(1)";

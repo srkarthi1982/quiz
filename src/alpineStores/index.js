@@ -4,7 +4,6 @@ import './signin';
 import './signout';
 import './signup';
 import './resetPassword';
-import './home';
 import './platforms';
 import './subjects';
 import './topics';
