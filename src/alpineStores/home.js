@@ -7,7 +7,6 @@ class Home {
     async onInit() {
         Alpine.store("loader").show();
         const { data, error } = await actions.getFunctions({ name: 'get_home', schema: 'public' });
-        console.log('error', error)
         Alpine.store("loader").hide();
         if (error) {
             Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');

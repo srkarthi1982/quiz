@@ -26,7 +26,6 @@ import Loader from '../component/Loader.astro';
 			function onPreparation(location) {
 				startLoading();
 				setTimeout(stopLoading, 3000);
-				console.log('location', location)
 				const name = location.pathname.split('/').findLast(x => x);
 				if(isStoreExists(name)) Alpine.store(name)?.onInit(location);
 				else Alpine.store('home')?.onInit(location);
