@@ -25,7 +25,7 @@ const professionalSkills = data.platforms.filter((x: any) => x.type === 'P');
 	</div>
 	<!-- Platforms -->
 	<div x-data="{ tab: 'tab1' }" class="mb-7">
-		<ul class="max-w-2xl mx-auto grid grid-cols-2 text-center gray border-b title">
+		<ul class="max-w-2xl mx-auto grid grid-cols-2 text-center border-b title">
 			<li class="w-full">
 				<a @click.prevent="tab = 'tab1'" href="#" class="inline-block py-3 border-b-2 w-full border-transaprent" 
 				:class="{ 'text-primary-600 border-primary-600' : tab === 'tab1' }">Academy</a>
