@@ -3,8 +3,9 @@ import LayoutFull from "../app/Layout.astro";
 import { actions } from 'astro:actions';
 
 const { data } = await Astro.callAction(actions.getFunctions, { name: 'get_home', schema: 'public' });
-const academy = data.platforms.filter((x: any) => x.type === 'A');
-const professionalSkills = data.platforms.filter((x: any) => x.type === 'P');
+const academy = data.platforms?.filter((x: any) => x.type === 'A');
+const professionalSkills = data.platforms?.filter((x: any) => x.type === 'P');
+const subjects = data.subjects;
 ---
 <LayoutFull active="home">
 	<!-- banner -->
@@ -25,6 +26,9 @@ const professionalSkills = data.platforms.filter((x: any) => x.type === 'P');
 	</div>
 	<!-- Platforms -->
 	<div x-data="{ tab: 'tab1' }" class="mb-7">
+		<div class="flex justify-center items-center mb-5">
+			<div class="text-3xl">Choose Your Platform</div>
+		</div>
 		<ul class="max-w-2xl mx-auto grid grid-cols-2 text-center border-b title">
 			<li class="w-full">
 				<a @click.prevent="tab = 'tab1'" href="#" class="inline-block py-3 border-b-2 w-full border-transaprent" 
@@ -45,6 +49,7 @@ const professionalSkills = data.platforms.filter((x: any) => x.type === 'P');
 								<div class="card flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
 									<i class={`fas ${a.icon} text-3xl text-gray-600 mb-3`}></i>
 									<div class="font-semibold text-lg">{a.name}</div>
+									<b class="text-gray-600 text-xs mt-1">(<span>{a.subject_count}</span>) Subjects</b>
 									<div class="text-gray-600 text-sm mt-1">{a.description}</div>
 								</div>
 							</div>
@@ -62,6 +67,7 @@ const professionalSkills = data.platforms.filter((x: any) => x.type === 'P');
 								<div class="card flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
 									<i class={`fas ${a.icon} text-3xl text-gray-600 mb-3`}></i>
 									<div class="font-semibold text-lg">{a.name}</div>
+									<b class="text-gray-600 text-xs mt-1">(<span>{a.subject_count}</span>) Subjects</b>
 									<div class="text-gray-600 text-sm mt-1">{a.description}</div>
 								</div>
 							</div>
@@ -73,10 +79,33 @@ const professionalSkills = data.platforms.filter((x: any) => x.type === 'P');
 		</div>
 	</div>
 	<!-- Platforms -->
+	<!-- Subjects -->
+	<div class="mb-7">
+		<div class="flex justify-center items-center mb-5">
+			<div class="text-3xl">Explore our Subjects</div>
+		</div>
+		<div class="mt-6">
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5">
+				{
+					subjects.map((a: any) => {
+						return (
+						<div class="flex justify-center">
+							<div class="card flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
+								<div class="font-semibold text-lg">{a.name}</div>
+								<b class="text-gray-600 text-xs mt-1">(<span>{a.topics_count}</span>) Topics</b>
+							</div>
+						</div>
+						)
+					})
+				}
+			</div>
+		</div>
+	</div>
+	<!-- Subjects -->
 	<!-- steps -->
 	<div class="mb-5">
-		<div class="flex justify-between items-center mb-5">
-			<div class="title">How it Works?</div>
+		<div class="flex justify-center items-center mb-5">
+			<div class="text-3xl">How it Works?</div>
 		</div>
 		<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 gap-5 lg:gap-7 text-center">
 			<div class="card flex flex-col">

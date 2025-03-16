@@ -9,7 +9,7 @@ class Platforms extends StoreBase {
         { label: 'Active', value: "active", operator: 'eq' },
     ];
     constructor() {
-        super('public', 'Platforms', 'Platform', 'platforms', 'platforms', Platforms.#item, Platforms.#filters, Platforms.#sorting, '*', Platforms.#columns);
+        super('public', 'Platforms', 'Platform', 'vw_platforms', 'platforms', Platforms.#item, Platforms.#filters, Platforms.#sorting, '*', Platforms.#columns);
         this.publicColumns = Platforms.#columns.filter(x => x.label !== 'Active');
     }
     onInit(location) {
