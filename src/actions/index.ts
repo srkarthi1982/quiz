@@ -96,6 +96,7 @@ export const server = {
       });
       if (sort !== null) query = query.order(sort, { ascending: order });
       const { data, count, error } = await query.range(((page - 1) * take), take * page - 1);
+      console.log('error', error)
       if (error) return { success: false };
       const pageValues = getPagerInfo(data, page, take, count);
       return { data, count, pageValues };

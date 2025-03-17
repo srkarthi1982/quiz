@@ -1,6 +1,7 @@
 ---
 import LayoutFull from "../app/Layout.astro";
 import { actions } from 'astro:actions';
+import { url } from '../lib/data.js';
 
 const { data } = await Astro.callAction(actions.getFunctions, { name: 'get_home', schema: 'public' });
 const academy = data.platforms?.filter((x: any) => x.type === 'A');
@@ -26,9 +27,10 @@ const subjects = data.subjects;
 	</div>
 	<!-- Platforms -->
 	<div x-data="{ tab: 'tab1' }" class="mb-7">
-		<div class="flex justify-center items-center mb-5">
+		<div class="flex flex-col justify-center items-center mb-5 space-y-3">
 			<div class="text-3xl">Choose Your Platform</div>
-		</div>
+			<a href={url('platforms')} class="btn-primary">Explore All</a>
+		</div>	
 		<ul class="max-w-2xl mx-auto grid grid-cols-2 text-center border-b title">
 			<li class="w-full">
 				<a @click.prevent="tab = 'tab1'" href="#" class="inline-block py-3 border-b-2 w-full border-transaprent" 
@@ -46,12 +48,12 @@ const subjects = data.subjects;
 						academy.map((a: any) => {
 							return (
 							<div class="flex justify-center">
-								<div class="card flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
+								<a href={`/subjects?platformId=${a.id}`} title={a.name} class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
 									<i class={`fas ${a.icon} text-3xl text-gray-600 mb-3`}></i>
 									<div class="font-semibold text-lg">{a.name}</div>
 									<b class="text-gray-600 text-xs mt-1">(<span>{a.subject_count}</span>) Subjects</b>
 									<div class="text-gray-600 text-sm mt-1">{a.description}</div>
-								</div>
+								</a>
 							</div>
 							)
 						})
@@ -64,12 +66,12 @@ const subjects = data.subjects;
 						professionalSkills.map((a: any) => {
 							return (
 							<div class="flex justify-center">
-								<div class="card flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
+								<a href={`/subjects?platformId=${a.id}`} title={a.name} class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
 									<i class={`fas ${a.icon} text-3xl text-gray-600 mb-3`}></i>
 									<div class="font-semibold text-lg">{a.name}</div>
 									<b class="text-gray-600 text-xs mt-1">(<span>{a.subject_count}</span>) Subjects</b>
 									<div class="text-gray-600 text-sm mt-1">{a.description}</div>
-								</div>
+								</a>
 							</div>
 							)
 						})
@@ -79,11 +81,13 @@ const subjects = data.subjects;
 		</div>
 	</div>
 	<!-- Platforms -->
+	<div class="divider mt-2 mb-3"></div>
 	<!-- Subjects -->
 	<div class="mb-7">
-		<div class="flex justify-center items-center mb-5">
+		<div class="flex flex-col justify-center items-center mb-5 space-y-3">
 			<div class="text-3xl">Explore our Subjects</div>
-		</div>
+			<a href={url('subjects')} class="btn-primary">Explore All</a>
+		</div>		
 		<div class="mt-6">
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5">
 				{
@@ -102,7 +106,8 @@ const subjects = data.subjects;
 		</div>
 	</div>
 	<!-- Subjects -->
-	<!-- steps -->
+	<div class="divider mt-2 mb-3"></div>
+	<!-- Steps -->
 	<div class="mb-5">
 		<div class="flex justify-center items-center mb-5">
 			<div class="text-3xl">How it Works?</div>
@@ -130,4 +135,5 @@ const subjects = data.subjects;
 			</div>
 		</div>
 	</div>
+	<!-- Steps -->
 </LayoutFull>

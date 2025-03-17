@@ -16,12 +16,12 @@ import Sorting from "../component/Sorting.astro";
 	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
 		<template x-for="i in $store.platforms.items" :key="i.id">
 			<div class="flex justify-center">
-				<div class="card flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
+				<a :href="`/subjects?platformId=${i.id}`" :title="`i.name`" class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
 					<i :class="`fas ${i.icon} text-3xl text-gray-600 mb-3`"></i>
 					<div class="font-semibold text-lg" x-text="i.name"></div>
 					<b class="text-gray-600 text-xs mt-1">(<span x-text="i.subject_count"></span>) Subjects</b>
 					<div class="text-gray-600 text-sm mt-1" x-text="i.description"></div>
-				</div>
+				</a>
 			</div>
 		</template>
 	</div>

@@ -2,6 +2,7 @@
 export const partial = true;
 import { url } from '../lib/data.js';
 const { user } = Astro.locals;
+Astro.url.pathname
 ---
 <div class="card mt-5 lg:mt-7">
     <div class="flex flex-col md:flex-row justify-between items-center gap-3">
@@ -10,7 +11,7 @@ const { user } = Astro.locals;
             <div class="title text-xl text-primary">Join Us, Its Free!</div>
         </div>
         <div class="flex flex-col sm:flex-row gap-3">
-            {!user && <a href={url('auth/signin')} class="btn-primary">Get Registered</a>}
+            {(!user && Astro.url.pathname !== '/authentication/signup') && <a href={url('authentication/signup')} class="btn-primary">Get Registered</a>}
             <div class="flex flex-row gap-3">
                 <a href="https://wa.me/971552141356" aria-label="Chat with us on WhatsApp" target="_blank" class="btn-icon lg active"><i class="fab fa-whatsapp"></i></a>
                 <a href="tel:971552141356" aria-label="Call us at 971552141356" class="btn-icon lg active"><i class="fas fa-phone"></i></a>

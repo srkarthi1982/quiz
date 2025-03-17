@@ -5,11 +5,26 @@ import Pagination from "../component/Pagination.astro";
 import Sorting from "../component/Sorting.astro";
 ---
 <LayoutFull active="subjects">
-	<div class="flex flex-col sm:flex-row justify-between items-center gap-3">
-		<div class="title"><i class="fas fa-list mr-2"></i> Subjects (<span x-text="$store.subjects.total"></span>)</div>
-		<div class="flex flex-row gap-3">
-			<Search storeName="subjects" ref="searchName" method="search" column="name" placeholder="Search"/>
-			<Sorting storeName="subjects" columns="publicColumns" />
+	<div class="flex flex-col sm:flex-row sm:justify-between items-center gap-3">
+		<!-- Title on the left -->
+		<div class="title w-full sm:w-auto">
+			<i class="fas fa-list mr-2"></i> Subjects (<span x-text="$store.subjects.total"></span>)
+		</div>
+		<!-- Filters and search on the right -->
+		<div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto sm:justify-end">
+			<select 
+				class="input w-full sm:w-auto"
+				:value="$store.subjects.filters.platform_id"
+				@change="$store.subjects.onColumnListChange('platform_id', Number($el.value))">
+				<option value="">All</option>
+				<template x-for="i in $store.subjects.column.platforms">
+					<option :value="i.id" x-text="i.name" :selected="i.id === $store.subjects.filters.platform_id"></option>
+				</template>
+			</select>
+			<div class="flex flex-row w-full sm:w-auto gap-3">
+				<Search storeName="subjects" ref="searchName" method="search" column="name" placeholder="Search"/>
+				<Sorting storeName="subjects" columns="publicColumns" />
+			</div>
 		</div>
 	</div>
 	<div class="spacer"></div>
@@ -19,7 +34,7 @@ import Sorting from "../component/Sorting.astro";
 				<div class="card flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
 					<i :class="`fas ${i.icon} text-3xl text-gray-600 mb-3`"></i>
 					<div class="font-semibold text-lg" x-text="i.name"></div>
-					<div class="text-gray-600 text-sm mt-1" x-text="i.description"></div>
+					<b class="text-gray-600 text-xs mt-1">(<span x-text="i.topics_count"></span>) Topics</b>
 				</div>
 			</div>
 		</template>
