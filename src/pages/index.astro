@@ -8,16 +8,17 @@ const academy = data.platforms?.filter((x: any) => x.type === 'A');
 const professionalSkills = data.platforms?.filter((x: any) => x.type === 'P');
 const subjects = data.subjects;
 ---
+
 <LayoutFull active="home">
 	<!-- banner -->
 	<div class="card text-center mt-2 mb-7">
 		<div class="spacer my-5"></div>
 		<p class="mb-1 font-light title">The best platform to test and improve your skills across various domains.</p>
 		<div class="mb-4 font-semibold text-2xl title text-primary">Empowering Minds, One Quiz at a Time</div>
-		<div class="max-w-md mx-auto">					
+		<div class="max-w-md mx-auto">                    
 			<form class="input-group">
 				<div class="input-icon relative">
-					<i class="fas fa-search left-4 icon"></i>
+					<i class="fas fa-search left-4 icon" aria-hidden="true"></i>
 					<input type="search" name="search" class="input w-full white first" placeholder="Search Anything"/>
 				</div>
 				<button type="submit" class="btn-primary last">Search</button>
@@ -25,132 +26,86 @@ const subjects = data.subjects;
 		</div>
 		<div class="spacer my-5"></div>
 	</div>
+
 	<!-- Platforms -->
 	<div x-data="{ tab: 'tab1' }" class="mb-7">
 		<div class="flex flex-col justify-center items-center mb-5 space-y-3">
 			<div class="text-3xl">Choose Your Platform</div>
-			<a title="Explore all platforms" href={url('platforms')} class="btn-primary">Explore All</a>
-		</div>	
+			<a title="Explore all platforms" href="{url('platforms')}" class="btn-primary">Explore All</a>
+		</div>
 		<ul class="max-w-2xl mx-auto grid grid-cols-2 text-center border-b title">
 			<li class="w-full">
-				<a title="Click to view academy" @click.prevent="tab = 'tab1'" href="#" class="inline-block py-3 border-b-2 w-full border-transaprent" 
+				<a title="Click to view academy" @click.prevent="tab = 'tab1'" href="#" class="inline-block py-3 border-b-2 w-full border-transparent" 
 				:class="{ 'text-primary-600 border-primary-600' : tab === 'tab1' }">Academy</a>
 			</li>
 			<li class="w-full">
-				<a title="Click to view professional skills" @click.prevent="tab = 'tab2'" href="#" class="inline-block py-3 border-b-2 w-full border-transaprent" 
+				<a title="Click to view professional skills" @click.prevent="tab = 'tab2'" href="#" class="inline-block py-3 border-b-2 w-full border-transparent" 
 				:class="{ 'text-primary-600 border-primary-600' : tab === 'tab2' }">Professional Skills</a>
 			</li>
 		</ul>
 		<div class="mt-6">
 			<div x-show="tab ==='tab1'" style="display: none;">
 				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-					{
-						academy.map((a: any) => {
-							return (
-							<div class="flex justify-center">
-								<a title="View Subjects for Academy" href={`/subjects?platformId=${a.id}`} title={a.name} class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
-									<i class={`fas ${a.icon} text-3xl text-gray-600 mb-3`}></i>
-									<div class="font-semibold text-lg">{a.name}</div>
-									<b class="text-gray-600 text-xs mt-1">(<span>{a.subject_count}</span>) Subjects</b>
-									<div class="text-gray-600 text-sm mt-1">{a.description}</div>
-									<span class="sr-only">View</span>
-								</a>
-							</div>
-							)
-						})
-					}
+					{academy.map((a: any) => (
+						<div class="flex justify-center">
+							<a title="View Subjects for Academy" href={`/subjects?platformId=${a.id}`} class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
+								<i class={`fas ${a.icon} text-3xl text-gray-600 mb-3`} aria-hidden="true"></i>
+								<div class="font-semibold text-lg">{a.name}</div>
+								<b class="text-gray-600 text-xs mt-1">(<span>{a.subject_count}</span>) Subjects</b>
+								<div class="text-gray-600 text-sm mt-1">{a.description}</div>
+								<span class="sr-only">View</span>
+							</a>
+						</div>
+					))}
 				</div>
 			</div>
-			<div x-show="tab==='tab2'" style="">
+			<div x-show="tab==='tab2'">
 				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-					{
-						professionalSkills.map((a: any) => {
-							return (
-							<div class="flex justify-center">
-								<a title="View Subjects for Professional Skills" href={`/subjects?platformId=${a.id}`} title={a.name} class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
-									<i class={`fas ${a.icon} text-3xl text-gray-600 mb-3`}></i>
-									<div class="font-semibold text-lg">{a.name}</div>
-									<b class="text-gray-600 text-xs mt-1">(<span>{a.subject_count}</span>) Subjects</b>
-									<div class="text-gray-600 text-sm mt-1">{a.description}</div>
-									<span class="sr-only">View</span>
-								</a>
-							</div>
-							)
-						})
-					}
-				</div>				
+					{professionalSkills.map((a: any) => (
+						<div class="flex justify-center">
+							<a title="View Subjects for Professional Skills" href={`/subjects?platformId=${a.id}`} class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
+								<i class={`fas ${a.icon} text-3xl text-gray-600 mb-3`} aria-hidden="true"></i>
+								<div class="font-semibold text-lg">{a.name}</div>
+								<b class="text-gray-600 text-xs mt-1">(<span>{a.subject_count}</span>) Subjects</b>
+								<div class="text-gray-600 text-sm mt-1">{a.description}</div>
+								<span class="sr-only">View</span>
+							</a>
+						</div>
+					))}
+				</div>
 			</div>
 		</div>
 	</div>
-	<!-- Platforms -->
-	<div class="divider mt-2 mb-3"></div>
+
 	<!-- Subjects -->
 	<div class="mb-7">
 		<div class="flex flex-col justify-center items-center mb-5 space-y-3">
 			<div class="text-3xl">Explore Our Subjects</div>
-			<a title="Explore all subjects" href={url('subjects')} class="btn-primary">Explore All</a>
-		</div>		
-		<div class="mt-6">
-			<div class="table-responsive paper">
-				<table class="table border strip">
-					<thead>
+			<a title="Explore all subjects" href="{url('subjects')}" class="btn-primary">Explore All</a>
+		</div>
+		<div class="table-responsive paper">
+			<table class="table border strip">
+				<thead>
+					<tr>
+						<th></th>
+						<th class="w-full">Name</th>
+						<th>Topics</th>
+					</tr>
+				</thead>
+				<tbody>
+					{subjects.map((a: any) => (
 						<tr>
-							<th></th>
-							<th class="w-full">Name</th>
-							<th>Topics</th>
+							<td>
+								<a class="btn-primary md" title="View Topics" href={url(`topics?platformId=${a.platform_id}&subjectId=${a.id}`)}>
+									View Topic
+								</a>
+							</td>
+							<td>{a.name}</td>
+							<td class="text-center">{a.topics_count}</td>
 						</tr>
-					</thead>
-					<tbody>
-						{
-							subjects.map((a: any) => {
-								return (
-									<tr>
-										<td>
-											<a title="View Topics" href={url(`topics?platformId=${a.platform_id}&subjectId=${a.id}`)}>
-												<i class={`fas fa-eye text-2xl text-gray-600`} aria-hidden="true"></i>
-												<span class="sr-only">View Topics</span>
-											</a>
-										</td>
-										<td>{a.name}</td>
-										<td class="text-center">{a.topics_count}</td>	
-									</tr> 
-								)
-							})
-						}
-					</tbody>
-				</table>
-			</div>
+					))}
+				</tbody>
+			</table>
 		</div>
 	</div>
-	<!-- Subjects -->
-	<div class="divider mt-2 mb-3"></div>
-	<!-- Steps -->
-	<div class="mb-5">
-		<div class="flex justify-center items-center mb-5">
-			<div class="text-3xl">How it Works?</div>
-		</div>
-		<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 gap-5 lg:gap-7 text-center">
-			<div class="card flex flex-col">
-				<i class="fas fa-registered text-3xl title gray"></i>
-				<div class="title text-primary mt-2 mb-1">Free Registration</div>
-				<div class="text gray">Signing up is quick, easy, and completely free. Start your journey in seconds.</div>
-			</div>
-			<div class="card flex flex-col">
-				<i class="fas fa-store text-3xl title gray"></i>
-				<div class="title text-primary mt-2 mb-1">Choose a Platform</div>
-				<div class="text gray">Select from a wide range of topics, including academic, professional, and skill-based exams.</div>
-			</div>
-			<div class="card flex flex-col">
-				<i class="fas fa-regular fa-rectangle-list text-3xl title gray"></i>
-				<div class="title text-primary mt-2 mb-1">Take Tests</div>
-				<div class="text gray">Practice with real-time questions and get instant feedback to improve your knowledge.</div>
-			</div>
-			<div class="card flex flex-col">
-				<i class="fas fa-solid fa-chart-column text-3xl title gray"></i>
-				<div class="title text-primary mt-2 mb-1">Get Results & Improve</div>
-				<div class="text gray">Review your performance, track progress, and enhance your skills for success.</div>
-			</div>
-		</div>
-	</div>
-	<!-- Steps -->
 </LayoutFull>

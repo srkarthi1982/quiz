@@ -51,7 +51,7 @@ const notifications = [
 					<div class="title text-center border-b p-2 bg-gray-50">Notifications</div>
 					{notifications.map(n => (
 						<li>
-							<a href={url('notifications')} class="dropdown-link">
+							<a href={url('notifications')} class="dropdown-link" aria-label="Click to open notification">
 								<div class="flex flex-row justify-start gap-3 items-center">
 									<div class="btn-icon lg"><i class="fas fa-user"></i></div>
 									<div class="flex flex-col overflow-hidden">
@@ -63,7 +63,7 @@ const notifications = [
 						</li>
 					))}
 					<div class="flex justify-center p-2 bg-gray-50">
-						<a href={url('notifications')} class="btn-default"><i class="fas fa-eye mr-1"></i>View All</a>
+						<a href={url('notifications')} class="btn-default"><i class="fas fa-eye mr-1" aria-hidden="true"></i>View All</a>
 					</div>
 				</ul>
 				<button 
@@ -82,7 +82,7 @@ const notifications = [
 				</ul>
 			</div> :
 			<div class="flex flex-row gap-3">
-				<a href={url('authentication/signin')} class="btn-primary" title="Login">Login</a>
+				<a aria-label="Click to login" href={url('authentication/signin')} class="btn-primary" title="Login">Login</a>
 			</div>
 		}
 	</div>
