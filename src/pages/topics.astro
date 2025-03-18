@@ -50,7 +50,7 @@ import FilterSearch from "../component/FilterSearch.astro";
 				<template x-for="r in $store.topics.items" :key="r.id">
 					<tr>
                         <td x-text="r.name"></td>
-						<td><a class="btn-primary sm" :href="`/quiz?platformId=${r.platform_id}&subjectId=${r.subject_id}&topic_id=${r.id}`">Start Quiz</a></td>
+						<td><a class="btn-primary md" :href="`/quiz?platformId=${r.platform_id}&subjectId=${r.subject_id}&topic_id=${r.id}`">Start Quiz</a></td>
 					</tr> 
 				</template>    
 			</tbody>
