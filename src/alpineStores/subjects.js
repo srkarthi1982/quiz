@@ -13,7 +13,7 @@ class Subjects extends StoreBase {
     static #list = { platforms: [] };
     constructor() {
         super('public', 'Subjects', 'Subject', 'vw_subjects', 'subjects', Subjects.#item, Subjects.#filters, Subjects.#sorting, '*', Subjects.#columns);
-        this.publicColumns = Subjects.#columns.filter(x => x.label !== 'Active');
+        this.publicColumns = Subjects.#columns.filter(x => x.label === 'Name');
         this.column = { ...Subjects.#list };
     }
     onInit(location) {

@@ -85,23 +85,33 @@ const subjects = data.subjects;
 	<!-- Subjects -->
 	<div class="mb-7">
 		<div class="flex flex-col justify-center items-center mb-5 space-y-3">
-			<div class="text-3xl">Explore our Subjects</div>
+			<div class="text-3xl">Explore Our Subjects</div>
 			<a href={url('subjects')} class="btn-primary">Explore All</a>
 		</div>		
 		<div class="mt-6">
-			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5">
-				{
-					subjects.map((a: any) => {
-						return (
-						<div class="flex justify-center">
-							<div class="card flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
-								<div class="font-semibold text-lg">{a.name}</div>
-								<b class="text-gray-600 text-xs mt-1">(<span>{a.topics_count}</span>) Topics</b>
-							</div>
-						</div>
-						)
-					})
-				}
+			<div class="table-responsive paper">
+				<table class="table border strip">
+					<thead>
+						<tr>
+							<th></th>
+							<th class="w-full">Name</th>
+							<th>Topics</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							subjects.map((a: any) => {
+								return (
+									<tr>
+										<td><a href={url(`topics?subjectId=${a.id}`)}><i class={`fas fa-eye text-2xl text-gray-600`}></i></a></td>
+										<td>{a.name}</td>
+										<td class="text-center">{a.topics_count}</td>	
+									</tr> 
+								)
+							})
+						}
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>

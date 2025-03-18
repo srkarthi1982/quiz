@@ -1,43 +1,50 @@
 ---
 import LayoutFull from "../app/Layout.astro";
-import Search from "../component/Search.astro";
 import Pagination from "../component/Pagination.astro";
 import Sorting from "../component/Sorting.astro";
+import FilterSearch from "../component/FilterSearch.astro";
 ---
 <LayoutFull active="subjects">
-	<div class="flex flex-col sm:flex-row sm:justify-between items-center gap-3">
-		<!-- Title on the left -->
-		<div class="title w-full sm:w-auto">
-			<i class="fas fa-list mr-2"></i> Subjects (<span x-text="$store.subjects.total"></span>)
-		</div>
-		<!-- Filters and search on the right -->
-		<div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto sm:justify-end">
+	<div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+		<div class="title"><i class="fas fa-list mr-2"></i> Subjects (<span x-text="$store.subjects.total"></span>)</div>
+		<div class="flex flex-row gap-3">
 			<select 
-				class="input w-full sm:w-auto"
+				class="input w-full"
 				:value="$store.subjects.filters.platform_id"
 				@change="$store.subjects.onColumnListChange('platform_id', Number($el.value))">
-				<option value="">All</option>
+				<option value="">All Platforms</option>
 				<template x-for="i in $store.subjects.column.platforms">
 					<option :value="i.id" x-text="i.name" :selected="i.id === $store.subjects.filters.platform_id"></option>
 				</template>
 			</select>
-			<div class="flex flex-row w-full sm:w-auto gap-3">
-				<Search storeName="subjects" ref="searchName" method="search" column="name" placeholder="Search"/>
-				<Sorting storeName="subjects" columns="publicColumns" />
-			</div>
+			<Sorting storeName="subjects" columns="publicColumns" />
 		</div>
 	</div>
 	<div class="spacer"></div>
-	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-		<template x-for="i in $store.subjects.items" :key="i.id">
-			<div class="flex justify-center">
-				<div class="card flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
-					<i :class="`fas ${i.icon} text-3xl text-gray-600 mb-3`"></i>
-					<div class="font-semibold text-lg" x-text="i.name"></div>
-					<b class="text-gray-600 text-xs mt-1">(<span x-text="i.topics_count"></span>) Topics</b>
-				</div>
-			</div>
-		</template>
+	<div class="table-responsive paper">
+		<table class="table border strip">
+			<thead>
+				<tr>
+					<th></th>
+					<th class="w-full">Name</th>
+					<th>Topics</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td><FilterSearch storeName="subjects" ref="searchName" method="search" column="name" placeholder="Name"/></td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody x-show="$store.subjects.items.length > 0">
+				<template x-for="r in $store.subjects.items" :key="r.id">
+					<tr>
+						<td><a :href="`/topics?subjectId=${r.id}`"><i class={`fas fa-eye text-2xl text-gray-600`}></i></a></td>
+						<td x-text="r.name"></td>
+						<td x-text="r.topics_count" class="text-center"></td>
+					</tr> 
+				</template>    
+			</tbody>
+		</table>
 	</div>
 	<div class="spacer"></div>
 	<Pagination storeName="subjects" />

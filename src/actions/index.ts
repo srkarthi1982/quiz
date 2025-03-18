@@ -38,6 +38,7 @@ export const server = {
     handler: async ({ email, password, name }) => {
       const user_metadata = { name, role_id: 2 };
       const { error } = await supabaseAdmin.auth.admin.createUser({ email, password, email_confirm: true, user_metadata });
+      console.log('error', error)
       if (error) throw new ActionError({ code: 'INTERNAL_SERVER_ERROR', message: error.message });
       return "Success"
     }
