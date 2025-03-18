@@ -38,7 +38,7 @@ import FilterSearch from "../component/FilterSearch.astro";
 			<tbody x-show="$store.subjects.items.length > 0">
 				<template x-for="r in $store.subjects.items" :key="r.id">
 					<tr>
-						<td><a :href="`/topics?subjectId=${r.id}`"><i class={`fas fa-eye text-2xl text-gray-600`}></i></a></td>
+						<td><a :href="`/topics?platformId=${r.platform_id}&subjectId=${r.id}`"><i class={`fas fa-eye text-2xl text-gray-600`}></i></a></td>
 						<td x-text="r.name"></td>
 						<td x-text="r.topics_count" class="text-center"></td>
 					</tr> 

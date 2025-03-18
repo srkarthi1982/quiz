@@ -1,0 +1,61 @@
+---
+import LayoutFull from "../app/Layout.astro";
+import Pagination from "../component/Pagination.astro";
+import Sorting from "../component/Sorting.astro";
+import FilterSearch from "../component/FilterSearch.astro";
+---
+<LayoutFull active="topics">
+	<div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+		<div class="title"><i class="fas fa-list mr-2"></i> Topics (<span x-text="$store.topics.total"></span>)</div>
+		<div class="flex flex-row gap-3">
+			<select 
+				class="input w-full"
+				:value="$store.topics.filters.platform_id"
+				@change=`
+                $store.topics.filters.subject_id = 0;
+                $store.topics.onColumnListChange('platform_id', Number($el.value)); 
+                $store.topics.getSubjects($el.value || 0);
+                `>
+				<option value="">All Platforms</option>
+				<template x-for="i in $store.topics.column.platforms">
+					<option :value="i.id" x-text="i.name" :selected="i.id === $store.topics.filters.platform_id"></option>
+				</template>
+			</select>
+            <select 
+				class="input w-full"
+				:value="$store.topics.filters.subject_id"
+				@change="$store.topics.onColumnListChange('subject_id', Number($el.value))">
+				<option value="">All Subjects</option>
+				<template x-for="i in $store.topics.column.subjects">
+					<option :value="i.id" x-text="i.name" :selected="i.id === $store.topics.filters.subject_id"></option>
+				</template>
+			</select>
+			<Sorting storeName="topics" columns="publicColumns" />
+		</div>
+	</div>
+	<div class="spacer"></div>
+	<div class="table-responsive paper">
+		<table class="table border strip">
+			<thead>
+				<tr>
+                    <th class="w-full">Name</th>
+					<th></th>
+				</tr>
+				<tr>
+                    <td><FilterSearch storeName="topics" ref="searchName" method="search" column="name" placeholder="Name"/></td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody x-show="$store.topics.items.length > 0">
+				<template x-for="r in $store.topics.items" :key="r.id">
+					<tr>
+                        <td x-text="r.name"></td>
+						<td><a class="btn-primary sm" :href="`/quiz?platformId=${r.platform_id}&subjectId=${r.subject_id}&topic_id=${r.id}`">Start Quiz</a></td>
+					</tr> 
+				</template>    
+			</tbody>
+		</table>
+	</div>
+	<div class="spacer"></div>
+	<Pagination storeName="topics" />
+</LayoutFull>

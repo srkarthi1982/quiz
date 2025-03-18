@@ -1,29 +1,50 @@
 import Alpine from 'alpinejs';
 import { StoreBase } from './StoreBase';
-const item = { id: 0, name: '', is_active: true };
-const filters = { name: '', is_active: '' };
-const sorting = { sort: 'name', order: true };
-const fields = "id, name, is_active";
-const columns = [
-    { label: 'Name', value: "name", operator: 'ilike' },
-    { label: 'Active', value: "is_active", operator: 'eq' }
-];
+import { actions } from 'astro:actions';
 class Topics extends StoreBase {
+    static #item = { id: 0, name: '', platform_id: '', subject_id: '', is_active: true };
+    static #filters = { name: '', is_active: '', platform_id: '', subject_id: '' };
+    static #sorting = { sort: 'name', order: true };
+    static #columns = [
+        { label: 'Name', value: "name", operator: 'ilike' },
+        { label: 'Active', value: "is_active", operator: 'eq' },
+        { label: 'Platform', value: "platform_id", operator: 'eq' },
+        { label: 'Subject', value: "subject_id", operator: 'eq' },
+    ];
+    static #list = { platforms: [], subjects: [] };
     constructor() {
-        super('public', 'Topics', 'Topic', 'topics', 'topics', item, filters, sorting, fields, columns);
+        super('public', 'Topics', 'Topic', 'vw_topics', 'topics', Topics.#item, Topics.#filters, Topics.#sorting, '*', Topics.#columns);
+        this.publicColumns = Topics.#columns.filter(x => x.label === 'Name');
+        this.column = { ...Topics.#list };
     }
     onInit(location) {
-        const filterParams = { is_active: location.pathname.includes('management') ? '' : true };
-        this.filters = { ...filters, ...filterParams };
-        this.sorting = { ...sorting };
+        const params = new URLSearchParams(location.search);
+        const platformId = params.get('platformId') || 0;
+        const subjectId = params.get('subjectId') || 0;
+        const filterParams = location.pathname.includes('management') ? { is_active: '', counts: 0 } : { is_active: true, platform_id: Number(platformId), subject_id: Number(subjectId) };
+        this.filters = { ...Topics.#filters, ...filterParams };
+        this.sorting = { ...Topics.#sorting };
         this.pagination = { ...this.defaultPagination };
         this.getData();
+        this.getPlatforms();
+        this.getSubjects(platformId)
+    }
+    async getPlatforms() {
+        const { data, error } = await actions.getResult({ schema: this.schema, table: 'platforms', fields: 'id, name', match: { active: true }, order: 'name' });
+        if (error) return;
+        this.column.platforms = data;
+    }
+    async getSubjects(platform_id) {
+        const { data, error } = await actions.getResult({ schema: this.schema, table: 'subjects', fields: 'id, name', match: { is_active: true, platform_id }, order: 'name' });
+        if (error) return;
+        this.column.subjects = data;
     }
     async onSave() {
-        const { id, name, is_active } = this.item;
-        await this.closeDrawer(id, { name, is_active });
+        Alpine.store("loader").show();
+        const { id, name, is_active, platform_id, subject_id } = this.item;
+        await this.closeDrawer(id, { name, is_active, platform_id, subject_id });
     }
-    onInsert() { this.openDrawer({ ...item }) }
+    onInsert() { this.openDrawer({ ...Topics.#item }) }
     onEdit(item) { this.openDrawer({ ...item }) }
 }
 Alpine.store('topics', new Topics());
