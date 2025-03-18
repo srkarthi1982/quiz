@@ -29,15 +29,15 @@ const subjects = data.subjects;
 	<div x-data="{ tab: 'tab1' }" class="mb-7">
 		<div class="flex flex-col justify-center items-center mb-5 space-y-3">
 			<div class="text-3xl">Choose Your Platform</div>
-			<a href={url('platforms')} class="btn-primary">Explore All</a>
+			<a title="Explore all platforms" href={url('platforms')} class="btn-primary">Explore All</a>
 		</div>	
 		<ul class="max-w-2xl mx-auto grid grid-cols-2 text-center border-b title">
 			<li class="w-full">
-				<a @click.prevent="tab = 'tab1'" href="#" class="inline-block py-3 border-b-2 w-full border-transaprent" 
+				<a title="Click to view academy" @click.prevent="tab = 'tab1'" href="#" class="inline-block py-3 border-b-2 w-full border-transaprent" 
 				:class="{ 'text-primary-600 border-primary-600' : tab === 'tab1' }">Academy</a>
 			</li>
 			<li class="w-full">
-				<a @click.prevent="tab = 'tab2'" href="#" class="inline-block py-3 border-b-2 w-full border-transaprent" 
+				<a title="Click to view professional skills" @click.prevent="tab = 'tab2'" href="#" class="inline-block py-3 border-b-2 w-full border-transaprent" 
 				:class="{ 'text-primary-600 border-primary-600' : tab === 'tab2' }">Professional Skills</a>
 			</li>
 		</ul>
@@ -48,11 +48,12 @@ const subjects = data.subjects;
 						academy.map((a: any) => {
 							return (
 							<div class="flex justify-center">
-								<a href={`/subjects?platformId=${a.id}`} title={a.name} class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
+								<a title="View Subjects for Academy" href={`/subjects?platformId=${a.id}`} title={a.name} class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
 									<i class={`fas ${a.icon} text-3xl text-gray-600 mb-3`}></i>
 									<div class="font-semibold text-lg">{a.name}</div>
 									<b class="text-gray-600 text-xs mt-1">(<span>{a.subject_count}</span>) Subjects</b>
 									<div class="text-gray-600 text-sm mt-1">{a.description}</div>
+									<span class="sr-only">View</span>
 								</a>
 							</div>
 							)
@@ -66,11 +67,12 @@ const subjects = data.subjects;
 						professionalSkills.map((a: any) => {
 							return (
 							<div class="flex justify-center">
-								<a href={`/subjects?platformId=${a.id}`} title={a.name} class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
+								<a title="View Subjects for Professional Skills" href={`/subjects?platformId=${a.id}`} title={a.name} class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
 									<i class={`fas ${a.icon} text-3xl text-gray-600 mb-3`}></i>
 									<div class="font-semibold text-lg">{a.name}</div>
 									<b class="text-gray-600 text-xs mt-1">(<span>{a.subject_count}</span>) Subjects</b>
 									<div class="text-gray-600 text-sm mt-1">{a.description}</div>
+									<span class="sr-only">View</span>
 								</a>
 							</div>
 							)
@@ -86,7 +88,7 @@ const subjects = data.subjects;
 	<div class="mb-7">
 		<div class="flex flex-col justify-center items-center mb-5 space-y-3">
 			<div class="text-3xl">Explore Our Subjects</div>
-			<a href={url('subjects')} class="btn-primary">Explore All</a>
+			<a title="Explore all subjects" href={url('subjects')} class="btn-primary">Explore All</a>
 		</div>		
 		<div class="mt-6">
 			<div class="table-responsive paper">
@@ -103,7 +105,12 @@ const subjects = data.subjects;
 							subjects.map((a: any) => {
 								return (
 									<tr>
-										<td><a href={url(`topics?platformId=${a.platform_id}&subjectId=${a.id}`)}><i class={`fas fa-eye text-2xl text-gray-600`}></i></a></td>
+										<td>
+											<a title="View Topics" href={url(`topics?platformId=${a.platform_id}&subjectId=${a.id}`)}>
+												<i class={`fas fa-eye text-2xl text-gray-600`} aria-hidden="true"></i>
+												<span class="sr-only">View Topics</span>
+											</a>
+										</td>
 										<td>{a.name}</td>
 										<td class="text-center">{a.topics_count}</td>	
 									</tr> 
