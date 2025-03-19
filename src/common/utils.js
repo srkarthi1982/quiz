@@ -65,9 +65,9 @@ export const getScreenSize = () => {
 export const getTakeValue = (screenSize) => {
   switch (screenSize) {
     case 'xxl':
-      return 20;
+      return 15;
     case 'xl':
-      return 20;
+      return 15;
     case 'lg':
       return 10;
     case 'md':

@@ -26,7 +26,7 @@ const subjects = data.subjects;
 		</div>
 		<div class="spacer my-5"></div>
 	</div>
-
+	<!-- banner -->
 	<!-- Platforms -->
 	<div x-data="{ tab: 'tab1' }" class="mb-7">
 		<div class="flex flex-col justify-center items-center mb-5 space-y-3">
@@ -76,7 +76,7 @@ const subjects = data.subjects;
 			</div>
 		</div>
 	</div>
-
+	<!-- Platforms -->
 	<!-- Subjects -->
 	<div class="mb-7">
 		<div class="flex flex-col justify-center items-center mb-5 space-y-3">
@@ -88,7 +88,7 @@ const subjects = data.subjects;
 				<thead>
 					<tr>
 						<th></th>
-						<th class="w-full">Name</th>
+						<th class="w-full">Featured Subjects</th>
 						<th>Topics</th>
 					</tr>
 				</thead>
@@ -96,8 +96,9 @@ const subjects = data.subjects;
 					{subjects.map((a: any) => (
 						<tr>
 							<td>
-								<a class="btn-default md" title="View Topics" href={url(`topics?platformId=${a.platform_id}&subjectId=${a.id}`)}>
-									Visit
+								<a class="md" title="View Topics" href={url(`topics?platformId=${a.platform_id}&subjectId=${a.id}`)}>
+									<i class={`fas fa-eye text-3xl text-gray-600`} aria-hidden="true"></i>
+									<span class="sr-only">View</span>
 								</a>
 							</td>
 							<td>{a.name}</td>
@@ -108,4 +109,34 @@ const subjects = data.subjects;
 			</table>
 		</div>
 	</div>
+	<!-- Subjects -->
+	<!-- Steps -->
+	<div class="mb-5">
+		<div class="flex justify-center items-center mb-5">
+			<div class="text-3xl">How it Works?</div>
+		</div>
+		<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 gap-5 lg:gap-7 text-center">
+			<div class="card flex flex-col">
+				<i class="fas fa-registered text-3xl title gray"></i>
+				<div class="title text-primary mt-2 mb-1">Free Registration</div>
+				<div class="text gray">Signing up is quick, easy, and completely free. Start your journey in seconds.</div>
+			</div>
+			<div class="card flex flex-col">
+				<i class="fas fa-store text-3xl title gray"></i>
+				<div class="title text-primary mt-2 mb-1">Choose a Platform</div>
+				<div class="text gray">Select from a wide range of topics, including academic, professional, and skill-based exams.</div>
+			</div>
+			<div class="card flex flex-col">
+				<i class="fas fa-regular fa-rectangle-list text-3xl title gray"></i>
+				<div class="title text-primary mt-2 mb-1">Take Tests</div>
+				<div class="text gray">Practice with real-time questions and get instant feedback to improve your knowledge.</div>
+			</div>
+			<div class="card flex flex-col">
+				<i class="fas fa-solid fa-chart-column text-3xl title gray"></i>
+				<div class="title text-primary mt-2 mb-1">Get Results & Improve</div>
+				<div class="text gray">Review your performance, track progress, and enhance your skills for success.</div>
+			</div>
+		</div>
+	</div>
+	<!-- Steps -->
 </LayoutFull>
