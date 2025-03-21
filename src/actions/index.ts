@@ -4,12 +4,17 @@ import type { DomainMapping } from '../lib/types';
 import { getPagerInfo } from '../common/utils';
 import { supabase } from '../lib/supabase';
 import { supabaseAdmin } from '../lib/supabaseAdmin';
+import { streamObject } from "ai";
+import { createOpenAI } from "@ai-sdk/openai";
+
 const environment: string = import.meta.env.ENVIRONMENT || 'DEV';
 const domainMapping: DomainMapping = {
   'DEV': 'localhost',
   'PROD': 'quiz.institute'
 };
 const domain: string = domainMapping[environment];
+const openai = createOpenAI({ apiKey: import.meta.env.OPENAI_API_KEY });
+
 export const server = {
   signIn: defineAction({
     input: z.object({
@@ -122,6 +127,29 @@ export const server = {
         if (error) throw new ActionError({ code: 'BAD_REQUEST', message: error.message });
       }
       return true;
+    }
+  }),
+  generateQuestion: defineAction({
+    handler: async ({ numQuestions, platform, subject, topic, roadmap, level }) => {
+      const result = await streamObject({
+        model: openai("gpt-4o-mini"),
+        system: "You are a subject matter expert generating accurate multiple-choice questions with correct answers and explanations.",
+        prompt: `Generate ${numQuestions} multiple-choice questions for the subject '${subject}' under the platform '${platform}' for the topic '${topic}' based on the roadmap section '${roadmap}'. 
+                 The difficulty level should be '${level}' (E = Easy, M = Medium, D = Difficult).
+                 Each question should have four answer choices, one correct answer, and a detailed explanation within 10 to 12 words.`,
+        schema: z.object({
+          quiz: z.array(
+            z.object({
+              question: z.string(),
+              options: z.array(z.string()).length(4),
+              correct_answer: z.string(),
+              explanation: z.string(),
+            }),
+          ),
+        }),
+        temperature: 0.3,
+      });
+      return result.toTextStreamResponse();
     }
   })
 }
