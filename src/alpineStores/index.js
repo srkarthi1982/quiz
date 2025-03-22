@@ -7,6 +7,7 @@ import './resetPassword';
 import './platforms';
 import './subjects';
 import './topics';
+import './roadmaps';
 import './users';
 import './roles';
 import './menus';

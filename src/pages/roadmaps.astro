@@ -1,0 +1,89 @@
+---
+import LayoutFull from "../app/Layout.astro";
+import Pagination from "../component/Pagination.astro";
+import Sorting from "../component/Sorting.astro";
+import FilterSearch from "../component/FilterSearch.astro";
+---
+<LayoutFull active="roadmaps">
+	<div class="flex sm:flex-row justify-between items-center gap-3">
+		<div class="title"><i class="fas fa-list mr-2"></i> Roadmaps (<span x-text="$store.roadmaps.total"></span>)</div>
+		<div class="flex flex-row gap-3">
+			<Sorting storeName="roadmaps" columns="publicColumns" />
+		</div>
+	</div>
+	<div class="flex flex-col md:flex-row gap-3 mt-3 mb-3">
+		<div class="flex flex-row w-full items-center gap-2">
+			<label class="label w-14">Platform</label>
+			<select 
+				class="input w-full"
+				:value="$store.roadmaps.filters.platform_id"
+				@change=`
+				$store.roadmaps.filters.subject_id = 0;
+				$store.roadmaps.filters.topic_id = 0;
+				$store.roadmaps.onColumnListChange('platform_id', Number($el.value)); 
+				$store.roadmaps.getSubjects($el.value || 0);
+				$store.roadmaps.getTopics(0);
+				`>
+				<option value="">All</option>
+				<template x-for="i in $store.roadmaps.column.platforms">
+					<option :value="i.id" x-text="i.name" :selected="i.id === $store.roadmaps.filters.platform_id"></option>
+				</template>
+			</select>
+		</div>
+		<div class="flex flex-row w-full items-center gap-2">
+			<label class="label w-14">Subject</label>
+			<select 
+				class="input w-full"
+				:value="$store.roadmaps.filters.subject_id"
+				@change=`
+				$store.roadmaps.filters.topic_id = 0;
+				$store.roadmaps.onColumnListChange('subject_id', Number($el.value)); 
+				$store.roadmaps.getTopics($el.value || 0);
+				`>
+				<option value="">All</option>
+				<template x-for="i in $store.roadmaps.column.subjects">
+					<option :value="i.id" x-text="i.name" :selected="i.id === $store.roadmaps.filters.subject_id"></option>
+				</template>
+			</select>
+		</div>
+	</div>
+	<div class="flex flex-col md:flex-row gap-3 mt-3 mb-3">
+		<div class="flex flex-row w-full items-center gap-2">
+			<label class="label w-14">Topic</label>
+			<select 
+				class="input w-full"
+				:value="$store.roadmaps.filters.topic_id"
+				@change="$store.roadmaps.onColumnListChange('topic_id', Number($el.value))">
+				<option value="">All</option>
+				<template x-for="i in $store.roadmaps.column.topics">
+					<option :value="i.id" x-text="i.name" :selected="i.id === $store.roadmaps.filters.topic_id"></option>
+				</template>
+			</select>
+			<button :disabled="$store.roadmaps.total > 0" class="btn-primary" @click="$store.roadmaps.onGenerateRoadmap()">Generate Roadmap (AI)</button>
+		</div>
+	</div>
+	<div class="table-responsive paper">
+		<table class="table border strip">
+			<thead>
+				<tr>
+                    <th class="w-full">Name</th>
+					<th>Quiz</th>
+				</tr>
+				<tr>
+                    <td><FilterSearch storeName="roadmaps" ref="searchName" method="search" column="name" placeholder="Name"/></td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody x-show="$store.roadmaps.items.length > 0">
+				<template x-for="r in $store.roadmaps.items" :key="r.id">
+					<tr>
+                        <td x-text="r.name"></td>
+						<td><a class="btn-primary" :href="`/quiz?platformId=${r.platform_id}&subjectId=${r.subject_id}&topic_id=${r.id}`">Start</a></td>
+					</tr> 
+				</template>    
+			</tbody>
+		</table>
+	</div>
+	<div class="spacer"></div>
+	<Pagination storeName="roadmaps" />
+</LayoutFull>

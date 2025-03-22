@@ -30,7 +30,7 @@ class Topics extends StoreBase {
         this.getSubjects(platformId)
     }
     async getPlatforms() {
-        const { data, error } = await actions.getResult({ schema: this.schema, table: 'platforms', fields: 'id, name', match: { active: true }, order: 'name' });
+        const { data, error } = await actions.getResult({ schema: this.schema, table: 'platforms', fields: 'id, name', match: { is_active: true }, order: 'name' });
         if (error) return;
         this.column.platforms = data;
     }

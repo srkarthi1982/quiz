@@ -1,0 +1,41 @@
+---
+import Avatar from "../../../../component/Avatar.astro";
+const {item, hasManage} = Astro.props;
+---
+<form @submit.prevent="$store.platforms.onSave();document.getElementById('file').value = '';">
+    <div class="flex flex-col gap-3">
+        <div>
+            <label for="name" class="label">Name</label>
+            <input type="text" id="name" name="name" x-model="$store.platforms.item.name" class="input w-full mt-1" placeholder="Type name" required>
+        </div>
+        <div>
+            <label for="description" class="label">Description</label>
+            <input type="text" id="description" name="description" x-model="$store.platforms.item.description" class="input w-full mt-1" placeholder="Type description" required>
+        </div>
+        <div>
+            <label for="icon" class="label">Icon</label>
+            <input type="text" id="icon" name="icon" x-model="$store.platforms.item.icon" class="input w-full mt-1" placeholder="Type icon" required>
+        </div>
+        <div>
+            <label class="label">Type</label>
+            <select 
+                class="input w-full mt-1" 
+                :value={`$store.platforms.item.type`}
+                @change="$store.platforms.onFormListChange('type', $el.value)">
+                <option value=""></option>
+                <template x-for={`i in $store.platforms.form.types`}>
+                    <option :value="i.id" x-text="i.name"></option>
+                </template>
+            </select>
+        </div>
+        <div class="flex flex-row gap-2 items-center">
+            <input id="is_active" name="is_active" x-model="$store.platforms.item.is_active" type="checkbox" class="checkbox" class="checkbox" />
+            <label for="is_active" class="text">Active</label>
+        </div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="flex flex-row justify-between gap-4">
+        <button type="button" @click="$store.platforms.showDrawer = false" class="btn-default">Cancel</button>
+        { hasManage && <button type="submit" class="btn-primary" x-text={`${item}.id ? 'Update' : 'Create'`}></button>}
+    </div>
+</form>

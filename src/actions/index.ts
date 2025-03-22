@@ -4,7 +4,7 @@ import type { DomainMapping } from '../lib/types';
 import { getPagerInfo } from '../common/utils';
 import { supabase } from '../lib/supabase';
 import { supabaseAdmin } from '../lib/supabaseAdmin';
-import { streamObject } from "ai";
+import { generateObject, streamObject } from "ai";
 import { createOpenAI } from "@ai-sdk/openai";
 
 const environment: string = import.meta.env.ENVIRONMENT || 'DEV';
@@ -43,7 +43,6 @@ export const server = {
     handler: async ({ email, password, name }) => {
       const user_metadata = { name, role_id: 2 };
       const { error } = await supabaseAdmin.auth.admin.createUser({ email, password, email_confirm: true, user_metadata });
-      console.log('error', error)
       if (error) throw new ActionError({ code: 'INTERNAL_SERVER_ERROR', message: error.message });
       return "Success"
     }
@@ -102,7 +101,6 @@ export const server = {
       });
       if (sort !== null) query = query.order(sort, { ascending: order });
       const { data, count, error } = await query.range(((page - 1) * take), take * page - 1);
-      console.log('error', error)
       if (error) return { success: false };
       const pageValues = getPagerInfo(data, page, take, count);
       return { data, count, pageValues };
@@ -136,14 +134,14 @@ export const server = {
         system: "You are a subject matter expert generating accurate multiple-choice questions with correct answers and explanations.",
         prompt: `Generate ${numQuestions} multiple-choice questions for the subject '${subject}' under the platform '${platform}' for the topic '${topic}' based on the roadmap section '${roadmap}'. 
                  The difficulty level should be '${level}' (E = Easy, M = Medium, D = Difficult).
-                 Each question should have four answer choices, one correct answer, and a detailed explanation within 10 to 12 words.`,
+                 Each question should have four answer choices, one correct answer (as an **index** from 0 to 3), and a detailed explanation within 10 to 12 words.`,
         schema: z.object({
-          quiz: z.array(
+          qz: z.array(
             z.object({
-              question: z.string(),
-              options: z.array(z.string()).length(4),
-              correct_answer: z.string(),
-              explanation: z.string(),
+              q: z.string(), // question
+              o: z.array(z.string()).length(4), // options
+              a: z.number().min(0).max(3), // correct_answer (index)
+              e: z.string(), // explanation
             }),
           ),
         }),
@@ -151,5 +149,30 @@ export const server = {
       });
       return result.toTextStreamResponse();
     }
-  })
+  }),
+  generateRoadmap: defineAction({
+    handler: async ({ platform, subject, topic }) => {
+      const result = await generateObject({
+        model: openai("gpt-4o-mini"),
+        system: "You are a subject matter expert generating structured roadmaps for learning.",
+        prompt: `Generate complete structured roadmap sections for the subject '${subject.name}' under the platform '${platform.name}' for the topic '${topic.name}'. 
+                 Each roadmap should be a concise phrase (3 to 6 words) covering key learning steps.`,
+        schema: z.object({
+          roadmaps: z.array(z.string()),
+        }),
+        temperature: 0.3,
+      });
+      const roadmaps = result.object.roadmaps.map(name => {
+        return {
+          platform_id: platform.id,
+          subject_id: subject.id,
+          topic_id: topic.id,
+          name
+        }
+      })
+      await supabase.schema("public").from("roadmaps").insert(roadmaps);
+      return true;
+    }
+})
+
 }
