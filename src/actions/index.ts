@@ -112,6 +112,7 @@ export const server = {
         await supabase.schema(schema).from(table).update(params).eq("id", id) :
         await supabase.schema(schema).from(table).insert(params);
       if (error !== null) {
+        console.log('error', error)
         if (error.code === '23505') throw new ActionError({ code: 'CONFLICT', message: `${title}: '${params.name}' already exists.` });
         else throw new ActionError({ code: 'BAD_REQUEST', message: error.message });
       }

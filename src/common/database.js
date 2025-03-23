@@ -59,6 +59,7 @@ export const save = async function (id, title, schema, table, params) {
         await supabase.schema(schema).from(table).insert(params);
     Alpine.store("loader").hide();
     if (error) {
+        console.log('error', error)
         if (error.code === '23505') Alpine.store('toast').show(`${title}: '${params.name}' already exists.`, 'error');
         else Alpine.store('toast').show(error.message, 'error');
         return false;

@@ -7,11 +7,10 @@ class Platforms extends StoreBase {
     static #columns = [
         { label: 'Name', value: "name", operator: 'ilike' },
         { label: 'Description', value: "description", operator: 'ilike' },
-        { label: 'Icon', value: "icon", operator: 'ilike' },
         { label: 'Type', value: "type", operator: 'eq' },
         { label: 'Active', value: "is_active", operator: 'eq' },
     ];
-    static #list = { types: [{ id: 'A', name: 'A' }, { id: 'P', name: 'P' }] };
+    static #list = { types: [{ id: 'A', name: 'Academy' }, { id: 'P', name: 'Professional Skills' }] };
     constructor() {
         super('public', 'Platforms', 'Platform', 'vw_platforms', 'platforms', Platforms.#item, Platforms.#filters, Platforms.#sorting, '*', Platforms.#columns);
         this.publicColumns = Platforms.#columns.filter(x => x.label !== 'Active');
