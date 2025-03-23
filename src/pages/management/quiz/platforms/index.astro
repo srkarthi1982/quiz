@@ -34,7 +34,7 @@ const hasManage = locals?.accessCodes?.includes('001.02.01.01');
 					<th x-show={`${hasManage}`}></th>
 					<th></th>
 					<th><FilterSearch storeName="platforms" ref="searchName" method="search" column="name" placeholder="Name"/></th>
-					<th><FilterSearch storeName="platforms" ref="searchDescription" method="search" column="description" placeholder="Name"/></th>
+					<th><FilterSearch storeName="platforms" ref="searchDescription" method="search" column="description" placeholder="Description"/></th>
 					<th>
 						<select 
 							class="input w-full" 

@@ -1,11 +1,39 @@
 ---
 const {item, hasManage} = Astro.props;
 ---
-<form @submit.prevent="$store.topics.onSave()">
+<form @submit.prevent="$store.topics.onSave();document.getElementById('file').value = '';">
     <div class="flex flex-col gap-3">
         <div>
             <label for="name" class="label">Name</label>
             <input type="text" id="name" name="name" x-model="$store.topics.item.name" class="input w-full mt-1" placeholder="Type name" required>
+        </div>
+        <div>
+            <label class="label">Platform</label>
+            <select 
+                class="input w-full mt-1" 
+                :value={`$store.topics.item.platform_id`}
+                @change=`
+                    $store.topics.form.subject_id = 0;
+                    $store.topics.onFormListChange('platform_id', Number($el.value)); 
+                    $store.topics.getSubjects($el.value || 0);
+                `>
+                <option value=""></option>
+                <template x-for={`i in $store.topics.form.platforms`}>
+                    <option :value="i.id" x-text="i.name"></option>
+                </template>
+            </select>
+        </div>
+        <div>
+            <label class="label">Subject</label>
+            <select 
+                class="input w-full mt-1" 
+                :value={`$store.topics.item.subject_id`}
+                @change="$store.topics.onFormListChange('subject_id', $el.value)">
+                <option value=""></option>
+                <template x-for={`i in $store.topics.form.subjects`}>
+                    <option :value="i.id" x-text="i.name" :selected="i.id === $store.topics.item.subject_id"></option>
+                </template>
+            </select>
         </div>
         <div class="flex flex-row gap-2 items-center">
             <input id="is_active" name="is_active" x-model="$store.topics.item.is_active" type="checkbox" class="checkbox" class="checkbox" />

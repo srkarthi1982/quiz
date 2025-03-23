@@ -15,6 +15,7 @@ class Subjects extends StoreBase {
         super('public', 'Subjects', 'Subject', 'vw_subjects', 'subjects', Subjects.#item, Subjects.#filters, Subjects.#sorting, '*', Subjects.#columns);
         this.publicColumns = Subjects.#columns.filter(x => x.label === 'Name');
         this.column = { ...Subjects.#list };
+        this.form = { ...Subjects.#list };
     }
     onInit(location) {
         const params = new URLSearchParams(location.search);
@@ -30,6 +31,7 @@ class Subjects extends StoreBase {
         const { data, error } = await actions.getResult({ schema: this.schema, table: 'platforms', fields: 'id, name', match: { is_active: true }, order: 'name' });
         if (error) return;
         this.column.platforms = data;
+        this.form.platforms = data;
     }
     async onSave() {
         Alpine.store("loader").show();

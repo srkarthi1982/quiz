@@ -1,5 +1,4 @@
 ---
-import Avatar from "../../../../component/Avatar.astro";
 const {item, hasManage} = Astro.props;
 ---
 <form @submit.prevent="$store.platforms.onSave();document.getElementById('file').value = '';">
