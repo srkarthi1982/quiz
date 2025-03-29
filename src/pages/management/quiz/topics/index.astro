@@ -39,7 +39,7 @@ const hasManage = locals?.accessCodes?.includes('001.02.03.01');
 							@change=`
 								$store.topics.filters.subject_id = 0;
 								$store.topics.onColumnListChange('platform_id', Number($el.value)); 
-								$store.topics.getSubjects($el.value || 0);
+								$store.topics.column.subjects = await $store.topics.getSubjects($el.value || 0);
 							`>
 							<option value="">All</option>
 							<template x-for={`i in $store.topics.column.platforms`}>

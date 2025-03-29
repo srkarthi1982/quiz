@@ -1,7 +1,7 @@
 ---
 const {item, hasManage} = Astro.props;
 ---
-<form @submit.prevent="$store.topics.onSave();document.getElementById('file').value = '';">
+<form @submit.prevent="$store.topics.onSave()">
     <div class="flex flex-col gap-3">
         <div>
             <label for="name" class="label">Name</label>
@@ -12,10 +12,11 @@ const {item, hasManage} = Astro.props;
             <select 
                 class="input w-full mt-1" 
                 :value={`$store.topics.item.platform_id`}
+                
                 @change=`
                     $store.topics.form.subject_id = 0;
                     $store.topics.onFormListChange('platform_id', Number($el.value)); 
-                    $store.topics.getSubjects($el.value || 0);
+                    $store.topics.form.subjects = await $store.topics.getSubjects($el.value || 0);
                 `>
                 <option value=""></option>
                 <template x-for={`i in $store.topics.form.platforms`}>
@@ -27,11 +28,11 @@ const {item, hasManage} = Astro.props;
             <label class="label">Subject</label>
             <select 
                 class="input w-full mt-1" 
-                :value={`$store.topics.item.subject_id`}
+                x-model={`$store.topics.item.subject_id`}
                 @change="$store.topics.onFormListChange('subject_id', $el.value)">
                 <option value=""></option>
                 <template x-for={`i in $store.topics.form.subjects`}>
-                    <option :value="i.id" x-text="i.name" :selected="i.id === $store.topics.item.subject_id"></option>
+                    <option :value="i.id" x-text="i.name"></option>
                 </template>
             </select>
         </div>

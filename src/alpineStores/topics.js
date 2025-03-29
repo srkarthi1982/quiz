@@ -18,7 +18,7 @@ class Topics extends StoreBase {
         this.column = { ...Topics.#list };
         this.form = { ...Topics.#list };
     }
-    onInit(location) {
+    async onInit(location) {
         const params = new URLSearchParams(location.search);
         const platformId = params.get('platformId') || 0;
         const subjectId = params.get('subjectId') || 0;
@@ -28,7 +28,7 @@ class Topics extends StoreBase {
         this.pagination = { ...this.defaultPagination };
         this.getData();
         this.getPlatforms();
-        this.getSubjects(platformId);
+        this.column.subjects = await this.getSubjects(platformId);
     }
     async getPlatforms() {
         const { data, error } = await actions.getResult({ schema: this.schema, table: 'platforms', fields: 'id, name', match: { is_active: true }, order: 'name' });
@@ -39,17 +39,21 @@ class Topics extends StoreBase {
     async getSubjects(platform_id) {
         const { data, error } = await actions.getResult({ schema: this.schema, table: 'subjects', fields: 'id, name', match: { is_active: true, platform_id }, order: 'name' });
         if (error) return;
-        this.column.subjects = data;
-        this.form.subjects = data;
+        return data;
     }
     async onSave() {
         Alpine.store("loader").show();
         const { id, name, is_active, platform_id, subject_id } = this.item;
         await this.closeDrawer(id, { name, is_active, platform_id, subject_id });
     }
-    onInsert() { this.openDrawer({ ...Topics.#item }) }
-    onEdit(item) { 
-        this.getSubjects(item.platform_id);
+    onInsert() { 
+        this.form.subjects = [];
+        this.item = { id: 0, name: '', platform_id: '', subject_id: '', is_active: true };
+        this.openDrawer({ ...Topics.#item }) 
+    }
+    async onEdit(item) { 
+        this.form.subjects = await this.getSubjects(item.platform_id);
+        this.item.subject_id = item.subject_id;
         this.openDrawer({ ...item });
     }
 }
