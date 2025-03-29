@@ -2,7 +2,7 @@ import Alpine from 'alpinejs';
 import { StoreBase } from './StoreBase';
 import { actions } from 'astro:actions';
 class Topics extends StoreBase {
-    static #item = { id: 0, name: '', platform_id: '', subject_id: '', is_active: true };
+    static #item = { id: 0, name: '', platform_id: 0, subject_id: 0, is_active: true };
     static #filters = { name: '', is_active: '', platform_id: '', subject_id: '' };
     static #sorting = { sort: 'name', order: true };
     static #columns = [
@@ -28,18 +28,15 @@ class Topics extends StoreBase {
         this.pagination = { ...this.defaultPagination };
         this.getData();
         this.getPlatforms();
-        this.column.subjects = await this.getSubjects(platformId);
     }
     async getPlatforms() {
-        const { data, error } = await actions.getResult({ schema: this.schema, table: 'platforms', fields: 'id, name', match: { is_active: true }, order: 'name' });
+        const { data, error } = await actions.getFunctions({ schema: this.schema, name: 'get_platforms_with_subjects', match: {} });
         if (error) return;
-        this.column.platforms = data;
-        this.form.platforms = data;
+        this.column = { platforms: data, subjects: [] };
+        this.form = { platforms: data, subjects: [] };
     }
-    async getSubjects(platform_id) {
-        const { data, error } = await actions.getResult({ schema: this.schema, table: 'subjects', fields: 'id, name', match: { is_active: true, platform_id }, order: 'name' });
-        if (error) return;
-        return data;
+    getSubjects() {
+        this.form.subjects = this.form.platforms.find(x => x.id === Number(this.item.platform_id)).subjects;
     }
     async onSave() {
         Alpine.store("loader").show();
@@ -48,13 +45,13 @@ class Topics extends StoreBase {
     }
     onInsert() { 
         this.form.subjects = [];
-        this.item = { id: 0, name: '', platform_id: '', subject_id: '', is_active: true };
+        this.item = { id: 0, name: '', platform_id: 0, subject_id: 0, is_active: true };
         this.openDrawer({ ...Topics.#item }) 
     }
-    async onEdit(item) { 
-        this.form.subjects = await this.getSubjects(item.platform_id);
-        this.item.subject_id = item.subject_id;
+    onEdit(item) { 
+        this.form.subjects = this.form.platforms.find(x => x.id === Number(item.platform_id)).subjects;
         this.openDrawer({ ...item });
+        this.item.subject_id = Number(item.subject_id);
     }
 }
 Alpine.store('topics', new Topics());

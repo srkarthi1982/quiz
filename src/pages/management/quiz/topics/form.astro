@@ -8,31 +8,20 @@ const {item, hasManage} = Astro.props;
             <input type="text" id="name" name="name" x-model="$store.topics.item.name" class="input w-full mt-1" placeholder="Type name" required>
         </div>
         <div>
-            <label class="label">Platform</label>
-            <select 
-                class="input w-full mt-1" 
-                :value={`$store.topics.item.platform_id`}
-                
-                @change=`
-                    $store.topics.form.subject_id = 0;
-                    $store.topics.onFormListChange('platform_id', Number($el.value)); 
-                    $store.topics.form.subjects = await $store.topics.getSubjects($el.value || 0);
-                `>
+            <label class="label">Platform</label>            
+            <select id="platform" x-model="$store.topics.item.platform_id" @change="$store.topics.getSubjects()" class="input w-full mt-1">
                 <option value=""></option>
-                <template x-for={`i in $store.topics.form.platforms`}>
+                <template x-for="i in $store.topics.form.platforms">
                     <option :value="i.id" x-text="i.name"></option>
                 </template>
             </select>
         </div>
         <div>
-            <label class="label">Subject</label>
-            <select 
-                class="input w-full mt-1" 
-                x-model={`$store.topics.item.subject_id`}
-                @change="$store.topics.onFormListChange('subject_id', $el.value)">
+            <label class="label">Subject</label>            
+            <select id="subject" class="input w-full mt-1" @change="$store.topics.onFormListChange('subject_id', Number($el.value))">
                 <option value=""></option>
-                <template x-for={`i in $store.topics.form.subjects`}>
-                    <option :value="i.id" x-text="i.name"></option>
+                <template x-for="i in $store.topics.form.subjects">
+                    <option :value="i.id" :selected="Number(i.id) === Number($store.topics.item.subject_id)" x-text="i.name"></option>
                 </template>
             </select>
         </div>
