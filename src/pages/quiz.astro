@@ -34,8 +34,46 @@ import LayoutFull from "../app/Layout.astro";
 ---
 
 <LayoutFull active="quiz">
-	<div>
-		<h1 class="text-2xl font-bold text-center mb-5">Quiz Time</h1>
+	<div x-data="{ step: 1, steps: ['Choose a Platform', 'Select your Subject', 'Select a Topic', 'Start with Roadmap', 'Quiz'] }" class="card flex flex-col items-center p-4">
+		<!-- Stepper -->
+		<ol class="flex items-center w-full max-w-md">
+			<template x-for="(label, index) in steps">
+				<li class="flex items-center w-full"
+					:class="step > index + 1 ? 'text-blue-600 after:border-blue-100' : 'text-gray-400 after:border-gray-200'">
+					<div class="flex items-center justify-center w-10 h-10 rounded-full lg:h-12 lg:w-12 shrink-0"
+						:class="step > index ? 'bg-blue-100' : 'bg-gray-200'">
+						<span x-text="index + 1"></span>
+					</div>
+					<div x-show="index !== steps.length - 1" class="w-full h-1 border-b border-4"
+						:class="step > index + 1 ? 'border-blue-100' : 'border-gray-200'">
+					</div>
+				</li>
+			</template>
+		</ol>
+	
+		<!-- Step Label -->
+		<h1 class="text-2xl font-bold text-center my-5" x-text="steps[step - 1]"></h1>
+	
+		<!-- Navigation Buttons -->
+		<div class="flex gap-4">
+			<button @click="step > 1 ? step-- : null"
+				class="px-4 py-2 bg-gray-300 text-gray-800 rounded disabled:opacity-50"
+				:disabled="step === 1">
+				Previous
+			</button>
+			<button @click="step < steps.length ? step++ : null"
+				class="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
+				:disabled="step === steps.length">
+				Next
+			</button>
+		</div>
+	</div>
+	
+	
+	
+	
+
+
 		<!-- <div class="space-y-6">
 			{
 				questions.qz.map((item: any, index: number) => (
@@ -66,5 +104,5 @@ import LayoutFull from "../app/Layout.astro";
 				))
 			}
 		</div> -->
-	</div>
+	
 </LayoutFull>
