@@ -1,0 +1,47 @@
+---
+const {item, hasManage} = Astro.props;
+---
+<form @submit.prevent="$store.roadmaps.onSave()">
+    <div class="flex flex-col gap-3">
+        <div>
+            <label for="name" class="label">Name</label>
+            <input type="text" id="name" name="name" x-model="$store.roadmaps.item.name" class="input w-full mt-1" placeholder="Type name" required>
+        </div>
+        <div>
+            <label class="label">Platform</label>            
+            <select id="platform" x-model="$store.roadmaps.item.platform_id" @change="$store.roadmaps.getSubjects()" class="input w-full mt-1">
+                <option value=""></option>
+                <template x-for="i in $store.roadmaps.form.platforms">
+                    <option :value="i.id" x-text="i.name"></option>
+                </template>
+            </select>
+        </div>
+        <div>
+            <label class="label">Subject</label>            
+            <select id="subject" class="input w-full mt-1" x-model="$store.roadmaps.item.subject_id" @change="$store.roadmaps.getTopics()">
+                <option value=""></option>
+                <template x-for="i in $store.roadmaps.form.subjects">
+                    <option :value="i.id" :selected="Number(i.id) === Number($store.roadmaps.item.subject_id)" x-text="i.name"></option>
+                </template>
+            </select>
+        </div>
+        <div>
+            <label class="label">Topics</label>            
+            <select id="topic" class="input w-full mt-1" @change="$store.roadmaps.onFormListChange('topic_id', Number($el.value))">
+                <option value=""></option>
+                <template x-for="i in $store.roadmaps.form.topics">
+                    <option :value="i.id" :selected="Number(i.id) === Number($store.roadmaps.item.topic_id)" x-text="i.name"></option>
+                </template>
+            </select>
+        </div>
+        <div class="flex flex-row gap-2 items-center">
+            <input id="is_active" name="is_active" x-model="$store.roadmaps.item.is_active" type="checkbox" class="checkbox" class="checkbox" />
+            <label for="is_active" class="text">Active</label>
+        </div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="flex flex-row justify-between gap-4">
+        <button type="button" @click="$store.roadmaps.showDrawer = false" class="btn-default">Cancel</button>
+        { hasManage && <button type="submit" class="btn-primary" x-text={`${item}.id ? 'Update' : 'Create'`}></button>}
+    </div>
+</form>

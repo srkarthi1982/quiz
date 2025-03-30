@@ -15,6 +15,7 @@ class Topics extends StoreBase {
     constructor() {
         super('public', 'Topics', 'Topic', 'vw_topics', 'topics', Topics.#item, Topics.#filters, Topics.#sorting, '*', Topics.#columns);
         this.publicColumns = Topics.#columns.filter(x => x.label === 'Name');
+        this.parents = { ...Topics.#list };
         this.column = { ...Topics.#list };
         this.form = { ...Topics.#list };
     }
@@ -30,13 +31,16 @@ class Topics extends StoreBase {
         this.getPlatforms();
     }
     async getPlatforms() {
-        const { data, error } = await actions.getFunctions({ schema: this.schema, name: 'get_platforms_with_subjects', match: {} });
+        const { data, error } = await actions.getFunctions({ schema: this.schema, name: 'get_platforms_with_subjects' });
         if (error) return;
-        this.column = { platforms: data, subjects: [] };
-        this.form = { platforms: data, subjects: [] };
+        const { platforms, subjects } = data;
+        this.parents = { platforms, subjects };
+
+        this.column = { platforms, subjects: [] };
+        this.form = { platforms, subjects: [] };
     }
     getSubjects() {
-        this.form.subjects = this.form.platforms.find(x => x.id === Number(this.item.platform_id)).subjects;
+        this.form.subjects = this.parents.subjects.filter(x => x.platform_id === Number(this.item.platform_id));
     }
     async onSave() {
         Alpine.store("loader").show();
@@ -49,7 +53,7 @@ class Topics extends StoreBase {
         this.openDrawer({ ...Topics.#item }) 
     }
     onEdit(item) { 
-        this.form.subjects = this.form.platforms.find(x => x.id === Number(item.platform_id)).subjects;
+        this.form.subjects = this.parents.subjects.filter(x => x.platform_id === Number(item.platform_id));
         this.openDrawer({ ...item });
         this.item.subject_id = Number(item.subject_id);
     }
