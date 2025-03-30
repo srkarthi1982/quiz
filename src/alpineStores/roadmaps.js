@@ -4,8 +4,9 @@ import { actions } from 'astro:actions';
 class Roadmaps extends StoreBase {
     static #item = { id: 0, name: '', platform_id: 0, subject_id: 0, topic_id: 0, is_active: true };
     static #filters = { name: '', is_active: '', platform_id: '', subject_id: '', topic_id: '' };
-    static #sorting = { sort: 'name', order: true };
+    static #sorting = { sort: 'id', order: true };
     static #columns = [
+        { label: 'Id', value: "id", operator: 'eq' },
         { label: 'Name', value: "name", operator: 'ilike' },
         { label: 'Platform', value: "platform_id", operator: 'eq' },
         { label: 'Subject', value: "subject_id", operator: 'eq' },
@@ -33,18 +34,28 @@ class Roadmaps extends StoreBase {
         this.getPlatforms();
     }
     async getPlatforms() {
-        const { data, error } = await actions.getFunctions({ schema: this.schema, name: 'get_platforms_with_subjects_and_topics' });
+        Alpine.store("loader").show();
+        const { data, error } = await actions.getResult({ schema: this.schema, table: 'platforms', fields: 'id, name', match: { is_active: true }, order: 'name' });
+        Alpine.store("loader").hide();
         if (error) return;
-        const { platforms, subjects, topics } = data;
-        this.parents = { platforms, subjects, topics };
-        this.column = { platforms, subjects: [], topics: [] };
-        this.form = { platforms, subjects: [], topics: [] };
+        this.column = { platforms: data, subjects: [], topics: [] };
+        this.form = { platforms: data, subjects: [], topics: [] };
     }
-    getSubjects() {
-        this.form.subjects = this.parents.subjects.filter(x => x.platform_id === Number(this.item.platform_id));
+    async getSubjects(platform_id) {
+        Alpine.store("loader").show();
+        const match = { platform_id, is_active: true };
+        const { data, error } = await actions.getResult({ schema: this.schema, table: 'subjects', fields: 'id, name', match, order: 'name' });
+        Alpine.store("loader").hide();
+        if (error) return;
+        return data;
     }
-    getTopics() {
-        this.form.topics = this.parents.topics.filter(x => x.subject_id === Number(this.item.subject_id));
+    async getTopics(subject_id) {
+        Alpine.store("loader").show();
+        const match = { subject_id, is_active: true };
+        const { data, error } = await actions.getResult({ schema: this.schema, table: 'topics', fields: 'id, name', match, order: 'name' });
+        Alpine.store("loader").hide();
+        if (error) return;
+        return data;
     }
     async onSave() {
         Alpine.store("loader").show();
@@ -57,17 +68,18 @@ class Roadmaps extends StoreBase {
         this.item = { id: 0, name: '', platform_id: 0, subject_id: 0, topic_id: 0, is_active: true };
         this.openDrawer({ ...Roadmaps.#item })
     }
-    onEdit(item) {
-        this.form.subjects = this.parents.subjects.filter(x => x.platform_id === Number(item.platform_id));
-        this.form.topics = this.parents.topics.filter(x => x.subject_id === Number(item.subject_id));
+    async onEdit(item) {
+        this.form.subjects = await this.getSubjects(Number(item.platform_id));
+        this.form.topics = await this.getTopics(Number(item.subject_id));
         this.openDrawer({ ...item });
         this.item.subject_id = Number(item.subject_id);
     }
     async onGenerateRoadmap() {
         Alpine.store("loader").show();
-        const platform = this.column.platforms.find(x => x.id === this.filters.platform_id);
-        const subject = this.column.subjects.find(x => x.id === this.filters.subject_id);
-        const topic = this.column.topics.find(x => x.id === this.filters.topic_id);
+        const { platform_id, subject_id, topic_id } = this.filters;
+        const platform = this.column.platforms.find(x => x.id === platform_id);
+        const subject = this.column.subjects.find(x => x.id === subject_id);
+        const topic = this.column.topics.find(x => x.id === topic_id);
         const { data, error } = await actions.generateRoadmap({ platform, subject, topic });
         Alpine.store("loader").hide();
         if (error) {

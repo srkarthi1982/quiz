@@ -9,7 +9,7 @@ const {item, hasManage} = Astro.props;
         </div>
         <div>
             <label class="label">Platform</label>            
-            <select id="platform" x-model="$store.topics.item.platform_id" @change="$store.topics.getSubjects()" class="input w-full mt-1">
+            <select id="platform" x-model="$store.topics.item.platform_id" @change=`$store.topics.form.subjects = await $store.topics.getSubjects(Number($el.value));` class="input w-full mt-1">
                 <option value=""></option>
                 <template x-for="i in $store.topics.form.platforms">
                     <option :value="i.id" x-text="i.name"></option>

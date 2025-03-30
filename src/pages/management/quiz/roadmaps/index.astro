@@ -17,7 +17,7 @@ const hasManage = locals?.accessCodes?.includes('001.02.04.01');
 			<Sorting storeName="roadmaps" columns="columns" />
 			<button class="btn-icon white lg" @click="$store.roadmaps.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
 			<button x-show={`${hasManage}`} class="btn-icon active lg" @click="$store.roadmaps.onInsert()"><i class="fas fa-plus"></i></button>
-			<button x-show={`${hasManage}`} class="btn-default lg" @click="$store.roadmaps.onGenerateRoadmap()" :disabled="$store.roadmaps.total > 0">Generate Roadmap (AI)</button>
+			<button title="Generate Roadmap using AI" x-show={`${hasManage}`} class="btn-default lg" @click="$store.roadmaps.onGenerateRoadmap()" :disabled="$store.roadmaps.total > 0">AI</button>
 		</div>
 	</Breadcrumb>
 	<div class="table-responsive paper">
@@ -25,10 +25,10 @@ const hasManage = locals?.accessCodes?.includes('001.02.04.01');
 			<thead>
 				<tr>
 					<th x-show={`${hasManage}`}></th>
-					<th>Name</th>
-					<th>Platforms</th>
-					<th>Subjects</th>
-					<th>Topics</th>
+					<th class="w-full">Name</th>
+					<th class="min-w-44">Platforms</th>
+					<th class="min-w-60">Subjects</th>
+					<th class="min-w-60">Topics</th>
 					<th class="text-center">Active</th>
 				</tr>
 				<tr>
@@ -42,7 +42,7 @@ const hasManage = locals?.accessCodes?.includes('001.02.04.01');
 								$store.roadmaps.filters.subject_id = 0;
 								$store.roadmaps.filters.topic_id = 0;
 								$store.roadmaps.onColumnListChange('platform_id', Number($el.value)); 
-								$store.roadmaps.column.subjects = $store.roadmaps.parents.subjects.filter(x => x.platform_id === Number($el.value));
+								$store.roadmaps.column.subjects = await $store.roadmaps.getSubjects(Number($el.value));
 							`>
 							<option value="">All</option>
 							<template x-for={`i in $store.roadmaps.column.platforms`}>
@@ -57,7 +57,7 @@ const hasManage = locals?.accessCodes?.includes('001.02.04.01');
 							@change=`
 								$store.roadmaps.filters.topic_id = 0;
 								$store.roadmaps.onColumnListChange('subject_id', Number($el.value)); 
-								$store.roadmaps.column.topics = $store.roadmaps.parents.topics.filter(x => x.subject_id === Number($el.value));
+								$store.roadmaps.column.topics = await $store.roadmaps.getTopics(Number($el.value));
 							`>
 							<option value="">All</option>
 							<template x-for={`i in $store.roadmaps.column.subjects`}>

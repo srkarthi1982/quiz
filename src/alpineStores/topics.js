@@ -31,16 +31,20 @@ class Topics extends StoreBase {
         this.getPlatforms();
     }
     async getPlatforms() {
-        const { data, error } = await actions.getFunctions({ schema: this.schema, name: 'get_platforms_with_subjects' });
+        Alpine.store("loader").show();
+        const { data, error } = await actions.getResult({ schema: this.schema, table: 'platforms', fields: 'id, name', match: { is_active: true }, order: 'name' });
+        Alpine.store("loader").hide();
         if (error) return;
-        const { platforms, subjects } = data;
-        this.parents = { platforms, subjects };
-
-        this.column = { platforms, subjects: [] };
-        this.form = { platforms, subjects: [] };
+        this.column = { platforms: data, subjects: [] };
+        this.form = { platforms: data, subjects: [] };
     }
-    getSubjects() {
-        this.form.subjects = this.parents.subjects.filter(x => x.platform_id === Number(this.item.platform_id));
+    async getSubjects(platform_id) {
+        Alpine.store("loader").show();
+        const match = { platform_id, is_active: true };
+        const { data, error } = await actions.getResult({ schema: this.schema, table: 'subjects', fields: 'id, name', match, order: 'name' });
+        Alpine.store("loader").hide();
+        if (error) return;
+        return data;
     }
     async onSave() {
         Alpine.store("loader").show();
@@ -52,8 +56,8 @@ class Topics extends StoreBase {
         this.item = { id: 0, name: '', platform_id: 0, subject_id: 0, is_active: true };
         this.openDrawer({ ...Topics.#item }) 
     }
-    onEdit(item) { 
-        this.form.subjects = this.parents.subjects.filter(x => x.platform_id === Number(item.platform_id));
+    async onEdit(item) { 
+        this.form.subjects = await this.getSubjects(Number(item.platform_id));
         this.openDrawer({ ...item });
         this.item.subject_id = Number(item.subject_id);
     }

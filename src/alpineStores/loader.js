@@ -1,13 +1,19 @@
 import Alpine from 'alpinejs';
 class Loader {
     constructor() {
-        this.visible = false;
+        this.count = 0;
     }
     show() {
-        this.visible = true;
+        this.count++;
     }
     hide() {
-        this.visible = false;
+        if (this.count > 0) {
+            this.count--;
+        }
+    }
+    get visible() {
+        return this.count > 0;
     }
 }
 Alpine.store('loader', new Loader());
+

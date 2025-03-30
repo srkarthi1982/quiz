@@ -26,7 +26,7 @@ const hasManage = locals?.accessCodes?.includes('001.02.03.01');
 					<th x-show={`${hasManage}`}></th>
 					<th class="w-full">Name</th>
 					<th class="min-w-44">Platforms</th>
-					<th class="min-w-96">Subjects</th>
+					<th class="min-w-60">Subjects</th>
 					<th class="text-center">Active</th>
 				</tr>
 				<tr>
@@ -39,7 +39,7 @@ const hasManage = locals?.accessCodes?.includes('001.02.03.01');
 							@change=`
 								$store.topics.filters.subject_id = 0;
 								$store.topics.onColumnListChange('platform_id', Number($el.value)); 
-								$store.topics.column.subjects = $store.topics.parents.subjects.filter(x => x.platform_id === Number($el.value));
+								$store.topics.column.subjects = await $store.topics.getSubjects(Number($el.value));
 							`>
 							<option value="">All</option>
 							<template x-for={`i in $store.topics.column.platforms`}>

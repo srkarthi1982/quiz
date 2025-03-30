@@ -9,7 +9,7 @@ const {item, hasManage} = Astro.props;
         </div>
         <div>
             <label class="label">Platform</label>            
-            <select id="platform" x-model="$store.roadmaps.item.platform_id" @change="$store.roadmaps.getSubjects()" class="input w-full mt-1">
+            <select id="platform" x-model="$store.roadmaps.item.platform_id" @change=`$store.roadmaps.form.subjects = await $store.roadmaps.getSubjects(Number($el.value));` class="input w-full mt-1">
                 <option value=""></option>
                 <template x-for="i in $store.roadmaps.form.platforms">
                     <option :value="i.id" x-text="i.name"></option>
@@ -18,7 +18,10 @@ const {item, hasManage} = Astro.props;
         </div>
         <div>
             <label class="label">Subject</label>            
-            <select id="subject" class="input w-full mt-1" x-model="$store.roadmaps.item.subject_id" @change="$store.roadmaps.getTopics()">
+            <select id="subject" class="input w-full mt-1" x-model="$store.roadmaps.item.subject_id" 
+                @change=`
+                $store.roadmaps.onFormListChange('subject_id', Number($el.value));
+                $store.roadmaps.form.topics = await $store.roadmaps.getTopics(Number($el.value));`>
                 <option value=""></option>
                 <template x-for="i in $store.roadmaps.form.subjects">
                     <option :value="i.id" :selected="Number(i.id) === Number($store.roadmaps.item.subject_id)" x-text="i.name"></option>
