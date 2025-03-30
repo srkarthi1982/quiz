@@ -39,7 +39,7 @@ import LayoutFull from "../app/Layout.astro";
 		<ol class="flex items-center w-full max-w-md">
 			<template x-for="(label, index) in steps">
 				<li class="flex items-center w-full"
-					:class="step > index + 1 ? 'text-blue-600 after:border-blue-100' : 'text-gray-400 after:border-gray-200'">
+					:class="step > index + 1 ? 'text-blue-600 after:border-blue-100' : 'text-gray-500 after:border-gray-300'">
 					<div class="flex items-center justify-center w-10 h-10 rounded-full lg:h-12 lg:w-12 shrink-0"
 						:class="step > index ? 'bg-blue-100' : 'bg-gray-200'">
 						<span x-text="index + 1"></span>
