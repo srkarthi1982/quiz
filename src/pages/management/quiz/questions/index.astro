@@ -2,11 +2,9 @@
 import LayoutSidebar from '../../../../app/LayoutFull.astro';
 import Drawer from "../../../../component/Drawer.astro";
 import Pagination from "../../../../component/Pagination.astro";
-import Sorting from "../../../../component/Sorting.astro";
 import Breadcrumb from '../../../../component/Breadcrumb.astro';
 import ActionButton from '../../../../component/ActionButton.astro';
 import FilterCheckbox from "../../../../component/FilterCheckbox.astro";
-import FilterSearch from '../../../../component/FilterSearch.astro';
 import Form from "./form.astro";
 const locals = Astro.locals;
 const hasManage = locals?.accessCodes?.includes('001.02.05.01');
@@ -14,7 +12,6 @@ const hasManage = locals?.accessCodes?.includes('001.02.05.01');
 <LayoutSidebar active="questions">
 	<Breadcrumb list={[{ name: "Management", link: "management" },{ name: "Questions", link: "" }]}>
 		<div class="flex flex-row gap-3">
-			<Sorting storeName="questions" columns="columns" />
 			<button class="btn-icon white lg" @click="$store.questions.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
 			<button x-show={`${hasManage}`} class="btn-icon active lg" @click="$store.questions.onInsert()"><i class="fas fa-plus"></i></button>
 			<button title="Generate Roadmap using AI" x-show={`${hasManage}`} class="btn-default lg" @click="$store.questions.onGenerateQuestions()" :disabled="$store.questions.total > 0">AI</button>
@@ -29,6 +26,7 @@ const hasManage = locals?.accessCodes?.includes('001.02.05.01');
 					<th>Topic</th>
 					<th>Roadmap</th>
 					<th>Level</th>
+					<th class="w-14 text-center">Active</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -102,6 +100,9 @@ const hasManage = locals?.accessCodes?.includes('001.02.05.01');
 								</template>
 							</select>
 						</td>
+						<td>
+							<FilterCheckbox storeName="questions" column="is_active"/>
+						</td>
 					</tr> 
 				</template>
 			</tbody>
@@ -122,7 +123,7 @@ const hasManage = locals?.accessCodes?.includes('001.02.05.01');
 					<th class="min-w-20">level</th>
 					<th class="text-center">Active</th>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<th x-show={`${hasManage}`}></th>
 					<th><FilterSearch storeName="questions" ref="searchName" method="search" column="name" placeholder="Name"/></th>
 					<th></th>
@@ -132,8 +133,8 @@ const hasManage = locals?.accessCodes?.includes('001.02.05.01');
 					<th></th>
 					<th></th>
 					<th></th>
-					<th><FilterCheckbox storeName="questions" column="is_active"/></th>
-				</tr>
+					<th></th>
+				</tr> -->
 			</thead>
 			<tbody x-show="$store.questions.items.length > 0">
 				<template x-for="r in $store.questions.items" :key="r.id">
