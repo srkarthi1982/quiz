@@ -1,0 +1,171 @@
+---
+import LayoutSidebar from '../../../../app/LayoutFull.astro';
+import Drawer from "../../../../component/Drawer.astro";
+import Pagination from "../../../../component/Pagination.astro";
+import Sorting from "../../../../component/Sorting.astro";
+import Breadcrumb from '../../../../component/Breadcrumb.astro';
+import ActionButton from '../../../../component/ActionButton.astro';
+import FilterCheckbox from "../../../../component/FilterCheckbox.astro";
+import FilterSearch from '../../../../component/FilterSearch.astro';
+import Form from "./form.astro";
+const locals = Astro.locals;
+const hasManage = locals?.accessCodes?.includes('001.02.05.01');
+---
+<LayoutSidebar active="questions">
+	<Breadcrumb list={[{ name: "Management", link: "management" },{ name: "Questions", link: "" }]}>
+		<div class="flex flex-row gap-3">
+			<Sorting storeName="questions" columns="columns" />
+			<button class="btn-icon white lg" @click="$store.questions.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
+			<button x-show={`${hasManage}`} class="btn-icon active lg" @click="$store.questions.onInsert()"><i class="fas fa-plus"></i></button>
+			<button title="Generate Roadmap using AI" x-show={`${hasManage}`} class="btn-default lg" @click="$store.questions.onGenerateQuestions()" :disabled="$store.questions.total > 0">AI</button>
+		</div>
+	</Breadcrumb>
+	<div class="table-responsive paper">
+		<table class="table border strip">
+			<thead>
+				<tr>
+					<th>Platform</th>
+					<th>Subject</th>
+					<th>Topic</th>
+					<th>Roadmap</th>
+					<th>Level</th>
+				</tr>
+			</thead>
+			<tbody>
+				<template x-for="r in $store.quiz.items" :key="r.id">
+					<tr>
+						<td>
+							<select 
+								class="input w-full" 
+								x-model=`$store.questions.filters.platform_id`
+								@change=`
+									$store.questions.filters.subject_id = 0;
+									$store.questions.filters.topic_id = 0;
+									$store.questions.onColumnListChange('platform_id', Number($el.value)); 
+									$store.questions.column.subjects = await $store.questions.getSubjects(Number($el.value));
+								`>
+								<option value="">All</option>
+								<template x-for={`i in $store.questions.column.platforms`}>
+									<option :value="i.id" x-text="i.name"></option>
+								</template>
+							</select>
+						</td>
+						<td>
+							<select 
+								class="input w-full" 
+								x-model=`$store.questions.filters.subject_id`
+								@change=`
+									$store.questions.filters.topic_id = 0;
+									$store.questions.onColumnListChange('subject_id', Number($el.value)); 
+									$store.questions.column.topics = await $store.questions.getTopics(Number($el.value));
+								`>
+								<option value="">All</option>
+								<template x-for={`i in $store.questions.column.subjects`}>
+									<option :value="i.id" x-text="i.name"></option>
+								</template>
+							</select>
+						</td>
+						<td>
+							<select 
+								class="input w-full" 
+								x-model=`$store.questions.filters.topic_id`
+								@change=`
+									$store.questions.filters.roadmap_id = 0;
+									$store.questions.onColumnListChange('topic_id', Number($el.value)); 
+									$store.questions.column.roadmaps = await $store.questions.getRoadmaps(Number($el.value));
+								`>
+								<option value="">All</option>
+								<template x-for={`i in $store.questions.column.topics`}>
+									<option :value="i.id" x-text="i.name"></option>
+								</template>
+							</select>
+						</td>
+						<td>
+							<select 
+								class="input w-full" 
+								x-model=`$store.questions.filters.roadmap_id`
+								@change=`$store.questions.onColumnListChange('roadmap_id', Number($el.value))`>
+								<option value="">All</option>
+								<template x-for={`i in $store.questions.column.roadmaps`}>
+									<option :value="i.id" x-text="i.name"></option>
+								</template>
+							</select>
+						</td>
+						<td>
+							<select 
+								class="input w-full" 
+								x-model=`$store.questions.filters.l`
+								@change=`$store.questions.onColumnListChange('l', $el.value)`>
+								<option value="">All</option>
+								<template x-for={`i in $store.questions.column.levels`}>
+									<option :value="i.id" x-text="i.name"></option>
+								</template>
+							</select>
+						</td>
+					</tr> 
+				</template>
+			</tbody>
+		</table>
+	</div>
+	<div class="table-responsive paper">
+		<table class="table border strip">
+			<thead>
+				<tr>
+					<th x-show={`${hasManage}`}></th>
+					<th class="w-full">Questions</th>
+					<th class="min-w-44">A</th>
+					<th class="min-w-44">B</th>
+					<th class="min-w-44">C</th>
+					<th class="min-w-44">D</th>
+					<th class="min-w-44">Answer</th>
+					<th class="min-w-60">Explanation</th>
+					<th class="min-w-20">level</th>
+					<th class="text-center">Active</th>
+				</tr>
+				<tr>
+					<th x-show={`${hasManage}`}></th>
+					<th><FilterSearch storeName="questions" ref="searchName" method="search" column="name" placeholder="Name"/></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th><FilterCheckbox storeName="questions" column="is_active"/></th>
+				</tr>
+			</thead>
+			<tbody x-show="$store.questions.items.length > 0">
+				<template x-for="r in $store.questions.items" :key="r.id">
+					<tr>
+						<td x-show={`${hasManage}`} class="flex justify-center">
+							<ActionButton position="bottom" show={`r.showAction`} 
+								actions={[
+									{ label: 'Edit', click: `$store.questions.onEdit(r)`, show: hasManage },
+									{ label: 'Delete', click: `$store.questions.onDelete(r)`, show: hasManage },
+									{ label: 'Copy ID', click: `$store.questions.copyId(r.id)`, show: hasManage }
+								]} 
+							/>
+						</td>						
+						<td x-text="r.q"></td>
+						<td x-text="r.o[0]"></td>
+						<td x-text="r.o[1]"></td>
+						<td x-text="r.o[2]"></td>
+						<td x-text="r.o[3]"></td>
+						<td x-text="r.o[r.a]"></td>
+						<td x-text="r.e"></td>
+						<td x-text="r.l"></td>						
+						<td class="text-center">
+							<i :class="`fas ${r.is_active ? 'fa-check text-green-500' : 'fa-times text-red-500'}`"></i>
+						</td>
+					</tr> 
+				</template>    
+			</tbody>
+		</table>
+	</div>
+	<div class="spacer"></div>
+	<Pagination storeName="questions" />
+	<Drawer item="$store.questions.item" title="Subject" showDrawer="$store.questions.showDrawer">
+		<Form item="$store.questions.item" hasManage={hasManage} />
+	</Drawer>
+</LayoutSidebar>

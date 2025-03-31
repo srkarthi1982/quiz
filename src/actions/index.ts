@@ -112,7 +112,6 @@ export const server = {
         await supabase.schema(schema).from(table).update(params).eq("id", id) :
         await supabase.schema(schema).from(table).insert(params);
       if (error !== null) {
-        console.log('error', error)
         if (error.code === '23505') throw new ActionError({ code: 'CONFLICT', message: `${title}: '${params.name}' already exists.` });
         else throw new ActionError({ code: 'BAD_REQUEST', message: error.message });
       }
@@ -130,26 +129,59 @@ export const server = {
   }),
   generateQuestion: defineAction({
     handler: async ({ numQuestions, platform, subject, topic, roadmap, level }) => {
-      const result = await streamObject({
+      // Stream AI-generated questions
+      const res = await streamObject({
         model: openai("gpt-4o-mini"),
-        system: "You are a subject matter expert generating accurate multiple-choice questions with correct answers and explanations.",
-        prompt: `Generate ${numQuestions} multiple-choice questions for the subject '${subject}' under the platform '${platform}' for the topic '${topic}' based on the roadmap section '${roadmap}'. 
-                 The difficulty level should be '${level}' (E = Easy, M = Medium, D = Difficult).
-                 Each question should have four answer choices, one correct answer (as an **index** from 0 to 3), and a detailed explanation within 10 to 12 words.`,
+        system: "You are a subject matter expert generating multiple-choice questions.",
+        prompt: `Generate ${numQuestions} multiple-choice questions for the subject '${subject.name}' under the platform '${platform.name}' for the topic '${topic.name}' based on the roadmap section '${roadmap.name}'. 
+                 The difficulty level should be '${level.id}' (E = Easy, M = Medium, D = Difficult).
+                 Each question should have four answer choices, one correct answer (as an **index** from 0 to 3), and a short explanation.`,
         schema: z.object({
           qz: z.array(
             z.object({
               q: z.string(), // question
               o: z.array(z.string()).length(4), // options
-              a: z.number().min(0).max(3), // correct_answer (index)
+              a: z.number().min(0).max(3), // correct answer index
               e: z.string(), // explanation
-            }),
+            })
           ),
         }),
         temperature: 0.3,
       });
-      return result.toTextStreamResponse();
-    }
+      const response = res.toTextStreamResponse();
+      let questions = [];
+      const reader = response?.body?.getReader();
+      const decoder = new TextDecoder();
+      let result = "";
+      if (reader) {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          result += decoder.decode(value, { stream: true });
+          try {
+            questions = JSON.parse(result);
+          } catch (e) { }
+        }
+      }
+      const params = questions.qz.map((qItem: any) => ({
+        platform_id: platform.id,
+        subject_id: subject.id,
+        topic_id: topic.id,
+        roadmap_id: roadmap.id,
+        q: qItem.q,
+        o: qItem.o,
+        a: qItem.a,
+        e: qItem.e,
+        l: level.id,
+        is_active: true,
+      }));
+     // Insert into Supabase
+      const { error } = await supabase.from("questions").insert(params);
+      if (error) {
+        throw new Error(`Database insert failed: ${error.message}`);
+      }
+      return { success: true };
+    },
   }),
   generateRoadmap: defineAction({
     handler: async ({ platform, subject, topic }) => {
@@ -174,6 +206,6 @@ export const server = {
       await supabase.schema("public").from("roadmaps").insert(roadmaps);
       return true;
     }
-})
+  })
 
 }

@@ -8,6 +8,7 @@ import './platforms';
 import './subjects';
 import './topics';
 import './roadmaps';
+import './questions';
 import './quiz';
 import './users';
 import './roles';
