@@ -116,7 +116,7 @@ const hasManage = locals?.accessCodes?.includes('001.02.05.01');
 				<template x-for="r in $store.questions.items" :key="r.id">
 					<tr>
 						<td x-show={`${hasManage}`} class="flex justify-center">
-							<ActionButton position="bottom" show={`r.showAction`} 
+							<ActionButton position="top" show={`r.showAction`} 
 								actions={[
 									{ label: 'Edit', click: `$store.questions.onEdit(r)`, show: hasManage },
 									{ label: 'Delete', click: `$store.questions.onDelete(r)`, show: hasManage },
