@@ -85,7 +85,7 @@ class Questions extends StoreBase {
     async onGenerateQuestions() {
         Alpine.store("loader").show();
         const { platform_id, subject_id, topic_id, roadmap_id, l } = this.filters;
-        const numQuestions = 50;
+        const numQuestions = 1;
         const platform = this.column.platforms.find(x => x.id === platform_id);
         const subject = this.column.subjects.find(x => x.id === subject_id);
         const topic = this.column.topics.find(x => x.id === topic_id);
@@ -94,6 +94,7 @@ class Questions extends StoreBase {
         const { data, error } = await actions.generateQuestion({ numQuestions, platform, subject, topic, roadmap, level });
         Alpine.store("loader").hide();
         if (error) {
+            alert(JSON.stringify(error));
             Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
             return;
         }
