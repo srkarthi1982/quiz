@@ -16,8 +16,12 @@ const hasManage = locals?.accessCodes?.includes('001.02.04.01');
 		<div class="flex flex-row gap-3">
 			<Sorting storeName="roadmaps" columns="columns" />
 			<button class="btn-icon white lg" @click="$store.roadmaps.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
-			<button x-show={`${hasManage}`} class="btn-icon active lg" @click="$store.roadmaps.onInsert()"><i class="fas fa-plus"></i></button>
-			<button title="Generate Roadmap using AI" x-show={`${hasManage}`} class="btn-default lg" @click="$store.roadmaps.onGenerateRoadmap()" :disabled="$store.roadmaps.total > 0">AI</button>
+			<button x-show={`${hasManage}`} class="btn-icon active lg" @click="$store.roadmaps.onInsert()">
+				<i class="fas fa-plus"></i>
+			</button>
+			<button title="Generate Roadmap using AI" x-show={`${hasManage}`} class="btn-default lg" @click="$store.roadmaps.onGenerateRoadmap()" :disabled="$store.roadmaps.total > 0">
+				<i class="fa-solid fa-robot"></i>
+			</button>
 		</div>
 	</Breadcrumb>
 	<div class="table-responsive paper">

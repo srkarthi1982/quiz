@@ -2,7 +2,14 @@ import Alpine from 'alpinejs';
 import { actions } from 'astro:actions';
 class Quiz {
     static #selection = { platform_id: 0, subject_id: 0, topic_id: 0, roadmap_id: 0, level_id: '' };
-    static #list = { platforms: [], subjects: [], topics: [], roadmaps: [], levels: [{ id: 'E', name: 'Easy', icon: 'fa-smile' }, { id: 'M', name: 'Medium', icon: 'fa-meh'  }, { id: 'D', name: 'Difficult', icon: 'fa-frown'  }] };
+    static #list = { 
+        platforms: [], 
+        subjects: [], 
+        topics: [], 
+        roadmaps: [], 
+        levels: [{ id: 'E', name: 'Easy', icon: 'fa-smile' }, { id: 'M', name: 'Medium', icon: 'fa-meh'  }, { id: 'D', name: 'Difficult', icon: 'fa-frown'  }],
+        questions: [] 
+    };
     constructor() {
         this.list = { ...Quiz.#list };
         this.selection = { ...Quiz.#selection };
@@ -41,6 +48,15 @@ class Quiz {
         Alpine.store("loader").hide();
         if (error) return;
         this.list.roadmaps = data;
+    }
+    async getQuestions(){
+        Alpine.store("loader").show();
+        const { platform_id, subject_id, topic_id, roadmap_id, level_id } = this.selection;
+        const match = { pid: platform_id, sid: subject_id, tid: topic_id, rid: roadmap_id, level: level_id };
+        const { data, error } = await actions.getFunctions({ schema: this.schema, name: 'get_random_questions', match });
+        Alpine.store("loader").hide();
+        if (error) return;
+        this.list.questions = data;
     }
     get items() {
         return [
