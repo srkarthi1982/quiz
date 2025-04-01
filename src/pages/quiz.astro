@@ -120,7 +120,7 @@ import LayoutFull from "../app/Layout.astro";
 								<li>
 									<label class="flex items-center space-x-2 ps-4 border border-gray-200 rounded-sm cursor-pointer">
 										<input type="radio" :name="`question-${index}`" :value="optionIndex" x-model="answers[index]" class="w-4 h-4 text-blue-600 border-gray-300">
-										<span class="w-full py-2 ms-2 font-medium text-gray-900" x-text="option"></span>
+										<span class="w-full py-2 ms-2 text-gray-900" x-text="option"></span>
 									</label>
 								</li>
 							</template>
@@ -141,7 +141,7 @@ import LayoutFull from "../app/Layout.astro";
 					<button 
 						x-show="currentQuestion + 1 < $store.quiz.list.questions.length"
 						@click="if(answers[currentQuestion] !== undefined) currentQuestion++"
-						class="px-4 py-2 bg-blue-600 text-white rounded"
+						class="px-4 py-2 bg-gray-300 text-gray-700 rounded"
 						:class="answers[currentQuestion] === undefined ? 'opacity-50 cursor-not-allowed' : ''">
 						<i class="fas fa-arrow-right"></i>
 					</button>
