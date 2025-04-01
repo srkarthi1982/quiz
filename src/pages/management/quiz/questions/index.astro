@@ -13,24 +13,27 @@ const hasManage = locals?.accessCodes?.includes('001.02.05.01');
 	<Breadcrumb list={[{ name: "Management", link: "management" },{ name: "Questions", link: "" }]}>
 		<div class="flex flex-row gap-3">
 			<button class="btn-icon white lg" @click="$store.questions.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
-			<button x-show={`${hasManage}`} class="btn-icon active lg" @click="$store.questions.onInsert()"><i class="fas fa-plus"></i></button>
-			<button title="Generate Roadmap using AI" x-show={`${hasManage}`} class="btn-default lg" @click="$store.questions.onGenerateQuestions()" :disabled="$store.questions.total > 0">AI</button>
+			<button x-show={`${hasManage}`} class="btn-icon active lg" @click="$store.questions.onInsert()">
+				<i class="fas fa-plus"></i>
+			</button>
+			<button class="btn-icon white lg" title="Generate Questions using AI" x-show={`${hasManage}`} @click="$store.questions.onGenerateQuestions()" :disabled="$store.questions.total > 0">
+				<i class="fa-solid fa-robot"></i>
+			</button>
 		</div>
 	</Breadcrumb>
-	<div class="table-responsive paper">
-		<table class="table border strip">
+	<div class="table-responsive paper mb-2">
+		<table class="table">
 			<thead>
 				<tr>
-					<th>Platform</th>
-					<th>Subject</th>
-					<th>Topic</th>
-					<th>Roadmap</th>
-					<th>Level</th>
+					<th class="min-w-48">Platform</th>
+					<th class="min-w-60">Subject</th>
+					<th class="min-w-60">Topic</th>
+					<th class="min-w-60">Roadmap</th>
+					<th class="min-w-28">Level</th>
 					<th class="w-14 text-center">Active</th>
 				</tr>
 			</thead>
 			<tbody>
-				<template x-for="r in $store.quiz.items" :key="r.id">
 					<tr>
 						<td>
 							<select 
@@ -104,24 +107,11 @@ const hasManage = locals?.accessCodes?.includes('001.02.05.01');
 							<FilterCheckbox storeName="questions" column="is_active"/>
 						</td>
 					</tr> 
-				</template>
 			</tbody>
 		</table>
 	</div>
 	<div class="table-responsive paper">
-		<table class="table border strip">
-			<thead>
-				<tr>
-					<th x-show={`${hasManage}`}></th>
-					<th class="w-full">Questions</th>
-					<th class="min-w-44">A</th>
-					<th class="min-w-44">B</th>
-					<th class="min-w-44">C</th>
-					<th class="min-w-44">D</th>
-					<th class="min-w-44">Answer</th>
-					<th class="min-w-60">Explanation</th>
-				</tr>
-			</thead>
+		<table class="table strip">
 			<tbody x-show="$store.questions.items.length > 0">
 				<template x-for="r in $store.questions.items" :key="r.id">
 					<tr>
@@ -134,13 +124,18 @@ const hasManage = locals?.accessCodes?.includes('001.02.05.01');
 								]} 
 							/>
 						</td>						
-						<td x-text="r.q"></td>
-						<td x-text="r.o[0]"></td>
-						<td x-text="r.o[1]"></td>
-						<td x-text="r.o[2]"></td>
-						<td x-text="r.o[3]"></td>
-						<td x-text="r.o[r.a]"></td>
-						<td x-text="r.e"></td>
+						<td class="w-full">
+							<p class="mb-2 text-lg font-semibold text-gray-900" x-text="r.q"></p>
+							<ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside">
+								<template x-for="(option, index) in r.o">
+									<li x-text="option" :class="index === r.a ? 'font-bold text-green-600' : ''"></li>
+								</template>
+							</ol>
+							<div class="mt-2">
+								<b>Explanation:</b>
+								<i class=" text-pretty" x-text="r.e"></i>
+							</div>
+						</td>
 					</tr> 
 				</template>    
 			</tbody>

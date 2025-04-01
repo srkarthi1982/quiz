@@ -25,7 +25,7 @@ class Questions extends StoreBase {
     async onInit() {
         this.filters = { ...Questions.#filters };
         this.sorting = { ...Questions.#sorting };
-        this.pagination = { ...this.defaultPagination };
+        this.pagination = { ...this.defaultPagination, take: 5 };
         this.getData();
         this.getPlatforms();
     }
