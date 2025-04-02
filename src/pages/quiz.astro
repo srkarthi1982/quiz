@@ -23,15 +23,17 @@ import LayoutFull from "../app/Layout.astro";
 		<!-- Step Label -->
 		<h1 class="text-xl font-bold text-center my-5" x-text="['Choose a Platform', 'Select your Subject', 'Select a Topic', 'Roadmaps', 'Levels', 'Start the Quiz'][step - 1]"></h1>
 		<!-- Step 1: Select Platform -->
-		<div x-show="step === 1" class="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg">
-			<template x-for="platform in $store.quiz.list.platforms" :key="platform.id">
-				<button @click="$store.quiz.selection.platform_id = platform.id; $store.quiz.getSubjects(platform.id); step = 2;"
-					class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer text-left"
-					:class="$store.quiz.selection.platform_id === platform.id ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100 hover:text-blue-700'">
-					<i :class="`fas ${platform.icon} text-lg text-gray-600`"></i>
-					<span class="ml-2" x-text="platform.name"></span>
-				</button>
-			</template>
+		<div x-show="step === 1" class="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+				<template x-for="platform in $store.quiz.list.platforms" :key="platform.id">
+					<button @click="$store.quiz.selection.platform_id = platform.id; $store.quiz.getSubjects(platform.id); step = 2;"
+						class="flex items-center px-4 py-2 border border-gray-200 rounded-lg cursor-pointer text-left"
+						:class="$store.quiz.selection.platform_id === platform.id ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100 hover:text-blue-700'">
+						<i :class="`fas ${platform.icon} text-lg text-gray-600`"></i>
+						<span class="ml-2" x-text="platform.name"></span>
+					</button>
+				</template>
+			</div>
 		</div>
 		<!-- Step 2: Select Subject -->
 		<div x-show="step === 2" class="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg">
@@ -109,15 +111,15 @@ import LayoutFull from "../app/Layout.astro";
 				<!-- Quiz Questions -->
 				<template x-for="(r, index) in $store.quiz.list.questions" :key="r.id">
 					<div x-show="$store.quiz.currentQuestion === index">
-						<h3 class="font-bold mb-2">
+						<h4 class="font-bold mb-2">
 							<span x-text="`${index + 1}. `"></span><span x-text="r.q"></span>
-						</h3>
+						</h4>
 						<ul class="space-y-2">
 							<template x-for="(option, optionIndex) in r.o">
 								<li>
 									<label class="flex items-center space-x-2 ps-4 border border-gray-200 rounded-sm cursor-pointer">
 										<input type="radio" :name="`question-${index}`" :value="optionIndex" x-model="$store.quiz.answers[index]" class="w-4 h-4 text-blue-600 border-gray-300">
-										<span class="w-full text-sm py-2 ms-2 text-gray-900" x-text="option"></span>
+										<span class="w-full text-lg py-2 ms-2 text-gray-900" x-text="option"></span>
 									</label>
 								</li>
 							</template>
