@@ -81,46 +81,43 @@ import LayoutFull from "../app/Layout.astro";
 		<div x-show="step === 6" class="text-lg text-gray-700 w-full">
 			<div class="table-responsive paper">
 				<table class="table border strip">
-					<thead>
+					<tbody>
 						<tr>
 							<th>Platform</th>
-							<th>Subject</th>
-							<th>Topic</th>
-							<th>Roadmap</th>
-							<th>Level</th>
+							<td x-text="$store.quiz.items.platform"></td>								
 						</tr>
-					</thead>
-					<tbody>
-						<template x-for="r in $store.quiz.items" :key="r.id">
-							<tr>
-								<td x-text="r.platform"></td>
-								<td x-text="r.subject"></td>
-								<td x-text="r.topic"></td>
-								<td x-text="r.roadmap"></td>
-								<td x-text="r.level"></td>
-							</tr> 
-						</template>
+						<tr>
+							<th>Subject</th>
+							<td x-text="$store.quiz.items.subject"></td>								
+						</tr>
+						<tr>
+							<th>Topic</th>
+							<td x-text="$store.quiz.items.topic"></td>								
+						</tr>
+						<tr>
+							<th>Roadmap</th>
+							<td x-text="$store.quiz.items.roadmap"></td>								
+						</tr>
+						<tr>
+							<th>Level</th>
+							<td x-text="$store.quiz.items.level"></td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
-			<div x-data="{ currentQuestion: 0, answers: {} }" class="w-full text-gray-900">
-				<!-- Pagination -->
-				<div class="text-lg font-semibold text-center my-4">
-					<span x-text="`${currentQuestion + 1} / ${$store.quiz.list.questions.length}`"></span>
-				</div>
-			
+			<div class="w-full text-gray-900 mt-4">		
 				<!-- Quiz Questions -->
 				<template x-for="(r, index) in $store.quiz.list.questions" :key="r.id">
-					<div x-show="currentQuestion === index">
-						<h3 class="text-lg font-bold mb-2">
+					<div x-show="$store.quiz.currentQuestion === index">
+						<h3 class="font-bold mb-2">
 							<span x-text="`${index + 1}. `"></span><span x-text="r.q"></span>
 						</h3>
 						<ul class="space-y-2">
 							<template x-for="(option, optionIndex) in r.o">
 								<li>
 									<label class="flex items-center space-x-2 ps-4 border border-gray-200 rounded-sm cursor-pointer">
-										<input type="radio" :name="`question-${index}`" :value="optionIndex" x-model="answers[index]" class="w-4 h-4 text-blue-600 border-gray-300">
-										<span class="w-full py-2 ms-2 text-gray-900" x-text="option"></span>
+										<input type="radio" :name="`question-${index}`" :value="optionIndex" x-model="$store.quiz.answers[index]" class="w-4 h-4 text-blue-600 border-gray-300">
+										<span class="w-full text-sm py-2 ms-2 text-gray-900" x-text="option"></span>
 									</label>
 								</li>
 							</template>
@@ -129,29 +126,29 @@ import LayoutFull from "../app/Layout.astro";
 				</template>
 			
 				<!-- Navigation Buttons -->
-				<div class="flex justify-center gap-2 mt-4">
+				<div class="flex justify-center items-center gap-3 mt-4">
 					<!-- Previous Button -->
-					<button @click="currentQuestion > 0 ? currentQuestion-- : null"
+					<button @click="$store.quiz.currentQuestion > 0 ? $store.quiz.currentQuestion-- : null"
 						class="px-4 py-2 bg-gray-300 text-gray-700 rounded"
-						:class="currentQuestion === 0 ? 'opacity-50 cursor-not-allowed' : ''">
+						:class="$store.quiz.currentQuestion === 0 ? 'opacity-50 cursor-not-allowed' : ''">
 						<i class="fas fa-arrow-left"></i>
 					</button>
-			
+					<!-- Pagination -->
+					<span x-text="`${$store.quiz.currentQuestion + 1} / ${$store.quiz.list.questions.length}`"></span>
 					<!-- Next or Complete Button -->
 					<button 
-						x-show="currentQuestion + 1 < $store.quiz.list.questions.length"
-						@click="if(answers[currentQuestion] !== undefined) currentQuestion++"
+						x-show="$store.quiz.currentQuestion + 1 < $store.quiz.list.questions.length"
+						@click="if($store.quiz.answers[$store.quiz.currentQuestion] !== undefined) $store.quiz.currentQuestion++"
 						class="px-4 py-2 bg-gray-300 text-gray-700 rounded"
-						:class="answers[currentQuestion] === undefined ? 'opacity-50 cursor-not-allowed' : ''">
+						:class="$store.quiz.answers[$store.quiz.currentQuestion] === undefined ? 'opacity-50 cursor-not-allowed' : ''">
 						<i class="fas fa-arrow-right"></i>
-					</button>
-			
+					</button>			
 					<!-- Complete Button -->
 					<button 
-						x-show="currentQuestion + 1 === $store.quiz.list.questions.length"
-						@click="if(answers[currentQuestion] !== undefined) alert(JSON.stringify($store.quiz.list.questions.map((q, i) => ({ id: q.id, a: answers[i] }))))"
+						x-show="$store.quiz.currentQuestion + 1 === $store.quiz.list.questions.length"
+						@click="if($store.quiz.answers[$store.quiz.currentQuestion] !== undefined) alert(JSON.stringify($store.quiz.list.questions.map((q, i) => ({ id: q.id, a: $store.quiz.answers[i] }))))"
 						class="px-4 py-2 bg-green-600 text-white rounded"
-						:class="answers[currentQuestion] === undefined ? 'opacity-50 cursor-not-allowed' : ''">
+						:class="$store.quiz.answers[$store.quiz.currentQuestion] === undefined ? 'opacity-50 cursor-not-allowed' : ''">
 						<i class="fas fa-check"></i>
 					</button>
 				</div>
