@@ -28,8 +28,10 @@ class Subjects extends StoreBase {
         this.getPlatforms();
     }
     async getPlatforms() {
+Alpine.store("loader").show();
         const { data, error } = await actions.getResult({ schema: this.schema, table: 'platforms', fields: 'id, name', match: { is_active: true }, order: 'name' });
-        if (error) return;
+        Alpine.store("loader").hide();
+if (error) return;
         this.column.platforms = data;
         this.form.platforms = data;
     }
