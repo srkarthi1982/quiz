@@ -28,6 +28,7 @@ class Platforms extends StoreBase {
         Alpine.store("loader").show();
         const { id, name, description, is_active, icon, type } = this.item;
         await this.closeDrawer(id, { name, description, is_active, icon, type });
+Alpine.store("loader").hide();
     }
     onInsert() { this.openDrawer({ ...Platforms.#item }) }
     onEdit(item) { this.openDrawer({ ...item }) }
