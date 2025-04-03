@@ -18,7 +18,7 @@ class Quiz {
         this.search = '';
     }
     onInit(location) {
-        if(location){
+        if(location.search){
             const urlParams = new URLSearchParams(location.search);
             this.search = urlParams.get('platform');
         }
