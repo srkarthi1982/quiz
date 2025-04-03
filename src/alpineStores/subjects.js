@@ -34,10 +34,8 @@ class Subjects extends StoreBase {
         this.form.platforms = data;
     }
     async onSave() {
-        Alpine.store("loader").show();
         const { id, name, is_active, platform_id } = this.item;
         await this.closeDrawer(id, { name, is_active, platform_id });
-Alpine.store("loader").hide();
     }
     onInsert() { this.openDrawer({ ...Subjects.#item }) }
     onEdit(item) { this.openDrawer({ ...item }) }
