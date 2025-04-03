@@ -47,7 +47,6 @@ class Topics extends StoreBase {
         return data;
     }
     async onSave() {
-        Alpine.store("loader").show();
         const { id, name, is_active, platform_id, subject_id } = this.item;
         await this.closeDrawer(id, { name, is_active, platform_id, subject_id });
     }
