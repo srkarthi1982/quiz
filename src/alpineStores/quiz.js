@@ -15,19 +15,23 @@ class Quiz {
         this.selection = { ...Quiz.#selection };
         this.currentQuestion = 0;
         this.answers = {};
+        this.search = '';
     }
     onInit(location) {
         this.getPlatforms();
     }
-    async getPlatforms() {
+    async getPlatforms(search) {
+        this.search = '';
         Alpine.store("loader").show();
-        const match = { is_active: true }
+        let match = { is_active: true }
+        if(search) match = {...match, name: search}
         const { data, error } = await actions.getResult({ schema: this.schema, table: 'platforms', fields: 'id, name, icon', match, order: 'name' });
         Alpine.store("loader").hide();
         if (error) return;
         this.list.platforms = data;
     }
     async getSubjects(platform_id) {
+        this.search = '';
         Alpine.store("loader").show();
         this.list.subjects = [];
         const match = { platform_id, is_active: true };
@@ -37,6 +41,7 @@ class Quiz {
         this.list.subjects = data;
     }
     async getTopics(subject_id) {
+        this.search = '';
         Alpine.store("loader").show();
         this.list.topics = [];
         const match = { subject_id, is_active: true };
@@ -46,6 +51,7 @@ class Quiz {
         this.list.topics = data;
     }
     async getRoadmaps(topic_id) {
+        this.search = '';
         Alpine.store("loader").show();
         this.list.roadmaps = [];
         const match = { topic_id, is_active: true };
