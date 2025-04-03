@@ -1,10 +1,9 @@
 ---
 import LayoutFull from "../app/Layout.astro";
-import FilterSearch from "../component/FilterSearch.astro";
 ---
 
 <LayoutFull active="quiz">
-	<div x-data="{ step: 1 }" x-init="$store.quiz.onInit()" class="card flex flex-col items-center p-4">
+	<div x-data="{ step: 1 }" x-init="$store.quiz.onInit(window.location)" class="card flex flex-col items-center p-4">
 		<!-- Stepper -->
 		<ol class="flex items-center w-full max-w-md">
 			<template x-for="(label, index) in ['Choose a Platform', 'Select your Subject', 'Select a Topic', 'Roadmaps', 'Levels', 'Start the Quiz']">
@@ -32,9 +31,7 @@ import FilterSearch from "../component/FilterSearch.astro";
 			class="w-full p-2 mb-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"	
 		>
 		<!-- Step 1: Select Platform -->
-		<div x-show="step === 1" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
-			<!-- Search Box -->
-			
+		<div x-show="step === 1" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">		
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
 				<template x-for="platform in $store.quiz.list.platforms.filter(p => p.name.toLowerCase().includes($store.quiz.search.toLowerCase()))" :key="platform.id">
 					<button @click="$store.quiz.selection.platform_id = platform.id; $store.quiz.getSubjects(platform.id); step = 2;"

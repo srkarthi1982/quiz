@@ -18,13 +18,15 @@ class Quiz {
         this.search = '';
     }
     onInit(location) {
+        if(location){
+            const urlParams = new URLSearchParams(location.search);
+            this.search = urlParams.get('platform');
+        }
         this.getPlatforms();
     }
-    async getPlatforms(search) {
-        this.search = '';
+    async getPlatforms() {
         Alpine.store("loader").show();
-        let match = { is_active: true }
-        if(search) match = {...match, name: search}
+        let match = { is_active: true };
         const { data, error } = await actions.getResult({ schema: this.schema, table: 'platforms', fields: 'id, name, icon', match, order: 'name' });
         Alpine.store("loader").hide();
         if (error) return;

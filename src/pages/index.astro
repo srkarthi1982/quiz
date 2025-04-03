@@ -6,7 +6,6 @@ import { url } from '../lib/data.js';
 const { data } = await Astro.callAction(actions.getFunctions, { name: 'get_home', schema: 'public' });
 const academy = data.platforms?.filter((x: any) => x.type === 'A');
 const professionalSkills = data.platforms?.filter((x: any) => x.type === 'P');
-const subjects = data.subjects;
 ---
 
 <LayoutFull active="home">
@@ -48,7 +47,7 @@ const subjects = data.subjects;
 				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
 					{academy.map((a: any) => (
 						<div class="flex justify-center">
-							<a title="View Subjects for Academy" href={`/subjects?platformId=${a.id}`} class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
+							<a title="View Subjects for Academy" href={`/quiz?platform=${a.name}`} class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
 								<i class={`fas ${a.icon} text-3xl text-gray-600 mb-3`} aria-hidden="true"></i>
 								<div class="font-semibold text-lg">{a.name}</div>
 								<b class="text-gray-600 text-xs mt-1">(<span>{a.subject_count}</span>) Subjects</b>
@@ -63,7 +62,7 @@ const subjects = data.subjects;
 				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
 					{professionalSkills.map((a: any) => (
 						<div class="flex justify-center">
-							<a title="View Subjects for Professional Skills" href={`/subjects?platformId=${a.id}`} class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
+							<a title="View Subjects for Professional Skills" href={`/quiz?platform=${a.name}`} class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
 								<i class={`fas ${a.icon} text-3xl text-gray-600 mb-3`} aria-hidden="true"></i>
 								<div class="font-semibold text-lg">{a.name}</div>
 								<b class="text-gray-600 text-xs mt-1">(<span>{a.subject_count}</span>) Subjects</b>
