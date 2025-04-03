@@ -78,37 +78,7 @@ const subjects = data.subjects;
 	</div>
 	<!-- Platforms -->
 	<!-- Subjects -->
-	<div class="mb-7">
-		<div class="flex flex-col justify-center items-center mb-5 space-y-3">
-			<div class="text-3xl">Explore Our Subjects</div>
-			<a title="Explore all subjects" href={url('subjects')} class="btn-primary">Explore All</a>
-		</div>
-		<div class="table-responsive paper">
-			<table class="table border strip">
-				<thead>
-					<tr>
-						<th></th>
-						<th class="w-full">Featured Subjects</th>
-						<th>Topics</th>
-					</tr>
-				</thead>
-				<tbody>
-					{subjects.map((a: any) => (
-						<tr>
-							<td>
-								<a class="md" title="View Topics" href={url(`topics?platformId=${a.platform_id}&subjectId=${a.id}`)}>
-									<i class={`fas fa-eye text-3xl text-gray-600`} aria-hidden="true"></i>
-									<span class="sr-only">View</span>
-								</a>
-							</td>
-							<td>{a.name}</td>
-							<td class="text-center">{a.topics_count}</td>
-						</tr>
-					))}
-				</tbody>
-			</table>
-		</div>
-	</div>
+	
 	<!-- Subjects -->
 	<!-- Steps -->
 	<div class="mb-5">
