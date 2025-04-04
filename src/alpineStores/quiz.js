@@ -58,7 +58,7 @@ class Quiz {
         this.list.roadmaps = [];
         const match = { topic_id, is_active: true };
         const { data, error } = await actions.getResult({ schema: this.schema, table: 'roadmaps', fields: 'id, name', match, order: 'id' });
-        Alpine.store("loader").hide();
+        Alpine.store("loader").hide();``
         if (error) return;
         this.list.roadmaps = data;
     }

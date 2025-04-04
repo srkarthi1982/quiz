@@ -1,7 +1,6 @@
 ---
 import LayoutFull from "../app/Layout.astro";
 ---
-
 <LayoutFull active="quiz">
 	<div x-data="{ step: 1 }" x-init="$store.quiz.onInit(window.location)" class="card flex flex-col items-center p-4">
 		<!-- Stepper -->
@@ -21,7 +20,34 @@ import LayoutFull from "../app/Layout.astro";
 			</template>
 		</ol>
 		<!-- Step Label -->
-		<h1 class="text-xl font-bold text-center my-5" x-text="['Choose a Platform', 'Select your Subject', 'Select a Topic', 'Roadmaps', 'Levels', 'Start the Quiz'][step - 1]"></h1>
+		<h1 class="text-2xl font-bold text-center my-5" x-text="['Choose a Platform', 'Select your Subject', 'Select a Topic', 'Roadmaps', 'Levels', 'Start the Quiz'][step - 1]"></h1>
+		<div x-show="step > 1" class="table-responsive paper w-full">
+			<table class="table border strip">
+				<tbody>
+					<tr x-show="step > 1">
+						<th>Platform</th>
+						<td class="w-full" x-text="$store.quiz.items.platform"></td>								
+					</tr>
+					<tr x-show="step > 2">
+						<th>Subject</th>
+						<td x-text="$store.quiz.items.subject"></td>								
+					</tr>
+					<tr x-show="step > 3">
+						<th>Topic</th>
+						<td x-text="$store.quiz.items.topic"></td>								
+					</tr>
+					<tr x-show="step > 4">
+						<th>Roadmap</th>
+						<td x-text="$store.quiz.items.roadmap"></td>								
+					</tr>
+					<tr x-show="step > 5">
+						<th>Level</th>
+						<td x-text="$store.quiz.items.level"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="spacer my-5"></div>
 		<!-- search -->
 		<input 
 			type="search" 
@@ -97,39 +123,13 @@ import LayoutFull from "../app/Layout.astro";
 		</div>
 		<!-- Step 6: Quiz -->
 		<div x-show="step === 6" class="text-gray-700 w-full">
-			<div class="table-responsive paper">
-				<table class="table border strip">
-					<tbody>
-						<tr>
-							<th>Platform</th>
-							<td x-text="$store.quiz.items.platform"></td>								
-						</tr>
-						<tr>
-							<th>Subject</th>
-							<td x-text="$store.quiz.items.subject"></td>								
-						</tr>
-						<tr>
-							<th>Topic</th>
-							<td x-text="$store.quiz.items.topic"></td>								
-						</tr>
-						<tr>
-							<th>Roadmap</th>
-							<td x-text="$store.quiz.items.roadmap"></td>								
-						</tr>
-						<tr>
-							<th>Level</th>
-							<td x-text="$store.quiz.items.level"></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="w-full text-gray-900 mt-4">		
+			<div class="w-full text-gray-900">		
 				<!-- Quiz Questions -->
 				<template x-for="(r, index) in $store.quiz.list.questions" :key="r.id">
 					<div x-show="$store.quiz.currentQuestion === index">
-						<h4 class="font-bold mb-2">
+						<h3 class="font-bold mb-2 text-xl">
 							<span x-text="`${index + 1}. `"></span><span x-text="r.q"></span>
-						</h4>
+						</h3>
 						<ul class="space-y-2">
 							<template x-for="(option, optionIndex) in r.o">
 								<li>

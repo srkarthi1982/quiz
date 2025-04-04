@@ -5,7 +5,7 @@
         <i :class="`fa-solid ${$store.toast.iconClass}`"></i>
         <span class="sr-only" x-text="$store.toast.type + ' icon'"></span>
     </div>
-    <div class="ml-3 text-sm font-normal" x-text="$store.toast.message"></div>
+    <div class="ml-3 font-normal" x-text="$store.toast.message"></div>
     <button @click="$store.toast.hide()" class="ml-auto text-lg">
         <i class="fa-solid fa-xmark"></i>
         <span class="sr-only">Close</span>

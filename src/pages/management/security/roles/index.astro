@@ -15,8 +15,8 @@ const hasManage = accessCodes?.includes('001.01.02.01');
 	<Breadcrumb list={[{ name: "Management", link: "management" },{ name: "Roles", link: "" }]}>
 		<div class="flex flex-row gap-3">
 			<Sorting storeName="roles" columns="columns" />
-			<button class="btn-icon white lg" x-on:click="$store.roles.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
-			<button class="btn-icon active lg" x-on:click="$store.roles.onInsert()"><i class="fas fa-plus"></i></button>
+			<button class="btn-icon white" x-on:click="$store.roles.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
+			<button class="btn-icon active" x-on:click="$store.roles.onInsert()"><i class="fas fa-plus"></i></button>
 		</div>
 	</Breadcrumb>
 	<div class="table-responsive paper">

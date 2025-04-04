@@ -26,11 +26,11 @@ body{ @apply bg-gray-100; font-family: arial, sans-serif; font-weight: 400 }
 
 /* table */
 .table-responsive{ @apply relative overflow-y-hidden overflow-x-auto rounded-xl }
-.table{ @apply w-full text-sm text-left text-gray-600 whitespace-nowrap }
+.table{ @apply w-full text-left text-gray-600 whitespace-nowrap }
 .table td, .table th{ @apply px-2.5 py-2  }
 .table.border td, .table.border th{ @apply border-r border-b }
 .table.strip tbody>tr{ @apply even:bg-white odd:bg-gray-50 } 
-.table thead{ @apply text-sm text-gray-500 bg-transparent border-b }
+.table thead{ @apply text-gray-500 bg-transparent border-b }
 .table .input {@apply font-normal rounded-full appearance-none }
 
 /* buttons */

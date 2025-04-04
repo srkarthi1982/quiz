@@ -8,7 +8,7 @@ import { url } from "../lib/data";
         <ol class="inline-flex items-center">
             <li class="inline-flex items-center">
                 <a href={url()} aria-label="Go To Home Page" class="inline-flex items-center link">
-                    <i class="fas fa-home hover:fill-primary-500 text-sm"></i>
+                    <i class="fas fa-home hover:fill-primary-500"></i>
                 </a>
             </li>
             {list.map((l:any, index: number) => (
@@ -17,11 +17,11 @@ import { url } from "../lib/data";
                         <i class="fas fa-angle-right opacity-50 mx-2 text gray"></i>
                         {
                             (list.length - 1) === index ? 
-                            <span class="whitespace-nowrap capitalize text text-primary font-semibold">{l.name}</span> : 
+                            <span class="whitespace-nowrap capitalize text-lg text-primary font-semibold">{l.name}</span> : 
                             <a 
                                 href={url(l.link)} 
                                 aria-label={`${l.name} Section`}
-                                class="text-sm link whitespace-nowrap capitalize" 
+                                class="link text-lg whitespace-nowrap capitalize" 
                                 aria-label={`Go To ${l.name} Page`}>{l.name}
                             </a>
                         }
