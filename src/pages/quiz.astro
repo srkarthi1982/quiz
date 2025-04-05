@@ -2,7 +2,7 @@
 import LayoutFull from "../app/Layout.astro";
 ---
 <LayoutFull active="quiz">
-	<div x-data="{ step: 1 }" x-init="$store.quiz.onInit(window.location)" class="card flex flex-col items-center p-4">
+	<div x-data="{ step: 1 }" class="card flex flex-col items-center p-4">
 		<!-- Stepper -->
 		<ol class="flex items-center w-full max-w-md">
 			<template x-for="(label, index) in ['Choose a Platform', 'Select your Subject', 'Select a Topic', 'Roadmaps', 'Levels', 'Start the Quiz']">
@@ -60,7 +60,12 @@ import LayoutFull from "../app/Layout.astro";
 		<div x-show="step === 1" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">		
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
 				<template x-for="platform in $store.quiz.list.platforms.filter(p => p.name.toLowerCase().includes($store.quiz.search.toLowerCase()))" :key="platform.id">
-					<button @click="$store.quiz.selection.platform_id = platform.id; $store.quiz.getSubjects(platform.id); step = 2;"
+					<button 
+						@click=`
+						$store.quiz.selection.platform_id = platform.id; 
+						await $store.quiz.getSubjects(platform.id); 
+						step = 2;
+						`
 						class="flex items-center px-4 py-2 border border-gray-200 rounded-lg cursor-pointer text-left"
 						:class="$store.quiz.selection.platform_id === platform.id ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100 hover:text-blue-700'">
 						<i :class="`fas ${platform.icon} text-lg text-gray-600`"></i>
@@ -73,7 +78,12 @@ import LayoutFull from "../app/Layout.astro";
 		<div x-show="step === 2" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-2">
 				<template x-for="subject in $store.quiz.list.subjects.filter(p => p.name.toLowerCase().includes($store.quiz.search.toLowerCase()))" :key="subject.id">
-					<button @click="$store.quiz.selection.subject_id = subject.id; $store.quiz.getTopics(subject.id); step = 3;"
+					<button 
+						@click=`
+						$store.quiz.selection.subject_id = subject.id; 
+						await $store.quiz.getTopics(subject.id); 
+						step = 3;
+						`
 						class="flex items-center px-4 py-2 border border-gray-200 rounded-lg cursor-pointer text-left"
 						:class="$store.quiz.selection.subject_id === subject.id ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100 hover:text-blue-700'">					
 						<i class="fas fa-book text-lg text-gray-600"></i>
@@ -86,7 +96,12 @@ import LayoutFull from "../app/Layout.astro";
 		<div x-show="step === 3" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-2">
 				<template x-for="topic in $store.quiz.list.topics.filter(p => p.name.toLowerCase().includes($store.quiz.search.toLowerCase()))" :key="topic.id">
-					<button @click="$store.quiz.selection.topic_id = topic.id; $store.quiz.getRoadmaps(topic.id); step = 4;"
+					<button 
+						@click=`
+						$store.quiz.selection.topic_id = topic.id; 
+						await $store.quiz.getRoadmaps(topic.id); 
+						step = 4;
+						`
 						class="flex items-center px-4 py-2 border border-gray-200 rounded-lg cursor-pointer text-left"
 						:class="$store.quiz.selection.topic_id === topic.id ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100 hover:text-blue-700'">
 						<i class="fas fa-list text-lg text-gray-600"></i>
@@ -99,7 +114,12 @@ import LayoutFull from "../app/Layout.astro";
 		<div x-show="step === 4" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
 				<template x-for="roadmap in $store.quiz.list.roadmaps.filter(p => p.name.toLowerCase().includes($store.quiz.search.toLowerCase()))" :key="roadmap.id">
-					<button @click="$store.quiz.selection.roadmap_id = roadmap.id; step = 5; $store.quiz.search = '';"
+					<button 
+						@click=`
+						$store.quiz.selection.roadmap_id = roadmap.id; 
+						$store.quiz.search = '';
+						step = 5; 
+						`
 						class="flex items-center px-4 py-2 border border-gray-200 rounded-lg cursor-pointer text-left"
 						:class="$store.quiz.selection.roadmap_id === roadmap.id ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100 hover:text-blue-700'">
 						<i class="fas fa-road text-lg text-gray-600"></i>
@@ -112,7 +132,13 @@ import LayoutFull from "../app/Layout.astro";
 		<div x-show="step === 5" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-2">
 				<template x-for="level in $store.quiz.list.levels" :key="level.id">
-					<button @click="$store.quiz.selection.level_id = level.id; $store.quiz.getQuestions(); step = 6; $store.quiz.search = '';"
+					<button 
+						@click=`
+						$store.quiz.selection.level_id = level.id; 
+						await $store.quiz.getQuestions(); 
+						$store.quiz.search = '';
+						step = 6; 
+						`
 						class="flex items-center px-4 py-2 border border-gray-200 rounded-lg cursor-pointer text-left"
 						:class="$store.quiz.selection.level_id === level.id ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100 hover:text-blue-700'">
 						<i :class="`fas ${level.icon} text-lg text-gray-600`"></i>
@@ -142,7 +168,6 @@ import LayoutFull from "../app/Layout.astro";
 						</ul>
 					</div>
 				</template>
-			
 				<!-- Navigation Buttons -->
 				<div class="flex justify-center items-center gap-3 mt-4">
 					<!-- Previous Button -->
@@ -153,7 +178,7 @@ import LayoutFull from "../app/Layout.astro";
 					</button>
 					<!-- Pagination -->
 					<span x-text="`${$store.quiz.currentQuestion + 1} / ${$store.quiz.list.questions.length}`"></span>
-					<!-- Next or Complete Button -->
+					<!-- Next Button -->
 					<button 
 						x-show="$store.quiz.currentQuestion + 1 < $store.quiz.list.questions.length"
 						@click="if($store.quiz.answers[$store.quiz.currentQuestion] !== undefined) $store.quiz.currentQuestion++"
@@ -171,8 +196,6 @@ import LayoutFull from "../app/Layout.astro";
 					</button>
 				</div>
 			</div>
-			
 		</div>
 	</div>
-	
 </LayoutFull>

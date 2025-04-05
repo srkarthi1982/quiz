@@ -46,7 +46,10 @@ export const onRequest = defineMiddleware(async ({ locals, url, cookies, redirec
     if (accessToken && refreshToken) return redirect("/");
   }
   else if (!refreshToken?.value && !accessToken?.value) {
-    if (!micromatch.isMatch(url.pathname, publicRoutes)) return redirect("/404");
+    if (!micromatch.isMatch(url.pathname, publicRoutes)) {
+      cookies.set("return-path", url.pathname + url.search, { path: "/", domain, sameSite: "strict", secure: true });
+      return redirect("/authentication/signin");
+    }
   }
   return next();
 }

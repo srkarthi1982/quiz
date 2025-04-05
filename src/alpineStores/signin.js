@@ -16,7 +16,13 @@ class SignIn {
             Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
             return;
         }
-        navigate('/');
+        const returnPath = document.cookie.split('; ').find(row => row.startsWith('return-path='))?.split('=')[1];
+        if (returnPath) {
+            document.cookie = 'return-path=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            navigate(decodeURIComponent(returnPath));
+        } else {
+            navigate("/");
+        }
     }
 }
 Alpine.store("signin", new SignIn());

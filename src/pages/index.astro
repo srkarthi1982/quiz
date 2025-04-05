@@ -2,7 +2,7 @@
 import LayoutFull from "../app/Layout.astro";
 import { actions } from 'astro:actions';
 import { url } from '../lib/data.js';
-
+const { user } = Astro.locals;
 const { data } = await Astro.callAction(actions.getFunctions, { name: 'get_home', schema: 'public' });
 const academy = data.platforms?.filter((x: any) => x.type === 'A');
 const professionalSkills = data.platforms?.filter((x: any) => x.type === 'P');
@@ -10,27 +10,31 @@ const professionalSkills = data.platforms?.filter((x: any) => x.type === 'P');
 
 <LayoutFull active="home">
 	<!-- banner -->
-	<div class="card text-center mt-2 mb-7">
-		<div class="spacer my-5"></div>
-		<p class="mb-1 font-light title">The best platform to test and improve your skills across various domains.</p>
-		<div class="mb-4 font-semibold text-2xl title text-primary">Empowering Minds, One Quiz at a Time</div>
-		<div class="max-w-md mx-auto">                    
-			<form class="input-group">
-				<div class="input-icon relative">
-					<i class="fas fa-search left-4 icon" aria-hidden="true"></i>
-					<input type="search" name="search" class="input w-full white first" placeholder="Search Anything"/>
-				</div>
-				<button type="submit" class="btn-primary last">Search</button>
-			</form>
+	<div class="card text-center mt-2 mb-7 bg-white shadow-md rounded-lg p-6">
+		<div class="my-5"></div>
+		<h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-3">Empowering Minds, One Quiz at a Time</h2>
+		<p class="text-gray-600 text-lg mb-6">
+			The best platform to test and improve your skills across various domains. Join thousands of learners building their knowledge every day.
+		</p>
+		<div class="flex justify-center">
+			{
+				!user &&
+				<a href="/authentication/signup" class="inline-block bg-blue-600 text-white font-medium py-2 px-6 rounded-lg hover:bg-blue-700 transition">
+					Get Registered
+				</a>
+			}
+			<a href="/quiz" class="ml-4 inline-block border border-blue-600 text-blue-600 font-medium py-2 px-6 rounded-lg hover:bg-blue-50 transition">
+				Explore Quizzes
+			</a>
 		</div>
-		<div class="spacer my-5"></div>
+		<div class="my-5"></div>
 	</div>
-	<!-- banner -->
+	<!-- end banner -->
+
 	<!-- Platforms -->
 	<div x-data="{ tab: 'tab1' }" class="mb-7">
 		<div class="flex flex-col justify-center items-center mb-5 space-y-3">
 			<div class="text-3xl">Choose Your Platform</div>
-			<a title="Explore all platforms" href={url('platforms')} class="btn-primary">Explore All</a>
 		</div>
 		<ul class="max-w-2xl mx-auto grid grid-cols-2 text-center border-b title">
 			<li class="w-full">

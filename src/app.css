@@ -18,7 +18,7 @@ body{ @apply bg-gray-100; font-family: arial, sans-serif; font-weight: 400 }
 
 /* text */
 .title{ @apply font-semibold text-gray-900 }
-.text{ @apply text-sm text-gray-900 }
+.text{ @apply text-gray-900 }
 .txt{ @apply text-xs }
 .text-shadow {text-shadow: 0 0 3px #00000070;}
 .gray, .txt.gray, .text.gray, .title.gray, .label.gray{ @apply text-gray-500 }
@@ -50,7 +50,7 @@ button.disabled, button:disabled, button[disabled]{@apply pointer-events-none cu
 .btn-icon.lg{ @apply w-9 h-9 text-base p-2 }
 
 /* forms */
-.label{ @apply text-sm font-medium text-gray-800 } 
+.label{ @apply font-medium text-gray-800 } 
 .input, .input[type=text], .input[type=email], .input[type=url], .input[type=password], .input[type=number], .input[type=date], .input[type=datetime-local], .input[type=month], .input[type=search], .input[type=tel], .input[type=time], .input[type=week], .input[multiple], .input[type="file"], textarea.input, select.input
 { @apply text-sm block rounded-full border border-b-2 border-gray-200 py-2 px-3 bg-gray-50 text-gray-900 placeholder:italic placeholder:text-gray-400 }
 .input.white {@apply bg-white }

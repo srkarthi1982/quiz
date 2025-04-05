@@ -3,7 +3,6 @@ export const publicRoutes = [
     "/platforms(|/)",
     "/subjects(|/)",
     "/topics(|/)",
-    "/quiz(|/)",
     "/pricing(|/)",
     "/about(|/)",
     "/contact(|/)",

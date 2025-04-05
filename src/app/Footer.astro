@@ -7,8 +7,7 @@ const {active} = Astro.props;
 	<div class="flex justify-between items-center flex-col md:flex-row gap-4 md:gap-0">
 		<ul class="flex flex-wrap gap-3 items-center justify-center">
 			<li><a href={url('about')} class={`${active === 'about' ? 'active' : ''} link text-sm`} title="About">About</a></li>
-			<li><a href={url('plans')} class={`${active === 'plans' ? 'active' : ''} link text-sm`} title="Plans" >Plans</a></li>
-			<li><a href={url('faq')} class={`${active === 'faqs' ? 'active' : ''} link text-sm`} title="FAQs" >FAQs</a></li>
+			<li><a href={url('pricing')} class={`${active === 'pricing' ? 'active' : ''} link text-sm`} title="Plans" >Pricing</a></li>
 			<li><a href={url('contact')} class={`${active === 'contact' ? 'active' : ''} link text-sm`} title="Contact" >Contact</a></li>
 			<li><a href={url('policy')} class={`${active === 'policy' ? 'active' : ''} link text-sm`} title="Policy" >Policy</a></li>
 		</ul>
