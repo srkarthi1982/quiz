@@ -1,4 +1,5 @@
 import Alpine from 'alpinejs';
+import { navigate } from 'astro:transitions/client';
 import { actions } from 'astro:actions';
 class Quiz {
     static #selection = { platform_id: 0, subject_id: 0, topic_id: 0, roadmap_id: 0, level_id: '' };
@@ -18,7 +19,10 @@ class Quiz {
         this.search = '';
     }
     onInit(location) {
-        if(location.search){
+        this.selection = { ...Quiz.#selection };
+        this.currentQuestion = 0;
+        this.answers = {};
+        if (location.search) {
             const urlParams = new URLSearchParams(location.search);
             this.search = urlParams.get('platform');
         }
@@ -33,7 +37,6 @@ class Quiz {
         this.list.platforms = data;
     }
     async getSubjects(platform_id) {
-        this.search = '';
         Alpine.store("loader").show();
         this.list.subjects = [];
         const match = { platform_id, is_active: true };
@@ -41,9 +44,9 @@ class Quiz {
         Alpine.store("loader").hide();
         if (error) return;
         this.list.subjects = data;
+        this.search = '';
     }
     async getTopics(subject_id) {
-        this.search = '';
         Alpine.store("loader").show();
         this.list.topics = [];
         const match = { subject_id, is_active: true };
@@ -53,12 +56,11 @@ class Quiz {
         this.list.topics = data;
     }
     async getRoadmaps(topic_id) {
-        this.search = '';
         Alpine.store("loader").show();
         this.list.roadmaps = [];
         const match = { topic_id, is_active: true };
         const { data, error } = await actions.getResult({ schema: this.schema, table: 'roadmaps', fields: 'id, name', match, order: 'id' });
-        Alpine.store("loader").hide();``
+        Alpine.store("loader").hide(); ``
         if (error) return;
         this.list.roadmaps = data;
     }
@@ -82,6 +84,23 @@ class Quiz {
             roadmap: this.list.roadmaps.find(r => r.id === this.selection.roadmap_id)?.name,
             level: this.list.levels.find(l => l.id === this.selection.level_id)?.name,
         };
+    }
+    async onComplete(user_id) {
+        if (this.answers[this.currentQuestion] !== undefined) {
+            Alpine.store("loader").show();
+            const { platform_id, subject_id, topic_id, roadmap_id, level_id } = this.selection;
+            const params = {
+                user_id, platform_id, subject_id, topic_id, roadmap_id, level: level_id,
+                responses: this.list.questions.map((q, i) => ({ id: Number(q.id), a: Number(this.answers[i]) }))
+            }
+            const { data, error } = await actions.save({ id: 0, title: 'Quiz', schema: this.schema, table: 'results', params });
+            Alpine.store("loader").hide();
+            if (error) {
+                Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
+                return;
+            }
+            navigate('/results');
+        }
     }
 }
 Alpine.store('quiz', new Quiz());

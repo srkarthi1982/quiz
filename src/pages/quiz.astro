@@ -1,5 +1,6 @@
 ---
 import LayoutFull from "../app/Layout.astro";
+const { user } = Astro.locals;
 ---
 <LayoutFull active="quiz">
 	<div x-data="{ step: 1 }" class="card flex flex-col items-center p-4">
@@ -189,7 +190,7 @@ import LayoutFull from "../app/Layout.astro";
 					<!-- Complete Button -->
 					<button 
 						x-show="$store.quiz.currentQuestion + 1 === $store.quiz.list.questions.length"
-						@click="if($store.quiz.answers[$store.quiz.currentQuestion] !== undefined) alert(JSON.stringify($store.quiz.list.questions.map((q, i) => ({ id: q.id, a: $store.quiz.answers[i] }))))"
+						@click=`$store.quiz.onComplete('${user.id}')`
 						class="px-4 py-2 bg-green-600 text-white rounded"
 						:class="$store.quiz.answers[$store.quiz.currentQuestion] === undefined ? 'opacity-50 cursor-not-allowed' : ''">
 						<i class="fas fa-check"></i>

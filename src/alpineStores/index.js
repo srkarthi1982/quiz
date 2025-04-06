@@ -10,6 +10,7 @@ import './topics';
 import './roadmaps';
 import './questions';
 import './quiz';
+import './results';
 import './users';
 import './roles';
 import './menus';

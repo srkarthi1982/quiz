@@ -1,0 +1,136 @@
+---
+import LayoutFull from "../../app/Layout.astro";
+import Drawer from "../../component/Drawer.astro";
+import Pagination from "../../component/Pagination.astro";
+import Form from "./form.astro";
+const hasManage = true;
+---
+<LayoutFull active="results">
+	<div class="flex justify-center">
+		<div class="relative w-40 h-40 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg">
+		  <span class="text-4xl font-bold" x-text="$store.results.items[0].mark + ' / ' + 10"></span>
+		  <div class="absolute inset-0 rounded-full border-4 border-blue-300 animate-pulse"></div>
+		</div>
+	  </div>
+	  <h1 class="text-2xl font-bold text-center my-2">Quiz Score</h1>
+	<div class="table-responsive paper w-full">
+		<table class="table border strip">
+			<tbody>
+				<tr>
+					<th>Platform</th>
+					<td x-text="$store.results.items[0].platform_name"></td>								
+				</tr>
+				<tr>
+					<th>Subject</th>
+					<td x-text="$store.results.items[0].subject_name"></td>								
+				</tr>
+				<tr>
+					<th>Topic</th>
+					<td x-text="$store.results.items[0].topic_name"></td>								
+				</tr>
+				<tr>
+					<th>Roadmap</th>
+					<td x-text="$store.results.items[0].roadmap_name"></td>								
+				</tr>
+				<tr>
+					<th>Level</th>
+					<td x-text="$store.results.getLevelName($store.results.items[0].level)"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<h1 class="text-2xl font-bold text-center my-2">History</h1>
+	<div class="table-responsive paper">
+		<table class="table border strip">
+			<thead>
+				<tr>
+					<th x-show={`${hasManage}`}></th>
+					<th>Platforms</th>
+					<th>Subjects</th>
+					<th>Topics</th>
+					<th>Roadmaps</th>
+				</tr>
+				<tr>
+					<td x-show={`${hasManage}`} class="flex justify-center">
+						<button class="btn-default" @click="$store.results.onInit()" title="Clear Filters">Clear</button>
+					</td>
+					<th>
+						<select 
+							class="input w-full" 
+							x-model=`$store.results.filters.platform_id`
+							@change=`
+								$store.results.filters.subject_id = 0;
+								$store.results.filters.topic_id = 0;
+								$store.results.onColumnListChange('platform_id', Number($el.value)); 
+								$store.results.column.subjects = await $store.results.getSubjects(Number($el.value));
+							`>
+							<option value="">All</option>
+							<template x-for={`i in $store.results.column.platforms`}>
+								<option :value="i.id" x-text="i.name"></option>
+							</template>
+						</select>
+					</th>
+					<th>
+						<select 
+							class="input w-full" 
+							x-model=`$store.results.filters.subject_id`
+							@change=`
+								$store.results.filters.topic_id = 0;
+								$store.results.onColumnListChange('subject_id', Number($el.value)); 
+								$store.results.column.topics = await $store.results.getTopics(Number($el.value));
+							`>
+							<option value="">All</option>
+							<template x-for={`i in $store.results.column.subjects`}>
+								<option :value="i.id" x-text="i.name"></option>
+							</template>
+						</select>
+					</th>
+					<th>
+						<select 
+							class="input w-full" 
+							x-model=`$store.results.filters.topic_id`
+							@change=`
+								$store.results.filters.roadmap_id = 0;
+								$store.results.onColumnListChange('topic_id', Number($el.value)); 
+								$store.results.column.roadmaps = await $store.results.getRoadmaps(Number($el.value));
+							`>
+							<option value="">All</option>
+							<template x-for={`i in $store.results.column.topics`}>
+								<option :value="i.id" x-text="i.name"></option>
+							</template>
+						</select>
+					</th>
+					<th>
+						<select 
+							class="input w-full" 
+							x-model=`$store.results.filters.roadmap_id`
+							@change=`$store.results.onColumnListChange('roadmap_id', Number($el.value))`>
+							<option value="">All</option>
+							<template x-for={`i in $store.results.column.roadmaps`}>
+								<option :value="i.id" x-text="i.name"></option>
+							</template>
+						</select>
+					</th>
+				</tr>
+			</thead>
+			<tbody x-show="$store.results.items.length > 0">
+				<template x-for="r in $store.results.items" :key="r.id">
+					<tr>
+						<td x-show={`${hasManage}`} class="flex justify-center">
+							<button disabled @click="$store.results.onScore(r)" class="btn-default">View</button>
+						</td>						
+						<td x-text="r.platform_name"></td>
+						<td x-text="r.subject_name"></td>
+						<td x-text="r.topic_name"></td>
+						<td x-text="r.roadmap_name"></td>
+					</tr> 
+				</template>    
+			</tbody>
+		</table>
+	</div>
+	<div class="spacer"></div>
+	<Pagination storeName="results" />
+	<Drawer item="$store.results.item" title="Subject" showDrawer="$store.results.showDrawer">
+		<Form item="$store.results.item" hasManage={hasManage} />
+	</Drawer>
+</LayoutFull>
