@@ -1,50 +1,31 @@
 ---
 const {item, hasManage} = Astro.props;
 ---
-<form @submit.prevent="$store.roadmaps.onSave()">
-    <div class="flex flex-col gap-3">
-        <div>
-            <label for="name" class="label">Name</label>
-            <input type="text" id="name" name="name" x-model="$store.roadmaps.item.name" class="input w-full mt-1" placeholder="Type name" required>
-        </div>
-        <div>
-            <label class="label">Platform</label>            
-            <select id="platform" x-model="$store.roadmaps.item.platform_id" @change=`$store.roadmaps.form.subjects = await $store.roadmaps.getSubjects(Number($el.value));` class="input w-full mt-1">
-                <option value=""></option>
-                <template x-for="i in $store.roadmaps.form.platforms">
-                    <option :value="i.id" x-text="i.name"></option>
-                </template>
-            </select>
-        </div>
-        <div>
-            <label class="label">Subject</label>            
-            <select id="subject" class="input w-full mt-1" x-model="$store.roadmaps.item.subject_id" 
-                @change=`
-                $store.roadmaps.onFormListChange('subject_id', Number($el.value));
-                $store.roadmaps.form.topics = await $store.roadmaps.getTopics(Number($el.value));`>
-                <option value=""></option>
-                <template x-for="i in $store.roadmaps.form.subjects">
-                    <option :value="i.id" :selected="Number(i.id) === Number($store.roadmaps.item.subject_id)" x-text="i.name"></option>
-                </template>
-            </select>
-        </div>
-        <div>
-            <label class="label">Topics</label>            
-            <select id="topic" class="input w-full mt-1" @change="$store.roadmaps.onFormListChange('topic_id', Number($el.value))">
-                <option value=""></option>
-                <template x-for="i in $store.roadmaps.form.topics">
-                    <option :value="i.id" :selected="Number(i.id) === Number($store.roadmaps.item.topic_id)" x-text="i.name"></option>
-                </template>
-            </select>
-        </div>
-        <div class="flex flex-row gap-2 items-center">
-            <input id="is_active" name="is_active" x-model="$store.roadmaps.item.is_active" type="checkbox" class="checkbox" class="checkbox" />
-            <label for="is_active" class="text">Active</label>
-        </div>
-    </div>
-    <div class="divider my-4"></div>
-    <div class="flex flex-row justify-between gap-4">
-        <button type="button" @click="$store.roadmaps.showDrawer = false" class="btn-default">Cancel</button>
-        { hasManage && <button type="submit" class="btn-primary" x-text={`${item}.id ? 'Update' : 'Create'`}></button>}
-    </div>
-</form>
+<div class="table-responsive paper">
+    <table class="table strip">
+        <tbody>
+            <template x-for="(r, idx) in $store.results.item" :key="idx">
+                <tr>					
+                    <td class="w-full">
+                        <p class="mb-2 text-lg font-semibold text-gray-900" x-text="r.question"></p>
+                        <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside">
+                            <template x-for="(option, index) in r.options">
+                                <li 
+                                    x-text="option"
+                                    :class=`{
+                                        'font-bold text-green-600': index === r.correct_answer,
+                                        'font-bold text-red-600': index === r.user_answer && !r.is_correct
+                                    }`
+                                ></li>
+                            </template>
+                        </ol>
+                        <div class="mt-2">
+                            <b>Explanation:</b>
+                            <i class=" text-pretty" x-text="r.explanation"></i>
+                        </div>
+                    </td>
+                </tr> 
+            </template>    
+        </tbody>
+    </table>
+</div>

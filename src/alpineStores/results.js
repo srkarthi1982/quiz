@@ -56,6 +56,14 @@ class Results extends StoreBase {
         if (error) return;
         return data;
     }
+    async getDetail(result_id) {
+        Alpine.store("loader").show();
+        const match = { result_id };
+        const { data, error } = await actions.getFunctions({ schema: this.schema, name: 'get_result_details', match });
+        Alpine.store("loader").hide();
+        if (error) return;
+        return data;
+    }
     getLevelName(level){
         switch (level) {
             case 'E': return 'Easy';
@@ -64,7 +72,9 @@ class Results extends StoreBase {
         }
     }
     async onScore(item) {
-        this.openDrawer({ ...item });
+        const data = await this.getDetail(item.id);
+        console.log('data', data)
+        this.openDrawer({ ...data });
     }
 }
 Alpine.store('results', new Results());
