@@ -28,7 +28,10 @@ class Results extends StoreBase {
         Alpine.store("loader").show();
         const { data, error } = await actions.getResult({ schema: this.schema, table: 'platforms', fields: 'id, name', match: { is_active: true }, order: 'name' });
         Alpine.store("loader").hide();
-        if (error) return;
+        if (error) {
+            Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
+            return;
+        }
         this.column = { platforms: data, subjects: [], topics: [], levels: Results.#list.levels };
         this.form = { platforms: data, subjects: [], topics: [], levels: Results.#list.levels };
     }
@@ -37,7 +40,10 @@ class Results extends StoreBase {
         const match = { platform_id, is_active: true };
         const { data, error } = await actions.getResult({ schema: this.schema, table: 'subjects', fields: 'id, name', match, order: 'name' });
         Alpine.store("loader").hide();
-        if (error) return;
+        if (error) {
+            Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
+            return;
+        }
         return data;
     }
     async getTopics(subject_id) {
@@ -45,7 +51,10 @@ class Results extends StoreBase {
         const match = { subject_id, is_active: true };
         const { data, error } = await actions.getResult({ schema: this.schema, table: 'topics', fields: 'id, name', match, order: 'name' });
         Alpine.store("loader").hide();
-        if (error) return;
+        if (error) {
+            Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
+            return;
+        }
         return data;
     }
     async getRoadmaps(topic_id) {
@@ -53,7 +62,10 @@ class Results extends StoreBase {
         const match = { topic_id, is_active: true };
         const { data, error } = await actions.getResult({ schema: this.schema, table: 'roadmaps', fields: 'id, name', match, order: 'id' });
         Alpine.store("loader").hide();
-        if (error) return;
+        if (error) {
+            Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
+            return;
+        }
         return data;
     }
     async getDetail(result_id) {
@@ -61,7 +73,10 @@ class Results extends StoreBase {
         const match = { result_id };
         const { data, error } = await actions.getFunctions({ schema: this.schema, name: 'get_result_details', match });
         Alpine.store("loader").hide();
-        if (error) return;
+        if (error) {
+            Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
+            return;
+        }
         return data;
     }
     getLevelName(level){
