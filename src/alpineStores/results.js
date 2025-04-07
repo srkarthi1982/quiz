@@ -21,8 +21,8 @@ class Results extends StoreBase {
         this.filters = { ...Results.#filters };
         this.sorting = { ...Results.#sorting };
         this.pagination = { ...this.defaultPagination, take: 5 };
-        this.getData();
-        this.getPlatforms();
+        await this.getData();
+        await this.getPlatforms();
     }
     async getPlatforms() {
         Alpine.store("loader").show();
