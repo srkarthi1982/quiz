@@ -12,7 +12,7 @@ class Results extends StoreBase {
         { label: 'Roadmap', value: "roadmap_id", operator: 'eq' },
         { label: 'Level', value: "level", operator: 'eq' }
     ];
-    static #list = { platforms: [], subjects: [], topics: [], roadmaps: [] };
+    static #list = { platforms: [], subjects: [], topics: [], roadmaps: [], levels: [{ id: 'E', name: 'Easy' }, { id: 'M', name: 'Medium' }, { id: 'D', name: 'Difficult' }] };
     constructor() {
         super('public', 'Results', 'Result', 'vw_results', 'results', Results.#item, Results.#filters, Results.#sorting, '*', Results.#columns);
          this.column = { ...Results.#list };
@@ -29,8 +29,8 @@ class Results extends StoreBase {
         const { data, error } = await actions.getResult({ schema: this.schema, table: 'platforms', fields: 'id, name', match: { is_active: true }, order: 'name' });
         Alpine.store("loader").hide();
         if (error) return;
-        this.column = { platforms: data, subjects: [], topics: [] };
-        this.form = { platforms: data, subjects: [], topics: [] };
+        this.column = { platforms: data, subjects: [], topics: [], levels: Results.#list.levels };
+        this.form = { platforms: data, subjects: [], topics: [], levels: Results.#list.levels };
     }
     async getSubjects(platform_id) {
         Alpine.store("loader").show();

@@ -45,10 +45,11 @@ const hasManage = true;
 			<thead>
 				<tr>
 					<th class="w-14" x-show={`${hasManage}`}></th>
-					<th>Platforms</th>
-					<th>Subjects</th>
-					<th>Topics</th>
-					<th>Roadmaps</th>
+					<th>Platform</th>
+					<th>Subject</th>
+					<th>Topic</th>
+					<th>Roadmap</th>
+					<th class="text-center w-14">Level</th>
 					<th class="text-center w-14">Score</th>
 				</tr>
 				<tr>
@@ -114,6 +115,17 @@ const hasManage = true;
 							</template>
 						</select>
 					</th>
+					<th>
+						<select 
+							class="input w-full" 
+							x-model=`$store.results.filters.level`
+							@change=`$store.results.onColumnListChange('level', $el.value)`>
+							<option value="">All</option>
+							<template x-for={`i in $store.results.column.levels`}>
+								<option :value="i.id" x-text="i.id"></option>
+							</template>
+						</select>
+					</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -129,6 +141,7 @@ const hasManage = true;
 						<td x-text="r.subject_name"></td>
 						<td x-text="r.topic_name"></td>
 						<td x-text="r.roadmap_name"></td>
+						<td x-text="r.level" class="text-center"></td>
 						<td x-text="r.mark + ' / ' + 10" class="text-center"></td>
 					</tr> 
 				</template>    
