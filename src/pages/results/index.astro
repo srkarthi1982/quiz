@@ -44,16 +44,18 @@ const hasManage = true;
 		<table class="table border strip">
 			<thead>
 				<tr>
-					<th class="w-16" x-show={`${hasManage}`}></th>
+					<th class="w-14" x-show={`${hasManage}`}></th>
 					<th>Platforms</th>
 					<th>Subjects</th>
 					<th>Topics</th>
 					<th>Roadmaps</th>
-					<th class="text-center w-16">Score</th>
+					<th class="text-center w-14">Score</th>
 				</tr>
 				<tr>
 					<td x-show={`${hasManage}`} class="flex justify-center">
-						<button class="btn-default" @click="$store.results.onInit()" title="Clear Filters">Clear</button>
+						<button class="btn-icon white lg" @click="$store.results.onInit()" title="Clear Filters">
+							<i class="fas fa-sync-alt"></i>
+						</button>
 					</td>
 					<th>
 						<select 
@@ -119,7 +121,9 @@ const hasManage = true;
 				<template x-for="r in $store.results.items" :key="r.id">
 					<tr>
 						<td x-show={`${hasManage}`} class="flex justify-center">
-							<button @click="$store.results.onScore(r)" class="btn-default">View</button>
+							<button class="btn-icon white lg" @click="$store.results.onScore(r.id)" title="View Quiz Details">
+								<i class="fas fa-eye"></i>
+							</button>
 						</td>						
 						<td x-text="r.platform_name"></td>
 						<td x-text="r.subject_name"></td>

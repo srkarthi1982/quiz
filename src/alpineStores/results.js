@@ -71,10 +71,9 @@ class Results extends StoreBase {
             case 'D': return 'Dificult'; 
         }
     }
-    async onScore(item) {
-        const data = await this.getDetail(item.id);
-        console.log('data', data)
-        this.openDrawer({ ...data });
+    async onScore(id) {
+        const data = await this.getDetail(id);
+        this.openDrawer(data);
     }
 }
 Alpine.store('results', new Results());
