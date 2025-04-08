@@ -30,10 +30,10 @@ export class StoreBase {
     get defaultPagination() {
         return { page: 1, take: getTakeValue(getScreenSize()) };
     }
-    async getData() {
+    async getData(hasUser) {
         Alpine.store("loader").show();
         const { schema, view, fields, filters, columns, pagination, sorting } = this;
-        const result = await actions.getPaginatedResult({ schema, view, fields, filters, columns, pagination, sorting });
+        const result = await actions.getPaginatedResult({ schema, view, fields, filters, columns, pagination, sorting, hasUser });
         Alpine.store("loader").hide();
         const { data, error } = result;
         if (error) {

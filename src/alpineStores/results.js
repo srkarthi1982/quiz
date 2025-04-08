@@ -21,7 +21,7 @@ class Results extends StoreBase {
         this.filters = { ...Results.#filters };
         this.sorting = { ...Results.#sorting };
         this.pagination = { ...this.defaultPagination, take: 5 };
-        await this.getData();
+        await this.getData(true);
         await this.getPlatforms();
     }
     async getPlatforms() {

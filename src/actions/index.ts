@@ -89,7 +89,7 @@ export const server = {
   }),
   getPaginatedResult: defineAction({
     accept: 'json',
-    handler: async ({ schema, view, fields, filters, columns, pagination, sorting }) => {
+    handler: async ({ schema, view, fields, filters, columns, pagination, sorting, hasUser = false }) => {
       const page = Number(pagination.page);
       const take = Number(pagination.take);
       const sort = sorting.sort;
@@ -99,6 +99,10 @@ export const server = {
         const param = filters[value];
         if (param) query.filter(value, operator, operator === 'ilike' ? `%${param}%` : param);
       });
+      if(hasUser){
+        const result = await supabase.auth.getSession();
+        query.filter('user_id', 'eq', result.data.session?.user.id);
+      }
       if (sort !== null) query = query.order(sort, { ascending: order });
       const { data, count, error } = await query.range(((page - 1) * take), take * page - 1);
       if (error) return { success: false };
