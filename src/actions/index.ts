@@ -113,8 +113,8 @@ export const server = {
   save: defineAction({
     handler: async ({ id, title, schema, table, params }) => {
       const { error } = id ?
-        await supabase.schema(schema).from(table).update(params).eq("id", id) :
-        await supabase.schema(schema).from(table).insert(params);
+        await supabaseAdmin.schema(schema).from(table).update(params).eq("id", id) :
+        await supabaseAdmin.schema(schema).from(table).insert(params);
       if (error !== null) {
         if (error.code === '23505') throw new ActionError({ code: 'CONFLICT', message: `${title}: '${params.name}' already exists.` });
         else throw new ActionError({ code: 'BAD_REQUEST', message: error.message });
@@ -124,7 +124,7 @@ export const server = {
   }),
   remove: defineAction({
     handler: async ({ id, schema, table }) => {
-      const { error } = await supabase.schema(schema).from(table).delete().eq("id", id);
+      const { error } = await supabaseAdmin.schema(schema).from(table).delete().eq("id", id);
       if (error !== null) {
         if (error) throw new ActionError({ code: 'BAD_REQUEST', message: error.message });
       }
@@ -139,7 +139,7 @@ export const server = {
         system: "You are a subject matter expert generating multiple-choice questions.",
         prompt: `Generate ${numQuestions} multiple-choice questions for the subject '${subject.name}' under the platform '${platform.name}' for the topic '${topic.name}' based on the roadmap section '${roadmap.name}'. 
                  The difficulty level should be '${level.id}' (E = Easy, M = Medium, D = Difficult).
-                 Each question should have four answer choices, one correct answer (as an **index** from 0 to 3), and a short explanation.`,
+                 Each question should have four answer choices, one correct answer (as an index from 0 to 3), and a short explanation (that clearly mentions the correct answer by text).`,
         schema: z.object({
           qz: z.array(
             z.object({
