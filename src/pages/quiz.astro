@@ -6,22 +6,31 @@ const { user } = Astro.locals;
 	<div x-data="{ step: 1 }" class="card flex flex-col items-center p-4">
 		<!-- Stepper -->
 		<ol class="flex items-center w-full max-w-md">
-			<template x-for="(label, index) in ['Choose a Platform', 'Select your Subject', 'Select a Topic', 'Roadmaps', 'Levels', 'Start the Quiz']">
+			<template x-for="(label, index) in ['Choose a Platform', 'Select your Subject', 'Select a Topic', 'Roadmaps', 'Levels', 'Start the Quiz', 'Result']">
 				<li class="flex items-center w-full"
 					:class="step >= index + 1 ? 'text-blue-600 after:border-blue-100 cursor-pointer' : 'text-gray-500 after:border-gray-300 cursor-not-allowed'"
 					@click="step >= index + 1 ? step = index + 1 : null">
-					<div class="flex items-center justify-center w-10 h-10 rounded-full lg:h-12 lg:w-12 shrink-0"
+					<div class="flex items-center justify-center w-9 h-9 rounded-full lg:h-12 lg:w-12 shrink-0"
 						:class="step >= index + 1 ? 'bg-blue-100' : 'bg-gray-200'">
 						<span x-text="index + 1"></span>
 					</div>
-					<div x-show="index !== 5" class="w-full h-1 border-b border-4"
+					<div x-show="index !== 6" class="w-full h-1 border-b border-4"
 						:class="step >= index + 1 ? 'border-blue-100' : 'border-gray-200'">
 					</div>
 				</li>
 			</template>
 		</ol>
 		<!-- Step Label -->
-		<h1 class="text-2xl font-bold text-center my-5" x-text="['Choose a Platform', 'Select your Subject', 'Select a Topic', 'Roadmaps', 'Levels', 'Start the Quiz'][step - 1]"></h1>
+		<h1 class="text-2xl font-bold text-center my-5" x-text="['Choose a Platform', 'Select your Subject', 'Select a Topic', 'Roadmaps', 'Levels', 'Start the Quiz', 'Result'][step - 1]"></h1>
+		<!-- Step 7: Result" -->
+		<div x-show="step === 7" class="text-gray-700 w-full mb-5">
+			<div class="flex justify-center">
+				<div class="relative w-40 h-40 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg">
+				  <span class="text-4xl font-bold" x-text="($store.quiz.mark || 0) + ' / ' + 10"></span>
+				  <div class="absolute inset-0 rounded-full border-4 border-blue-300 animate-pulse"></div>
+				</div>
+			</div>
+		</div>
 		<div x-show="step > 1" class="table-responsive paper w-full">
 			<table class="table border strip">
 				<tbody>
@@ -47,6 +56,10 @@ const { user } = Astro.locals;
 					</tr>
 				</tbody>
 			</table>
+		</div>
+		<div x-show="step === 7" class="flex justify-center items-center gap-3 mt-4">
+			<button @click=`$store.quiz.onRestart();step = 1;` class="btn-primary">Restart Quiz</button>
+			<button @click="$store.quiz.onResults();" class="btn-default">View All Results</button>
 		</div>
 		<div class="spacer my-5"></div>
 		<!-- search -->
@@ -149,7 +162,7 @@ const { user } = Astro.locals;
 			</div>
 		</div>
 		<!-- Step 6: Quiz -->
-		<div x-show="step === 6" class="text-gray-700 w-full">
+		<div x-show="step === 6" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
 			<div class="w-full text-gray-900">		
 				<!-- Quiz Questions -->
 				<template x-for="(r, index) in $store.quiz.list.questions" :key="r.id">
@@ -190,7 +203,10 @@ const { user } = Astro.locals;
 					<!-- Complete Button -->
 					<button 
 						x-show="$store.quiz.currentQuestion + 1 === $store.quiz.list.questions.length"
-						@click=`$store.quiz.onComplete('${user.id}')`
+						@click=`
+						await $store.quiz.onComplete('${user.id}');
+						step = 7;
+						`
 						class="px-4 py-2 bg-green-600 text-white rounded"
 						:class="$store.quiz.answers[$store.quiz.currentQuestion] === undefined ? 'opacity-50 cursor-not-allowed' : ''">
 						<i class="fas fa-check"></i>

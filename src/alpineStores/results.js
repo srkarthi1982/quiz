@@ -20,7 +20,7 @@ class Results extends StoreBase {
     async onInit() {
         this.filters = { ...Results.#filters };
         this.sorting = { ...Results.#sorting };
-        this.pagination = { ...this.defaultPagination, take: 5 };
+        this.pagination = { ...this.defaultPagination };
         await this.getData(true);
         await this.getPlatforms();
     }

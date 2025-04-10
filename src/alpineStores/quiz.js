@@ -15,6 +15,7 @@ class Quiz {
         this.list = { ...Quiz.#list };
         this.selection = { ...Quiz.#selection };
         this.currentQuestion = 0;
+        this.mark = 0;
         this.answers = {};
         this.search = '';
     }
@@ -27,6 +28,16 @@ class Quiz {
             this.search = urlParams.get('platform');
         }
         this.getPlatforms();
+    }
+    onRestart(){
+        this.selection = { platform_id: 0, subject_id: 0, topic_id: 0, roadmap_id: 0, level_id: '' };
+        this.currentQuestion = 0;
+        this.mark = 0;
+        this.answers = {};
+        this.search = '';
+    }
+    onResults(){
+        navigate('/results');
     }
     async getPlatforms() {
         Alpine.store("loader").show();
@@ -93,14 +104,26 @@ class Quiz {
                 user_id, platform_id, subject_id, topic_id, roadmap_id, level: level_id,
                 responses: this.list.questions.map((q, i) => ({ id: Number(q.id), a: Number(this.answers[i]) }))
             }
-            const { data, error } = await actions.save({ id: 0, title: 'Quiz', schema: this.schema, table: 'results', params });
+            const { error } = await actions.saveQuiz({ title: 'Quiz', schema: this.schema, table: 'results', params });
             Alpine.store("loader").hide();
             if (error) {
                 Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
                 return;
             }
-            navigate('/results');
+            await this.getMarks(user_id);
         }
+    }
+    async getMarks(p_user_id){
+        Alpine.store("loader").show();
+        const { data, error } = await actions.getFunctions({ schema: this.schema, name: 'get_latest_mark_by_user', match: { p_user_id } });
+        Alpine.store("loader").hide();
+        if (error) {
+            Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
+            return;
+        }
+        console.log('data', data)
+        this.mark = data;
     }
 }
 Alpine.store('quiz', new Quiz());
+

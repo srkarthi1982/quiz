@@ -110,6 +110,16 @@ export const server = {
       return { data, count, pageValues };
     }
   }),
+  saveQuiz: defineAction({
+    handler: async ({ title, schema, table, params }) => {
+      const { data, error } = await supabaseAdmin.schema(schema).from(table).insert(params);
+      if (error !== null) {
+        if (error.code === '23505') throw new ActionError({ code: 'CONFLICT', message: `${title}: '${params.name}' already exists.` });
+        else throw new ActionError({ code: 'BAD_REQUEST', message: error.message });
+      }
+      return data;
+    }
+  }),
   save: defineAction({
     handler: async ({ id, title, schema, table, params }) => {
       const { error } = id ?
