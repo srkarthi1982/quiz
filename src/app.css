@@ -74,7 +74,7 @@ select.input { @apply  cursor-pointer appearance-none }
 
 /* dropdown */
 .dropdown-box{ @apply border border-b-2 border-gray-100 rounded-b-xl rounded-t-none absolute z-10 list-none overflow-hidden bg-white }
-.dropdown-link{ @apply border-b border-gray-100 block px-4 py-2 w-full text-left text-sm whitespace-nowrap text-gray-600 hover:bg-gray-100 }
+.dropdown-link{ @apply border-b border-gray-100 block px-4 py-2 w-full text-left whitespace-nowrap text-gray-600 hover:bg-gray-100 }
 .dropdown-link.active{ @apply bg-primary-600 text-white hover:bg-primary-600 }
 
 /* carousel */
