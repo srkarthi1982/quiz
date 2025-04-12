@@ -18,6 +18,7 @@ class Quiz {
         this.mark = 0;
         this.answers = {};
         this.search = '';
+        this.isCompleted = false;
     }
     onInit(location) {
         this.selection = { ...Quiz.#selection };
@@ -35,6 +36,7 @@ class Quiz {
         this.mark = 0;
         this.answers = {};
         this.search = '';
+        this.isCompleted = false;
     }
     onResults(){
         navigate('/results');
@@ -111,6 +113,7 @@ class Quiz {
                 return;
             }
             await this.getMarks(user_id);
+            this.isCompleted = true;
         }
     }
     async getMarks(p_user_id){
