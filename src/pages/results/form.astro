@@ -7,7 +7,7 @@ const {item, hasManage} = Astro.props;
             <template x-for="(r, idx) in $store.results.item" :key="idx">
                 <tr>					
                     <td class="w-full">
-                        <p class="mb-2 text-lg font-semibold text-gray-900" x-text="r.question"></p>
+                        <p class="mb-2 text-lg font-semibold text-gray-900" x-text="`${idx + 1}. ${r.question}`"></p>
                         <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside">
                             <template x-for="(option, index) in r.options">
                                 <li 

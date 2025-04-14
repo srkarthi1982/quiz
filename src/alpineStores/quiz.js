@@ -39,6 +39,7 @@ class Quiz {
         this.isCompleted = false;
     }
     onResults(){
+        this.onRestart();
         navigate('/results');
     }
     async getPlatforms() {
