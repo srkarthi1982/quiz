@@ -1,31 +1,27 @@
 ---
 const {item, hasManage} = Astro.props;
 ---
-<div class="table-responsive paper">
-    <table class="table strip">
-        <tbody>
-            <template x-for="(r, idx) in $store.results.item" :key="idx">
-                <tr>					
-                    <td class="w-full">
-                        <p class="mb-2 text-lg font-semibold text-gray-900" x-text="`${idx + 1}. ${r.question}`"></p>
-                        <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside">
-                            <template x-for="(option, index) in r.options">
-                                <li 
-                                    x-text="option"
-                                    :class=`{
-                                        'font-bold text-green-600': index === r.correct_answer,
-                                        'font-bold text-red-600': index === r.user_answer && !r.is_correct
-                                    }`
-                                ></li>
-                            </template>
-                        </ol>
-                        <div class="mt-2">
-                            <b>Explanation:</b>
-                            <i class=" text-pretty" x-text="r.explanation"></i>
-                        </div>
-                    </td>
-                </tr> 
-            </template>    
-        </tbody>
-    </table>
+<div class="grid grid-cols-1 gap-2">
+    <template x-for="(r, idx) in $store.results.item" :key="idx">
+        <div class="bg-white border border-gray-200 rounded-lg shadow p-4">
+            <p class="text-lg font-semibold text-gray-900 mb-3" x-text="`${idx + 1}. ${r.question}`"></p>
+            <ol class="space-y-2 list-none">
+                <template x-for="(option, index) in r.options">
+                    <li 
+                        class="flex items-start"
+                        :class=`{
+                            'font-bold text-green-600': index === r.correct_answer,
+                            'font-bold text-red-600': index === r.user_answer && !r.is_correct
+                        }`>
+                        <span class="mr-2 font-semibold" x-text="String.fromCharCode(65 + index) + '.'"></span>
+                        <span class="flex-1" x-text="option"></span>
+                    </li>
+                </template>
+            </ol>
+            <div class="mt-4">
+                <b class="block text-gray-700">Explanation:</b>
+                <i class="text-gray-600" x-text="r.explanation"></i>
+            </div>
+        </div>
+    </template>
 </div>
