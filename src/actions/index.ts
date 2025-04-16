@@ -38,7 +38,7 @@ export const server = {
     input: z.object({
       email: z.string().email({ message: 'Invalid email address.' }),
       password: z.string().min(5, { message: 'Password must be at least 5 characters long.' }),
-      name: z.string().min(5, { message: 'Phone must be at least 5 characters long.' }),
+      name: z.string().min(3, { message: 'Name must be at least 3 characters long.' }),
     }),
     handler: async ({ email, password, name }) => {
       const user_metadata = { name, role_id: 2 };
