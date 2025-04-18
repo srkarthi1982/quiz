@@ -99,7 +99,6 @@ export const server = {
         const param = filters[value];
         if (param) query.filter(value, operator, operator === 'ilike' ? `%${param}%` : param);
       });
-      console.log('hasUser', hasUser)
       if(hasUser){
         const result = await supabase.auth.getSession();
         query.filter('user_id', 'eq', result.data.session?.user.id);

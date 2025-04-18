@@ -13,17 +13,10 @@ class Quiz {
     };
     constructor() {
         this.list = { ...Quiz.#list };
-        this.selection = { ...Quiz.#selection };
-        this.currentQuestion = 0;
-        this.mark = 0;
-        this.answers = {};
-        this.search = '';
-        this.isCompleted = false;
+        this.onRestart();
     }
     onInit(location) {
-        this.selection = { ...Quiz.#selection };
-        this.currentQuestion = 0;
-        this.answers = {};
+        this.onRestart();
         if (location.search) {
             const urlParams = new URLSearchParams(location.search);
             this.search = urlParams.get('platform');
@@ -39,7 +32,6 @@ class Quiz {
         this.isCompleted = false;
     }
     onResults(){
-        this.onRestart();
         navigate('/results');
     }
     async getPlatforms() {
@@ -125,7 +117,6 @@ class Quiz {
             Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
             return;
         }
-        console.log('data', data)
         this.mark = data;
     }
 }
