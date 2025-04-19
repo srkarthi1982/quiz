@@ -40,7 +40,7 @@ const notifications = [
 		</div>
 		{user ?
 			<div x-data="{showNotification: false, showUser: false}" class="flex gap-3 items-center relative">				
-				<button 
+				{/* <button 
 					x-on:click="showNotification = !showNotification" x-on:click.away="showNotification = false" 
 					class="btn-icon lg"
 					aria-label="Notifications" 
@@ -65,7 +65,7 @@ const notifications = [
 					<div class="flex justify-center p-2 bg-gray-50">
 						<a href={url('notifications')} class="btn-default"><i class="fas fa-eye mr-1" aria-hidden="true"></i>View All</a>
 					</div>
-				</ul>
+				</ul> */}
 				<button 
 					x-on:click="showUser = !showUser" x-on:click.away="showUser = false" 
 					class="btn-icon lg active" 
