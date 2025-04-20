@@ -76,9 +76,9 @@ const professionalSkills = data.platforms?.filter((x: any) => x.type === 'P');
 						<div class="flex justify-center">
 							<a title="View Subjects for Academy" href={`/quiz?platform=${a.name}`} class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
 								<i class={`fas ${a.icon} text-3xl text-gray-600 mb-3`} aria-hidden="true"></i>
-								<div class="font-semibold text-lg">{a.name}</div>
-								<b class="text-gray-600 text-xs mt-1">(<span>{a.subject_count}</span>) Subjects</b>
-								<div class="text-gray-600 text-sm mt-1">{a.description}</div>
+								<div class="font-semibold text-xl">{a.name}</div>
+								<b class="text-gray-600 mt-1">(<span>{new Intl.NumberFormat().format(a.question_count)}</span>) Questions</b>
+								<div class="text-gray-600 mt-1">{a.description}</div>
 								<span class="sr-only">View</span>
 							</a>
 						</div>
@@ -91,9 +91,9 @@ const professionalSkills = data.platforms?.filter((x: any) => x.type === 'P');
 						<div class="flex justify-center">
 							<a title="View Subjects for Professional Skills" href={`/quiz?platform=${a.name}`} class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
 								<i class={`fas ${a.icon} text-3xl text-gray-600 mb-3`} aria-hidden="true"></i>
-								<div class="font-semibold text-lg">{a.name}</div>
-								<b class="text-gray-600 text-xs mt-1">(<span>{a.subject_count}</span>) Subjects</b>
-								<div class="text-gray-600 text-sm mt-1">{a.description}</div>
+								<div class="font-semibold text-xl">{a.name}</div>
+								<b class="text-gray-600 mt-1">(<span>{new Intl.NumberFormat().format(a.question_count)}</span>) Questions</b>
+								<div class="text-gray-600 mt-1">{a.description}</div>
 								<span class="sr-only">View</span>
 							</a>
 						</div>
