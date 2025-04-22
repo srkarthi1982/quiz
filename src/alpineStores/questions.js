@@ -100,5 +100,51 @@ class Questions extends StoreBase {
         }
         if (data.success) this.getData();
     }
+    async onBulk() {
+        Alpine.store("loader").show();
+        const { platform_id, l } = this.filters;
+        const level_param = l;
+        console.log('platform_id', platform_id)
+        console.log('l', l)
+        const response = await actions.getFunctions({
+            schema: this.schema,
+            name: 'get_empty_roadmaps',
+            match: { platform_id_param: platform_id, level_param }
+        });
+    
+        if (!response?.data?.length) {
+            Alpine.store("loader").hide();
+            Alpine.store('toast').show('No empty roadmaps found.', 'info');
+            return;
+        }
+    
+        const promises = response.data.map((o) => {
+            const numQuestions = 40;
+            const platform = { id: o.platform_id, name: o.platform_name };
+            const subject = { id: o.subject_id, name: o.subject_name };
+            const topic = { id: o.topic_id, name: o.topic_name };
+            const roadmap = { id: o.id, name: o.name };
+            const level = { id: level_param, name: level_param };
+    
+            return actions.generateQuestion({ numQuestions, platform, subject, topic, roadmap, level })
+                .then(({ error }) => {
+                    if (error) {
+                        throw new Error(error.issues?.length > 0 ? error.issues[0].message : error.message);
+                    }
+                    console.log('Generated:', { numQuestions, platform, subject, topic, roadmap, level });
+                });
+        });
+    
+        try {
+            await Promise.all(promises);
+            Alpine.store('toast').show('All questions generated successfully!', 'success');
+        } catch (error) {
+            //alert(error.message);
+            Alpine.store('toast').show(error.message, 'error');
+        } finally {
+            Alpine.store("loader").hide();
+        }
+     }
+    
 }
 Alpine.store('questions', new Questions());

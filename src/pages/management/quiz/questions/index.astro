@@ -16,6 +16,9 @@ const hasManage = locals?.accessCodes?.includes('001.02.05.01');
 			<button x-show={`${hasManage}`} class="btn-icon active lg" @click="$store.questions.onInsert()">
 				<i class="fas fa-plus"></i>
 			</button>
+			<button class="btn-default white lg" title="Generate Questions using AI" x-show={`${hasManage}`} @click="$store.questions.onBulk()">
+				Download All
+			</button>
 			<button class="btn-icon white lg" title="Generate Questions using AI" x-show={`${hasManage}`} @click="$store.questions.onGenerateQuestions()" :disabled="$store.questions.total > 0">
 				<i class="fa-solid fa-robot"></i>
 			</button>
