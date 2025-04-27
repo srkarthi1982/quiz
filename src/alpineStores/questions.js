@@ -100,6 +100,41 @@ class Questions extends StoreBase {
         }
         if (data.success) this.getData();
     }
+    async onVerify() {
+        Alpine.store("loader").show();
+        const match = { platform_id: this.filters.platform_id, l: this.filters.l, is_active: false };
+        const response = await actions.getResult({ schema: this.schema, table: 'questions', fields: 'id, q, o', match, order: 'id' });
+        const questions = response.data;
+        if (!questions?.length) {
+            Alpine.store("loader").hide();
+            Alpine.store("toast").show("No questions found for verification.", "info");
+            return;
+        }
+    
+        const promises = questions.map(q => {
+            return actions.verifyQuestion({
+                id: q.id,
+                question: q.q,
+                options: q.o
+            })
+            .then(res => {
+                console.log(`Verified question ${q.id}:`, res);
+            })
+            .catch(error => {
+                console.error(`Failed to verify question ${q.id}`, error);
+                Alpine.store("toast").show(`Error verifying question ${q.id}`, "error");
+            });
+        });
+    
+        try {
+            await Promise.all(promises);
+            Alpine.store("toast").show("All questions verified successfully!", "success");
+        } catch (error) {
+            Alpine.store("toast").show("Some questions failed to verify.", "warning");
+        } finally {
+            Alpine.store("loader").hide();
+        }
+    }    
     async onBulk() {
         Alpine.store("loader").show();
         const { platform_id, l } = this.filters;

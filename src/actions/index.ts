@@ -99,7 +99,7 @@ export const server = {
         const param = filters[value];
         if (param) query.filter(value, operator, operator === 'ilike' ? `%${param}%` : param);
       });
-      if(hasUser){
+      if (hasUser) {
         const result = await supabase.auth.getSession();
         query.filter('user_id', 'eq', result.data.session?.user.id);
       }
@@ -189,7 +189,7 @@ export const server = {
         l: level.id,
         is_active: true,
       }));
-     // Insert into Supabase
+      // Insert into Supabase
       const { error } = await supabase.from("questions").insert(params);
       if (error) {
         console.log('error', error)
@@ -221,6 +221,40 @@ export const server = {
       await supabase.schema("public").from("roadmaps").insert(roadmaps);
       return true;
     }
-  })
+  }),
+  verifyQuestion: defineAction({
+    handler: async ({ id, question, options }) => {
+      const prompt = `You are a subject matter expert. Given the following multiple-choice question and 4 options, identify the correct answer and provide a short explanation. Only return a JSON object with fields "a" (correct answer) and "e" (explanation).
+      Question: ${question}
+      Options: ${JSON.stringify(options)}
+      Return format:
+      {
+        "a": correct_answer,
+        "e": "Explanation of the correct answer"
+      }`;
+      const result = await generateObject({
+        model: openai("gpt-4o-mini"),
+        system: "You're an expert MCQ validator.",
+        prompt,
+        schema: z.object({
+          a: z.string(),
+          e: z.string()
+        }),
+        temperature: 0.2
+      });
+      const { a, e } = result.object;
 
+      const normalizedAnswer = a.trim().toLowerCase();
+      const index = options.findIndex((opt: string) => opt.trim().toLowerCase() === normalizedAnswer)
+      if (index < 0) {
+        throw new Error(`Correct answer "${a}" not found in options for question ID ${id}`);
+      }
+      const { error } = await supabase.from("questions").update({ a: index, e, is_active: true }).eq("id", id);
+      if (error) {
+        console.error('Update failed', error);
+        throw new Error(`Failed to update question ${id}: ${error.message}`);
+      }
+      return true;
+    }
+  })
 }
