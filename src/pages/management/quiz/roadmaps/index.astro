@@ -35,7 +35,7 @@ const hasManage = locals?.accessCodes?.includes('001.02.04.01');
 				<tr>
 					<th x-show={`${hasManage}`}></th>
 					<th class="w-full">Name</th>
-					<th class="min-w-44">Platforms</th>
+					<th class="min-w-72">Platforms</th>
 					<th class="min-w-60">Subjects</th>
 					<th class="min-w-60">Topics</th>
 					<th class="text-center">Active</th>
@@ -53,7 +53,6 @@ const hasManage = locals?.accessCodes?.includes('001.02.04.01');
 								$store.roadmaps.onColumnListChange('platform_id', Number($el.value)); 
 								$store.roadmaps.column.subjects = await $store.roadmaps.getSubjects(Number($el.value));
 							`>
-							<option value="">All</option>
 							<template x-for={`i in $store.roadmaps.column.platforms`}>
 								<option :value="i.id" x-text="i.name"></option>
 							</template>

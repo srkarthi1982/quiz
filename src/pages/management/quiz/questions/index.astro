@@ -31,7 +31,7 @@ const hasManage = locals?.accessCodes?.includes('001.02.05.01');
 		<table class="table">
 			<thead>
 				<tr>
-					<th class="min-w-48">Platform</th>
+					<th class="min-w-72">Platform</th>
 					<th class="min-w-60">Subject</th>
 					<th class="min-w-60">Topic</th>
 					<th class="min-w-60">Roadmap</th>
@@ -51,7 +51,6 @@ const hasManage = locals?.accessCodes?.includes('001.02.05.01');
 									$store.questions.onColumnListChange('platform_id', Number($el.value)); 
 									$store.questions.column.subjects = await $store.questions.getSubjects(Number($el.value));
 								`>
-								<option value="">All</option>
 								<template x-for={`i in $store.questions.column.platforms`}>
 									<option :value="i.id" x-text="i.name"></option>
 								</template>

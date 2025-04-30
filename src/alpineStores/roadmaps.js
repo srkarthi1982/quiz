@@ -3,7 +3,7 @@ import { StoreBase } from './StoreBase';
 import { actions } from 'astro:actions';
 class Roadmaps extends StoreBase {
     static #item = { id: 0, name: '', platform_id: 0, subject_id: 0, topic_id: 0, is_active: true };
-    static #filters = { name: '', is_active: '', platform_id: '', subject_id: '', topic_id: '' };
+    static #filters = { name: '', is_active: '', platform_id: 32, subject_id: '', topic_id: '' };
     static #sorting = { sort: 'id', order: true };
     static #columns = [
         { label: 'Id', value: "id", operator: 'eq' },

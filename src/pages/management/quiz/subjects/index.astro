@@ -25,7 +25,7 @@ const hasManage = locals?.accessCodes?.includes('001.02.02.01');
 				<tr>
 					<th x-show={`${hasManage}`}></th>
 					<th class="w-full">Name</th>
-					<th class="min-w-44">Platforms</th>
+					<th class="min-w-72">Platforms</th>
 					<th>Active</th>
 				</tr>
 				<tr>
@@ -36,7 +36,6 @@ const hasManage = locals?.accessCodes?.includes('001.02.02.01');
 							class="input w-full" 
 							:value=`$store.subjects.filters.platform_id`
 							@change="$store.subjects.onColumnListChange('platform_id', $el.value)">
-							<option value="">All</option>
 							<template x-for={`i in $store.subjects.column.platforms`}>
 								<option :value="i.id" x-text="i.name"></option>
 							</template>

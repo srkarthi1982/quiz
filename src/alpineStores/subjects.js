@@ -3,7 +3,7 @@ import { StoreBase } from './StoreBase';
 import { actions } from 'astro:actions';
 class Subjects extends StoreBase {
     static #item = { id: 0, name: '', platform_id: '', is_active: true };
-    static #filters = { name: '', is_active: '', platform_id: '' };
+    static #filters = { name: '', is_active: '', platform_id: 32 };
     static #sorting = { sort: 'name', order: true };
     static #columns = [
         { label: 'Name', value: "name", operator: 'ilike' },
