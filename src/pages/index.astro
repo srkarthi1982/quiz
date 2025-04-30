@@ -34,22 +34,22 @@ const professionalSkills = data.platforms?.filter((x: any) => x.type === 'P');
   </div>
   <!-- End Banner -->
   
-  <!-- YouTube Video Section -->
-  <section class="py-12 px-4">
+  <!-- Self-hosted Video Section -->
+<section class="py-12 px-4">
 	<div class="max-w-5xl mx-auto text-center">
 	  <h2 class="text-4xl font-extrabold text-gray-800 mb-6">🎬 Watch Our Introduction</h2>
 	  <p class="text-lg text-gray-600 mb-8">
 		Get to know how Quiz Institute is transforming the way people prepare and learn through interactive quizzes.
 	  </p>
-	  <div class="aspect-w-16 aspect-h-9 h-96 rounded-lg overflow-hidden shadow-lg">
-		<iframe 
-		  class="w-full h-full"
-		  src="https://www.youtube-nocookie.com/embed/xK1QMC2lXzk?rel=0" 
-		  title="Quiz Institute Introduction"
-		  frameborder="0" 
-		  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-		  allowfullscreen>
-		</iframe>
+	  <div class="rounded-lg overflow-hidden shadow-lg">
+		<video 
+		  class="w-full h-auto" 
+		  controls 
+		  preload="auto" 
+		  > <!-- Optional poster image -->
+		  <source src="/Introduction.mp4" type="video/mp4" />
+		  Your browser does not support the video tag.
+		</video>
 	  </div>
 	</div>
   </section>
