@@ -1,7 +1,7 @@
 ---
 const {item, hasManage} = Astro.props;
 ---
-<form @submit.prevent="$store.platforms.onSave();document.getElementById('file').value = '';">
+<form @submit.prevent="$store.platforms.onSave()">
     <div class="flex flex-col gap-3">
         <div>
             <label for="name" class="label">Name</label>
