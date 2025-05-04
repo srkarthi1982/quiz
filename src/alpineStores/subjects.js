@@ -17,7 +17,7 @@ class Subjects extends StoreBase {
         this.column = { ...Subjects.#list };
         this.form = { ...Subjects.#list };
     }
-    onInit(location) {
+    async onInit(location) {
         const params = new URLSearchParams(location.search);
         const platformId = params.get('platformId') || 0;
         const filterParams = location.pathname.includes('management') ? { is_active: '', counts: 0 } : { is_active: true, platform_id: Number(platformId) };

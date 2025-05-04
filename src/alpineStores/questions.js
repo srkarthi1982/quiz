@@ -67,6 +67,7 @@ class Questions extends StoreBase {
     this.pagination = { ...this.defaultPagination, take: 5 };
     this.getData();
     this.getPlatforms();
+    this.column.subjects = await this.getSubjects(this.filters.platform_id);
   }
 
   async getPlatforms() {

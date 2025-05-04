@@ -32,14 +32,15 @@ class Roadmaps extends StoreBase {
         this.pagination = { ...this.defaultPagination };
         this.getData();
         this.getPlatforms();
+        this.column.subjects = await this.getSubjects(this.filters.platform_id);
     }
     async getPlatforms() {
         Alpine.store("loader").show();
         const { data, error } = await actions.getResult({ schema: this.schema, table: 'platforms', fields: 'id, name', match: { is_active: true }, order: 'name' });
         Alpine.store("loader").hide();
         if (error) return;
-        this.column = { platforms: data, subjects: [], topics: [] };
-        this.form = { platforms: data, subjects: [], topics: [] };
+        this.column.platforms = data;
+        this.form.platforms = data;
     }
     async getSubjects(platform_id) {
         Alpine.store("loader").show();
