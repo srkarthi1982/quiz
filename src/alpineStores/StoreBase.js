@@ -69,7 +69,7 @@ export class StoreBase {
             Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
             return;
         }
-        Alpine.store('toast').show(`${short}: '${params.name}' saved successfully.`, 'success');
+        Alpine.store('toast').show(`${short}: '${params.name || params.q}' saved successfully.`, 'success');
         this.getData();
         this.showDrawer = false;
     }

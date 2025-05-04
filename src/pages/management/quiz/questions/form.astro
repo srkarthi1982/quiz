@@ -1,50 +1,96 @@
 ---
 const {item, hasManage} = Astro.props;
 ---
-<form @submit.prevent="$store.roadmaps.onSave()">
-    <div class="flex flex-col gap-3">
-        <div>
-            <label for="name" class="label">Name</label>
-            <input type="text" id="name" name="name" x-model="$store.roadmaps.item.name" class="input w-full mt-1" placeholder="Type name" required>
-        </div>
-        <div>
-            <label class="label">Platform</label>            
-            <select id="platform" x-model="$store.roadmaps.item.platform_id" @change=`$store.roadmaps.form.subjects = await $store.roadmaps.getSubjects(Number($el.value));` class="input w-full mt-1">
-                <option value=""></option>
-                <template x-for="i in $store.roadmaps.form.platforms">
-                    <option :value="i.id" x-text="i.name"></option>
-                </template>
-            </select>
-        </div>
-        <div>
-            <label class="label">Subject</label>            
-            <select id="subject" class="input w-full mt-1" x-model="$store.roadmaps.item.subject_id" 
-                @change=`
-                $store.roadmaps.onFormListChange('subject_id', Number($el.value));
-                $store.roadmaps.form.topics = await $store.roadmaps.getTopics(Number($el.value));`>
-                <option value=""></option>
-                <template x-for="i in $store.roadmaps.form.subjects">
-                    <option :value="i.id" :selected="Number(i.id) === Number($store.roadmaps.item.subject_id)" x-text="i.name"></option>
-                </template>
-            </select>
-        </div>
-        <div>
-            <label class="label">Topics</label>            
-            <select id="topic" class="input w-full mt-1" @change="$store.roadmaps.onFormListChange('topic_id', Number($el.value))">
-                <option value=""></option>
-                <template x-for="i in $store.roadmaps.form.topics">
-                    <option :value="i.id" :selected="Number(i.id) === Number($store.roadmaps.item.topic_id)" x-text="i.name"></option>
-                </template>
-            </select>
-        </div>
-        <div class="flex flex-row gap-2 items-center">
-            <input id="is_active" name="is_active" x-model="$store.roadmaps.item.is_active" type="checkbox" class="checkbox" class="checkbox" />
-            <label for="is_active" class="text">Active</label>
-        </div>
+<form @submit.prevent="$store.questions.onSave()">
+  <div class="flex flex-col gap-3">
+    <div>
+      <label class="label">Question</label>
+      <textarea x-model="$store.questions.item.q" class="input w-full mt-1" rows="3" placeholder="Type your question..." required></textarea>
     </div>
-    <div class="divider my-4"></div>
-    <div class="flex flex-row justify-between gap-4">
-        <button type="button" @click="$store.roadmaps.showDrawer = false" class="btn-default">Cancel</button>
-        { hasManage && <button type="submit" class="btn-primary" x-text={`${item}.id ? 'Update' : 'Create'`}></button>}
+
+    <div>
+      <label class="label">Options</label>
+      <template x-for="(option, index) in $store.questions.item.o">
+        <div class="flex items-center gap-2 mb-2">
+          <input type="radio" :value="index" x-model.number="$store.questions.item.a" />
+          <input type="text" class="input w-full" x-model="$store.questions.item.o[index]" :placeholder="`Option ${index + 1}`" required />
+        </div>
+      </template>
     </div>
+
+    <div>
+      <label class="label">Explanation</label>
+      <textarea x-model="$store.questions.item.e" class="input w-full mt-1" rows="2" placeholder="Explain the correct answer..." required></textarea>
+    </div>
+
+    <div>
+      <label class="label">Level</label>
+      <select class="input w-full mt-1" x-model="$store.questions.item.l">
+        <option value="">Select</option>
+        <option value="E">Easy</option>
+        <option value="M">Medium</option>
+        <option value="D">Difficult</option>
+      </select>
+    </div>
+
+    <!-- Platform, Subject, Topic, Roadmap -->
+    <div>
+      <label class="label">Platform</label>
+      <select class="input w-full mt-1" x-model="$store.questions.item.platform_id" @change="$store.questions.form.subjects = await $store.questions.getSubjects(Number($el.value))">
+        <option value=""></option>
+        <template x-for="i in $store.questions.form.platforms">
+          <option :value="i.id" x-text="i.name"></option>
+        </template>
+      </select>
+    </div>
+    <div>
+      <label class="label">Subject</label>
+      <select class="input w-full mt-1" x-model="$store.questions.item.subject_id" @change=`
+        $store.questions.form.topics = await $store.questions.getTopics(Number($el.value));
+        $store.questions.form.roadmaps = await $store.questions.getRoadmaps(Number($el.value))`>
+        <option value=""></option>
+        <template x-for="i in $store.questions.form.subjects">
+          <option :value="i.id" x-text="i.name"></option>
+        </template>
+      </select>
+    </div>
+    <!-- <div>
+      <label class="label">Topic</label>
+      <select class="input w-full mt-1" x-model="$store.questions.item.topic_id">
+        <option value=""></option>
+        <template x-for="i in $store.questions.form.topics">
+          <option :value="i.id" x-text="i.name"></option>
+        </template>
+      </select>
+    </div> -->
+    <div>
+        <label class="label">Topic</label>
+        <select class="input w-full mt-1" x-model="$store.questions.item.topic_id" @change=`
+          $store.questions.form.roadmaps = await $store.questions.getRoadmaps(Number($el.value))`>
+          <option value=""></option>
+          <template x-for="i in $store.questions.form.topics">
+            <option :value="i.id" x-text="i.name"></option>
+          </template>
+        </select>
+      </div>
+    <div>
+      <label class="label">Roadmap</label>
+      <select class="input w-full mt-1" x-model="$store.questions.item.roadmap_id">
+        <option value=""></option>
+        <template x-for="i in $store.questions.form.roadmaps">
+          <option :value="i.id" x-text="i.name"></option>
+        </template>
+      </select>
+    </div>
+
+    <div class="flex flex-row gap-2 items-center">
+      <input id="is_active" name="is_active" x-model="$store.questions.item.is_active" type="checkbox" class="checkbox" />
+      <label for="is_active" class="text">Active</label>
+    </div>
+  </div>
+  <div class="divider my-4"></div>
+  <div class="flex justify-between gap-4">
+    <button type="button" @click="$store.questions.showDrawer = false" class="btn-default">Cancel</button>
+    <button type="submit" class="btn-primary" x-text="$store.questions.item.id ? 'Update' : 'Create'"></button>
+  </div>
 </form>

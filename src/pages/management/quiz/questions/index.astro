@@ -148,7 +148,7 @@ const hasManage = locals?.accessCodes?.includes('001.02.05.01');
 	</div>
 	<div class="spacer"></div>
 	<Pagination storeName="questions" />
-	<Drawer item="$store.questions.item" title="Subject" showDrawer="$store.questions.showDrawer">
+	<Drawer item="$store.questions.item" title="Question" showDrawer="$store.questions.showDrawer">
 		<Form item="$store.questions.item" hasManage={hasManage} />
 	</Drawer>
 </LayoutSidebar>
