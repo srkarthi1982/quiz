@@ -1,5 +1,5 @@
 import Alpine from 'alpinejs';
-import { getResult, remove, save } from '../common/database';
+import { actions } from 'astro:actions';
 import { buildTreeView, copyToClipboard } from '../common/utils';
 const item = { id: '', value: '', idx: 0, name: '', link: '', parent_id: '', type: 'D', icon: '', is_active: true };
 class Menus {
@@ -22,15 +22,22 @@ class Menus {
     copyId(id) { copyToClipboard(id) }
     async onSave() {
         const { id, value, idx, name, link, parent_id, type, icon, is_active } = this.item;
-        const result = await save(id, 'Menu', this.schema, 'menus', { value, idx, name, link, parent_id, type, icon, is_active });
-        if (!result) return;
+        const {error} = await actions.save({ id, title: 'Menu', schema: this.schema, table: 'menus', params: { value, idx, name, link, parent_id, type, icon, is_active } });
+        if (error) {
+            Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
+            return;
+        }
         await this.onInit();
         this.showDrawer = false;
         this.item = { ...item };
     }
     async onRemove({ id, name }) {
-        const result = await remove(id, 'Menu', this.schema, 'menus', name);
-        if (result) await this.onInit();
+        const { data, error } = await actions.remove({ id, schema: this.schema, table: 'menus' });
+        if (error) {
+            Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
+            return;
+        }
+        if (data) await this.onInit();
     }
     toggleAll(open) {
         this.showAction = false;
@@ -38,8 +45,11 @@ class Menus {
     }
     async onInit() {
         this.showAction = false;
-        const { success, data } = await getResult(this.schema, 'menus', '*', '', ["parent_id", "idx"]);
-        if (!success) return;
+        const { data, error } = await actions.getResult({ schema: this.schema, table: 'menus', fields: '*', match: {}, order: ["parent_id", "idx"] });
+        if (error) {
+            Alpine.store('toast').show(error.issues?.length > 0 ? error.issues[0].message : error.message, 'error');
+            return;
+        }
         this.data = data;
         this.toggleAll(true);
     }

@@ -15,11 +15,6 @@ import './users';
 import './roles';
 import './menus';
 import './access';
-import './faq';
-import './faqs';
-import './packages';
-import './contact';
-import './profile';
 import './notifications';
 import './management';
 
