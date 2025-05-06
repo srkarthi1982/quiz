@@ -4,7 +4,7 @@ import { actions } from 'astro:actions';
 class Results extends StoreBase {
     static #item = { id: 0, user_id: '', platform_id: 0, subject_id: 0, topic_id: 0, roadmap_id: 0, level: '', mark: 0 };
     static #filters = { platform_id: 0, subject_id: 0, topic_id: 0, roadmap_id: 0, level: '' };
-    static #sorting = { sort: 'created_at', order: false };
+    static #sorting = { sort: 'id', order: false };
     static #columns = [
         { label: 'Platform', value: "platform_id", operator: 'eq' },
         { label: 'Subject', value: "subject_id", operator: 'eq' },
