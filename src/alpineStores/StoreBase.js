@@ -26,15 +26,14 @@ export class StoreBase {
             disablePager: { disabled: undefined },
         };
         this.ddmmyyyy = ddmmyyyy;
-        this.hasUser = false;
     }
     get defaultPagination() {
         return { page: 1, take: getTakeValue(getScreenSize()) };
     }
     async getData() {
         Alpine.store("loader").show();
-        const { schema, view, fields, filters, columns, pagination, sorting, hasUser } = this;
-        const result = await actions.getPaginatedResult({ schema, view, fields, filters, columns, pagination, sorting, hasUser });
+        const { schema, view, fields, filters, columns, pagination, sorting } = this;
+        const result = await actions.getPaginatedResult({ schema, view, fields, filters, columns, pagination, sorting });
         Alpine.store("loader").hide();
         const { data, error } = result;
         if (error) {

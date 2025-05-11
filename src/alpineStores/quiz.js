@@ -2,7 +2,6 @@ import Alpine from 'alpinejs';
 import { navigate } from 'astro:transitions/client';
 import { actions } from 'astro:actions';
 class Quiz {
-    static #selection = { platform_id: 0, subject_id: 0, topic_id: 0, roadmap_id: 0, level_id: '' };
     static #list = {
         platforms: [],
         subjects: [],
@@ -25,6 +24,14 @@ class Quiz {
     }
     onRestart(){
         this.selection = { platform_id: 0, subject_id: 0, topic_id: 0, roadmap_id: 0, level_id: '' };
+        this.currentQuestion = 0;
+        this.mark = 0;
+        this.answers = {};
+        this.search = '';
+        this.isCompleted = false;
+    }
+    onRetake(){
+        this.selection = {...this.selection, level_id: ''};
         this.currentQuestion = 0;
         this.mark = 0;
         this.answers = {};

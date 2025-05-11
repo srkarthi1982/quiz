@@ -4,10 +4,12 @@ import Breadcrumb from "../../component/Breadcrumb.astro";
 import Pagination from "../../component/Pagination.astro";
 import QuizDrawer from "../../component/QuizDrawer.astro";
 import Form from "./form.astro";
+import { createdDate } from '../../common/utils';
 const hasManage = true;
 ---
 <LayoutFull active="results">
 	<Breadcrumb list={[{ name: "Results", link: "" }]}>
+		<button class="btn-icon white" x-on:click="$store.results.onInit()"><i class="fas fa-sync-alt"></i></button>
 	</Breadcrumb>
 	<!-- Filters -->
 	<div class="card grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
@@ -101,7 +103,17 @@ const hasManage = true;
 				</table>
 			</div>
 			<div class="flex justify-between mt-3">
-				<span class="inline-block px-3 py-1 bg-gray-100 text-gray-700 text-sm font-medium rounded-full" x-text="r.created_at"></span>
+				<span class="inline-block px-3 py-1 bg-gray-100 text-gray-700 text-sm font-medium rounded-full" 
+				x-text=`new Date(r.created_at+'Z').toLocaleString(undefined, {
+				year: "numeric",
+				month: "short",
+				day: "numeric",
+				hour: "2-digit",
+				minute: "2-digit",
+				second: "2-digit",
+				hour12: true,
+				});`>
+				</span>
 				<span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">
 					Score: <span x-text="r.mark + ' / 10'"></span>
 				</span>

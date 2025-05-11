@@ -11,6 +11,7 @@ class SignOut {
             Alpine.store('toast').show(error.message, 'error');
             return;
         }
+        localStorage.removeItem('user');
         navigate('/');
     }
 }

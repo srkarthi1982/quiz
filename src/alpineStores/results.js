@@ -3,14 +3,15 @@ import { StoreBase } from './StoreBase';
 import { actions } from 'astro:actions';
 class Results extends StoreBase {
     static #item = { id: 0, user_id: '', platform_id: 0, subject_id: 0, topic_id: 0, roadmap_id: 0, level: '', mark: 0 };
-    static #filters = { platform_id: 0, subject_id: 0, topic_id: 0, roadmap_id: 0, level: '' };
+    static #filters = { platform_id: 0, subject_id: 0, topic_id: 0, roadmap_id: 0, level: '', user_id: '' };
     static #sorting = { sort: 'id', order: false };
     static #columns = [
         { label: 'Platform', value: "platform_id", operator: 'eq' },
         { label: 'Subject', value: "subject_id", operator: 'eq' },
         { label: 'Topic', value: "topic_id", operator: 'eq' },
         { label: 'Roadmap', value: "roadmap_id", operator: 'eq' },
-        { label: 'Level', value: "level", operator: 'eq' }
+        { label: 'Level', value: "level", operator: 'eq' },
+        { label: 'User', value: "user_id", operator: 'eq' }
     ];
     static #list = { platforms: [], subjects: [], topics: [], roadmaps: [], levels: [{ id: 'E', name: 'Easy' }, { id: 'M', name: 'Medium' }, { id: 'D', name: 'Difficult' }] };
     constructor() {
@@ -18,10 +19,9 @@ class Results extends StoreBase {
          this.column = { ...Results.#list };
     }
     async onInit() {
-        this.filters = { ...Results.#filters };
+        this.filters = { ...Results.#filters, user_id: JSON.parse(localStorage.getItem('user')).id };
         this.sorting = { ...Results.#sorting };
         this.pagination = { ...this.defaultPagination, take: 6 };
-        this.hasUser = true;
         await this.getData();
         await this.getPlatforms();
     }

@@ -27,15 +27,14 @@ export function debounce(func, wait = 500) {
   };
 }
 export const createdDate = function (date) {
-  return new Date(
-    date,
-  ).toLocaleDateString("en-US", {
+  return new Date(date,).toLocaleString(undefined, {
     year: "numeric",
     month: "short",
     day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true, // or false for 24-hour format
   });
 }
 export const ddmmyyyy = function (date) {
