@@ -31,7 +31,7 @@ export const server = {
       context.cookies.set("sb-refresh-token", refresh_token, { sameSite: "strict", domain, path: "/", secure: true });
       context.cookies.set("role", JSON.stringify(response.role).replace(/\s+/g, ''), { sameSite: "strict", domain, path: "/", secure: true });
       context.cookies.set("menus", JSON.stringify(response.menus).replace(/\s+/g, ''), { sameSite: "strict", domain, path: "/", secure: true });
-      return { success: true, message: 'success' };
+      return { user: data.user, success: true, message: 'success' };
     }
   }),
   signUp: defineAction({
@@ -89,7 +89,7 @@ export const server = {
   }),
   getPaginatedResult: defineAction({
     accept: 'json',
-    handler: async ({ schema, view, fields, filters, columns, pagination, sorting, hasUser = false }) => {
+    handler: async ({ schema, view, fields, filters, columns, pagination, sorting }) => {
       const page = Number(pagination.page);
       const take = Number(pagination.take);
       const sort = sorting.sort;
@@ -99,10 +99,6 @@ export const server = {
         const param = filters[value];
         if (param) query.filter(value, operator, operator === 'ilike' ? `%${param}%` : param);
       });
-      if (hasUser) {
-        const result = await supabase.auth.getSession();
-        query.filter('user_id', 'eq', result.data.session?.user.id);
-      }
       if (sort !== null) query = query.order(sort, { ascending: order });
       const { data, count, error } = await query.range(((page - 1) * take), take * page - 1);
       if (error) return { success: false };
