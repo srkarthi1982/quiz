@@ -187,8 +187,6 @@ class Questions extends StoreBase {
           Alpine.store("loader").show();
           const { platform_id, l } = this.filters;
           const level_param = l;
-          console.log('platform_id', platform_id)
-          console.log('l', l)
           const response = await actions.getFunctions({
               schema: this.schema,
               name: 'get_empty_roadmaps',
@@ -214,7 +212,6 @@ class Questions extends StoreBase {
                       if (error) {
                           throw new Error(error.issues?.length > 0 ? error.issues[0].message : error.message);
                       }
-                      console.log('Generated:', { numQuestions, platform, subject, topic, roadmap, level });
                   });
           });
       

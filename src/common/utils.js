@@ -92,19 +92,6 @@ export const copyToClipboard = function (text) {
     Alpine.store('toast').show(`Failed to copy`, 'error');
   });
 }
-export async function fileObjectToBuffer(file) {
-  try {
-    if (file && file instanceof File) {
-      const fileBuffer = await file.arrayBuffer();
-      return Buffer.from(fileBuffer);
-    } else {
-      throw new Error('File data not found or not in expected format');
-    }
-  } catch (error) {
-    console.error('Error reading file:', error);
-    throw error;
-  }
-}
 export function getCookie(name) {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
