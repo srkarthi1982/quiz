@@ -3,28 +3,28 @@ import LayoutFull from "../app/Layout.astro";
 const { user } = Astro.locals;
 ---
 <LayoutFull active="quiz">
-	<div x-data="{ step: 1 }" class="card flex flex-col items-center p-4">
+	<div class="card flex flex-col items-center p-4">
 		<!-- Stepper -->
 		<ol class="flex items-center w-full max-w-md">
 			<template x-for="(label, index) in ['Choose a Platform', 'Select your Subject', 'Select a Topic', 'Roadmaps', 'Levels', 'Start the Quiz']">
 				<li class="flex items-center w-full"
-					:class="step >= index + 1 ? 'text-blue-600 after:border-blue-100 cursor-pointer' : 'text-gray-500 after:border-gray-300 cursor-not-allowed'"
-					@click="step >= index + 1 ? step = index + 1 : null; $store.quiz.isCompleted = false;">
+					:class="$store.quiz.step >= index + 1 ? 'text-blue-600 after:border-blue-100 cursor-pointer' : 'text-gray-500 after:border-gray-300 cursor-not-allowed'"
+					@click="$store.quiz.step >= index + 1 ? $store.quiz.step = index + 1 : null; $store.quiz.isCompleted = false;">
 					<div class="flex items-center justify-center w-9 h-9 rounded-full lg:h-12 lg:w-12 shrink-0"
-						:class="step >= index + 1 ? 'bg-blue-100' : 'bg-gray-200'">
+						:class="$store.quiz.step >= index + 1 ? 'bg-blue-100' : 'bg-gray-200'">
 						<span x-text="index + 1"></span>
 					</div>
 					<div x-show="index !== 5" class="w-full h-1 border-b border-4"
-						:class="step >= index + 1 ? 'border-blue-100' : 'border-gray-200'">
+						:class="$store.quiz.step >= index + 1 ? 'border-blue-100' : 'border-gray-200'">
 					</div>
 				</li>
 			</template>
 		</ol>
 		<!-- Step Label -->
-		<h1 x-show="$store.quiz.isCompleted === false" class="text-2xl font-bold text-center my-5" x-text="['Choose a Platform', 'Select your Subject', 'Select a Topic', 'Roadmaps', 'Levels', 'Start the Quiz'][step - 1]"></h1>
+		<h1 x-show="$store.quiz.isCompleted === false" class="text-2xl font-bold text-center my-5" x-text="['Choose a Platform', 'Select your Subject', 'Select a Topic', 'Roadmaps', 'Levels', 'Start the Quiz'][$store.quiz.step - 1]"></h1>
 		<h1 x-show="$store.quiz.isCompleted === true" class="text-2xl font-bold text-center my-5">Result</h1>
 		<!-- Step 6: Result" -->
-		<div x-show="step === 6 && $store.quiz.isCompleted === true" class="text-gray-700 w-full mb-5">
+		<div x-show="$store.quiz.step === 6 && $store.quiz.isCompleted === true" class="text-gray-700 w-full mb-5">
 			<div class="flex justify-center">
 				<div class="relative w-40 h-40 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg">
 				  <span class="text-4xl font-bold" x-text="($store.quiz.mark || 0) + ' / ' + 10"></span>
@@ -32,26 +32,26 @@ const { user } = Astro.locals;
 				</div>
 			</div>
 		</div>
-		<div x-show="step > 1" class="table-responsive paper w-full">
+		<div x-show="$store.quiz.step > 1" class="table-responsive paper w-full">
 			<table class="table border strip">
 				<tbody>
-					<tr x-show="step > 1">
+					<tr x-show="$store.quiz.step > 1">
 						<th>Platform</th>
 						<td class="w-full" x-text="$store.quiz.items.platform"></td>								
 					</tr>
-					<tr x-show="step > 2">
+					<tr x-show="$store.quiz.step > 2">
 						<th>Subject</th>
 						<td x-text="$store.quiz.items.subject"></td>								
 					</tr>
-					<tr x-show="step > 3">
+					<tr x-show="$store.quiz.step > 3">
 						<th>Topic</th>
 						<td x-text="$store.quiz.items.topic"></td>								
 					</tr>
-					<tr x-show="step > 4">
+					<tr x-show="$store.quiz.step > 4">
 						<th>Roadmap</th>
 						<td x-text="$store.quiz.items.roadmap"></td>								
 					</tr>
-					<tr x-show="step > 5">
+					<tr x-show="$store.quiz.step > 5">
 						<th>Level</th>
 						<td x-text="$store.quiz.items.level"></td>
 					</tr>
@@ -62,20 +62,20 @@ const { user } = Astro.locals;
 		<!-- search -->
 		<input 
 			type="search" 
-			x-show="step < 5"
+			x-show="$store.quiz.step < 5"
 			x-model="$store.quiz.search" 
 			placeholder="Search" 
 			class="w-full p-2 mb-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"	
 		>
 		<!-- Step 1: Select Platform -->
-		<div x-show="step === 1" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">		
+		<div x-show="$store.quiz.step === 1" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">		
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
 				<template x-for="platform in $store.quiz.list.platforms.filter(p => p.name.toLowerCase().includes($store.quiz.search.toLowerCase()))" :key="platform.id">
 					<button 
 						@click=`
 						$store.quiz.selection.platform_id = platform.id; 
 						await $store.quiz.getSubjects(platform.id); 
-						step = 2;
+						$store.quiz.step = 2;
 						`
 						class="flex items-center px-4 py-2 border border-gray-200 rounded-lg cursor-pointer text-left"
 						:class="$store.quiz.selection.platform_id === platform.id ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100 hover:text-blue-700'">
@@ -86,14 +86,14 @@ const { user } = Astro.locals;
 			</div>
 		</div>
 		<!-- Step 2: Select Subject -->
-		<div x-show="step === 2" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
+		<div x-show="$store.quiz.step === 2" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-2">
 				<template x-for="subject in $store.quiz.list.subjects.filter(p => p.name.toLowerCase().includes($store.quiz.search.toLowerCase()))" :key="subject.id">
 					<button 
 						@click=`
 						$store.quiz.selection.subject_id = subject.id; 
 						await $store.quiz.getTopics(subject.id); 
-						step = 3;
+						$store.quiz.step = 3;
 						`
 						class="flex items-center px-4 py-2 border border-gray-200 rounded-lg cursor-pointer text-left"
 						:class="$store.quiz.selection.subject_id === subject.id ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100 hover:text-blue-700'">					
@@ -104,14 +104,14 @@ const { user } = Astro.locals;
 			</div>
 		</div>
 		<!-- Step 3: Select Topic -->
-		<div x-show="step === 3" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
+		<div x-show="$store.quiz.step === 3" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-2">
 				<template x-for="topic in $store.quiz.list.topics.filter(p => p.name.toLowerCase().includes($store.quiz.search.toLowerCase()))" :key="topic.id">
 					<button 
 						@click=`
 						$store.quiz.selection.topic_id = topic.id; 
 						await $store.quiz.getRoadmaps(topic.id); 
-						step = 4;
+						$store.quiz.step = 4;
 						`
 						class="flex items-center px-4 py-2 border border-gray-200 rounded-lg cursor-pointer text-left"
 						:class="$store.quiz.selection.topic_id === topic.id ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100 hover:text-blue-700'">
@@ -122,14 +122,14 @@ const { user } = Astro.locals;
 			</div>
 		</div>
 		<!-- Step 4: Select Roadmap -->
-		<div x-show="step === 4" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
+		<div x-show="$store.quiz.step === 4" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
 				<template x-for="roadmap in $store.quiz.list.roadmaps.filter(p => p.name.toLowerCase().includes($store.quiz.search.toLowerCase()))" :key="roadmap.id">
 					<button 
 						@click=`
 						$store.quiz.selection.roadmap_id = roadmap.id; 
 						$store.quiz.search = '';
-						step = 5; 
+						$store.quiz.step = 5; 
 						`
 						class="flex items-center px-4 py-2 border border-gray-200 rounded-lg cursor-pointer text-left"
 						:class="$store.quiz.selection.roadmap_id === roadmap.id ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100 hover:text-blue-700'">
@@ -140,7 +140,7 @@ const { user } = Astro.locals;
 			</div>
 		</div>
 		<!-- Step 5: Levels -->
-		<div x-show="step === 5" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
+		<div x-show="$store.quiz.step === 5" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-2">
 				<template x-for="level in $store.quiz.list.levels" :key="level.id">
 					<button 
@@ -148,7 +148,7 @@ const { user } = Astro.locals;
 						$store.quiz.selection.level_id = level.id; 
 						await $store.quiz.getQuestions(); 
 						$store.quiz.search = '';
-						step = 6; 
+						$store.quiz.step = 6; 
 						`
 						class="flex items-center px-4 py-2 border border-gray-200 rounded-lg cursor-pointer text-left"
 						:class="$store.quiz.selection.level_id === level.id ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100 hover:text-blue-700'">
@@ -159,7 +159,7 @@ const { user } = Astro.locals;
 			</div>
 		</div>
 		<!-- Step 6: Quiz -->
-		<div x-show="step === 6 && $store.quiz.isCompleted === false" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
+		<div x-show="$store.quiz.step === 6 && $store.quiz.isCompleted === false" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">
 			<div class="w-full text-gray-900">		
 				<!-- Quiz Questions -->
 				<template x-for="(r, index) in $store.quiz.list.questions" :key="r.id">
@@ -211,9 +211,9 @@ const { user } = Astro.locals;
 				</div>
 			</div>
 		</div>
-		<div x-show="step === 6 && $store.quiz.isCompleted === true" class="flex justify-center items-center gap-3">
-			<button @click=`$store.quiz.onRestart();step = 1;` class="btn-primary">Restart Quiz</button>
-			<button @click=`$store.quiz.onRetake();step = 5;` class="btn-default">Retake Quiz</button>
+		<div x-show="$store.quiz.step === 6 && $store.quiz.isCompleted === true" class="flex justify-center items-center gap-3">
+			<button @click=`$store.quiz.onRestart();$store.quiz.step = 1;` class="btn-primary">Restart Quiz</button>
+			<button @click=`$store.quiz.onRetake();$store.quiz.step = 5;` class="btn-default">Retake Quiz</button>
 			<button @click="$store.quiz.onResults();" class="btn-default">View All Results</button>
 		</div>
 	</div>

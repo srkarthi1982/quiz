@@ -4,7 +4,6 @@ import Breadcrumb from "../../component/Breadcrumb.astro";
 import Pagination from "../../component/Pagination.astro";
 import QuizDrawer from "../../component/QuizDrawer.astro";
 import Form from "./form.astro";
-import { createdDate } from '../../common/utils';
 const hasManage = true;
 ---
 <LayoutFull active="results">
@@ -80,11 +79,10 @@ const hasManage = true;
 			<div class="flex justify-between items-center mb-2">
 				<div>
 					<span class="text-lg font-semibold text-gray-800" x-text="r.platform_name"></span>
-					<span x-text="`(${r.level})`"></span>
 				</div>
-				<button class="btn-icon white lg" @click="$store.results.onScore(r.id)" title="View Quiz Details">
-					<i class="fas fa-eye"></i>
-				</button>
+				<span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">
+					Score: <span x-text="r.mark + ' / 10'"></span>
+				</span>								
 			</div>
 			<div class="text-gray-600">
 				<table>
@@ -100,23 +98,23 @@ const hasManage = true;
 						<td><strong>Roadmap</strong></td>
 						<td x-text="` : ${r.roadmap_name}`"></td>
 					</tr>
+					<tr>
+						<td><strong>Level</strong></td>
+						<td x-text="` : ${r.level === 'E' ? 'Easy' : r.level === 'M' ? 'Medium' : 'Difficult'}`"></td>
+					</tr>
+					<tr>
+						<td><strong>Dated On</strong></td>
+						<td x-text="`: ${new Date(r.created_at+'Z').toLocaleString(undefined, {year: 'numeric',month: 'short',day: 'numeric',hour: '2-digit',minute: '2-digit',second: '2-digit',hour12: true})}`"></td>
+					</tr>
 				</table>
 			</div>
-			<div class="flex justify-between mt-3">
-				<span class="inline-block px-3 py-1 bg-gray-100 text-gray-700 text-sm font-medium rounded-full" 
-				x-text=`new Date(r.created_at+'Z').toLocaleString(undefined, {
-				year: "numeric",
-				month: "short",
-				day: "numeric",
-				hour: "2-digit",
-				minute: "2-digit",
-				second: "2-digit",
-				hour12: true,
-				});`>
-				</span>
-				<span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">
-					Score: <span x-text="r.mark + ' / 10'"></span>
-				</span>
+			<div class="flex justify-between mt-3">									
+					<button class="btn-default white" @click="$store.results.onScore(r.id)" title="View Quiz Details">
+						View Details
+					</button>
+					<a class="btn-primary white" :href="`/quiz?platform_id=${r.platform_id}&subject_id=${r.subject_id}&topic_id=${r.topic_id}&roadmap_id=${r.roadmap_id}`">
+						Re-Take
+					</a>
 			</div>
 		</div>
 	</template>

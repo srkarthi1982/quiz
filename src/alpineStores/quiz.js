@@ -12,18 +12,46 @@ class Quiz {
     };
     constructor() {
         this.list = { ...Quiz.#list };
-        this.onRestart();
+        this.onRestart({ platform_id: 0, subject_id: 0, topic_id: 0, roadmap_id: 0, level_id: '', step: 1 });
     }
-    onInit(location) {
-        this.onRestart();
+    async onInit(location) {
+        let platform_id = 0;
+        let subject_id = 0;
+        let topic_id = 0;
+        let roadmap_id = 0;
+        let level_id = '';
         if (location.search) {
             const urlParams = new URLSearchParams(location.search);
-            this.search = urlParams.get('platform');
+            platform_id = Number(urlParams.get('platform_id')) || 0;
+            subject_id = Number(urlParams.get('subject_id')) || 0;
+            topic_id = Number(urlParams.get('topic_id')) || 0;
+            roadmap_id = Number(urlParams.get('roadmap_id')) || 0;
+            level_id = urlParams.get('level_id') || '';
         }
-        this.getPlatforms();
+        if (platform_id > 0) {
+            this.onRestart({ platform_id, subject_id, topic_id, roadmap_id, level_id, step:2 });
+            await this.getPlatforms();
+            await this.getSubjects(platform_id);
+        } else {
+            this.onRestart({ platform_id, subject_id, topic_id, roadmap_id, level_id, step:1 });
+            await this.getPlatforms();
+        }
+        if (subject_id > 0) {
+            this.onRestart({ platform_id, subject_id, topic_id, roadmap_id, level_id, step:3 });
+            await this.getTopics(subject_id);
+        }
+        if (topic_id > 0) {
+            this.onRestart({ platform_id, subject_id, topic_id, roadmap_id, level_id, step:4 });
+            await this.getRoadmaps(topic_id);
+        }
+        if (roadmap_id > 0) {
+            this.onRestart({ platform_id, subject_id, topic_id, roadmap_id, level_id, step:5 });
+        }
     }
-    onRestart(){
-        this.selection = { platform_id: 0, subject_id: 0, topic_id: 0, roadmap_id: 0, level_id: '' };
+    
+    onRestart(selection){
+        this.step = selection.step;
+        this.selection = selection;
         this.currentQuestion = 0;
         this.mark = 0;
         this.answers = {};
