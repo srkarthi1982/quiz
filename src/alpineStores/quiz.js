@@ -28,25 +28,9 @@ class Quiz {
             roadmap_id = Number(urlParams.get('roadmap_id')) || 0;
             level_id = urlParams.get('level_id') || '';
         }
-        if (platform_id > 0) {
-            this.onRestart({ platform_id, subject_id, topic_id, roadmap_id, level_id, step:2 });
-            await this.getPlatforms();
-            await this.getSubjects(platform_id);
-        } else {
-            this.onRestart({ platform_id, subject_id, topic_id, roadmap_id, level_id, step:1 });
-            await this.getPlatforms();
-        }
-        if (subject_id > 0) {
-            this.onRestart({ platform_id, subject_id, topic_id, roadmap_id, level_id, step:3 });
-            await this.getTopics(subject_id);
-        }
-        if (topic_id > 0) {
-            this.onRestart({ platform_id, subject_id, topic_id, roadmap_id, level_id, step:4 });
-            await this.getRoadmaps(topic_id);
-        }
-        if (roadmap_id > 0) {
-            this.onRestart({ platform_id, subject_id, topic_id, roadmap_id, level_id, step:5 });
-        }
+        const step = roadmap_id > 0 ? 5 : topic_id > 0 ? 4 : subject_id > 0 ? 3 : platform_id > 0 ? 2 : 1;
+        this.onRestart({ platform_id, subject_id, topic_id, roadmap_id, level_id, step });
+        await this.fetchQuizMetadata(platform_id, subject_id, topic_id);
     }
     
     onRestart(selection){
@@ -69,6 +53,22 @@ class Quiz {
     onResults(){
         navigate('/results');
     }
+    async fetchQuizMetadata(platform_id, subject_id, topic_id) {
+        Alpine.store("loader").show();
+        const { data, error } = await actions.getFunctions({
+            schema: this.schema,
+            name: 'get_quiz_metadata',
+            match: { p_platform_id: platform_id, p_subject_id: subject_id, p_topic_id: topic_id }
+        });
+        Alpine.store("loader").hide();
+        if (error) return;
+    
+        this.list.platforms = data.platforms || [];
+        this.list.subjects = data.subjects || [];
+        this.list.topics = data.topics || [];
+        this.list.roadmaps = data.roadmaps || [];
+    }
+    
     async getPlatforms() {
         Alpine.store("loader").show();
         let match = { is_active: true };
