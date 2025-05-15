@@ -95,6 +95,7 @@ class Quiz {
         Alpine.store("loader").hide();
         if (error) return;
         this.list.topics = data;
+        this.search = '':
     }
     async getRoadmaps(topic_id) {
         Alpine.store("loader").show();
@@ -104,6 +105,7 @@ class Quiz {
         Alpine.store("loader").hide(); ``
         if (error) return;
         this.list.roadmaps = data;
+        this.search = '';
     }
     async getQuestions() {
         Alpine.store("loader").show();
