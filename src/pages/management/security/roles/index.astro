@@ -2,19 +2,18 @@
 import LayoutSidebar from '../../../../app/LayoutFull.astro';
 import Drawer from "../../../../component/Drawer.astro";
 import Pagination from "../../../../component/Pagination.astro";
-import Sorting from "../../../../component/Sorting.astro";
 import Breadcrumb from '../../../../component/Breadcrumb.astro';
 import ActionButton from '../../../../component/ActionButton.astro';
 import FilterCheckbox from "../../../../component/FilterCheckbox.astro";
 import FilterSearch from '../../../../component/FilterSearch.astro';
 import Form from "./form.astro";
+import ColumnSort from '../../../../component/ColumnSort.astro';
 const { accessCodes } = Astro.locals;
 const hasManage = accessCodes?.includes('001.01.02.01');
 ---
 <LayoutSidebar active="roles">
 	<Breadcrumb list={[{ name: "Management", link: "management" },{ name: "Roles", link: "" }]}>
 		<div class="flex flex-row gap-3">
-			<Sorting storeName="roles" columns="columns" />
 			<button class="btn-icon white" x-on:click="$store.roles.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
 			<button class="btn-icon active" x-on:click="$store.roles.onInsert()"><i class="fas fa-plus"></i></button>
 		</div>
@@ -24,9 +23,11 @@ const hasManage = accessCodes?.includes('001.01.02.01');
 			<thead>
 				<tr>
 					<th x-show={`${hasManage}`}></th>
-					<th class="w-full">Name</th>
-					<th>Users</th>
-					<th>Active</th>
+					<th class="w-full">
+						Name <ColumnSort storeName="roles" column="name" />
+					</th>
+					<th>Users <ColumnSort storeName="roles" column="counts" /></th>
+					<th>Active <ColumnSort storeName="roles" column="is_active" /></th>
 				</tr>
 				<tr>
 					<td x-show={`${hasManage}`}></td>

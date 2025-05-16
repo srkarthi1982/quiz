@@ -1,0 +1,25 @@
+---
+const { storeName, column } = Astro.props;
+export const partial = true;
+---
+<span class="ml-1 cursor-pointer select-none"
+    @click={`
+        if ($store.${storeName}.sorting.sort === '${column}') {
+            $store.${storeName}.sorting.order = !$store.${storeName}.sorting.order;
+        } else {
+            $store.${storeName}.sorting.sort = '${column}';
+            $store.${storeName}.sorting.order = true;
+        }
+        $store.${storeName}.pagination.page = 1;
+        $store.${storeName}.pagination.skip = 0;
+        $store.${storeName}.getData();
+    `}
+>
+    <i class="fa-solid"
+    :class=`{
+        'fa-arrow-up': $store.${storeName}.sorting.sort === '${column}' && $store.${storeName}.sorting.order,
+        'fa-arrow-down': $store.${storeName}.sorting.sort === '${column}' && !$store.${storeName}.sorting.order,
+        'fa-arrows-up-down': $store.${storeName}.sorting.sort !== '${column}'
+    }`    
+    ></i>
+</span>

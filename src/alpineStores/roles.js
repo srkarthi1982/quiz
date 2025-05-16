@@ -2,7 +2,7 @@ import Alpine from 'alpinejs';
 import { StoreBase } from './StoreBase';
 class Roles extends StoreBase {
     static #item = { id: 0, name: '', is_active: true };
-    static #filters = { name: '', is_active: true };
+    static #filters = { name: '', is_active: '' };
     static #sorting = { sort: 'name', order: true };
     static #columns = [
         { label: 'Name', value: "name", operator: 'ilike' },
@@ -12,9 +12,8 @@ class Roles extends StoreBase {
     constructor() {
         super('public', 'Roles', 'Role', 'vw_roles', 'roles', Roles.#item, Roles.#filters, Roles.#sorting, '*', Roles.#columns);
     }
-    onInit(location) {
-        const filterParams = { is_active: location.pathname.includes('management') ? '' : true };
-        this.filters = { ...Roles.#filters, ...filterParams };
+    onInit() {
+        this.filters = { ...Roles.#filters };
         this.sorting = { ...Roles.#sorting };
         this.pagination = { ...this.defaultPagination };
         this.getData();
