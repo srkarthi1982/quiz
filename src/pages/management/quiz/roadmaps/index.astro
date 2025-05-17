@@ -8,13 +8,13 @@ import ActionButton from '../../../../component/ActionButton.astro';
 import FilterCheckbox from "../../../../component/FilterCheckbox.astro";
 import FilterSearch from '../../../../component/FilterSearch.astro';
 import Form from "./form.astro";
+import ColumnSort from '../../../../component/ColumnSort.astro';
 const locals = Astro.locals;
 const hasManage = locals?.accessCodes?.includes('001.02.04.01');
 ---
 <LayoutSidebar active="roadmaps">
 	<Breadcrumb list={[{ name: "Management", link: "management" },{ name: "Roadmaps", link: "" }]}>
 		<div class="flex flex-row gap-3">
-			<Sorting storeName="roadmaps" columns="columns" />
 			<button class="btn-icon white lg" @click="$store.roadmaps.onInit(window.location)" title="Refresh Roadmaps">
 				<i class="fas fa-sync-alt"></i>
 			</button>
@@ -24,9 +24,6 @@ const hasManage = locals?.accessCodes?.includes('001.02.04.01');
 			<button class="btn-icon white lg" @click="$store.roadmaps.onGenerateRoadmap()" title="Generate Roadmap using AI" x-show={`${hasManage}`} :disabled="$store.roadmaps.total > 0">
 				<i class="fas fa-robot"></i>
 			</button>
-			<!-- <button title="Generate Roadmap using AI" x-show={`${hasManage}`} class="btn-default lg" @click="$store.roadmaps.onGenerateRoadmap()" :disabled="$store.roadmaps.total > 0">
-				<i class="fas fa-robot"></i>
-			</button> -->
 		</div>
 	</Breadcrumb>
 	<div class="table-responsive paper">
@@ -34,11 +31,11 @@ const hasManage = locals?.accessCodes?.includes('001.02.04.01');
 			<thead>
 				<tr>
 					<th x-show={`${hasManage}`}></th>
-					<th class="w-full">Name</th>
-					<th class="min-w-72">Platforms</th>
-					<th class="min-w-60">Subjects</th>
-					<th class="min-w-60">Topics</th>
-					<th class="text-center">Active</th>
+					<th class="w-full">Name <ColumnSort storeName="roadmaps" column="name" /></th>
+					<th class="min-w-72">Platforms <ColumnSort storeName="roadmaps" column="platform_id" /></th>
+					<th class="min-w-60">Subjects <ColumnSort storeName="roadmaps" column="subject_id" /></th>
+					<th class="min-w-60">Topics <ColumnSort storeName="roadmaps" column="topic_id" /></th>
+					<th class="text-center">Active <ColumnSort storeName="roadmaps" column="is_active" /></th>
 				</tr>
 				<tr>
 					<th x-show={`${hasManage}`}></th>

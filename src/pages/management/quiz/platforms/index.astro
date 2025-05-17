@@ -8,13 +8,13 @@ import ActionButton from '../../../../component/ActionButton.astro';
 import FilterCheckbox from "../../../../component/FilterCheckbox.astro";
 import FilterSearch from '../../../../component/FilterSearch.astro';
 import Form from "./form.astro";
+import ColumnSort from '../../../../component/ColumnSort.astro';
 const locals = Astro.locals;
 const hasManage = locals?.accessCodes?.includes('001.02.01.01');
 ---
 <LayoutSidebar active="platforms">
 	<Breadcrumb list={[{ name: "Management", link: "management" },{ name: "Platforms", link: "" }]}>
 		<div class="flex flex-row gap-3">
-			<Sorting storeName="platforms" columns="columns" />
 			<button class="btn-icon white lg" @click="$store.platforms.onInit(window.location)"><i class="fas fa-sync-alt"></i></button>
 			<button x-show={`${hasManage}`} class="btn-icon active lg" @click="$store.platforms.onInsert()"><i class="fas fa-plus"></i></button>
 		</div>
@@ -25,10 +25,10 @@ const hasManage = locals?.accessCodes?.includes('001.02.01.01');
 				<tr>
 					<th x-show={`${hasManage}`}></th>
 					<th>Icon</th>
-					<th class=" min-w-52">Name</th>
-					<th class="w-full">Description</th>
-					<th class=" min-w-40">Type</th>
-					<th>Active</th>
+					<th class=" min-w-52">Name <ColumnSort storeName="platforms" column="name" /></th>
+					<th class="w-full">Description <ColumnSort storeName="platforms" column="description" /></th>
+					<th class=" min-w-40">Type <ColumnSort storeName="platforms" column="type" /></th>
+					<th>Active <ColumnSort storeName="platforms" column="is_active" /></th>
 				</tr>
 				<tr>
 					<th x-show={`${hasManage}`}></th>

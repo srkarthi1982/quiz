@@ -7,13 +7,13 @@ import Breadcrumb from '../../../../component/Breadcrumb.astro';
 import ActionButton from '../../../../component/ActionButton.astro';
 import FilterSearch from '../../../../component/FilterSearch.astro';
 import Form from "./form.astro";
+import ColumnSort from '../../../../component/ColumnSort.astro';
 const { accessCodes } = Astro.locals;
 const hasManage = accessCodes?.includes('001.01.01.01');
 ---
 <LayoutSidebar active="users">
 	<Breadcrumb list={[{ name: "Management", link: "management" },{ name: "Users", link: "" }]}>
 		<div class="flex flex-row gap-3">
-			<Sorting storeName="users" columns="columns" />
 			<button class="btn-icon white lg" x-on:click="$store.users.onInit()"><i class="fas fa-sync-alt"></i></button>
 		</div>
 	</Breadcrumb>
@@ -22,10 +22,10 @@ const hasManage = accessCodes?.includes('001.01.01.01');
 			<thead>
 				<tr>
 					<th class="w-12"></th>
-					<th class="min-w-60">User Name</th>
-					<th class="min-w-60">Email</th>
-					<th class="w-48">Role</th>
-					<th class="w-36 text-center">Created At</th>
+					<th class="min-w-60">User Name <ColumnSort storeName="users" column="name" /></th>
+					<th class="min-w-60">Email <ColumnSort storeName="users" column="email" /></th>
+					<th class="w-48">Role <ColumnSort storeName="users" column="role_id" /></th>
+					<th class="w-36 text-center">Created At <ColumnSort storeName="users" column="created_at" /></th>
 				</tr>
 				<tr>
 					<td></td>
