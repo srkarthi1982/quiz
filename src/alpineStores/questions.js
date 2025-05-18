@@ -148,6 +148,13 @@ class Questions extends StoreBase {
           }
           if (data.success) this.getData();
       }
+      async onVerifyQuestion({id, q, o}){
+        Alpine.store("loader").show();
+        await actions.verifyQuestion({ id, question: q, options: o });
+        Alpine.store("toast").show("Verified successfully!", "success");
+        this.getData();
+        Alpine.store("loader").hide();
+      }
       async onVerify() {
           Alpine.store("loader").show();
           const match = { platform_id: this.filters.platform_id, l: this.filters.l, is_active: false };

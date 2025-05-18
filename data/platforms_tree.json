@@ -1,0 +1,4739 @@
+[
+    {
+        "id": 44,
+        "icon": "fa-user-secret",
+        "name": "Ethical Hacking and Cybersecurity",
+        "type": "P",
+        "subjects": [
+            {
+                "id": 543,
+                "name": "Ethical Hacking Basics",
+                "topics": [
+                    {
+                        "id": 1756,
+                        "name": "Footprinting"
+                    },
+                    {
+                        "id": 1757,
+                        "name": "Scanning Networks"
+                    },
+                    {
+                        "id": 1758,
+                        "name": "Enumeration"
+                    }
+                ]
+            },
+            {
+                "id": 544,
+                "name": "Web Application Security",
+                "topics": [
+                    {
+                        "id": 1759,
+                        "name": "SQL Injections"
+                    },
+                    {
+                        "id": 1760,
+                        "name": "Cross-Site Scriptings (XSS)"
+                    },
+                    {
+                        "id": 1761,
+                        "name": "Cross-Site Request Forgery (CSRF)"
+                    }
+                ]
+            },
+            {
+                "id": 545,
+                "name": "Network Securities",
+                "topics": [
+                    {
+                        "id": 1762,
+                        "name": "Firewalls"
+                    },
+                    {
+                        "id": 1763,
+                        "name": "VPNs"
+                    },
+                    {
+                        "id": 1764,
+                        "name": "IDS/IPS Systems"
+                    }
+                ]
+            },
+            {
+                "id": 546,
+                "name": "Cyber Law and Ethics",
+                "topics": [
+                    {
+                        "id": 1765,
+                        "name": "Data Privacy"
+                    },
+                    {
+                        "id": 1766,
+                        "name": "Cybercrimes"
+                    },
+                    {
+                        "id": 1767,
+                        "name": "Legal Aspects"
+                    }
+                ]
+            }
+        ],
+        "description": "Learn about penetration testing, threat mitigation, and cyber protection."
+    },
+    {
+        "id": 24,
+        "icon": "fa-lightbulb",
+        "name": "General Knowledge",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 144,
+                "name": "History",
+                "topics": [
+                    {
+                        "id": 544,
+                        "name": "World War"
+                    },
+                    {
+                        "id": 545,
+                        "name": "Ancient Civilizations"
+                    },
+                    {
+                        "id": 546,
+                        "name": "Indian Independence"
+                    }
+                ]
+            },
+            {
+                "id": 145,
+                "name": "Geography",
+                "topics": [
+                    {
+                        "id": 547,
+                        "name": "Continents and Oceans"
+                    },
+                    {
+                        "id": 548,
+                        "name": "World Capitals"
+                    },
+                    {
+                        "id": 549,
+                        "name": "Mountains and Rivers"
+                    }
+                ]
+            },
+            {
+                "id": 146,
+                "name": "Science",
+                "topics": [
+                    {
+                        "id": 550,
+                        "name": "Physics Basics"
+                    },
+                    {
+                        "id": 551,
+                        "name": "Human Body"
+                    },
+                    {
+                        "id": 552,
+                        "name": "Space and Astronomy"
+                    }
+                ]
+            },
+            {
+                "id": 147,
+                "name": "Sports",
+                "topics": [
+                    {
+                        "id": 553,
+                        "name": "Olympics"
+                    },
+                    {
+                        "id": 554,
+                        "name": "Cricket"
+                    },
+                    {
+                        "id": 555,
+                        "name": "Football"
+                    }
+                ]
+            },
+            {
+                "id": 148,
+                "name": "Politics",
+                "topics": [
+                    {
+                        "id": 556,
+                        "name": "World Leaders"
+                    },
+                    {
+                        "id": 557,
+                        "name": "Government Systems"
+                    }
+                ]
+            },
+            {
+                "id": 149,
+                "name": "Art & Literature",
+                "topics": [
+                    {
+                        "id": 558,
+                        "name": "Famous Paintings"
+                    },
+                    {
+                        "id": 559,
+                        "name": "World Literature"
+                    },
+                    {
+                        "id": 560,
+                        "name": "Classical Music"
+                    },
+                    {
+                        "id": 561,
+                        "name": "Poetry and Poets"
+                    }
+                ]
+            },
+            {
+                "id": 150,
+                "name": "Technology",
+                "topics": [
+                    {
+                        "id": 562,
+                        "name": "Internet and Web"
+                    },
+                    {
+                        "id": 563,
+                        "name": "Inventions and Inventors"
+                    },
+                    {
+                        "id": 564,
+                        "name": "Computers and Hardware"
+                    },
+                    {
+                        "id": 565,
+                        "name": "Mobile Technology"
+                    }
+                ]
+            },
+            {
+                "id": 151,
+                "name": "Economy",
+                "topics": [
+                    {
+                        "id": 566,
+                        "name": "Global Currencies"
+                    },
+                    {
+                        "id": 567,
+                        "name": "Economic Systems"
+                    },
+                    {
+                        "id": 568,
+                        "name": "International Trade"
+                    },
+                    {
+                        "id": 569,
+                        "name": "Indian Economy"
+                    }
+                ]
+            },
+            {
+                "id": 152,
+                "name": "Culture",
+                "topics": [
+                    {
+                        "id": 570,
+                        "name": "Festivals Around the World"
+                    },
+                    {
+                        "id": 571,
+                        "name": "World Religions"
+                    },
+                    {
+                        "id": 572,
+                        "name": "Traditions and Customs"
+                    },
+                    {
+                        "id": 573,
+                        "name": "Languages and Scripts"
+                    }
+                ]
+            },
+            {
+                "id": 153,
+                "name": "Current Affairs",
+                "topics": [
+                    {
+                        "id": 574,
+                        "name": "Recent World Events"
+                    },
+                    {
+                        "id": 575,
+                        "name": "International Relations"
+                    },
+                    {
+                        "id": 576,
+                        "name": "Environmental News"
+                    },
+                    {
+                        "id": 577,
+                        "name": "Global Health Updates"
+                    }
+                ]
+            }
+        ],
+        "description": "Expand your general knowledge across various topics."
+    },
+    {
+        "id": 7,
+        "icon": "fa-brain",
+        "name": "Logical Reasoning",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 11,
+                "name": "Verbal Reasoning",
+                "topics": [
+                    {
+                        "id": 33,
+                        "name": "Syllogisms"
+                    },
+                    {
+                        "id": 34,
+                        "name": "Statement & Assumptions"
+                    },
+                    {
+                        "id": 35,
+                        "name": "Blood Relations"
+                    },
+                    {
+                        "id": 36,
+                        "name": "Seating Arrangement"
+                    }
+                ]
+            },
+            {
+                "id": 12,
+                "name": "Non-Verbal Reasoning",
+                "topics": [
+                    {
+                        "id": 37,
+                        "name": "Figure Completion"
+                    },
+                    {
+                        "id": 38,
+                        "name": "Pattern Matching"
+                    },
+                    {
+                        "id": 39,
+                        "name": "Mirror & Water Images"
+                    },
+                    {
+                        "id": 40,
+                        "name": "Paper Folding & Cutting"
+                    }
+                ]
+            },
+            {
+                "id": 13,
+                "name": "Analytical Reasoning",
+                "topics": [
+                    {
+                        "id": 42,
+                        "name": "Statement & Conclusion"
+                    },
+                    {
+                        "id": 43,
+                        "name": "Coding & Decoding"
+                    },
+                    {
+                        "id": 44,
+                        "name": "Logical Deduction"
+                    },
+                    {
+                        "id": 41,
+                        "name": "Cause and Effect"
+                    }
+                ]
+            },
+            {
+                "id": 14,
+                "name": "Critical Thinking",
+                "topics": [
+                    {
+                        "id": 45,
+                        "name": "Logical Fallacies"
+                    },
+                    {
+                        "id": 46,
+                        "name": "Analogies & Relationships"
+                    },
+                    {
+                        "id": 47,
+                        "name": "Data Interpretation"
+                    },
+                    {
+                        "id": 48,
+                        "name": "Inference & Judgement"
+                    }
+                ]
+            },
+            {
+                "id": 15,
+                "name": "Puzzles & Brain Teasers",
+                "topics": [
+                    {
+                        "id": 49,
+                        "name": "Number Puzzles"
+                    },
+                    {
+                        "id": 50,
+                        "name": "Word Puzzles"
+                    },
+                    {
+                        "id": 51,
+                        "name": "Logical Sequences"
+                    },
+                    {
+                        "id": 52,
+                        "name": "Riddles & Lateral Thinking"
+                    }
+                ]
+            }
+        ],
+        "description": "Sharpen logical thinking and analytical reasoning."
+    },
+    {
+        "id": 15,
+        "icon": "fa-briefcase",
+        "name": "Business",
+        "type": "P",
+        "subjects": [
+            {
+                "id": 73,
+                "name": "Management",
+                "topics": [
+                    {
+                        "id": 313,
+                        "name": "Leadership and Strategy"
+                    },
+                    {
+                        "id": 314,
+                        "name": "Project Management"
+                    },
+                    {
+                        "id": 315,
+                        "name": "Organizational Behavior"
+                    },
+                    {
+                        "id": 316,
+                        "name": "Human Resource Management"
+                    },
+                    {
+                        "id": 317,
+                        "name": "Business Communication"
+                    }
+                ]
+            },
+            {
+                "id": 74,
+                "name": "Marketing",
+                "topics": [
+                    {
+                        "id": 318,
+                        "name": "Marketing Principles"
+                    },
+                    {
+                        "id": 319,
+                        "name": "Digital Marketing"
+                    },
+                    {
+                        "id": 320,
+                        "name": "Branding"
+                    },
+                    {
+                        "id": 321,
+                        "name": "Market Research"
+                    },
+                    {
+                        "id": 322,
+                        "name": "Consumer Behavior"
+                    }
+                ]
+            },
+            {
+                "id": 75,
+                "name": "Finance",
+                "topics": [
+                    {
+                        "id": 323,
+                        "name": "Corporate Finance"
+                    },
+                    {
+                        "id": 324,
+                        "name": "Investment Analysis"
+                    },
+                    {
+                        "id": 325,
+                        "name": "Financial Markets"
+                    },
+                    {
+                        "id": 326,
+                        "name": "Financial Accounting"
+                    },
+                    {
+                        "id": 327,
+                        "name": "Risk Management"
+                    }
+                ]
+            },
+            {
+                "id": 76,
+                "name": "Entrepreneurship",
+                "topics": [
+                    {
+                        "id": 328,
+                        "name": "Business Idea Generation"
+                    },
+                    {
+                        "id": 329,
+                        "name": "Business Plan Development"
+                    },
+                    {
+                        "id": 330,
+                        "name": "Startup Funding"
+                    },
+                    {
+                        "id": 331,
+                        "name": "Scaling a Business"
+                    },
+                    {
+                        "id": 332,
+                        "name": "Entrepreneurial Marketing"
+                    }
+                ]
+            }
+        ],
+        "description": "Master business concepts, operations, and strategy."
+    },
+    {
+        "id": 39,
+        "icon": "fa-balance-scale",
+        "name": "Ethics and Philosophy",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 524,
+                "name": "Moral Philosophy",
+                "topics": [
+                    {
+                        "id": 1694,
+                        "name": "Utilitarianism"
+                    },
+                    {
+                        "id": 1695,
+                        "name": "Deontology"
+                    },
+                    {
+                        "id": 1696,
+                        "name": "Virtue Ethics"
+                    }
+                ]
+            },
+            {
+                "id": 525,
+                "name": "Philosophy of Mind",
+                "topics": [
+                    {
+                        "id": 1697,
+                        "name": "Consciousness"
+                    },
+                    {
+                        "id": 1698,
+                        "name": "Free Will"
+                    },
+                    {
+                        "id": 1699,
+                        "name": "Dualism"
+                    }
+                ]
+            },
+            {
+                "id": 526,
+                "name": "Political Philosophy",
+                "topics": [
+                    {
+                        "id": 1700,
+                        "name": "Justice"
+                    },
+                    {
+                        "id": 1701,
+                        "name": "Liberty"
+                    },
+                    {
+                        "id": 1702,
+                        "name": "Rights"
+                    }
+                ]
+            }
+        ],
+        "description": "Explore moral philosophy, logic, and critical reasoning."
+    },
+    {
+        "id": 10,
+        "icon": "fa-history",
+        "name": "History",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 59,
+                "name": "Ancient History",
+                "topics": [
+                    {
+                        "id": 254,
+                        "name": "Indus Valley Civilization"
+                    },
+                    {
+                        "id": 255,
+                        "name": "Ancient Egypt"
+                    },
+                    {
+                        "id": 256,
+                        "name": "Greek Civilization"
+                    },
+                    {
+                        "id": 257,
+                        "name": "Roman Empire"
+                    },
+                    {
+                        "id": 258,
+                        "name": "Mauryan Empire"
+                    }
+                ]
+            },
+            {
+                "id": 60,
+                "name": "Medieval History",
+                "topics": [
+                    {
+                        "id": 259,
+                        "name": "The Byzantine Empire"
+                    },
+                    {
+                        "id": 260,
+                        "name": "Feudalism in Europe"
+                    },
+                    {
+                        "id": 261,
+                        "name": "The Crusades"
+                    },
+                    {
+                        "id": 262,
+                        "name": "The Mongol Empire"
+                    },
+                    {
+                        "id": 263,
+                        "name": "The Ottoman Empire"
+                    }
+                ]
+            },
+            {
+                "id": 61,
+                "name": "Modern History",
+                "topics": [
+                    {
+                        "id": 264,
+                        "name": "World War I"
+                    },
+                    {
+                        "id": 265,
+                        "name": "World War II"
+                    },
+                    {
+                        "id": 266,
+                        "name": "The Cold War"
+                    },
+                    {
+                        "id": 267,
+                        "name": "The Industrial Revolution"
+                    },
+                    {
+                        "id": 268,
+                        "name": "Colonialism and Independence Movements"
+                    }
+                ]
+            }
+        ],
+        "description": "Explore major historical events and civilizations."
+    },
+    {
+        "id": 3,
+        "icon": "fa-gavel",
+        "name": "Law",
+        "type": "P",
+        "subjects": [
+            {
+                "id": 30,
+                "name": "Law Entrance Exams",
+                "topics": [
+                    {
+                        "id": 109,
+                        "name": "CLAT"
+                    },
+                    {
+                        "id": 110,
+                        "name": "AILET"
+                    },
+                    {
+                        "id": 111,
+                        "name": "LSAT India"
+                    },
+                    {
+                        "id": 112,
+                        "name": "SLAT"
+                    }
+                ]
+            },
+            {
+                "id": 31,
+                "name": "Judiciary Exams",
+                "topics": [
+                    {
+                        "id": 113,
+                        "name": "PCS-J"
+                    },
+                    {
+                        "id": 114,
+                        "name": "Delhi Judicial Services"
+                    },
+                    {
+                        "id": 115,
+                        "name": "Madhya Pradesh Judiciary"
+                    },
+                    {
+                        "id": 116,
+                        "name": "Haryana Judiciary"
+                    }
+                ]
+            },
+            {
+                "id": 32,
+                "name": "Corporate Law",
+                "topics": [
+                    {
+                        "id": 117,
+                        "name": "Company Law"
+                    },
+                    {
+                        "id": 118,
+                        "name": "Contract Law"
+                    },
+                    {
+                        "id": 119,
+                        "name": "Intellectual Property Rights"
+                    },
+                    {
+                        "id": 120,
+                        "name": "Competition Law"
+                    }
+                ]
+            },
+            {
+                "id": 33,
+                "name": "Constitutional Law",
+                "topics": [
+                    {
+                        "id": 121,
+                        "name": "Fundamental Rights"
+                    },
+                    {
+                        "id": 122,
+                        "name": "Directive Principles of State Policy"
+                    },
+                    {
+                        "id": 123,
+                        "name": "Separation of Powers"
+                    },
+                    {
+                        "id": 124,
+                        "name": "Judicial Review"
+                    }
+                ]
+            },
+            {
+                "id": 34,
+                "name": "Criminal Law",
+                "topics": [
+                    {
+                        "id": 125,
+                        "name": "Indian Penal Code (IPC)"
+                    },
+                    {
+                        "id": 126,
+                        "name": "Criminal Procedure Code (CrPC)"
+                    },
+                    {
+                        "id": 127,
+                        "name": "Evidence Act"
+                    },
+                    {
+                        "id": 128,
+                        "name": "Juvenile Justice Act"
+                    }
+                ]
+            },
+            {
+                "id": 35,
+                "name": "International Law",
+                "topics": [
+                    {
+                        "id": 129,
+                        "name": "Public International Law"
+                    },
+                    {
+                        "id": 130,
+                        "name": "Private International Law"
+                    },
+                    {
+                        "id": 131,
+                        "name": "Human Rights Law"
+                    },
+                    {
+                        "id": 132,
+                        "name": "Law of Treaties"
+                    }
+                ]
+            }
+        ],
+        "description": "Understand legal systems, laws, and judiciary concepts."
+    },
+    {
+        "id": 4,
+        "icon": "fa-money-bill",
+        "name": "Finance",
+        "type": "P",
+        "subjects": [
+            {
+                "id": 44,
+                "name": "Financial Markets and Instruments",
+                "topics": [
+                    {
+                        "id": 180,
+                        "name": "Stock Market"
+                    },
+                    {
+                        "id": 181,
+                        "name": "Bonds and Fixed Income"
+                    },
+                    {
+                        "id": 182,
+                        "name": "Commodities Trading"
+                    },
+                    {
+                        "id": 183,
+                        "name": "Forex and Currency Exchange"
+                    },
+                    {
+                        "id": 184,
+                        "name": "Derivatives and Futures"
+                    }
+                ]
+            },
+            {
+                "id": 45,
+                "name": "Corporate Finance and Accounting",
+                "topics": [
+                    {
+                        "id": 185,
+                        "name": "Financial Statements"
+                    },
+                    {
+                        "id": 186,
+                        "name": "Balance Sheets"
+                    },
+                    {
+                        "id": 187,
+                        "name": "Income Statement"
+                    },
+                    {
+                        "id": 188,
+                        "name": "Cash Flow Statement"
+                    },
+                    {
+                        "id": 189,
+                        "name": "Cost Accounting"
+                    },
+                    {
+                        "id": 190,
+                        "name": "Financial Ratios"
+                    }
+                ]
+            },
+            {
+                "id": 46,
+                "name": "Investment Management",
+                "topics": [
+                    {
+                        "id": 191,
+                        "name": "Stock Analysis"
+                    },
+                    {
+                        "id": 192,
+                        "name": "Mutual Funds"
+                    },
+                    {
+                        "id": 193,
+                        "name": "Portfolio Management"
+                    },
+                    {
+                        "id": 194,
+                        "name": "Hedge Funds"
+                    },
+                    {
+                        "id": 195,
+                        "name": "Private Equity"
+                    }
+                ]
+            },
+            {
+                "id": 47,
+                "name": "Personal Finance",
+                "topics": [
+                    {
+                        "id": 196,
+                        "name": "Budgeting and Saving"
+                    },
+                    {
+                        "id": 197,
+                        "name": "Debt Management"
+                    },
+                    {
+                        "id": 198,
+                        "name": "Retirement Planning"
+                    },
+                    {
+                        "id": 199,
+                        "name": "Tax Planning"
+                    },
+                    {
+                        "id": 200,
+                        "name": "Insurance and Risk Management"
+                    }
+                ]
+            },
+            {
+                "id": 48,
+                "name": "Risk Management",
+                "topics": [
+                    {
+                        "id": 201,
+                        "name": "Enterprise Risk Management"
+                    },
+                    {
+                        "id": 202,
+                        "name": "Credit Risk Management"
+                    },
+                    {
+                        "id": 203,
+                        "name": "Market Risk Management"
+                    },
+                    {
+                        "id": 204,
+                        "name": "Operational Risk Management"
+                    }
+                ]
+            }
+        ],
+        "description": "Learn financial planning, markets, and investments."
+    },
+    {
+        "id": 11,
+        "icon": "fa-globe-americas",
+        "name": "Geography",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 62,
+                "name": "Physical Geography",
+                "topics": [
+                    {
+                        "id": 269,
+                        "name": "Landforms and Geomorphology"
+                    },
+                    {
+                        "id": 270,
+                        "name": "Climates and Weather Patterns"
+                    },
+                    {
+                        "id": 271,
+                        "name": "Oceanography"
+                    },
+                    {
+                        "id": 272,
+                        "name": "Natural Disasters"
+                    },
+                    {
+                        "id": 273,
+                        "name": "Soils and Vegetation"
+                    }
+                ]
+            },
+            {
+                "id": 63,
+                "name": "Human Geography",
+                "topics": [
+                    {
+                        "id": 274,
+                        "name": "Population Distribution"
+                    },
+                    {
+                        "id": 275,
+                        "name": "Urbanization and Migration"
+                    },
+                    {
+                        "id": 276,
+                        "name": "Cultural Geography"
+                    },
+                    {
+                        "id": 277,
+                        "name": "Economic Geography"
+                    },
+                    {
+                        "id": 278,
+                        "name": "Political Geography"
+                    }
+                ]
+            },
+            {
+                "id": 64,
+                "name": "Environmental Geography",
+                "topics": [
+                    {
+                        "id": 279,
+                        "name": "Environmental Impact and Sustainability"
+                    },
+                    {
+                        "id": 280,
+                        "name": "Climate Change"
+                    },
+                    {
+                        "id": 281,
+                        "name": "Biodiversity and Conservation"
+                    },
+                    {
+                        "id": 282,
+                        "name": "Environmental Pollution"
+                    },
+                    {
+                        "id": 283,
+                        "name": "Resource Management"
+                    }
+                ]
+            }
+        ],
+        "description": "Study earth’s physical features and human geography."
+    },
+    {
+        "id": 6,
+        "icon": "fa-building",
+        "name": "Government Exams",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 23,
+                "name": "Civil Services",
+                "topics": [
+                    {
+                        "id": 81,
+                        "name": "UPSC Prelims"
+                    },
+                    {
+                        "id": 82,
+                        "name": "UPSC Mains"
+                    },
+                    {
+                        "id": 83,
+                        "name": "Indian Polity"
+                    },
+                    {
+                        "id": 84,
+                        "name": "Current Affairs"
+                    }
+                ]
+            },
+            {
+                "id": 24,
+                "name": "Banking Exams",
+                "topics": [
+                    {
+                        "id": 85,
+                        "name": "IBPS PO"
+                    },
+                    {
+                        "id": 86,
+                        "name": "IBPS Clerk"
+                    },
+                    {
+                        "id": 87,
+                        "name": "SBI PO"
+                    },
+                    {
+                        "id": 88,
+                        "name": "RBI Grade B"
+                    }
+                ]
+            },
+            {
+                "id": 25,
+                "name": "Railway Exams",
+                "topics": [
+                    {
+                        "id": 89,
+                        "name": "RRB NTPC"
+                    },
+                    {
+                        "id": 90,
+                        "name": "RRB Group D"
+                    },
+                    {
+                        "id": 92,
+                        "name": "Railway Junior Engineer (JE)"
+                    },
+                    {
+                        "id": 91,
+                        "name": "ALP and Technician"
+                    }
+                ]
+            },
+            {
+                "id": 26,
+                "name": "SSC Exams",
+                "topics": [
+                    {
+                        "id": 93,
+                        "name": "SSC CGL"
+                    },
+                    {
+                        "id": 94,
+                        "name": "SSC CHSL"
+                    },
+                    {
+                        "id": 95,
+                        "name": "SSC GD Constable"
+                    },
+                    {
+                        "id": 96,
+                        "name": "SSC Stenographer"
+                    }
+                ]
+            },
+            {
+                "id": 27,
+                "name": "Defence Exams",
+                "topics": [
+                    {
+                        "id": 97,
+                        "name": "NDA & NA Exam"
+                    },
+                    {
+                        "id": 98,
+                        "name": "CDS Exam"
+                    },
+                    {
+                        "id": 99,
+                        "name": "AFCAT"
+                    },
+                    {
+                        "id": 100,
+                        "name": "Indian Coast Guard Exam"
+                    }
+                ]
+            },
+            {
+                "id": 28,
+                "name": "State Government Exams",
+                "topics": [
+                    {
+                        "id": 101,
+                        "name": "State PSC Exams"
+                    },
+                    {
+                        "id": 102,
+                        "name": "State Police Exams"
+                    },
+                    {
+                        "id": 103,
+                        "name": "State Revenue Exams"
+                    },
+                    {
+                        "id": 104,
+                        "name": "Gram Panchayat Exams"
+                    }
+                ]
+            },
+            {
+                "id": 29,
+                "name": "Teaching Eligibility Tests",
+                "topics": [
+                    {
+                        "id": 105,
+                        "name": "CTET"
+                    },
+                    {
+                        "id": 106,
+                        "name": "TET (State-Level)"
+                    },
+                    {
+                        "id": 107,
+                        "name": "UGC NET"
+                    },
+                    {
+                        "id": 108,
+                        "name": "KVS & NVS Recruitment"
+                    }
+                ]
+            }
+        ],
+        "description": "Prepare for various competitive government exams."
+    },
+    {
+        "id": 2,
+        "icon": "fa-cogs",
+        "name": "Engineering",
+        "type": "P",
+        "subjects": [
+            {
+                "id": 41,
+                "name": "Engineering Entrance Exams",
+                "topics": [
+                    {
+                        "id": 159,
+                        "name": "JEE Main"
+                    },
+                    {
+                        "id": 160,
+                        "name": "JEE Advanced"
+                    },
+                    {
+                        "id": 161,
+                        "name": "BITSAT"
+                    },
+                    {
+                        "id": 162,
+                        "name": "VITEEE"
+                    },
+                    {
+                        "id": 163,
+                        "name": "SRMJEEE"
+                    }
+                ]
+            },
+            {
+                "id": 42,
+                "name": "Core Engineering Subjects",
+                "topics": [
+                    {
+                        "id": 164,
+                        "name": "Mathematics for Engineers"
+                    },
+                    {
+                        "id": 165,
+                        "name": "Physics for Engineers"
+                    },
+                    {
+                        "id": 166,
+                        "name": "Engineering Mechanics"
+                    },
+                    {
+                        "id": 167,
+                        "name": "Thermodynamics"
+                    },
+                    {
+                        "id": 168,
+                        "name": "Electrical Circuits"
+                    },
+                    {
+                        "id": 169,
+                        "name": "Digital Electronics"
+                    },
+                    {
+                        "id": 170,
+                        "name": "Computer Programming"
+                    },
+                    {
+                        "id": 171,
+                        "name": "Fluid Mechanics"
+                    }
+                ]
+            },
+            {
+                "id": 43,
+                "name": "Specialized Engineering Fields",
+                "topics": [
+                    {
+                        "id": 172,
+                        "name": "Mechanical Engineering"
+                    },
+                    {
+                        "id": 173,
+                        "name": "Civil Engineering"
+                    },
+                    {
+                        "id": 174,
+                        "name": "Electrical Engineering"
+                    },
+                    {
+                        "id": 175,
+                        "name": "Electronics and Communication Engineering"
+                    },
+                    {
+                        "id": 176,
+                        "name": "Computer Science and Engineering"
+                    },
+                    {
+                        "id": 177,
+                        "name": "Chemical Engineering"
+                    },
+                    {
+                        "id": 178,
+                        "name": "Aerospace Engineering"
+                    },
+                    {
+                        "id": 179,
+                        "name": "Biomedical Engineering"
+                    }
+                ]
+            }
+        ],
+        "description": "Explore concepts and disciplines in engineering."
+    },
+    {
+        "id": 20,
+        "icon": "fa-dna",
+        "name": "Biology",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 100,
+                "name": "Botany",
+                "topics": [
+                    {
+                        "id": 381,
+                        "name": "Plant Structure and Function"
+                    },
+                    {
+                        "id": 382,
+                        "name": "Photosynthesis"
+                    },
+                    {
+                        "id": 383,
+                        "name": "Plant Genetics"
+                    }
+                ]
+            },
+            {
+                "id": 101,
+                "name": "Zoology",
+                "topics": [
+                    {
+                        "id": 384,
+                        "name": "Animal Classification"
+                    },
+                    {
+                        "id": 385,
+                        "name": "Human Anatomy"
+                    }
+                ]
+            },
+            {
+                "id": 102,
+                "name": "Microbiology",
+                "topics": [
+                    {
+                        "id": 386,
+                        "name": "Bacteria and Viruses"
+                    },
+                    {
+                        "id": 387,
+                        "name": "Fungi and Protists"
+                    }
+                ]
+            },
+            {
+                "id": 103,
+                "name": "Genetics",
+                "topics": [
+                    {
+                        "id": 388,
+                        "name": "DNA and RNA"
+                    },
+                    {
+                        "id": 389,
+                        "name": "Genetic Disorders"
+                    }
+                ]
+            },
+            {
+                "id": 104,
+                "name": "Biotechnology",
+                "topics": [
+                    {
+                        "id": 390,
+                        "name": "Genetic Engineering"
+                    },
+                    {
+                        "id": 391,
+                        "name": "Cloning and Stem Cells"
+                    }
+                ]
+            }
+        ],
+        "description": "Study the structure, function, and behavior of living organisms."
+    },
+    {
+        "id": 17,
+        "icon": "fa-bullhorn",
+        "name": "Marketing",
+        "type": "P",
+        "subjects": [
+            {
+                "id": 85,
+                "name": "Marketing Fundamentals",
+                "topics": [
+                    {
+                        "id": 338,
+                        "name": "Marketing Strategies"
+                    },
+                    {
+                        "id": 339,
+                        "name": "Marketing Research"
+                    },
+                    {
+                        "id": 340,
+                        "name": "Customer Behavior"
+                    },
+                    {
+                        "id": 341,
+                        "name": "Product Positioning"
+                    },
+                    {
+                        "id": 342,
+                        "name": "Pricing Strategies"
+                    }
+                ]
+            },
+            {
+                "id": 86,
+                "name": "Digital Marketing",
+                "topics": [
+                    {
+                        "id": 343,
+                        "name": "Search Engine Optimization (SEO)"
+                    },
+                    {
+                        "id": 344,
+                        "name": "Email Marketing"
+                    },
+                    {
+                        "id": 345,
+                        "name": "Content Marketing"
+                    },
+                    {
+                        "id": 346,
+                        "name": "Google Ads"
+                    },
+                    {
+                        "id": 347,
+                        "name": "Affiliate Marketing"
+                    }
+                ]
+            },
+            {
+                "id": 87,
+                "name": "Social Media Marketing",
+                "topics": [
+                    {
+                        "id": 348,
+                        "name": "Facebook Advertising"
+                    },
+                    {
+                        "id": 349,
+                        "name": "Instagram Marketing"
+                    },
+                    {
+                        "id": 350,
+                        "name": "LinkedIn Marketing"
+                    },
+                    {
+                        "id": 351,
+                        "name": "Social Media Analytics"
+                    },
+                    {
+                        "id": 352,
+                        "name": "Influencer Marketing"
+                    }
+                ]
+            },
+            {
+                "id": 88,
+                "name": "Brand Management",
+                "topics": [
+                    {
+                        "id": 353,
+                        "name": "Brand Strategy"
+                    },
+                    {
+                        "id": 354,
+                        "name": "Brand Identity"
+                    },
+                    {
+                        "id": 355,
+                        "name": "Brand Equity"
+                    },
+                    {
+                        "id": 356,
+                        "name": "Customer Loyalty"
+                    },
+                    {
+                        "id": 357,
+                        "name": "Brand Communication"
+                    }
+                ]
+            }
+        ],
+        "description": "Develop marketing strategies, branding, and sales skills."
+    },
+    {
+        "id": 14,
+        "icon": "fa-comments",
+        "name": "Language Tests",
+        "type": "P",
+        "subjects": [
+            {
+                "id": 138,
+                "name": "English Proficiency",
+                "topics": [
+                    {
+                        "id": 510,
+                        "name": "Grammar and Usage"
+                    },
+                    {
+                        "id": 511,
+                        "name": "Vocabulary and Spelling"
+                    },
+                    {
+                        "id": 512,
+                        "name": "Listening Comprehension"
+                    },
+                    {
+                        "id": 513,
+                        "name": "Reading Comprehension"
+                    },
+                    {
+                        "id": 514,
+                        "name": "Writing Skills"
+                    }
+                ]
+            },
+            {
+                "id": 139,
+                "name": "French",
+                "topics": [
+                    {
+                        "id": 515,
+                        "name": "Grammar"
+                    },
+                    {
+                        "id": 516,
+                        "name": "Vocabulary Skills"
+                    },
+                    {
+                        "id": 517,
+                        "name": "Pronunciation and Phonics"
+                    },
+                    {
+                        "id": 518,
+                        "name": "Communication Skills"
+                    },
+                    {
+                        "id": 519,
+                        "name": "Conversational French"
+                    }
+                ]
+            },
+            {
+                "id": 140,
+                "name": "Spanish",
+                "topics": [
+                    {
+                        "id": 520,
+                        "name": "Grammar and Syntax"
+                    },
+                    {
+                        "id": 521,
+                        "name": "Vocabulary Skill"
+                    },
+                    {
+                        "id": 522,
+                        "name": "Reading"
+                    },
+                    {
+                        "id": 523,
+                        "name": "Pronunciation and Intonation"
+                    },
+                    {
+                        "id": 524,
+                        "name": "Cultural Aspects of Spanish Language"
+                    }
+                ]
+            },
+            {
+                "id": 141,
+                "name": "German",
+                "topics": [
+                    {
+                        "id": 525,
+                        "name": "Grammar and Structure"
+                    },
+                    {
+                        "id": 526,
+                        "name": "Vocabulary"
+                    },
+                    {
+                        "id": 527,
+                        "name": "Writing Skill"
+                    },
+                    {
+                        "id": 528,
+                        "name": "Pronunciation"
+                    },
+                    {
+                        "id": 529,
+                        "name": "Listening Skill"
+                    }
+                ]
+            }
+        ],
+        "description": "Get ready for global language proficiency exams."
+    },
+    {
+        "id": 40,
+        "icon": "fa-satellite-dish",
+        "name": "Astronomy and Space",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 527,
+                "name": "Solar System Exploration",
+                "topics": [
+                    {
+                        "id": 1703,
+                        "name": "Planets"
+                    },
+                    {
+                        "id": 1704,
+                        "name": "Moons"
+                    },
+                    {
+                        "id": 1705,
+                        "name": "Asteroids"
+                    }
+                ]
+            },
+            {
+                "id": 528,
+                "name": "Stars and Galaxies",
+                "topics": [
+                    {
+                        "id": 1706,
+                        "name": "Life Cycle of Stars"
+                    },
+                    {
+                        "id": 1707,
+                        "name": "Milky Way"
+                    },
+                    {
+                        "id": 1708,
+                        "name": "Black Holes"
+                    }
+                ]
+            },
+            {
+                "id": 529,
+                "name": "Cosmology",
+                "topics": [
+                    {
+                        "id": 1709,
+                        "name": "Big Bang Theory"
+                    },
+                    {
+                        "id": 1710,
+                        "name": "Dark Matter"
+                    },
+                    {
+                        "id": 1711,
+                        "name": "Universe Expansion"
+                    }
+                ]
+            },
+            {
+                "id": 530,
+                "name": "Space Missions",
+                "topics": [
+                    {
+                        "id": 1712,
+                        "name": "Apollo Missions"
+                    },
+                    {
+                        "id": 1713,
+                        "name": "Mars Rover"
+                    },
+                    {
+                        "id": 1714,
+                        "name": "Space Telescopes"
+                    }
+                ]
+            }
+        ],
+        "description": "Learn about planets, galaxies, space exploration, and the universe."
+    },
+    {
+        "id": 8,
+        "icon": "fa-square-root-alt",
+        "name": "Mathematics",
+        "type": "P",
+        "subjects": [
+            {
+                "id": 54,
+                "name": "Algebra",
+                "topics": [
+                    {
+                        "id": 229,
+                        "name": "Linear Equations"
+                    },
+                    {
+                        "id": 230,
+                        "name": "Polynomials"
+                    },
+                    {
+                        "id": 231,
+                        "name": "Quadratic Equations"
+                    },
+                    {
+                        "id": 232,
+                        "name": "Matrices and Determinants"
+                    },
+                    {
+                        "id": 233,
+                        "name": "Inequalities"
+                    }
+                ]
+            },
+            {
+                "id": 55,
+                "name": "Geometry",
+                "topics": [
+                    {
+                        "id": 234,
+                        "name": "Lines and Angles"
+                    },
+                    {
+                        "id": 235,
+                        "name": "Triangles and Quadrilaterals"
+                    },
+                    {
+                        "id": 236,
+                        "name": "Circles"
+                    },
+                    {
+                        "id": 237,
+                        "name": "Coordinate Geometry"
+                    },
+                    {
+                        "id": 238,
+                        "name": "Solid Geometry"
+                    }
+                ]
+            },
+            {
+                "id": 56,
+                "name": "Calculus",
+                "topics": [
+                    {
+                        "id": 239,
+                        "name": "Limits and Continuity"
+                    },
+                    {
+                        "id": 240,
+                        "name": "Differentiation"
+                    },
+                    {
+                        "id": 241,
+                        "name": "Integration"
+                    },
+                    {
+                        "id": 242,
+                        "name": "Applications of Derivatives"
+                    },
+                    {
+                        "id": 243,
+                        "name": "Applications of Integrals"
+                    }
+                ]
+            },
+            {
+                "id": 57,
+                "name": "Probability",
+                "topics": [
+                    {
+                        "id": 244,
+                        "name": "Probability Theory"
+                    },
+                    {
+                        "id": 245,
+                        "name": "Permutations and Combinations"
+                    },
+                    {
+                        "id": 246,
+                        "name": "Random Variables"
+                    },
+                    {
+                        "id": 247,
+                        "name": "Binomial Distribution"
+                    },
+                    {
+                        "id": 248,
+                        "name": "Normal Distribution"
+                    }
+                ]
+            },
+            {
+                "id": 58,
+                "name": "Statistics",
+                "topics": [
+                    {
+                        "id": 249,
+                        "name": "Descriptive Statistics"
+                    },
+                    {
+                        "id": 250,
+                        "name": "Inferential Statistics"
+                    },
+                    {
+                        "id": 251,
+                        "name": "Hypothesis Testing"
+                    },
+                    {
+                        "id": 252,
+                        "name": "Regression Analysis"
+                    },
+                    {
+                        "id": 253,
+                        "name": "Analysis of Variance (ANOVA)"
+                    }
+                ]
+            }
+        ],
+        "description": "Learn mathematics concepts from basics to advanced."
+    },
+    {
+        "id": 1,
+        "icon": "fa-heartbeat",
+        "name": "Medical",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 36,
+                "name": "Medical Entrance Exams",
+                "topics": [
+                    {
+                        "id": 133,
+                        "name": "NEET UG"
+                    },
+                    {
+                        "id": 134,
+                        "name": "NEET PG"
+                    },
+                    {
+                        "id": 135,
+                        "name": "AIIMS Entrance"
+                    },
+                    {
+                        "id": 136,
+                        "name": "JIPMER"
+                    },
+                    {
+                        "id": 137,
+                        "name": "FMGE"
+                    }
+                ]
+            },
+            {
+                "id": 37,
+                "name": "Pre-Clinical Subjects",
+                "topics": [
+                    {
+                        "id": 138,
+                        "name": "Anatomy"
+                    },
+                    {
+                        "id": 139,
+                        "name": "Physiology"
+                    },
+                    {
+                        "id": 140,
+                        "name": "Biochemistry"
+                    }
+                ]
+            },
+            {
+                "id": 38,
+                "name": "Para-Clinical Subjects",
+                "topics": [
+                    {
+                        "id": 141,
+                        "name": "Pathology"
+                    },
+                    {
+                        "id": 142,
+                        "name": "Microbiology"
+                    },
+                    {
+                        "id": 143,
+                        "name": "Pharmacology"
+                    },
+                    {
+                        "id": 144,
+                        "name": "Forensic Medicine"
+                    }
+                ]
+            },
+            {
+                "id": 39,
+                "name": "Clinical Subjects",
+                "topics": [
+                    {
+                        "id": 145,
+                        "name": "General Medicine"
+                    },
+                    {
+                        "id": 146,
+                        "name": "General Surgery"
+                    },
+                    {
+                        "id": 147,
+                        "name": "Pediatrics"
+                    },
+                    {
+                        "id": 148,
+                        "name": "Obstetrics and Gynecology"
+                    },
+                    {
+                        "id": 149,
+                        "name": "Orthopedics"
+                    },
+                    {
+                        "id": 150,
+                        "name": "Ophthalmology"
+                    },
+                    {
+                        "id": 151,
+                        "name": "ENT (Otorhinolaryngology)"
+                    }
+                ]
+            },
+            {
+                "id": 40,
+                "name": "Medical Specializations",
+                "topics": [
+                    {
+                        "id": 152,
+                        "name": "Cardiology"
+                    },
+                    {
+                        "id": 153,
+                        "name": "Neurology"
+                    },
+                    {
+                        "id": 154,
+                        "name": "Oncology"
+                    },
+                    {
+                        "id": 155,
+                        "name": "Radiology"
+                    },
+                    {
+                        "id": 156,
+                        "name": "Psychiatry"
+                    },
+                    {
+                        "id": 157,
+                        "name": "Dermatology"
+                    },
+                    {
+                        "id": 158,
+                        "name": "Anesthesiology"
+                    }
+                ]
+            },
+            {
+                "id": 547,
+                "name": "Nursing",
+                "topics": [
+                    {
+                        "id": 1793,
+                        "name": "Anatomy and Physiology"
+                    },
+                    {
+                        "id": 1794,
+                        "name": "Fundamentals of Nursing"
+                    },
+                    {
+                        "id": 1795,
+                        "name": "Medical-Surgical Nursing"
+                    },
+                    {
+                        "id": 1796,
+                        "name": "Pediatric Nursing"
+                    },
+                    {
+                        "id": 1797,
+                        "name": "Maternal and Child Health"
+                    },
+                    {
+                        "id": 1798,
+                        "name": "Community Health Nursing"
+                    },
+                    {
+                        "id": 1799,
+                        "name": "Psychiatric Nursing"
+                    },
+                    {
+                        "id": 1800,
+                        "name": "Nursing Ethics and Law"
+                    },
+                    {
+                        "id": 1801,
+                        "name": "Pathology and Microbiology"
+                    },
+                    {
+                        "id": 1802,
+                        "name": "Nutrition and Dietetics"
+                    },
+                    {
+                        "id": 1803,
+                        "name": "First Aid and Emergency Nursing"
+                    }
+                ]
+            }
+        ],
+        "description": "Explore medicine, health science, and diagnostics."
+    },
+    {
+        "id": 29,
+        "icon": "fa-vial",
+        "name": "Testing",
+        "type": "P",
+        "subjects": [
+            {
+                "id": 156,
+                "name": "Manual Testing",
+                "topics": [
+                    {
+                        "id": 603,
+                        "name": "Fundamentals of Testing"
+                    },
+                    {
+                        "id": 604,
+                        "name": "Test Case Design Techniques"
+                    },
+                    {
+                        "id": 605,
+                        "name": "Defect Life Cycle"
+                    },
+                    {
+                        "id": 606,
+                        "name": "Functional and Non-functional Testing"
+                    },
+                    {
+                        "id": 607,
+                        "name": "Exploratory Testing"
+                    }
+                ]
+            },
+            {
+                "id": 157,
+                "name": "Automation Testing",
+                "topics": [
+                    {
+                        "id": 608,
+                        "name": "Introduction to Automation"
+                    },
+                    {
+                        "id": 609,
+                        "name": "Selenium WebDriver Basics"
+                    },
+                    {
+                        "id": 610,
+                        "name": "Cypress Basics"
+                    },
+                    {
+                        "id": 611,
+                        "name": "Playwright Fundamentals"
+                    },
+                    {
+                        "id": 612,
+                        "name": "Automation Frameworks (POM, BDD)"
+                    }
+                ]
+            },
+            {
+                "id": 158,
+                "name": "Performance Testing",
+                "topics": [
+                    {
+                        "id": 613,
+                        "name": "Performance Testing Basics"
+                    },
+                    {
+                        "id": 614,
+                        "name": "JMeter Fundamentals"
+                    },
+                    {
+                        "id": 615,
+                        "name": "Load and Stress Testing"
+                    },
+                    {
+                        "id": 616,
+                        "name": "Performance Metrics Analysis"
+                    }
+                ]
+            },
+            {
+                "id": 159,
+                "name": "API Testing",
+                "topics": [
+                    {
+                        "id": 617,
+                        "name": "Introduction to APIs"
+                    },
+                    {
+                        "id": 618,
+                        "name": "Postman for API Testing"
+                    },
+                    {
+                        "id": 619,
+                        "name": "REST vs SOAP APIs"
+                    },
+                    {
+                        "id": 620,
+                        "name": "Authentication Mechanisms (OAuth, API Key)"
+                    }
+                ]
+            },
+            {
+                "id": 160,
+                "name": "Security Testing",
+                "topics": [
+                    {
+                        "id": 621,
+                        "name": "Security Testing Fundamentals"
+                    },
+                    {
+                        "id": 622,
+                        "name": "Common Vulnerabilities (OWASP Top 10)"
+                    },
+                    {
+                        "id": 623,
+                        "name": "SQL Injection"
+                    },
+                    {
+                        "id": 624,
+                        "name": "Cross-Site Scripting (XSS)"
+                    }
+                ]
+            },
+            {
+                "id": 161,
+                "name": "Mobile Testing",
+                "topics": [
+                    {
+                        "id": 625,
+                        "name": "Mobile Testing Basics"
+                    },
+                    {
+                        "id": 626,
+                        "name": "Android Testing Essentials"
+                    },
+                    {
+                        "id": 627,
+                        "name": "iOS Testing Essentials"
+                    },
+                    {
+                        "id": 628,
+                        "name": "Appium Basics"
+                    }
+                ]
+            },
+            {
+                "id": 162,
+                "name": "Database Testing",
+                "topics": [
+                    {
+                        "id": 629,
+                        "name": "Database Testing Fundamentals"
+                    },
+                    {
+                        "id": 630,
+                        "name": "SQL Queries for Testing"
+                    },
+                    {
+                        "id": 631,
+                        "name": "Stored Procedures Testing"
+                    },
+                    {
+                        "id": 632,
+                        "name": "Data Validation Techniques"
+                    }
+                ]
+            },
+            {
+                "id": 163,
+                "name": "DevOps for Testers",
+                "topics": [
+                    {
+                        "id": 633,
+                        "name": "Introduction to DevOps"
+                    },
+                    {
+                        "id": 634,
+                        "name": "CI/CD for Testing"
+                    },
+                    {
+                        "id": 635,
+                        "name": "Jenkins for Automation"
+                    },
+                    {
+                        "id": 636,
+                        "name": "Docker Basics for Testers"
+                    }
+                ]
+            },
+            {
+                "id": 164,
+                "name": "Agile Testing",
+                "topics": [
+                    {
+                        "id": 637,
+                        "name": "Agile Testing Principles"
+                    },
+                    {
+                        "id": 638,
+                        "name": "Scrum and Testing Roles"
+                    },
+                    {
+                        "id": 639,
+                        "name": "Test-Driven Development (TDD)"
+                    },
+                    {
+                        "id": 640,
+                        "name": "Behavior-Driven Development (BDD)"
+                    }
+                ]
+            },
+            {
+                "id": 165,
+                "name": "Testing Tools and Technologies",
+                "topics": [
+                    {
+                        "id": 641,
+                        "name": "Bug Tracking Tools (JIRA, Bugzilla)"
+                    },
+                    {
+                        "id": 642,
+                        "name": "Test Management Tools (TestRail, Zephyr)"
+                    },
+                    {
+                        "id": 643,
+                        "name": "Version Control Systems (Git Basics)"
+                    },
+                    {
+                        "id": 644,
+                        "name": "Automation Reporting Tools"
+                    }
+                ]
+            }
+        ],
+        "description": "Assess your knowledge through test-based quizzes."
+    },
+    {
+        "id": 30,
+        "icon": "fas fa-film",
+        "name": "Entertainment",
+        "type": "P",
+        "subjects": [
+            {
+                "id": 166,
+                "name": "Movies & TV Shows",
+                "topics": [
+                    {
+                        "id": 645,
+                        "name": "Oscar-Winning Films"
+                    },
+                    {
+                        "id": 646,
+                        "name": "Popular TV Series"
+                    },
+                    {
+                        "id": 647,
+                        "name": "Classic Hollywood Movies"
+                    },
+                    {
+                        "id": 648,
+                        "name": "Animated Movies"
+                    }
+                ]
+            },
+            {
+                "id": 167,
+                "name": "Music",
+                "topics": [
+                    {
+                        "id": 649,
+                        "name": "Pop Music Legends"
+                    },
+                    {
+                        "id": 650,
+                        "name": "Rock Bands History"
+                    },
+                    {
+                        "id": 651,
+                        "name": "Music Awards & Charts"
+                    },
+                    {
+                        "id": 652,
+                        "name": "Global Music Trends"
+                    }
+                ]
+            },
+            {
+                "id": 168,
+                "name": "Sports",
+                "topics": [
+                    {
+                        "id": 653,
+                        "name": "Olympic Games Trivia"
+                    },
+                    {
+                        "id": 654,
+                        "name": "FIFA World Cup"
+                    },
+                    {
+                        "id": 655,
+                        "name": "Cricket Legends"
+                    },
+                    {
+                        "id": 656,
+                        "name": "Tennis Grand Slams"
+                    }
+                ]
+            },
+            {
+                "id": 169,
+                "name": "Video Games",
+                "topics": [
+                    {
+                        "id": 657,
+                        "name": "Gaming Consoles History"
+                    },
+                    {
+                        "id": 658,
+                        "name": "Top Esports Titles"
+                    },
+                    {
+                        "id": 659,
+                        "name": "Famous Video Game Characters"
+                    },
+                    {
+                        "id": 660,
+                        "name": "Retro Games"
+                    }
+                ]
+            },
+            {
+                "id": 170,
+                "name": "Celebrities & Pop Culture",
+                "topics": [
+                    {
+                        "id": 661,
+                        "name": "Famous Personalities"
+                    },
+                    {
+                        "id": 662,
+                        "name": "Viral Internet Trends"
+                    },
+                    {
+                        "id": 663,
+                        "name": "Fashion Icons"
+                    }
+                ]
+            },
+            {
+                "id": 171,
+                "name": "Cartoons & Animation",
+                "topics": [
+                    {
+                        "id": 664,
+                        "name": "Classic Cartoons"
+                    },
+                    {
+                        "id": 665,
+                        "name": "Disney and Pixar Movies"
+                    },
+                    {
+                        "id": 666,
+                        "name": "Anime Basics"
+                    }
+                ]
+            },
+            {
+                "id": 172,
+                "name": "Streaming Platforms",
+                "topics": [
+                    {
+                        "id": 667,
+                        "name": "Netflix Originals"
+                    },
+                    {
+                        "id": 668,
+                        "name": "Amazon Prime Hits"
+                    },
+                    {
+                        "id": 669,
+                        "name": "Top Hulu Shows"
+                    }
+                ]
+            },
+            {
+                "id": 173,
+                "name": "Comics & Superheroes",
+                "topics": [
+                    {
+                        "id": 670,
+                        "name": "Marvel Universe"
+                    },
+                    {
+                        "id": 671,
+                        "name": "DC Comics Trivia"
+                    },
+                    {
+                        "id": 672,
+                        "name": "Superhero Origins"
+                    }
+                ]
+            },
+            {
+                "id": 174,
+                "name": "Award Shows & Ceremonies",
+                "topics": [
+                    {
+                        "id": 673,
+                        "name": "Academy Awards (Oscars)"
+                    },
+                    {
+                        "id": 674,
+                        "name": "Grammy Awards"
+                    },
+                    {
+                        "id": 675,
+                        "name": "Golden Globe Awards"
+                    }
+                ]
+            },
+            {
+                "id": 175,
+                "name": "World Records & Fun Facts",
+                "topics": [
+                    {
+                        "id": 676,
+                        "name": "Guinness World Records"
+                    },
+                    {
+                        "id": 677,
+                        "name": "Amazing Entertainment Facts"
+                    },
+                    {
+                        "id": 678,
+                        "name": "Bizarre Celebrity Records"
+                    }
+                ]
+            }
+        ],
+        "description": "Quiz yourself on movies, music, gaming, and sports."
+    },
+    {
+        "id": 31,
+        "icon": "fa-leaf",
+        "name": "Environmental Science",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 176,
+                "name": "Environmental Studies",
+                "topics": [
+                    {
+                        "id": 679,
+                        "name": "Environmental Components"
+                    },
+                    {
+                        "id": 680,
+                        "name": "Natural Resources"
+                    },
+                    {
+                        "id": 681,
+                        "name": "Ecosystems"
+                    }
+                ]
+            },
+            {
+                "id": 177,
+                "name": "Climate Change",
+                "topics": [
+                    {
+                        "id": 682,
+                        "name": "Global Warming"
+                    },
+                    {
+                        "id": 683,
+                        "name": "Greenhouse Effect"
+                    },
+                    {
+                        "id": 684,
+                        "name": "Carbon Footprint"
+                    },
+                    {
+                        "id": 685,
+                        "name": "Climate Agreements"
+                    }
+                ]
+            },
+            {
+                "id": 178,
+                "name": "Sustainability",
+                "topics": [
+                    {
+                        "id": 686,
+                        "name": "Sustainable Agriculture"
+                    },
+                    {
+                        "id": 687,
+                        "name": "Green Architecture"
+                    },
+                    {
+                        "id": 688,
+                        "name": "Zero Waste Lifestyle"
+                    }
+                ]
+            },
+            {
+                "id": 179,
+                "name": "Renewable Energy",
+                "topics": [
+                    {
+                        "id": 689,
+                        "name": "Solar Energy"
+                    },
+                    {
+                        "id": 690,
+                        "name": "Wind Energy"
+                    },
+                    {
+                        "id": 691,
+                        "name": "Hydropower"
+                    },
+                    {
+                        "id": 692,
+                        "name": "Bioenergy"
+                    }
+                ]
+            },
+            {
+                "id": 180,
+                "name": "Ecology",
+                "topics": [
+                    {
+                        "id": 693,
+                        "name": "Food Chains"
+                    },
+                    {
+                        "id": 694,
+                        "name": "Biodiversity"
+                    },
+                    {
+                        "id": 695,
+                        "name": "Population Ecology"
+                    },
+                    {
+                        "id": 696,
+                        "name": "Community Ecology"
+                    }
+                ]
+            },
+            {
+                "id": 181,
+                "name": "Environmental Policy",
+                "topics": [
+                    {
+                        "id": 697,
+                        "name": "Environmental Laws"
+                    },
+                    {
+                        "id": 698,
+                        "name": "Kyoto Protocol"
+                    },
+                    {
+                        "id": 699,
+                        "name": "Paris Agreement"
+                    },
+                    {
+                        "id": 700,
+                        "name": "UN Sustainable Development Goals"
+                    }
+                ]
+            },
+            {
+                "id": 182,
+                "name": "Conservation Science",
+                "topics": [
+                    {
+                        "id": 701,
+                        "name": "Wildlife Conservation"
+                    },
+                    {
+                        "id": 702,
+                        "name": "Forest Conservation"
+                    },
+                    {
+                        "id": 703,
+                        "name": "Marine Conservation"
+                    }
+                ]
+            },
+            {
+                "id": 183,
+                "name": "Pollution & Waste Management",
+                "topics": [
+                    {
+                        "id": 704,
+                        "name": "Air Pollution"
+                    },
+                    {
+                        "id": 705,
+                        "name": "Water Pollution"
+                    },
+                    {
+                        "id": 706,
+                        "name": "Solid Waste Management"
+                    },
+                    {
+                        "id": 707,
+                        "name": "Recycling Techniques"
+                    }
+                ]
+            },
+            {
+                "id": 184,
+                "name": "Earth Science",
+                "topics": [
+                    {
+                        "id": 708,
+                        "name": "Rock Cycle"
+                    },
+                    {
+                        "id": 709,
+                        "name": "Weather Patterns"
+                    },
+                    {
+                        "id": 710,
+                        "name": "Ocean Currents"
+                    },
+                    {
+                        "id": 711,
+                        "name": "Soil Conservation"
+                    }
+                ]
+            }
+        ],
+        "description": "Understand ecosystems, sustainability, and global issues."
+    },
+    {
+        "id": 35,
+        "icon": "fa-wrench",
+        "name": "Mechanical Skills",
+        "type": "P",
+        "subjects": [
+            {
+                "id": 205,
+                "name": "Basic Mechanics",
+                "topics": [
+                    {
+                        "id": 841,
+                        "name": "Simple Machines"
+                    },
+                    {
+                        "id": 842,
+                        "name": "Force and Motion"
+                    }
+                ]
+            },
+            {
+                "id": 206,
+                "name": "Automobile Technology",
+                "topics": [
+                    {
+                        "id": 843,
+                        "name": "Vehicle Engines"
+                    },
+                    {
+                        "id": 844,
+                        "name": "Transmission Systems"
+                    }
+                ]
+            },
+            {
+                "id": 207,
+                "name": "Industrial Machinery",
+                "topics": [
+                    {
+                        "id": 845,
+                        "name": "Manufacturing Equipment"
+                    },
+                    {
+                        "id": 846,
+                        "name": "Safety Procedures"
+                    }
+                ]
+            },
+            {
+                "id": 208,
+                "name": "Engineering Drawing",
+                "topics": [
+                    {
+                        "id": 847,
+                        "name": "Technical Sketching"
+                    },
+                    {
+                        "id": 848,
+                        "name": "CAD Basics"
+                    }
+                ]
+            },
+            {
+                "id": 209,
+                "name": "Maintenance & Repair",
+                "topics": [
+                    {
+                        "id": 849,
+                        "name": "Preventive Maintenance"
+                    },
+                    {
+                        "id": 850,
+                        "name": "Machine Troubleshooting"
+                    }
+                ]
+            }
+        ],
+        "description": "Learn about tools, machines, engines, and mechanics."
+    },
+    {
+        "id": 19,
+        "icon": "fa-flask",
+        "name": "Chemistry",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 95,
+                "name": "Organic Chemistry",
+                "topics": [
+                    {
+                        "id": 370,
+                        "name": "Alkanes, Alkenes, Alkynes"
+                    },
+                    {
+                        "id": 371,
+                        "name": "Aromatic Compounds"
+                    },
+                    {
+                        "id": 372,
+                        "name": "Reactions in Organic Chemistry"
+                    }
+                ]
+            },
+            {
+                "id": 96,
+                "name": "Inorganic Chemistry",
+                "topics": [
+                    {
+                        "id": 373,
+                        "name": "Transition Metals"
+                    },
+                    {
+                        "id": 374,
+                        "name": "Acids and Bases"
+                    }
+                ]
+            },
+            {
+                "id": 97,
+                "name": "Physical Chemistry",
+                "topics": [
+                    {
+                        "id": 375,
+                        "name": "Thermodynamics in Chemistry"
+                    },
+                    {
+                        "id": 376,
+                        "name": "Chemical Kinetics"
+                    }
+                ]
+            },
+            {
+                "id": 98,
+                "name": "Analytical Chemistry",
+                "topics": [
+                    {
+                        "id": 377,
+                        "name": "Chromatography"
+                    },
+                    {
+                        "id": 378,
+                        "name": "Spectroscopy"
+                    }
+                ]
+            },
+            {
+                "id": 99,
+                "name": "Biochemistry",
+                "topics": [
+                    {
+                        "id": 379,
+                        "name": "Enzyme Kinetics"
+                    },
+                    {
+                        "id": 380,
+                        "name": "Metabolism"
+                    }
+                ]
+            }
+        ],
+        "description": "Master chemical principles and reactions."
+    },
+    {
+        "id": 18,
+        "icon": "fa-atom",
+        "name": "Physics",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 89,
+                "name": "Classical Mechanics",
+                "topics": [
+                    {
+                        "id": 358,
+                        "name": "Newtonian Mechanics"
+                    },
+                    {
+                        "id": 359,
+                        "name": "Lagrangian Mechanics"
+                    },
+                    {
+                        "id": 360,
+                        "name": "Rigid Body Dynamics"
+                    }
+                ]
+            },
+            {
+                "id": 90,
+                "name": "Quantum Physics",
+                "topics": [
+                    {
+                        "id": 361,
+                        "name": "Wave Function"
+                    },
+                    {
+                        "id": 362,
+                        "name": "Schrodinger Equation"
+                    }
+                ]
+            },
+            {
+                "id": 91,
+                "name": "Thermodynamics",
+                "topics": [
+                    {
+                        "id": 363,
+                        "name": "Laws of Thermodynamics"
+                    }
+                ]
+            },
+            {
+                "id": 92,
+                "name": "Electromagnetism",
+                "topics": [
+                    {
+                        "id": 364,
+                        "name": "Electrostatics"
+                    },
+                    {
+                        "id": 365,
+                        "name": "Magnetostatics"
+                    }
+                ]
+            },
+            {
+                "id": 93,
+                "name": "Optics",
+                "topics": [
+                    {
+                        "id": 366,
+                        "name": "Reflection and Refraction"
+                    },
+                    {
+                        "id": 367,
+                        "name": "Lens and Mirrors"
+                    }
+                ]
+            },
+            {
+                "id": 94,
+                "name": "Nuclear Physics",
+                "topics": [
+                    {
+                        "id": 368,
+                        "name": "Radioactive Decay"
+                    },
+                    {
+                        "id": 369,
+                        "name": "Fission and Fusion"
+                    }
+                ]
+            }
+        ],
+        "description": "Understand physics laws and real-world applications."
+    },
+    {
+        "id": 16,
+        "icon": "fa-certificate",
+        "name": "IT Certifications",
+        "type": "P",
+        "subjects": [
+            {
+                "id": 16,
+                "name": "Cloud Computing",
+                "topics": [
+                    {
+                        "id": 53,
+                        "name": "AWS Certified Solutions Architect"
+                    },
+                    {
+                        "id": 54,
+                        "name": "Google Cloud Professional Architect"
+                    },
+                    {
+                        "id": 55,
+                        "name": "Microsoft Azure Fundamentals"
+                    },
+                    {
+                        "id": 56,
+                        "name": "Cloud Security & Compliance"
+                    }
+                ]
+            },
+            {
+                "id": 17,
+                "name": "Cybersecurity",
+                "topics": [
+                    {
+                        "id": 57,
+                        "name": "Certified Ethical Hacker (CEH)"
+                    },
+                    {
+                        "id": 58,
+                        "name": "CompTIA Security+"
+                    },
+                    {
+                        "id": 59,
+                        "name": "Certified Information Systems Security Professional (CISSP)"
+                    },
+                    {
+                        "id": 60,
+                        "name": "Penetration Testing & Vulnerability Assessment"
+                    }
+                ]
+            },
+            {
+                "id": 18,
+                "name": "Networking",
+                "topics": [
+                    {
+                        "id": 61,
+                        "name": "Cisco Certified Network Associate (CCNA)"
+                    },
+                    {
+                        "id": 62,
+                        "name": "CompTIA Network+"
+                    },
+                    {
+                        "id": 63,
+                        "name": "Wireless Networking & Security"
+                    },
+                    {
+                        "id": 64,
+                        "name": "IPv6 Fundamentals"
+                    }
+                ]
+            },
+            {
+                "id": 19,
+                "name": "Software Development",
+                "topics": [
+                    {
+                        "id": 65,
+                        "name": "Microsoft Certified: Azure Developer Associate"
+                    },
+                    {
+                        "id": 66,
+                        "name": "Google Associate Android Developer"
+                    },
+                    {
+                        "id": 67,
+                        "name": "Oracle Certified Java Developer"
+                    },
+                    {
+                        "id": 68,
+                        "name": "Secure Coding Practices"
+                    }
+                ]
+            },
+            {
+                "id": 20,
+                "name": "Database Management",
+                "topics": [
+                    {
+                        "id": 69,
+                        "name": "Microsoft Certified: Azure Database Administrator"
+                    },
+                    {
+                        "id": 70,
+                        "name": "Oracle Certified Professional: MySQL"
+                    },
+                    {
+                        "id": 71,
+                        "name": "MongoDB Certified Developer Associate"
+                    },
+                    {
+                        "id": 72,
+                        "name": "PostgreSQL Administration & Optimization"
+                    }
+                ]
+            },
+            {
+                "id": 21,
+                "name": "IT Service Management",
+                "topics": [
+                    {
+                        "id": 73,
+                        "name": "ITIL Foundation Certification"
+                    },
+                    {
+                        "id": 74,
+                        "name": "COBIT 2019 Framework"
+                    },
+                    {
+                        "id": 75,
+                        "name": "Lean Six Sigma for IT"
+                    },
+                    {
+                        "id": 76,
+                        "name": "Agile Service Management"
+                    }
+                ]
+            },
+            {
+                "id": 22,
+                "name": "DevOps & Automation",
+                "topics": [
+                    {
+                        "id": 77,
+                        "name": "Certified Kubernetes Administrator (CKA)"
+                    },
+                    {
+                        "id": 78,
+                        "name": "Docker Certified Associate (DCA)"
+                    },
+                    {
+                        "id": 79,
+                        "name": "AWS Certified DevOps Engineer"
+                    },
+                    {
+                        "id": 80,
+                        "name": "Terraform Infrastructure as Code"
+                    }
+                ]
+            }
+        ],
+        "description": "Prepare for globally recognized IT certification exams."
+    },
+    {
+        "id": 9,
+        "icon": "fa-flask",
+        "name": "Banking",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 105,
+                "name": "Banking Basics",
+                "topics": [
+                    {
+                        "id": 392,
+                        "name": "Introduction to Banking"
+                    },
+                    {
+                        "id": 393,
+                        "name": "Types of Banks"
+                    }
+                ]
+            },
+            {
+                "id": 106,
+                "name": "Financial Instruments",
+                "topics": [
+                    {
+                        "id": 394,
+                        "name": "Loans and Advances"
+                    },
+                    {
+                        "id": 395,
+                        "name": "Bonds and Securities"
+                    }
+                ]
+            },
+            {
+                "id": 107,
+                "name": "Banking Operations",
+                "topics": [
+                    {
+                        "id": 396,
+                        "name": "Account Opening"
+                    },
+                    {
+                        "id": 397,
+                        "name": "Cheque Clearing Process"
+                    }
+                ]
+            },
+            {
+                "id": 108,
+                "name": "Risk Management in Banking",
+                "topics": [
+                    {
+                        "id": 398,
+                        "name": "Credit Risk"
+                    },
+                    {
+                        "id": 399,
+                        "name": "Operational Risk"
+                    }
+                ]
+            },
+            {
+                "id": 109,
+                "name": "Banking Regulations",
+                "topics": [
+                    {
+                        "id": 400,
+                        "name": "Basel Accords"
+                    },
+                    {
+                        "id": 401,
+                        "name": "Regulatory Authorities"
+                    }
+                ]
+            }
+        ],
+        "description": "Explore banking services, finance, and operations."
+    },
+    {
+        "id": 34,
+        "icon": "fa-user-nurse",
+        "name": "Psychology",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 200,
+                "name": "General Psychology",
+                "topics": [
+                    {
+                        "id": 831,
+                        "name": "Introduction to Psychology"
+                    },
+                    {
+                        "id": 832,
+                        "name": "Psychological Theories"
+                    }
+                ]
+            },
+            {
+                "id": 201,
+                "name": "Developmental Psychology",
+                "topics": [
+                    {
+                        "id": 833,
+                        "name": "Stages of Development"
+                    },
+                    {
+                        "id": 834,
+                        "name": "Child Psychology"
+                    }
+                ]
+            },
+            {
+                "id": 202,
+                "name": "Abnormal Psychology",
+                "topics": [
+                    {
+                        "id": 835,
+                        "name": "Mental Disorders"
+                    },
+                    {
+                        "id": 836,
+                        "name": "Therapies and Treatments"
+                    }
+                ]
+            },
+            {
+                "id": 203,
+                "name": "Social Psychology",
+                "topics": [
+                    {
+                        "id": 837,
+                        "name": "Group Behavior"
+                    },
+                    {
+                        "id": 838,
+                        "name": "Interpersonal Relationships"
+                    }
+                ]
+            },
+            {
+                "id": 204,
+                "name": "Cognitive Psychology",
+                "topics": [
+                    {
+                        "id": 839,
+                        "name": "Memory and Learning"
+                    },
+                    {
+                        "id": 840,
+                        "name": "Problem Solving and Decision Making"
+                    }
+                ]
+            }
+        ],
+        "description": "Study the mind, behavior, and mental health theories."
+    },
+    {
+        "id": 41,
+        "icon": "fa-chart-line",
+        "name": "Economics",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 531,
+                "name": "Microeconomics",
+                "topics": [
+                    {
+                        "id": 1715,
+                        "name": "Supply and Demand"
+                    },
+                    {
+                        "id": 1716,
+                        "name": "Market Structures"
+                    },
+                    {
+                        "id": 1717,
+                        "name": "Elasticity"
+                    }
+                ]
+            },
+            {
+                "id": 532,
+                "name": "Macroeconomics",
+                "topics": [
+                    {
+                        "id": 1718,
+                        "name": "GDP"
+                    },
+                    {
+                        "id": 1719,
+                        "name": "Inflation"
+                    },
+                    {
+                        "id": 1720,
+                        "name": "Fiscal Policy"
+                    }
+                ]
+            },
+            {
+                "id": 533,
+                "name": "International Trade",
+                "topics": [
+                    {
+                        "id": 1721,
+                        "name": "Globalization"
+                    },
+                    {
+                        "id": 1722,
+                        "name": "Trade Agreements"
+                    },
+                    {
+                        "id": 1723,
+                        "name": "Tariffs"
+                    }
+                ]
+            },
+            {
+                "id": 534,
+                "name": "Development Economics",
+                "topics": [
+                    {
+                        "id": 1724,
+                        "name": "Poverty"
+                    },
+                    {
+                        "id": 1725,
+                        "name": "Economic Growth"
+                    },
+                    {
+                        "id": 1726,
+                        "name": "Sustainable Development"
+                    }
+                ]
+            }
+        ],
+        "description": "Understand economic theories, markets, trade, and global development."
+    },
+    {
+        "id": 42,
+        "icon": "fa-book-open",
+        "name": "Languages and Literature",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 535,
+                "name": "English Grammar",
+                "topics": [
+                    {
+                        "id": 1727,
+                        "name": "Tenses"
+                    },
+                    {
+                        "id": 1728,
+                        "name": "Parts of Speech"
+                    },
+                    {
+                        "id": 1729,
+                        "name": "Punctuation"
+                    }
+                ]
+            },
+            {
+                "id": 536,
+                "name": "World Literature",
+                "topics": [
+                    {
+                        "id": 1730,
+                        "name": "Shakespeare"
+                    },
+                    {
+                        "id": 1731,
+                        "name": "World Classics"
+                    },
+                    {
+                        "id": 1732,
+                        "name": "Modern Literatures"
+                    }
+                ]
+            },
+            {
+                "id": 537,
+                "name": "Poetry and Prose",
+                "topics": [
+                    {
+                        "id": 1733,
+                        "name": "Forms of Poetry"
+                    },
+                    {
+                        "id": 1734,
+                        "name": "Prose Styles"
+                    },
+                    {
+                        "id": 1735,
+                        "name": "Literary Devices"
+                    }
+                ]
+            },
+            {
+                "id": 538,
+                "name": "Reading Comprehension",
+                "topics": [
+                    {
+                        "id": 1736,
+                        "name": "Passage Analysis"
+                    },
+                    {
+                        "id": 1737,
+                        "name": "Critical Thinking Questions"
+                    }
+                ]
+            }
+        ],
+        "description": "Dive into grammar, prose, poetry, world literature, and comprehension."
+    },
+    {
+        "id": 43,
+        "icon": "fa-apple-alt",
+        "name": "Health and Nutrition",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 539,
+                "name": "Human Nutrition",
+                "topics": [
+                    {
+                        "id": 1738,
+                        "name": "Macronutrients"
+                    },
+                    {
+                        "id": 1739,
+                        "name": "Vitamins and Minerals"
+                    },
+                    {
+                        "id": 1740,
+                        "name": "Balanced Diet"
+                    }
+                ]
+            },
+            {
+                "id": 540,
+                "name": "Fitness and Exercise",
+                "topics": [
+                    {
+                        "id": 1741,
+                        "name": "Cardio Workouts"
+                    },
+                    {
+                        "id": 1742,
+                        "name": "Strength Training"
+                    },
+                    {
+                        "id": 1743,
+                        "name": "Flexibility Routines"
+                    }
+                ]
+            },
+            {
+                "id": 541,
+                "name": "Preventive Healthcare",
+                "topics": [
+                    {
+                        "id": 1744,
+                        "name": "Vaccinations"
+                    },
+                    {
+                        "id": 1745,
+                        "name": "Regular Screenings"
+                    },
+                    {
+                        "id": 1746,
+                        "name": "Hygiene Practices"
+                    }
+                ]
+            },
+            {
+                "id": 542,
+                "name": "Mental Health Awareness",
+                "topics": [
+                    {
+                        "id": 1747,
+                        "name": "Stress Management"
+                    },
+                    {
+                        "id": 1748,
+                        "name": "Anxiety Disorders"
+                    },
+                    {
+                        "id": 1749,
+                        "name": "Mindfulness"
+                    }
+                ]
+            }
+        ],
+        "description": "Focus on wellness, dietary habits, exercise, and preventive care."
+    },
+    {
+        "id": 5,
+        "icon": "fa-car",
+        "name": "Driving",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 49,
+                "name": "Road Signs and Signals",
+                "topics": [
+                    {
+                        "id": 205,
+                        "name": "Warning Signs"
+                    },
+                    {
+                        "id": 206,
+                        "name": "Regulatory Signs"
+                    },
+                    {
+                        "id": 207,
+                        "name": "Informational Signs"
+                    },
+                    {
+                        "id": 208,
+                        "name": "Pedestrian Signals"
+                    },
+                    {
+                        "id": 209,
+                        "name": "Traffic Lights"
+                    }
+                ]
+            },
+            {
+                "id": 50,
+                "name": "Traffic Rules and Regulations",
+                "topics": [
+                    {
+                        "id": 210,
+                        "name": "Speed Limits"
+                    },
+                    {
+                        "id": 211,
+                        "name": "Lane Discipline"
+                    },
+                    {
+                        "id": 212,
+                        "name": "Right of Way"
+                    },
+                    {
+                        "id": 213,
+                        "name": "Parking Rules"
+                    },
+                    {
+                        "id": 214,
+                        "name": "Seat Belt and Safety Rules"
+                    }
+                ]
+            },
+            {
+                "id": 51,
+                "name": "Vehicle Operation and Control",
+                "topics": [
+                    {
+                        "id": 215,
+                        "name": "Starting and Stopping the Vehicle"
+                    },
+                    {
+                        "id": 216,
+                        "name": "Shifting Gears"
+                    },
+                    {
+                        "id": 217,
+                        "name": "Steering Control"
+                    },
+                    {
+                        "id": 218,
+                        "name": "Braking Techniques"
+                    },
+                    {
+                        "id": 219,
+                        "name": "Reverse Parking"
+                    }
+                ]
+            },
+            {
+                "id": 52,
+                "name": "Safety Procedures and Emergency Handling",
+                "topics": [
+                    {
+                        "id": 220,
+                        "name": "Basic First Aid"
+                    },
+                    {
+                        "id": 221,
+                        "name": "Accident Procedures"
+                    },
+                    {
+                        "id": 222,
+                        "name": "Fire Safety in Vehicles"
+                    },
+                    {
+                        "id": 223,
+                        "name": "Emergency Braking"
+                    },
+                    {
+                        "id": 224,
+                        "name": "Driving in Adverse Conditions"
+                    }
+                ]
+            },
+            {
+                "id": 53,
+                "name": "Environmental Impact and Eco-driving",
+                "topics": [
+                    {
+                        "id": 225,
+                        "name": "Fuel Efficiency Tips"
+                    },
+                    {
+                        "id": 226,
+                        "name": "Eco-friendly Driving Practices"
+                    },
+                    {
+                        "id": 227,
+                        "name": "Reducing Carbon Footprint"
+                    },
+                    {
+                        "id": 228,
+                        "name": "Vehicle Maintenance for Sustainability"
+                    }
+                ]
+            }
+        ],
+        "description": "Practice theory and rules for driving tests."
+    },
+    {
+        "id": 13,
+        "icon": "fa-users",
+        "name": "Soft Skills",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 65,
+                "name": "Communication Skills",
+                "topics": [
+                    {
+                        "id": 284,
+                        "name": "Verbal Communication"
+                    },
+                    {
+                        "id": 285,
+                        "name": "Non-verbal Communication"
+                    },
+                    {
+                        "id": 286,
+                        "name": "Listening Skills"
+                    },
+                    {
+                        "id": 287,
+                        "name": "Public Speaking"
+                    },
+                    {
+                        "id": 288,
+                        "name": "Written Communication"
+                    }
+                ]
+            },
+            {
+                "id": 66,
+                "name": "Leadership Skills",
+                "topics": [
+                    {
+                        "id": 289,
+                        "name": "Motivating a Team"
+                    },
+                    {
+                        "id": 290,
+                        "name": "Decision Making"
+                    },
+                    {
+                        "id": 291,
+                        "name": "Conflict Resolution"
+                    },
+                    {
+                        "id": 292,
+                        "name": "Delegation"
+                    },
+                    {
+                        "id": 293,
+                        "name": "Vision and Goal Setting"
+                    }
+                ]
+            },
+            {
+                "id": 67,
+                "name": "Team Work",
+                "topics": [
+                    {
+                        "id": 294,
+                        "name": "Collaboration and Cooperation"
+                    },
+                    {
+                        "id": 295,
+                        "name": "Handling Group Dynamics"
+                    },
+                    {
+                        "id": 296,
+                        "name": "Trust Building"
+                    },
+                    {
+                        "id": 297,
+                        "name": "Problem Solving in Teams"
+                    },
+                    {
+                        "id": 298,
+                        "name": "Cross-functional Teams"
+                    }
+                ]
+            },
+            {
+                "id": 68,
+                "name": "Time Management",
+                "topics": [
+                    {
+                        "id": 299,
+                        "name": "Prioritization"
+                    },
+                    {
+                        "id": 300,
+                        "name": "Task Scheduling"
+                    },
+                    {
+                        "id": 301,
+                        "name": "Avoiding Procrastination"
+                    },
+                    {
+                        "id": 302,
+                        "name": "Setting Deadlines"
+                    },
+                    {
+                        "id": 303,
+                        "name": "Work-Life Balance"
+                    }
+                ]
+            }
+        ],
+        "description": "Enhance communication, empathy, and people skills."
+    },
+    {
+        "id": 32,
+        "icon": "fa-palette",
+        "name": "Arts and Humanities",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 185,
+                "name": "Literature",
+                "topics": [
+                    {
+                        "id": 730,
+                        "name": "Classical Literature"
+                    },
+                    {
+                        "id": 731,
+                        "name": "Modern Literature"
+                    },
+                    {
+                        "id": 732,
+                        "name": "Poetry Analysis"
+                    },
+                    {
+                        "id": 733,
+                        "name": "Drama and Plays"
+                    },
+                    {
+                        "id": 734,
+                        "name": "Literary Criticism"
+                    }
+                ]
+            },
+            {
+                "id": 186,
+                "name": "History of Art",
+                "topics": [
+                    {
+                        "id": 735,
+                        "name": "Ancient Art"
+                    },
+                    {
+                        "id": 736,
+                        "name": "Renaissance Art"
+                    },
+                    {
+                        "id": 737,
+                        "name": "Modern Art Movements"
+                    },
+                    {
+                        "id": 738,
+                        "name": "Art Interpretation"
+                    },
+                    {
+                        "id": 739,
+                        "name": "Famous Artists & Artworks"
+                    }
+                ]
+            },
+            {
+                "id": 187,
+                "name": "Philosophy",
+                "topics": [
+                    {
+                        "id": 740,
+                        "name": "Ethics and Morality"
+                    },
+                    {
+                        "id": 741,
+                        "name": "Logic and Reasoning"
+                    },
+                    {
+                        "id": 742,
+                        "name": "Political Philosophy"
+                    },
+                    {
+                        "id": 743,
+                        "name": "Existentialism"
+                    },
+                    {
+                        "id": 744,
+                        "name": "Eastern Philosophy"
+                    }
+                ]
+            },
+            {
+                "id": 188,
+                "name": "Music",
+                "topics": [
+                    {
+                        "id": 769,
+                        "name": "History of Music"
+                    },
+                    {
+                        "id": 770,
+                        "name": "Musical Instruments"
+                    },
+                    {
+                        "id": 771,
+                        "name": "Art of Classical Music"
+                    },
+                    {
+                        "id": 772,
+                        "name": "Modern Music Genres"
+                    },
+                    {
+                        "id": 773,
+                        "name": "Music Theory Basics"
+                    }
+                ]
+            },
+            {
+                "id": 189,
+                "name": "Visual Arts",
+                "topics": [
+                    {
+                        "id": 774,
+                        "name": "Painting Techniques"
+                    },
+                    {
+                        "id": 775,
+                        "name": "Sculpture"
+                    },
+                    {
+                        "id": 776,
+                        "name": "Photography Basics"
+                    },
+                    {
+                        "id": 777,
+                        "name": "Digital Art"
+                    },
+                    {
+                        "id": 778,
+                        "name": "Graphic Design"
+                    }
+                ]
+            },
+            {
+                "id": 190,
+                "name": "Performing Arts",
+                "topics": [
+                    {
+                        "id": 779,
+                        "name": "Theatre and Drama"
+                    },
+                    {
+                        "id": 780,
+                        "name": "Dance Forms"
+                    },
+                    {
+                        "id": 781,
+                        "name": "Film and Cinema Studies"
+                    },
+                    {
+                        "id": 782,
+                        "name": "Acting Techniques"
+                    },
+                    {
+                        "id": 783,
+                        "name": "Musical Theatre"
+                    }
+                ]
+            },
+            {
+                "id": 191,
+                "name": "Linguistics",
+                "topics": [
+                    {
+                        "id": 784,
+                        "name": "Phonetics and Phonology"
+                    },
+                    {
+                        "id": 785,
+                        "name": "Syntax and Grammar"
+                    },
+                    {
+                        "id": 786,
+                        "name": "Semantics"
+                    },
+                    {
+                        "id": 787,
+                        "name": "Language Evolution"
+                    },
+                    {
+                        "id": 788,
+                        "name": "Sociolinguistics"
+                    }
+                ]
+            },
+            {
+                "id": 192,
+                "name": "Cultural Studies",
+                "topics": [
+                    {
+                        "id": 789,
+                        "name": "Cultural Anthropology"
+                    },
+                    {
+                        "id": 790,
+                        "name": "Popular Culture"
+                    },
+                    {
+                        "id": 791,
+                        "name": "Media and Society"
+                    },
+                    {
+                        "id": 792,
+                        "name": "Cross-Cultural Communication"
+                    },
+                    {
+                        "id": 793,
+                        "name": "Globalization and Culture"
+                    }
+                ]
+            },
+            {
+                "id": 193,
+                "name": "World History",
+                "topics": [
+                    {
+                        "id": 795,
+                        "name": "Ancient Civilization"
+                    },
+                    {
+                        "id": 796,
+                        "name": "Medieval Period"
+                    },
+                    {
+                        "id": 797,
+                        "name": "Colonialism and Empires"
+                    },
+                    {
+                        "id": 798,
+                        "name": "Modern World Events"
+                    },
+                    {
+                        "id": 799,
+                        "name": "Revolutions and Reforms"
+                    }
+                ]
+            },
+            {
+                "id": 194,
+                "name": "Religion & Mythology",
+                "topics": [
+                    {
+                        "id": 800,
+                        "name": "Comparative Religion"
+                    },
+                    {
+                        "id": 801,
+                        "name": "Greek Mythology"
+                    },
+                    {
+                        "id": 802,
+                        "name": "Hindu Mythology"
+                    },
+                    {
+                        "id": 803,
+                        "name": "Christianity and Bible Studies"
+                    },
+                    {
+                        "id": 804,
+                        "name": "Mythological Creatures and Legends"
+                    }
+                ]
+            }
+        ],
+        "description": "Dive into arts, culture, literature, and philosophy."
+    },
+    {
+        "id": 36,
+        "icon": "fa-landmark",
+        "name": "Culture and Mythology",
+        "type": "A",
+        "subjects": [
+            {
+                "id": 210,
+                "name": "World Mythologies",
+                "topics": [
+                    {
+                        "id": 852,
+                        "name": "Greeks Mythology"
+                    },
+                    {
+                        "id": 853,
+                        "name": "Norse Mythology"
+                    },
+                    {
+                        "id": 854,
+                        "name": "Egyptian Mythology"
+                    }
+                ]
+            },
+            {
+                "id": 211,
+                "name": "Cultural Anthropology",
+                "topics": [
+                    {
+                        "id": 855,
+                        "name": "Human Societies"
+                    },
+                    {
+                        "id": 856,
+                        "name": "Cultural Evolution"
+                    }
+                ]
+            },
+            {
+                "id": 212,
+                "name": "Folklore and Legends",
+                "topics": [
+                    {
+                        "id": 857,
+                        "name": "Folk Tales"
+                    },
+                    {
+                        "id": 858,
+                        "name": "Mythical Creatures"
+                    }
+                ]
+            },
+            {
+                "id": 213,
+                "name": "World Religions",
+                "topics": [
+                    {
+                        "id": 859,
+                        "name": "Major World Religions"
+                    },
+                    {
+                        "id": 860,
+                        "name": "Religious Rituals"
+                    }
+                ]
+            },
+            {
+                "id": 214,
+                "name": "Festivals and Traditions",
+                "topics": [
+                    {
+                        "id": 861,
+                        "name": "Traditional Festivals"
+                    },
+                    {
+                        "id": 862,
+                        "name": "Cultural Celebrations"
+                    }
+                ]
+            }
+        ],
+        "description": "Explore ancient myths, folklore, and cultural heritage."
+    },
+    {
+        "id": 37,
+        "icon": "fa-chalkboard-teacher",
+        "name": "Education and Teaching",
+        "type": "P",
+        "subjects": [
+            {
+                "id": 215,
+                "name": "Teaching Methodologies",
+                "topics": [
+                    {
+                        "id": 863,
+                        "name": "Active Learning Strategies"
+                    },
+                    {
+                        "id": 864,
+                        "name": "Differentiated Instruction"
+                    }
+                ]
+            },
+            {
+                "id": 216,
+                "name": "Curriculum Development",
+                "topics": [
+                    {
+                        "id": 865,
+                        "name": "Syllabus Design"
+                    },
+                    {
+                        "id": 866,
+                        "name": "Curriculum Assessment"
+                    }
+                ]
+            },
+            {
+                "id": 217,
+                "name": "Educational Psychology",
+                "topics": [
+                    {
+                        "id": 867,
+                        "name": "Learning Theories"
+                    },
+                    {
+                        "id": 868,
+                        "name": "Motivation in Education"
+                    }
+                ]
+            },
+            {
+                "id": 218,
+                "name": "Instructional Technology",
+                "topics": [
+                    {
+                        "id": 869,
+                        "name": "e-Learning Tools"
+                    },
+                    {
+                        "id": 870,
+                        "name": "Classroom Technologies"
+                    }
+                ]
+            },
+            {
+                "id": 219,
+                "name": "Assessment & Evaluation",
+                "topics": [
+                    {
+                        "id": 871,
+                        "name": "Formative and Summative Assessment"
+                    },
+                    {
+                        "id": 872,
+                        "name": "Rubrics and Grading"
+                    }
+                ]
+            }
+        ],
+        "description": "Focus on teaching strategies, pedagogy, and education systems."
+    },
+    {
+        "id": 33,
+        "icon": "fa-plane",
+        "name": "Travel and Tourism",
+        "type": "P",
+        "subjects": [
+            {
+                "id": 195,
+                "name": "Travel Destinations",
+                "topics": [
+                    {
+                        "id": 816,
+                        "name": "Famous Landmarks"
+                    },
+                    {
+                        "id": 817,
+                        "name": "UNESCO World Heritage Sites"
+                    },
+                    {
+                        "id": 818,
+                        "name": "Popular Beaches and Resorts"
+                    }
+                ]
+            },
+            {
+                "id": 196,
+                "name": "Travel Planning",
+                "topics": [
+                    {
+                        "id": 819,
+                        "name": "Trip Budgeting"
+                    },
+                    {
+                        "id": 820,
+                        "name": "Visa and Passport Information"
+                    },
+                    {
+                        "id": 821,
+                        "name": "Travel Safety Tips"
+                    }
+                ]
+            },
+            {
+                "id": 197,
+                "name": "Hospitality Management",
+                "topics": [
+                    {
+                        "id": 822,
+                        "name": "Hotel Management Basics"
+                    },
+                    {
+                        "id": 823,
+                        "name": "Customer Service"
+                    },
+                    {
+                        "id": 824,
+                        "name": "Restaurant Operations"
+                    }
+                ]
+            },
+            {
+                "id": 198,
+                "name": "World Cultures",
+                "topics": [
+                    {
+                        "id": 825,
+                        "name": "Cultural Etiquette"
+                    },
+                    {
+                        "id": 826,
+                        "name": "Festivals All Around the World"
+                    },
+                    {
+                        "id": 827,
+                        "name": "Languages and Dialects"
+                    }
+                ]
+            },
+            {
+                "id": 199,
+                "name": "Tourism Geography",
+                "topics": [
+                    {
+                        "id": 828,
+                        "name": "Continents and Regions"
+                    },
+                    {
+                        "id": 829,
+                        "name": "Climate and Tourism"
+                    },
+                    {
+                        "id": 830,
+                        "name": "Adventure Travel Locations"
+                    }
+                ]
+            }
+        ],
+        "description": "Explore destinations, travel tips, and tourism management."
+    },
+    {
+        "id": 38,
+        "icon": "fa-network-wired",
+        "name": "Networking",
+        "type": "P",
+        "subjects": [
+            {
+                "id": 220,
+                "name": "Computer Networks Basics",
+                "topics": [
+                    {
+                        "id": 873,
+                        "name": "OSI Model"
+                    },
+                    {
+                        "id": 874,
+                        "name": "Network Topologies"
+                    },
+                    {
+                        "id": 875,
+                        "name": "Networking Devices"
+                    }
+                ]
+            },
+            {
+                "id": 221,
+                "name": "IP Addressing and Subnetting",
+                "topics": [
+                    {
+                        "id": 876,
+                        "name": "IPv4 vs IPv6"
+                    },
+                    {
+                        "id": 877,
+                        "name": "Subnetting Concepts"
+                    },
+                    {
+                        "id": 878,
+                        "name": "Address Classes"
+                    }
+                ]
+            },
+            {
+                "id": 222,
+                "name": "Protocols and Ports",
+                "topics": [
+                    {
+                        "id": 879,
+                        "name": "TCP/IP Suite"
+                    },
+                    {
+                        "id": 880,
+                        "name": "Common Network Ports"
+                    },
+                    {
+                        "id": 881,
+                        "name": "HTTP, FTP, SMTP, DNS"
+                    }
+                ]
+            },
+            {
+                "id": 223,
+                "name": "Network Security",
+                "topics": [
+                    {
+                        "id": 882,
+                        "name": "Firewalls and VPNs"
+                    },
+                    {
+                        "id": 883,
+                        "name": "Common Threats"
+                    },
+                    {
+                        "id": 884,
+                        "name": "Secure Protocols"
+                    }
+                ]
+            },
+            {
+                "id": 224,
+                "name": "Wireless and Mobile Networks",
+                "topics": [
+                    {
+                        "id": 885,
+                        "name": "Wi-Fi Standards"
+                    },
+                    {
+                        "id": 886,
+                        "name": "Wireless Security"
+                    },
+                    {
+                        "id": 887,
+                        "name": "Mobile Data Networks"
+                    }
+                ]
+            }
+        ],
+        "description": "Learn about networking protocols, security, and systems."
+    },
+    {
+        "id": 12,
+        "icon": "fa-laptop-code",
+        "name": "Programming",
+        "type": "P",
+        "subjects": [
+            {
+                "id": 1,
+                "name": "Web Development",
+                "topics": [
+                    {
+                        "id": 3,
+                        "name": "CSS"
+                    },
+                    {
+                        "id": 4,
+                        "name": "React JS"
+                    },
+                    {
+                        "id": 530,
+                        "name": "Alpine JS"
+                    },
+                    {
+                        "id": 1,
+                        "name": "HTML"
+                    },
+                    {
+                        "id": 2,
+                        "name": "JavaScript"
+                    },
+                    {
+                        "id": 533,
+                        "name": "Astro JS"
+                    },
+                    {
+                        "id": 532,
+                        "name": "Angular JS"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "Mobile Development",
+                "topics": [
+                    {
+                        "id": 5,
+                        "name": "Android Development (Java/Kotlin)"
+                    },
+                    {
+                        "id": 6,
+                        "name": "iOS Development (Swift)"
+                    },
+                    {
+                        "id": 7,
+                        "name": "Cross-Platform (Flutter, React Native)"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "Data Structures & Algorithms",
+                "topics": [
+                    {
+                        "id": 8,
+                        "name": "Sorting & Searching"
+                    },
+                    {
+                        "id": 9,
+                        "name": "Recursion & Backtracking"
+                    },
+                    {
+                        "id": 10,
+                        "name": "Graph Theory"
+                    },
+                    {
+                        "id": 11,
+                        "name": "Dynamic Programming"
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "Databases",
+                "topics": [
+                    {
+                        "id": 14,
+                        "name": "MySQL"
+                    },
+                    {
+                        "id": 12,
+                        "name": "Microsoft SQL Server"
+                    },
+                    {
+                        "id": 13,
+                        "name": "Oracle"
+                    },
+                    {
+                        "id": 1768,
+                        "name": "PostgreSQL"
+                    },
+                    {
+                        "id": 1769,
+                        "name": "MongoDB"
+                    },
+                    {
+                        "id": 1770,
+                        "name": "SQLite"
+                    },
+                    {
+                        "id": 1771,
+                        "name": "Redis"
+                    },
+                    {
+                        "id": 1772,
+                        "name": "Cassandra"
+                    },
+                    {
+                        "id": 1773,
+                        "name": "MariaDB"
+                    },
+                    {
+                        "id": 1774,
+                        "name": "Elasticsearch"
+                    },
+                    {
+                        "id": 1775,
+                        "name": "Firebase"
+                    },
+                    {
+                        "id": 1776,
+                        "name": "IBM Db2"
+                    },
+                    {
+                        "id": 1777,
+                        "name": "Amazon Aurora"
+                    }
+                ]
+            },
+            {
+                "id": 5,
+                "name": "Cybersecurity",
+                "topics": [
+                    {
+                        "id": 15,
+                        "name": "Ethical Hacking"
+                    },
+                    {
+                        "id": 16,
+                        "name": "Network Security"
+                    },
+                    {
+                        "id": 17,
+                        "name": "Cryptography"
+                    }
+                ]
+            },
+            {
+                "id": 6,
+                "name": "Cloud Computing",
+                "topics": [
+                    {
+                        "id": 18,
+                        "name": "AWS Basics"
+                    },
+                    {
+                        "id": 19,
+                        "name": "Azure Fundamentals"
+                    },
+                    {
+                        "id": 20,
+                        "name": "Google Cloud Platform"
+                    }
+                ]
+            },
+            {
+                "id": 7,
+                "name": "DevOps",
+                "topics": [
+                    {
+                        "id": 21,
+                        "name": "Docker & Kubernetes"
+                    },
+                    {
+                        "id": 22,
+                        "name": "CI/CD Pipelines"
+                    },
+                    {
+                        "id": 23,
+                        "name": "Infrastructure as Code"
+                    }
+                ]
+            },
+            {
+                "id": 8,
+                "name": "Software Engineering",
+                "topics": [
+                    {
+                        "id": 24,
+                        "name": "Software Development Life Cycle"
+                    },
+                    {
+                        "id": 25,
+                        "name": "Design Patterns"
+                    },
+                    {
+                        "id": 26,
+                        "name": "Agile and Scrum Methodologies"
+                    }
+                ]
+            },
+            {
+                "id": 9,
+                "name": "Game Development",
+                "topics": [
+                    {
+                        "id": 27,
+                        "name": "Unity Engine (C#)"
+                    },
+                    {
+                        "id": 28,
+                        "name": "Unreal Engine (C++)"
+                    },
+                    {
+                        "id": 29,
+                        "name": "Game Physics & AI"
+                    }
+                ]
+            },
+            {
+                "id": 10,
+                "name": "Machine Learning",
+                "topics": [
+                    {
+                        "id": 30,
+                        "name": "Supervised & Unsupervised Learning"
+                    },
+                    {
+                        "id": 31,
+                        "name": "Deep Learning & Neural Networks"
+                    },
+                    {
+                        "id": 32,
+                        "name": "Natural Language Processing"
+                    }
+                ]
+            },
+            {
+                "id": 142,
+                "name": "Artificial Intelligence",
+                "topics": [
+                    {
+                        "id": 1778,
+                        "name": "Machine Learning"
+                    },
+                    {
+                        "id": 1779,
+                        "name": "Deep Learning"
+                    },
+                    {
+                        "id": 1780,
+                        "name": "Neural Networks"
+                    },
+                    {
+                        "id": 1781,
+                        "name": "Natural Language Processing (NLP)"
+                    },
+                    {
+                        "id": 1782,
+                        "name": "Computer Vision"
+                    },
+                    {
+                        "id": 1783,
+                        "name": "AI Ethics"
+                    },
+                    {
+                        "id": 1784,
+                        "name": "Reinforcement Learning"
+                    },
+                    {
+                        "id": 1785,
+                        "name": "Expert Systems"
+                    },
+                    {
+                        "id": 1786,
+                        "name": "Robotics"
+                    },
+                    {
+                        "id": 1787,
+                        "name": "Generative AI & Large Language Models"
+                    }
+                ]
+            },
+            {
+                "id": 155,
+                "name": "Programming Languages",
+                "topics": [
+                    {
+                        "id": 584,
+                        "name": "C"
+                    },
+                    {
+                        "id": 585,
+                        "name": "C++"
+                    },
+                    {
+                        "id": 586,
+                        "name": "Java"
+                    },
+                    {
+                        "id": 587,
+                        "name": "C#"
+                    },
+                    {
+                        "id": 588,
+                        "name": "Python"
+                    },
+                    {
+                        "id": 589,
+                        "name": "TypeScript"
+                    },
+                    {
+                        "id": 590,
+                        "name": "PHP"
+                    },
+                    {
+                        "id": 591,
+                        "name": "Ruby"
+                    },
+                    {
+                        "id": 592,
+                        "name": "Go (Golang)"
+                    },
+                    {
+                        "id": 593,
+                        "name": "Rust"
+                    },
+                    {
+                        "id": 594,
+                        "name": "Kotlin"
+                    },
+                    {
+                        "id": 595,
+                        "name": "Swift"
+                    },
+                    {
+                        "id": 596,
+                        "name": "Dart"
+                    },
+                    {
+                        "id": 597,
+                        "name": "Scala"
+                    },
+                    {
+                        "id": 598,
+                        "name": "Perl"
+                    },
+                    {
+                        "id": 599,
+                        "name": "R"
+                    },
+                    {
+                        "id": 600,
+                        "name": "MATLAB"
+                    },
+                    {
+                        "id": 601,
+                        "name": "Assembly Language"
+                    },
+                    {
+                        "id": 602,
+                        "name": "Shell Scripting"
+                    }
+                ]
+            }
+        ],
+        "description": "Master programming languages and software development."
+    }
+]

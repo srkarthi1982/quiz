@@ -125,7 +125,8 @@ const hasManage = locals?.accessCodes?.includes('001.02.05.01');
 								actions={[
 									{ label: 'Edit', click: `$store.questions.onEdit(r)`, show: hasManage },
 									{ label: 'Delete', click: `$store.questions.onDelete({ id: r.id, name: r.q })`, show: hasManage },
-									{ label: 'Copy ID', click: `$store.questions.copyId(r.id)`, show: hasManage }
+									{ label: 'Copy ID', click: `$store.questions.copyId(r.id)`, show: hasManage },
+									{ label: 'Verify', click: `$store.questions.onVerifyQuestion(r)`, show: hasManage },
 								]} 
 							/>
 						</td>						
