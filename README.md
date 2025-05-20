@@ -65,7 +65,7 @@
 ## 📦 Installation (for devs)
 
 ```bash
-git clone https://github.com/yourusername/quiz.institute.git
-cd quiz.institute
+git clone https://github.com/srkarthi1982/quiz.git
+cd quiz
 npm install
 npm run dev 
