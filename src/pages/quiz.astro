@@ -212,7 +212,10 @@ const { user } = Astro.locals;
 			</div>
 		</div>
 		<div x-show="$store.quiz.step === 6 && $store.quiz.isCompleted === true" class="flex justify-center items-center gap-3">
-			<button @click=`$store.quiz.onRestart();$store.quiz.step = 1;` class="btn-primary">Restart Quiz</button>
+			<button @click=`
+			$store.quiz.onRestart({ platform_id: 0, subject_id: 0, topic_id: 0, roadmap_id: 0, level_id: '', step: 1 });
+			$store.quiz.step = 1;
+			` class="btn-primary">Restart Quiz</button>
 			<button @click=`$store.quiz.onRetake();$store.quiz.step = 5;` class="btn-default">Retake Quiz</button>
 			<button @click="$store.quiz.onResults();" class="btn-default">View All Results</button>
 		</div>
