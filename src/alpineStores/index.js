@@ -15,6 +15,5 @@ import './users';
 import './roles';
 import './menus';
 import './access';
-import './notifications';
 import './management';
 
