@@ -3,6 +3,8 @@ import './loader';
 import './signin';
 import './signout';
 import './signup';
+import './forgotPassword';
+import './updatePassword';
 import './resetPassword';
 import './platforms';
 import './subjects';

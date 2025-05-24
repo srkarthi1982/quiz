@@ -9,12 +9,13 @@ export const publicRoutes = [
     "/policy(|/)",
     "/plans(|/)",
     "/faq(|/)",
-    "/404(|/)",
+    "/404(|/)"
 ];
 
 export const redirectRoutes = [
     "/authentication/signin(|/)", 
     "/authentication/signup(|/)", 
     "/authentication/forgot-password(|/)", 
-    "/authentication/verify(|/)"
+    "/authentication/verify(|/)",
+    "/authentication/update-password(|/)"
 ];

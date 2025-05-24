@@ -57,6 +57,26 @@ export const server = {
       context.cookies.delete("menus", { path: "/", domain });
     }
   }),
+  forgotPassword: defineAction({
+    input: z.object({
+      email: z.string().email({ message: 'Invalid email address.' }),
+    }),
+    handler: async ({ email }) => {
+      console.log('import.meta.env.BASE_URL', import.meta.env.BASE_URL)
+      const { error } = await supabaseAdmin.auth.resetPasswordForEmail(email, {
+        redirectTo: `http://localhost:4321/authentication/update-password`,
+      });
+  
+      if (error) {
+        throw new ActionError({
+          code: 'INTERNAL_SERVER_ERROR',
+          message: error.message,
+        });
+      }
+  
+      return { message: 'A reset link has been sent to your email.' };
+    },
+  }),
   getFunctions: defineAction({
     accept: 'json',
     handler: async ({ schema, name, match }) => {
