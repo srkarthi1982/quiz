@@ -9,7 +9,7 @@ class ForgotPassword {
   async onSubmit() {
     Alpine.store("loader").show();
     const { error } = await supabase.auth.resetPasswordForEmail(this.email, {
-      redirectTo: 'http://localhost:4321/authentication/update-password'
+      redirectTo: 'https://www.quiz.institute/authentication/update-password'
     });
     Alpine.store("loader").hide();
     if (error) {
