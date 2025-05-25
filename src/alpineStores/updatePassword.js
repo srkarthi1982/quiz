@@ -1,5 +1,6 @@
 import { supabase } from '../lib/supabase';
 import Alpine from "alpinejs";
+import { navigate } from 'astro:transitions/client';
 class UpdatePassword {
   constructor() {
     debugger;
@@ -23,6 +24,7 @@ class UpdatePassword {
       Alpine.store('toast').show(error.message, 'error');
     } else {
       Alpine.store('toast').show('Password updated. Please log in again.', 'success');
+      navigate("/authentication/signin");
     }
   }
 }
