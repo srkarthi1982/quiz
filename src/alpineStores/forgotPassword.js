@@ -13,6 +13,7 @@ class ForgotPassword {
     });
     Alpine.store("loader").hide();
     if (error) {
+      console.log('error', error)
       Alpine.store('toast').show(error.message, 'error');
     } else {
       Alpine.store('toast').show('A reset link has been sent to your email.', 'success');
