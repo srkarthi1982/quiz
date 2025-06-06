@@ -5,13 +5,14 @@ class Home {
         this.academy = [];
         this.professionalSkills = [];
     }
-    async onInit() {
+    onInit() {
         Alpine.store("loader").show();
-        const { data, error } = await actions.getFunctions({ schema: this.schema, name: 'get_home', match: {} });
-        Alpine.store("loader").hide();
-        if (error) return;
-        this.academy = data.platforms.filter(x => x.type === 'A');
-        this.professionalSkills = data.platforms.filter(x => x.type === 'P');
+        actions.getFunctions({ schema: this.schema, name: 'get_home', match: {} }).then(({ data, error }) => {
+            Alpine.store("loader").hide();
+            if (error) return;
+            this.academy = data.platforms.filter(x => x.type === 'A');
+            this.professionalSkills = data.platforms.filter(x => x.type === 'P');
+        });
     }
 }
 Alpine.store('home', new Home());
