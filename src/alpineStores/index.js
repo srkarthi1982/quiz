@@ -1,3 +1,4 @@
+import './home';
 import './toast';
 import './loader';
 import './signin';

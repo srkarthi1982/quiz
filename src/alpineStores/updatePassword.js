@@ -3,7 +3,6 @@ import Alpine from "alpinejs";
 import { navigate } from 'astro:transitions/client';
 class UpdatePassword {
   constructor() {
-    debugger;
     this.password = '';
     this.code = '';
   }

@@ -62,7 +62,6 @@ export const server = {
       email: z.string().email({ message: 'Invalid email address.' }),
     }),
     handler: async ({ email }) => {
-      console.log('import.meta.env.BASE_URL', import.meta.env.BASE_URL)
       const { error } = await supabaseAdmin.auth.resetPasswordForEmail(email, {
         redirectTo: `http://localhost:4321/authentication/update-password`,
       });
@@ -75,6 +74,43 @@ export const server = {
       }
   
       return { message: 'A reset link has been sent to your email.' };
+    },
+  }),
+  changePassword: defineAction({
+    input: z.object({
+      password: z.string().min(6, { message: 'Password must be at least 6 characters long.' }),
+    }),
+    handler: async ({ password }, { request }) => {
+      // Retrieve the user's access token from the request (cookies/session)
+      const access_token = request.headers.get('Authorization')?.replace('Bearer ', '');
+  
+      if (!access_token) {
+        throw new ActionError({
+          code: 'UNAUTHORIZED',
+          message: 'User not authenticated.',
+        });
+      }
+  
+      const { data: userSession, error: sessionError } = await supabaseAdmin.auth.getUser(access_token);
+  
+      if (sessionError || !userSession) {
+        throw new ActionError({
+          code: 'UNAUTHORIZED',
+          message: 'Failed to fetch authenticated user.',
+        });
+      }
+  
+      // Now update the password
+      const { error } = await supabaseAdmin.auth.admin.updateUserById(userSession.user.id, { password });
+  
+      if (error) {
+        throw new ActionError({
+          code: 'INTERNAL_SERVER_ERROR',
+          message: error.message,
+        });
+      }
+  
+      return { message: 'Password updated successfully.' };
     },
   }),
   getFunctions: defineAction({
