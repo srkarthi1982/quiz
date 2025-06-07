@@ -19,11 +19,11 @@ class Results extends StoreBase {
          this.column = { ...Results.#list };
     }
     async onInit() {
-        this.filters = { ...Results.#filters, user_id: JSON.parse(localStorage.getItem('user')).id };
+        this.filters = { ...Results.#filters, user_id: JSON?.parse(localStorage?.getItem('user')).id?.toString() };
         this.sorting = { ...Results.#sorting };
         this.pagination = { ...this.defaultPagination, take: 6 };
-        await this.getData();
         await this.getPlatforms();
+        await this.getData();
     }
     async getPlatforms() {
         Alpine.store("loader").show();
