@@ -34,7 +34,6 @@ export class StoreBase {
         Alpine.store("loader").show();
         const { schema, view, fields, filters, columns, pagination, sorting } = this;
         const result = await actions.getPaginatedResult({ schema, view, fields, filters, columns, pagination, sorting });
-        console.log('result', result)
         Alpine.store("loader").hide();
         const { data, error } = result;
         if (error) {

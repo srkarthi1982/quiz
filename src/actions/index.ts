@@ -347,7 +347,6 @@ export const server = {
   //     // Insert into Supabase
   //     const { error } = await supabase.from("questions").insert(params);
   //     if (error) {
-  //       console.log('error', error)
   //       throw new Error(`Database insert failed: ${error.message}`);
   //     }
   //     return { success: true };

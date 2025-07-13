@@ -62,7 +62,6 @@ class Quiz {
         });
         Alpine.store("loader").hide();
         if (error) return;
-    
         this.list.platforms = data.platforms || [];
         this.list.subjects = data.subjects || [];
         this.list.topics = data.topics || [];

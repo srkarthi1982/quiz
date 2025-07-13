@@ -69,7 +69,7 @@ const { user } = Astro.locals;
 		>
 		<!-- Step 1: Select Platform -->
 		<div x-show="$store.quiz.step === 1" class="w-full font-medium text-gray-900 bg-white border border-gray-200 rounded-lg p-2">		
-			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
 				<template x-for="platform in $store.quiz.list.platforms.filter(p => p.name.toLowerCase().includes($store.quiz.search.toLowerCase()))" :key="platform.id">
 					<button 
 						@click=`
@@ -77,10 +77,13 @@ const { user } = Astro.locals;
 						await $store.quiz.getSubjects(platform.id); 
 						$store.quiz.step = 2;
 						`
-						class="flex items-center px-4 py-2 border border-gray-200 rounded-lg cursor-pointer text-left"
+						class="flex items-center justify-between px-4 py-2 border border-gray-200 rounded-lg cursor-pointer text-left"
 						:class="$store.quiz.selection.platform_id === platform.id ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100 hover:text-blue-700'">
-						<i :class="`fas ${platform.icon} text-lg text-gray-600`"></i>
-						<span class="ml-2" x-text="platform.name"></span>
+						<span>
+							<i :class="`fas ${platform.icon} text-lg text-gray-600`"></i>
+							<span class="ml-2" x-text="platform.name"></span>
+						</span>
+						<span x-text="platform.q_count.toLocaleString()" class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full"></span>	
 					</button>
 				</template>
 			</div>

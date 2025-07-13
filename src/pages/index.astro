@@ -82,8 +82,8 @@ const { user } = Astro.locals;
           <div class="flex justify-center">
             <a :href="`/quiz?platform_id=${a.id}`" class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
               <i :class="`fas ${a.icon} text-3xl text-gray-600 mb-3`"></i>
-              <div class="font-semibold text-xl" x-text="a.name"></div>
-              <b class="text-gray-600 mt-1">(<span x-text="new Intl.NumberFormat().format(a.question_count)"></span>) Questions</b>
+              <div class="font-semibold text-xl mb-1" x-text="a.name"></div>
+              <span x-text="a.question_count.toLocaleString()" class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full"></span>
               <div class="text-gray-600 mt-1" x-text="a.description"></div>
             </a>
           </div>
@@ -96,8 +96,8 @@ const { user } = Astro.locals;
           <div class="flex justify-center">
             <a :href="`/quiz?platform_id=${p.id}`" class="card hover flex flex-col items-center text-center w-full p-4 bg-white shadow-md rounded-lg">
               <i :class="`fas ${p.icon} text-3xl text-gray-600 mb-3`"></i>
-              <div class="font-semibold text-xl" x-text="p.name"></div>
-              <b class="text-gray-600 mt-1">(<span x-text="new Intl.NumberFormat().format(p.question_count)"></span>) Questions</b>
+              <div class="font-semibold text-xl mb-1" x-text="p.name"></div>
+              <span x-text="p.question_count.toLocaleString()" class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full"></span>
               <div class="text-gray-600 mt-1" x-text="p.description"></div>
             </a>
           </div>
