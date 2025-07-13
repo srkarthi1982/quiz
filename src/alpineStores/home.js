@@ -4,6 +4,7 @@ class Home {
     constructor() {
         this.academy = [];
         this.professionalSkills = [];
+        this.questions = 0;
     }
     onInit() {
         Alpine.store("loader").show();
@@ -12,6 +13,7 @@ class Home {
             if (error) return;
             this.academy = data.platforms.filter(x => x.type === 'A');
             this.professionalSkills = data.platforms.filter(x => x.type === 'P');
+            this.questions = data.platforms.reduce((a, i) => a + i.question_count, 0);
         });
     }
 }

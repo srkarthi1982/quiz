@@ -12,7 +12,7 @@ class Platforms extends StoreBase {
     ];
     static #list = { types: [{ id: 'A', name: 'Academy' }, { id: 'P', name: 'Professional Skills' }] };
     constructor() {
-        super('public', 'Platforms', 'Platform', 'vw_platforms', 'platforms', Platforms.#item, Platforms.#filters, Platforms.#sorting, '*', Platforms.#columns);
+        super('public', 'Platforms', 'Platform', 'platforms', 'platforms', Platforms.#item, Platforms.#filters, Platforms.#sorting, '*', Platforms.#columns);
         this.publicColumns = Platforms.#columns.filter(x => x.label !== 'Active');
         this.column = { ...Platforms.#list };
         this.form = { ...Platforms.#list };
