@@ -60,6 +60,7 @@ class Quiz {
             name: 'get_quiz_metadata',
             match: { p_platform_id: platform_id, p_subject_id: subject_id, p_topic_id: topic_id }
         });
+        console.log('data', data)
         Alpine.store("loader").hide();
         if (error) return;
         this.list.platforms = data.platforms || [];
@@ -80,7 +81,7 @@ class Quiz {
         Alpine.store("loader").show();
         this.list.subjects = [];
         const match = { platform_id, is_active: true };
-        const { data, error } = await actions.getResult({ schema: this.schema, table: 'subjects', fields: 'id, name', match, order: 'name' });
+        const { data, error } = await actions.getResult({ schema: this.schema, table: 'subjects', fields: 'id, name, q_count', match, order: 'name' });
         Alpine.store("loader").hide();
         if (error) return;
         this.list.subjects = data;
@@ -90,7 +91,7 @@ class Quiz {
         Alpine.store("loader").show();
         this.list.topics = [];
         const match = { subject_id, is_active: true };
-        const { data, error } = await actions.getResult({ schema: this.schema, table: 'topics', fields: 'id, name', match, order: 'name' });
+        const { data, error } = await actions.getResult({ schema: this.schema, table: 'topics', fields: 'id, name, q_count', match, order: 'name' });
         Alpine.store("loader").hide();
         if (error) return;
         this.list.topics = data;
@@ -100,7 +101,7 @@ class Quiz {
         Alpine.store("loader").show();
         this.list.roadmaps = [];
         const match = { topic_id, is_active: true };
-        const { data, error } = await actions.getResult({ schema: this.schema, table: 'roadmaps', fields: 'id, name', match, order: 'id' });
+        const { data, error } = await actions.getResult({ schema: this.schema, table: 'roadmaps', fields: 'id, name, q_count', match, order: 'id' });
         Alpine.store("loader").hide(); ``
         if (error) return;
         this.list.roadmaps = data;
