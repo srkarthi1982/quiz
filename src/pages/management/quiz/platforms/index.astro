@@ -28,14 +28,14 @@ const hasManage = locals?.accessCodes?.includes('001.02.01.01');
 					<th class=" min-w-52">Name <ColumnSort storeName="platforms" column="name" /></th>
 					<th class="w-full">Description <ColumnSort storeName="platforms" column="description" /></th>
 					<th class=" min-w-40">Type <ColumnSort storeName="platforms" column="type" /></th>
-					<th class=" min-w-28">Questions <ColumnSort storeName="platforms" column="question_count" /></th>
+					<th class=" min-w-28">Questions <ColumnSort storeName="platforms" column="q_count" /></th>
 					<th>Active <ColumnSort storeName="platforms" column="is_active" /></th>
 				</tr>
 				<tr>
 					<th x-show={`${hasManage}`}></th>
 					<th></th>
 					<th><FilterSearch storeName="platforms" ref="searchName" method="search" column="name" placeholder="Name"/></th>
-					<th><FilterSearch storeName="platforms" ref="searchDescription" method="search" column="description" placeholder="Description"/></th>
+					<th><FilterSearch storeName="platforms" ref="searchDescription" method="search" column="description" placeholder="Description"/></th>					
 					<th>
 						<select 
 							class="input w-full" 
@@ -47,6 +47,7 @@ const hasManage = locals?.accessCodes?.includes('001.02.01.01');
 							</template>
 						</select>
 					</th>
+					<th></th>
 					<th><FilterCheckbox storeName="platforms" column="is_active"/></th>
 				</tr>
 			</thead>
