@@ -60,7 +60,28 @@ const { data } = await Astro.callAction(actions.getFunctions, { name: 'get_admin
   </div>
 
   <!-- Top Users -->
-  <div class="bg-white rounded-lg shadow p-6 mb-10">
+   <!-- Top Users -->
+<div class="bg-white rounded-lg shadow p-6 mb-10">
+  <h3 class="text-xl font-semibold text-gray-700 mb-6">Top Performing Users</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {data.top_users.map((x: any) => (
+      <div class="bg-gray-50 rounded-xl shadow-sm p-5 hover:shadow-md transition">
+        <h4 class="text-lg font-semibold text-gray-800 mb-2">{x.name}</h4>
+        <div class="text-sm text-gray-600 space-y-1">
+          <p><span class="font-medium">Total Attempts:</span> {x.attempts}</p>
+          <p><span class="font-medium">Average Score:</span> {x.average_score}</p>
+          <p>
+            <span class="font-medium">Performance:</span>{" "}
+            <span class="font-bold text-indigo-600">{x.performance_index}</span>
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+  <!-- <div class="bg-white rounded-lg shadow p-6 mb-10">
     <h3 class="text-xl font-semibold text-gray-700 mb-4">Top Performing Users</h3>
     <table class="w-full text-left text-gray-700">
       <thead class="text-gray-500 uppercase border-b">
@@ -84,7 +105,7 @@ const { data } = await Astro.callAction(actions.getFunctions, { name: 'get_admin
         }
       </tbody>
     </table>
-  </div>
+  </div> -->
 
   <!-- Most Attempted Quizzes -->
   <div class="bg-white rounded-lg shadow p-6">
