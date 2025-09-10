@@ -81,32 +81,6 @@ const { data } = await Astro.callAction(actions.getFunctions, { name: 'get_admin
   </div>
 </div>
 
-  <!-- <div class="bg-white rounded-lg shadow p-6 mb-10">
-    <h3 class="text-xl font-semibold text-gray-700 mb-4">Top Performing Users</h3>
-    <table class="w-full text-left text-gray-700">
-      <thead class="text-gray-500 uppercase border-b">
-        <tr>
-          <th class="py-2">Name</th>
-          <th class="py-2">Attempts</th>
-          <th class="py-2">Avg. Score</th>
-          <th class="py-2">Performance</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          data.top_users.map((x: any) => (
-            <tr class="border-b">
-              <td class="py-2">{x.name}</td>
-              <td class="py-2">{x.attempts}</td>
-              <td class="py-2">{x.average_score}</td>
-              <td class="py-2 font-bold">{x.performance_index}</td>
-            </tr>
-          ))
-        }
-      </tbody>
-    </table>
-  </div> -->
-
   <!-- Most Attempted Quizzes -->
   <div class="bg-white rounded-lg shadow p-6">
     <h3 class="text-xl font-semibold text-gray-700 mb-4">Most Attempted Quizzes</h3>
