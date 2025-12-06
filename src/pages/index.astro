@@ -1,93 +1,378 @@
 ---
-import AppShell from "../layouts/AppShell.astro";
-import { AvContainer, AvButton } from "@ansiversa/components";
+import AppLayout from "../layouts/AppLayout.astro";
 
-const title = "Quiz – Ansiversa";
-const description = "Create, organize, and share quizzes easily.";
+const pageTitle = "Quiz – Create, organize, and share quizzes easily";
+const pageDescription =
+  "Create, organize, and share quizzes easily. Perfect for teachers, coaching centers, teams, and self-learners.";
 ---
 
-<AppShell title={title} description={description}>
-  <!-- Hero -->
-  <section class="av-hero">
-    <AvContainer size="narrow" className="av-hero__content--narrow">
-      <div class="av-hero__content">
-        <div class="av-kicker">
-          <span>Learning · Ansiversa Mini App</span>
+<AppLayout title={pageTitle} description={pageDescription}>
+  <main class="min-h-screen bg-[var(--ans-surface)] text-[var(--ans-fg)]">
+    {/* Hero */}
+    <section class="av-section pt-16 pb-12">
+      <div class="av-container grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] items-center">
+        <div class="space-y-6">
+          <div class="inline-flex items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--ans-primary)_40%,transparent)] bg-[color-mix(in_srgb,var(--ans-primary-soft)_60%,transparent)] px-3 py-1 text-xs font-medium text-[var(--ans-primary)]">
+            <span class="inline-flex h-1.5 w-1.5 rounded-full bg-[var(--ans-primary)]"></span>
+            Part of Ansiversa Learning Suite
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight">
+            Create, organize, and share{" "}
+            <span class="text-[var(--ans-primary)]">quizzes in minutes</span>
+          </h1>
+
+          <p class="max-w-xl text-sm sm:text-base text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+            Design clean quizzes, assign them to learners, and review results instantly.
+            Perfect for schools, coaching centers, teams, and solo learners who want
+            a structured way to test understanding.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <a
+              href="/app"
+              class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-medium text-white bg-[var(--ans-primary)] hover:bg-[var(--ans-primary-strong)] shadow-sm transition"
+            >
+              Start creating a quiz
+              <span class="ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full border border-white/40 text-[10px]">
+                →
+              </span>
+            </a>
+
+            <a
+              href="#how-it-works"
+              class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-medium border border-[color-mix(in_srgb,var(--ans-border)_70%,transparent)] text-[color-mix(in_srgb,var(--ans-fg)_80%,transparent)] hover:bg-[color-mix(in_srgb,var(--ans-border-soft)_40%,transparent)] transition"
+            >
+              See how it works
+            </a>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2 text-[0.75rem] text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+            <div class="flex items-center gap-2">
+              <div class="h-6 w-6 rounded-lg border border-[color-mix(in_srgb,var(--ans-border)_70%,transparent)] flex items-center justify-center text-[0.65rem]">
+                ✓
+              </div>
+              <span>MCQ, true/false, &amp; more formats</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="h-6 w-6 rounded-lg border border-[color-mix(in_srgb,var(--ans-border)_70%,transparent)] flex items-center justify-center text-[0.65rem]">
+                ✓
+              </div>
+              <span>Instant scoring &amp; reports</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="h-6 w-6 rounded-lg border border-[color-mix(in_srgb,var(--ans-border)_70%,transparent)] flex items-center justify-center text-[0.65rem]">
+                ✓
+              </div>
+              <span>No complex setup required</span>
+            </div>
+          </div>
         </div>
-        <h1 class="av-gradient-text">Quiz</h1>
-        <p>
-          Create, organize, and share quizzes easily.
-        </p>
-      </div>
-      <div class="av-cta-row">
-        <AvButton href="https://quiz.ansiversa.com">Launch Quiz</AvButton>
-      </div>
-    </AvContainer>
-  </section>
 
-  <!-- Problem -->
-  <section class="av-section">
-    <AvContainer size="narrow">
-      <div class="av-section-header">
-        <h2 class="av-section-title">The problem it solves</h2>
-        <p class="av-section-lead">
-          Learning tools are scattered across tabs, apps, and messy notes.
-        </p>
-      </div>
-      <div class="av-section-body space-y-3 text-slate-300">
-        <p>Quiz focuses on one part of your learning flow and keeps it clear.</p>
-      </div>
-    </AvContainer>
-  </section>
+        {/* Right side card */}
+        <div class="relative">
+          <div class="pointer-events-none absolute -inset-8 rounded-[2rem] bg-[radial-gradient(circle_at_top,var(--ans-primary-soft),transparent_60%)] opacity-70"></div>
+          <div class="relative rounded-3xl border border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] bg-[var(--ans-layer)]/95 shadow-lg shadow-black/10 p-5 sm:p-6 space-y-4">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-wide text-[color-mix(in_srgb,var(--ans-fg)_60%,transparent)]">
+                  Example quiz
+                </p>
+                <p class="text-sm font-medium">JavaScript Basics – Level 1</p>
+              </div>
+              <span class="rounded-full bg-[color-mix(in_srgb,var(--ans-primary-soft)_70%,transparent)] px-3 py-1 text-[0.7rem] font-medium text-[var(--ans-primary)]">
+                10 Questions · 15 min
+              </span>
+            </div>
 
-  <!-- Why this mini app -->
-  <section class="av-section">
-    <AvContainer size="narrow">
-      <div class="av-section-header">
-        <h2 class="av-section-title">Why Quiz feels different</h2>
-        <p class="av-section-lead">
-          A focused mini app inside the larger Ansiversa ecosystem.
-        </p>
-      </div>
-      <div class="av-section-body">
-        <ul class="space-y-2 text-slate-300 list-disc list-inside">
-          <li>Designed specifically for learners, students, and educators.</li>
-          <li>Removes distractions so you can focus on actual understanding.</li>
-          <li>Built on the fast, unified Ansiversa ecosystem.</li>
-        </ul>
-      </div>
-    </AvContainer>
-  </section>
+            <div class="space-y-3 rounded-2xl bg-[var(--ans-surface-soft)] p-4 border border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)]">
+              <p class="text-xs font-medium text-[color-mix(in_srgb,var(--ans-fg)_65%,transparent)]">
+                Question 3 of 10
+              </p>
+              <p class="text-sm sm:text-base font-medium">
+                Which of the following correctly declares a constant in JavaScript?
+              </p>
+              <div class="mt-3 space-y-2">
+                {[
+                  "var total = 10;",
+                  "const total = 10;",
+                  "let TOTAL;",
+                  "constant total = 10;"
+                ].map((opt, idx) => (
+                  <button
+                    type="button"
+                    class="w-full rounded-xl border border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] bg-[var(--ans-surface)] px-3 py-2 text-left text-xs sm:text-sm hover:border-[var(--ans-primary-soft)] hover:bg-[color-mix(in_srgb,var(--ans-primary-soft)_25%,transparent)] transition"
+                  >
+                    <span class="mr-2 inline-flex h-5 w-5 items-center justify-center rounded-full border border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] text-[0.65rem]">
+                      {String.fromCharCode(65 + idx)}
+                    </span>
+                    {opt}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-  <!-- How it works -->
-  <section class="av-section">
-    <AvContainer size="narrow">
-      <div class="av-section-header">
-        <h2 class="av-section-title">How it works</h2>
-        <p class="av-section-lead">
-          Simple, clear steps so people can start in under a minute.
-        </p>
+            <div class="flex items-center justify-between text-[0.75rem] text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+              <span>Auto-scored · Detailed review after submit</span>
+              <span class="inline-flex items-center gap-1">
+                <span class="h-1.5 w-16 rounded-full bg-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] overflow-hidden">
+                  <span class="block h-full w-2/3 bg-[var(--ans-primary)]"></span>
+                </span>
+                Progress
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
-      <ol class="av-section-body space-y-2 text-slate-300 list-decimal list-inside">
-        <li>Open Quiz in your browser.</li>
-        <li>Add the topic, content, or material you want to work with.</li>
-        <li>Use the focused tools to learn, revise, or practice within minutes.</li>
-      </ol>
-    </AvContainer>
-  </section>
+    </section>
 
-  <!-- Final CTA -->
-  <section class="av-section">
-    <AvContainer size="narrow">
-      <div class="av-section-header">
-        <h2 class="av-section-title">Ready to try Quiz?</h2>
-        <p class="av-section-lead">
-          Open the app, follow the simple flow, and let it handle the heavy lifting.
-        </p>
+    {/* Why Quiz */}
+    <section class="av-section border-t border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] bg-[var(--ans-surface-soft)]">
+      <div class="av-container space-y-8">
+        <div class="av-section-header text-center max-w-2xl mx-auto">
+          <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">
+            Why use <span class="text-[var(--ans-primary)]">Quiz</span>?
+          </h2>
+          <p class="mt-2 text-sm text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+            Move away from messy spreadsheets and manual correction. Create structured
+            quizzes that are easy to re-use, assign, and analyze.
+          </p>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-3">
+          <div class="rounded-2xl border border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] bg-[var(--ans-layer)] p-5 space-y-2">
+            <div class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[color-mix(in_srgb,var(--ans-primary-soft)_70%,transparent)] text-[var(--ans-primary)] text-xs font-semibold">
+              1
+            </div>
+            <h3 class="text-sm font-semibold">Create once, reuse anywhere</h3>
+            <p class="text-xs text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+              Build topic-wise quizzes and reuse them across batches, classes, or cohorts
+              without rebuilding everything from scratch.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] bg-[var(--ans-layer)] p-5 space-y-2">
+            <div class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[color-mix(in_srgb,var(--ans-primary-soft)_70%,transparent)] text-[var(--ans-primary)] text-xs font-semibold">
+              2
+            </div>
+            <h3 class="text-sm font-semibold">Instant scoring &amp; feedback</h3>
+            <p class="text-xs text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+              Let Quiz handle evaluation. Learners see results immediately, and you see
+              strengths, gaps, and patterns in one view.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] bg-[var(--ans-layer)] p-5 space-y-2">
+            <div class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[color-mix(in_srgb,var(--ans-primary-soft)_70%,transparent)] text-[var(--ans-primary)] text-xs font-semibold">
+              3
+            </div>
+            <h3 class="text-sm font-semibold">Ready for any context</h3>
+            <p class="text-xs text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+              Use it for classroom tests, interview screens, onboarding quizzes, or
+              self-practice. Same clean experience everywhere.
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="av-cta-row">
-        <AvButton href="https://quiz.ansiversa.com">Start with Quiz</AvButton>
+    </section>
+
+    {/* How it works */}
+    <section id="how-it-works" class="av-section">
+      <div class="av-container space-y-8">
+        <div class="av-section-header text-center max-w-2xl mx-auto">
+          <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">
+            How Quiz works
+          </h2>
+          <p class="mt-2 text-sm text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+            Simple 4-step flow designed to fit into your existing teaching or training routine.
+          </p>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-4">
+          {[
+            {
+              label: "Design",
+              title: "Create your quiz",
+              text: "Pick the subject/topic, add questions, set marks, and configure time limits.",
+            },
+            {
+              label: "Assign",
+              title: "Share with learners",
+              text: "Share a link or embed inside your LMS, classroom portal, or internal wiki.",
+            },
+            {
+              label: "Attempt",
+              title: "Learners take the quiz",
+              text: "A distraction-free interface for mobile and desktop. No extra sign-up friction.",
+            },
+            {
+              label: "Review",
+              title: "View results &amp; insights",
+              text: "See scores, question-wise performance, and export results if needed.",
+            },
+          ].map((step, index) => (
+            <div class="relative rounded-2xl border border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] bg-[var(--ans-layer)] p-5 space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[0.7rem] font-medium uppercase tracking-wide text-[color-mix(in_srgb,var(--ans-fg)_65%,transparent)]">
+                  Step {index + 1}
+                </span>
+                <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--ans-primary-soft)_70%,transparent)] text-[var(--ans-primary)] text-xs font-semibold">
+                  {step.label}
+                </span>
+              </div>
+              <h3 class="text-sm font-semibold" set:html={step.title}></h3>
+              <p
+                class="text-xs text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]"
+                set:html={step.text}
+              ></p>
+            </div>
+          ))}
+        </div>
       </div>
-    </AvContainer>
-  </section>
-</AppShell>
+    </section>
+
+    {/* Who it's for */}
+    <section class="av-section bg-[var(--ans-surface-soft)] border-y border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)]">
+      <div class="av-container space-y-8">
+        <div class="av-section-header text-center max-w-2xl mx-auto">
+          <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">
+            Built for real learning environments
+          </h2>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-4">
+          <div class="rounded-2xl bg-[var(--ans-layer)] border border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] p-5 text-xs space-y-1.5">
+            <p class="text-[0.7rem] font-semibold uppercase tracking-wide text-[var(--ans-primary)]">
+              Teachers &amp; Schools
+            </p>
+            <p class="font-medium">Class tests, chapter-end quizzes, and exam prep.</p>
+            <p class="text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+              Keep everything online and reusable across years and batches.
+            </p>
+          </div>
+
+          <div class="rounded-2xl bg-[var(--ans-layer)] border border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] p-5 text-xs space-y-1.5">
+            <p class="text-[0.7rem] font-semibold uppercase tracking-wide text-[var(--ans-primary)]">
+              Coaching Centers
+            </p>
+            <p class="font-medium">Topic-wise practice and mock tests.</p>
+            <p class="text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+              Strengthen fundamentals for entrance exams and competitive tests.
+            </p>
+          </div>
+
+          <div class="rounded-2xl bg-[var(--ans-layer)] border border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] p-5 text-xs space-y-1.5">
+            <p class="text-[0.7rem] font-semibold uppercase tracking-wide text-[var(--ans-primary)]">
+              Companies &amp; Teams
+            </p>
+            <p class="font-medium">Onboarding and skill-check quizzes.</p>
+            <p class="text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+              Ensure everyone is aligned on processes, tools, or policies.
+            </p>
+          </div>
+
+          <div class="rounded-2xl bg-[var(--ans-layer)] border border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] p-5 text-xs space-y-1.5">
+            <p class="text-[0.7rem] font-semibold uppercase tracking-wide text-[var(--ans-primary)]">
+              Self-learners &amp; Students
+            </p>
+            <p class="font-medium">Personal revision and self-checks.</p>
+            <p class="text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+              Convert notes into quizzes and test yourself before the real exam.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Part of Ansiversa learning apps */}
+    <section class="av-section">
+      <div class="av-container space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-[color-mix(in_srgb,var(--ans-fg)_60%,transparent)]">
+              Part of Ansiversa Learning
+            </p>
+            <h2 class="text-sm sm:text-base font-semibold">
+              Use Quiz alongside other focused tools.
+            </h2>
+          </div>
+          <a
+            href="https://www.ansiversa.com/apps"
+            class="text-xs font-medium text-[var(--ans-primary)] hover:underline"
+          >
+            View all learning apps →
+          </a>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-3 text-xs">
+          <a
+            href="https://flashnote.ansiversa.com"
+            class="group rounded-2xl border border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] bg-[var(--ans-layer)] p-4 hover:border-[var(--ans-primary-soft)] hover:bg-[color-mix(in_srgb,var(--ans-primary-soft)_16%,transparent)] transition"
+          >
+            <p class="text-[0.7rem] font-semibold uppercase tracking-wide text-[var(--ans-primary)]">
+              FlashNote
+            </p>
+            <p class="font-medium">Convert notes into flashcards instantly.</p>
+            <p class="mt-1 text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+              Use with Quiz: teach, then convert key points into quick flashcards.
+            </p>
+          </a>
+
+          <a
+            href="https://exam.ansiversa.com"
+            class="group rounded-2xl border border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] bg-[var(--ans-layer)] p-4 hover:border-[var(--ans-primary-soft)] hover:bg-[color-mix(in_srgb,var(--ans-primary-soft)_16%,transparent)] transition"
+          >
+            <p class="text-[0.7rem] font-semibold uppercase tracking-wide text-[var(--ans-primary)]">
+              Exam Simulator
+            </p>
+            <p class="font-medium">Create timed mock exams with scoring.</p>
+            <p class="mt-1 text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+              Upgrade from quick quizzes to full mock exams when learners are ready.
+            </p>
+          </a>
+
+          <a
+            href="https://knowledge-duel.ansiversa.com"
+            class="group rounded-2xl border border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] bg-[var(--ans-layer)] p-4 hover:border-[var(--ans-primary-soft)] hover:bg-[color-mix(in_srgb,var(--ans-primary-soft)_16%,transparent)] transition"
+          >
+            <p class="text-[0.7rem] font-semibold uppercase tracking-wide text-[var(--ans-primary)]">
+              Knowledge Duel
+            </p>
+            <p class="font-medium">Compete in fast-paced trivia battles.</p>
+            <p class="mt-1 text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+              Turn learning into a game day with live quiz competitions.
+            </p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* Final CTA */}
+    <section class="av-section pb-16">
+      <div class="av-container">
+        <div class="rounded-3xl border border-[color-mix(in_srgb,var(--ans-border-soft)_80%,transparent)] bg-[radial-gradient(circle_at_top_left,var(--ans-primary-soft),transparent_65%)] p-6 sm:p-8 md:p-10 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-2 max-w-xl">
+            <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">
+              Ready to launch your first quiz?
+            </h2>
+            <p class="text-sm text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+              Start with a small topic, send it to your learners, and refine as you go.
+              Quiz is designed to grow with your content and classes.
+            </p>
+          </div>
+          <div class="flex flex-col items-center md:items-end gap-3">
+            <a
+              href="/app"
+              class="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-medium text-white bg-[var(--ans-primary)] hover:bg-[var(--ans-primary-strong)] shadow-sm transition"
+            >
+              Open Quiz app
+            </a>
+            <p class="text-[0.7rem] text-[color-mix(in_srgb,var(--ans-fg)_70%,transparent)]">
+              No installation. Works in your browser across devices.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</AppLayout>
