@@ -15,18 +15,16 @@ export const Quizzes = defineTable({
     title: column.text(),
     description: column.text({ optional: true }),
 
-    // Optional meta
-    slug: column.text({ optional: true }),
-    visibility: column.text({
-      enum: ["private", "unlisted", "public"],
-      default: "private",
-    }),
+    category: column.text({ optional: true }), // e.g. "JavaScript", "Biology"
+    difficulty: column.text({ optional: true }), // e.g. "easy", "medium", "hard"
 
-    // Optional quiz settings
-    timeLimitSeconds: column.number({ optional: true }), // e.g. 900 = 15 minutes
+    timeLimitMinutes: column.number({ optional: true }),
+
+    totalQuestions: column.number({ optional: true }),
     totalMarks: column.number({ optional: true }),
 
-    isActive: column.boolean({ default: true }),
+    isPublished: column.boolean({ default: false }),
+    isArchived: column.boolean({ default: false }),
 
     createdAt: column.date({ default: NOW }),
     updatedAt: column.date({ default: NOW }),
@@ -34,89 +32,94 @@ export const Quizzes = defineTable({
 });
 
 /**
- * Questions belonging to a quiz.
+ * Individual questions inside a quiz.
  */
 export const QuizQuestions = defineTable({
   columns: {
     id: column.number({ primaryKey: true, autoIncrement: true }),
 
-    quizId: column.number({ references: () => Quizzes.columns.id }),
-
-    // Order in quiz
-    displayOrder: column.number({ default: 0 }),
-
-    // Question type: single choice, multiple, true/false, short text, etc.
-    type: column.text({
-      enum: ["single_choice", "multiple_choice", "true_false", "short_text"],
-      default: "single_choice",
+    quizId: column.number({
+      references: () => Quizzes.columns.id,
     }),
 
-    // Question text
-    question: column.text(),
+    orderIndex: column.number(), // 1-based order inside the quiz
 
-    // Options stored as JSON, e.g. [{ id: "A", label: "..." }, ...]
-    options: column.json({ optional: true }),
-
-    // Correct answer:
-    // - for single: "A"
-    // - for multiple: ["A","C"]
-    // - for true/false: "true"
-    // - for short_text: text or pattern
-    correctAnswer: column.json({ optional: true }),
-
+    questionType: column.text({ optional: true }), // "single", "multi", "true_false", "free_text"
+    questionText: column.text(),
     explanation: column.text({ optional: true }),
 
-    // Difficulty same as your old schema: E/M/D
-    level: column.text({
-      enum: ["E", "M", "D"],
-      default: "E",
-    }),
+    // For multiple choice questions, store options as a JSON array of strings
+    optionsJson: column.json({ optional: true }),
+
+    // JSON describing correct answers (e.g. array of indices or text)
+    correctAnswersJson: column.json({ optional: true }),
 
     marks: column.number({ default: 1 }),
-    isActive: column.boolean({ default: true }),
+
+    createdAt: column.date({ default: NOW }),
+    updatedAt: column.date({ default: NOW }),
   },
 });
 
 /**
- * A user taking a quiz once.
+ * A user's attempt at taking a quiz.
  */
 export const QuizAttempts = defineTable({
   columns: {
     id: column.number({ primaryKey: true, autoIncrement: true }),
 
-    quizId: column.number({ references: () => Quizzes.columns.id }),
+    quizId: column.number({
+      references: () => Quizzes.columns.id,
+    }),
 
-    // The learner / taker (parent Users.id)
-    userId: column.text({ optional: true }),
+    // Attempt owner (parent app Users.id as string)
+    userId: column.text(),
 
-    // Attempt meta
+    status: column.text({ optional: true }), // "in-progress", "completed", "abandoned"
+
     startedAt: column.date({ default: NOW }),
     completedAt: column.date({ optional: true }),
 
-    score: column.number({ default: 0 }),
-    maxScore: column.number({ default: 0 }),
-    totalQuestions: column.number({ default: 0 }),
+    totalQuestions: column.number({ optional: true }),
+    correctCount: column.number({ optional: true }),
 
-    // Optional JSON for extra stats: accuracy, time per question, etc.
-    summary: column.json({ optional: true }),
+    totalMarks: column.number({ optional: true }),
+    obtainedMarks: column.number({ optional: true }),
+
+    metaJson: column.json({ optional: true }),
+
+    createdAt: column.date({ default: NOW }),
+    updatedAt: column.date({ default: NOW }),
   },
 });
 
 /**
- * Per-question response inside an attempt.
+ * A user's response to a specific question in an attempt.
  */
 export const QuizResponses = defineTable({
   columns: {
     id: column.number({ primaryKey: true, autoIncrement: true }),
 
-    attemptId: column.number({ references: () => QuizAttempts.columns.id }),
-    questionId: column.number({ references: () => QuizQuestions.columns.id }),
+    attemptId: column.number({
+      references: () => QuizAttempts.columns.id,
+    }),
 
-    // What the user selected / typed
-    answer: column.json({ optional: true }),
+    quizId: column.number({
+      references: () => Quizzes.columns.id,
+    }),
+
+    questionId: column.number({
+      references: () => QuizQuestions.columns.id,
+    }),
+
+    // What the user selected / typed (JSON for flexibility)
+    answerJson: column.json({ optional: true }),
 
     isCorrect: column.boolean({ default: false }),
     marksAwarded: column.number({ default: 0 }),
+
+    createdAt: column.date({ default: NOW }),
+    updatedAt: column.date({ default: NOW }),
   },
 });
 
