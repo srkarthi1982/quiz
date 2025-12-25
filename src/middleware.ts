@@ -54,7 +54,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // ✅ ENFORCE AUTH (protect everything in mini-app)
   if (!locals.isAuthenticated) {
     const loginUrl = new URL("/login", ROOT_APP_URL);
-    loginUrl.searchParams.set("next", `${pathname}${url.search}`);
+    loginUrl.searchParams.set("returnTo", url.toString()); // ✅ full URL back to quiz
     return context.redirect(loginUrl.toString());
   }
 
