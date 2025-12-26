@@ -24,7 +24,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }
 
   // Ensure predictable shape
-  locals.user = locals.user ?? null;
+  locals.user = locals.user ?? undefined;
   locals.sessionToken = null;
   locals.isAuthenticated = false;
   locals.rootAppUrl = ROOT_APP_URL;
@@ -40,12 +40,14 @@ export const onRequest = defineMiddleware(async (context, next) => {
         id: payload.userId,
         email: payload.email,
         name: payload.name,
+        roleId: payload.roleId ?? undefined,
+        stripeCustomerId: payload.stripeCustomerId ?? undefined,
       };
 
       locals.sessionToken = token;
       locals.isAuthenticated = true;
     } else {
-      locals.user = null;
+      locals.user = undefined;
       locals.sessionToken = null;
       locals.isAuthenticated = false;
     }
