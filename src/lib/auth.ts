@@ -11,7 +11,7 @@ export type SessionPayload = {
   userId: string;
   email: string;
   name?: string;
-  roleId?: string;
+  roleId?: number;
   stripeCustomerId?: string;
   issuedAt: number;
 };

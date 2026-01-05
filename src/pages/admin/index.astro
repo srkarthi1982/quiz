@@ -1,0 +1,90 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import { AvButton, AvCard, AvIcon, AvInput, AvTableToolbar } from "@ansiversa/components";
+
+const adminItems = [
+  { label: "Platforms", href: "/admin/platforms", description: "Manage platform entries" },
+  { label: "Subjects", href: "/admin/subjects", description: "Manage subject entries" },
+  { label: "Topics", href: "/admin/topics", description: "Manage topic entries" },
+  { label: "Roadmaps", href: "/admin/roadmaps", description: "Manage roadmap entries" },
+  { label: "Questions", href: "/admin/questions", description: "Manage question entries" },
+  { label: "Results", href: "/admin/results", description: "Manage result entries" },
+];
+
+const query = Astro.url.searchParams.get("q")?.trim() ?? "";
+const normalizedQuery = query.toLowerCase();
+const filteredItems = normalizedQuery
+  ? adminItems.filter((item) => item.label.toLowerCase().includes(normalizedQuery))
+  : adminItems;
+---
+
+<AdminLayout
+  title="Admin Dashboard – Ansiversa"
+  description="Manage Ansiversa administration."
+  crumbItems={[
+    { label: "Home", href: "/" },
+    { label: "Administration" },
+  ]}
+>
+  <Fragment slot="toolbar">
+    <AvCard variant="soft" className="av-auth-stack-sm">
+      <AvTableToolbar title="Administration">
+        <div slot="title" class="av-admin-titlewrap">
+          <h1 class="av-table-toolbar__title">
+            Administration <span class="av-admin-count-inline">({filteredItems.length})</span>
+          </h1>
+        </div>
+        <div slot="search">
+          <div class="av-admin-toolbar-left">
+            <div class="av-admin-toolbar-top">
+              <p class="av-table-toolbar__subtitle av-m-0">Manage all Ansiversa administration.</p>
+              <div class="av-admin-toolbar-actions">
+                <AvButton
+                  href="/admin"
+                  size="md"
+                  variant="ghost"
+                  title="Reset search"
+                  aria-label="Reset search"
+                >
+                  <AvIcon name="refresh" size="md" />
+                </AvButton>
+                <AvButton href="/" variant="primary" size="md" title="Home" aria-label="Home">
+                  <AvIcon name="home" size="md" />
+                </AvButton>
+              </div>
+            </div>
+            <div class="av-admin-filters">
+              <form class="av-admin-filter av-admin-filter--search" method="get" action="/admin">
+                <AvInput
+                  name="q"
+                  type="search"
+                  placeholder="Search admin links…"
+                  value={query}
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </AvTableToolbar>
+    </AvCard>
+  </Fragment>
+
+  <AvCard variant="soft" className="av-auth-stack-sm">
+    {filteredItems.length ? (
+      <div class="av-grid-auto av-grid-auto--260">
+        {filteredItems.map((item) => (
+          <AvCard variant="soft" className="av-card--fullheight">
+            <div class="av-auth-stack-xxs">
+              <h3 class="av-card-heading av-m-0">
+                <a href={item.href} class="av-text-strong">{item.label}</a>
+              </h3>
+              <p class="av-text-soft av-m-0">{item.description}</p>
+            </div>
+          </AvCard>
+        ))}
+      </div>
+    ) : (
+      <p class="av-text-soft av-m-0">No admin links match “{query}”.</p>
+    )}
+  </AvCard>
+</AdminLayout>

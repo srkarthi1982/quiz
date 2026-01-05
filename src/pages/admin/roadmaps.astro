@@ -1,0 +1,468 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import {
+  AvButton,
+  AvCard,
+  AvConfirmDialog,
+  AvDrawer,
+  AvEmptyState,
+  AvIcon,
+  AvInput,
+  AvLoading,
+  AvSelect,
+  AvTable,
+  AvTableToolbar,
+} from "@ansiversa/components";
+import { actions } from "astro:actions";
+import { PAGE_SIZE } from "../../stores/adminRoadmaps";
+
+const sort = "id";
+const dir = "desc";
+
+const listResult = await Astro.callAction(actions.fetchRoadmaps, {
+  page: 1,
+  pageSize: PAGE_SIZE,
+  sort: { column: sort, direction: dir },
+});
+
+const platformsResult = await Astro.callAction(actions.fetchPlatforms, {
+  page: 1,
+  pageSize: 500,
+  sort: { column: "name", direction: "asc" },
+});
+
+const subjectsResult = await Astro.callAction(actions.fetchSubjects, {
+  page: 1,
+  pageSize: 500,
+  sort: { column: "name", direction: "asc" },
+});
+
+const topicsResult = await Astro.callAction(actions.fetchTopics, {
+  page: 1,
+  pageSize: 2000,
+  sort: { column: "name", direction: "asc" },
+});
+
+const data = (listResult as any)?.data ?? (listResult as any) ?? {};
+const platformData = (platformsResult as any)?.data ?? (platformsResult as any) ?? {};
+const subjectData = (subjectsResult as any)?.data ?? (subjectsResult as any) ?? {};
+const topicData = (topicsResult as any)?.data ?? (topicsResult as any) ?? {};
+const items = data?.items ?? [];
+const platforms = (platformData?.items ?? []).map((platform: any) => ({
+  id: platform.id,
+  name: platform.name,
+}));
+const subjects = (subjectData?.items ?? []).map((subject: any) => ({
+  id: subject.id,
+  name: subject.name,
+  platformId: subject.platformId,
+}));
+const topics = (topicData?.items ?? []).map((topic: any) => ({
+  id: topic.id,
+  name: topic.name,
+  platformId: topic.platformId,
+  subjectId: topic.subjectId,
+}));
+const total = data?.total ?? 0;
+const page = data?.page ?? 1;
+const pageSize = data?.pageSize ?? PAGE_SIZE;
+const totalPages = Math.max(1, Math.ceil(total / pageSize));
+
+const initialState = {
+  items,
+  platforms,
+  subjects,
+  topics,
+  total,
+  page,
+  pageSize,
+  q: "",
+  platformId: "",
+  subjectId: "",
+  topicId: "",
+  status: "all",
+  sort,
+  dir,
+  drawerOpen: false,
+  editingId: null,
+  pendingDeleteId: null,
+  pendingDeleteName: null,
+  form: { platformId: "", subjectId: "", topicId: "", name: "", qCount: 0, isActive: true },
+  loading: false,
+  error: null,
+  success: null,
+};
+---
+
+<AdminLayout
+  title="Roadmaps – Ansiversa"
+  description="Manage quiz roadmaps."
+  crumbItems={[
+    { label: "Home", href: "/" },
+    { label: "Administration", href: "/admin" },
+    { label: "Roadmaps" },
+  ]}
+>
+  <div
+    class="av-auth-stack-lg"
+    x-data="$store.adminRoadmaps"
+    x-init="init && init(JSON.parse($el.dataset.initial))"
+    data-initial={JSON.stringify(initialState)}
+  >
+    <AvCard variant="soft" className="av-auth-stack-sm">
+      <AvTableToolbar title="Roadmaps">
+        <div slot="title" class="av-admin-titlewrap">
+          <h1 class="av-table-toolbar__title">
+            Roadmaps <span class="av-admin-count-inline" x-text="`(${total})`"></span>
+          </h1>
+        </div>
+
+        <div slot="search">
+          <div class="av-admin-toolbar-left">
+            <div class="av-admin-toolbar-top">
+              <p class="av-table-toolbar__subtitle av-m-0">Manage quiz roadmaps.</p>
+              <div class="av-admin-toolbar-actions">
+                <AvButton
+                  size="md"
+                  variant="ghost"
+                  type="button"
+                  title="Reset filters"
+                  aria-label="Reset filters"
+                  @click.prevent="resetFilters()"
+                  :disabled="loading"
+                >
+                  <AvIcon name="refresh" size="md" />
+                </AvButton>
+                <AvButton
+                  size="md"
+                  variant="primary"
+                  type="button"
+                  title="Add roadmap"
+                  aria-label="Add roadmap"
+                  @click.prevent="openCreate()"
+                  :disabled="loading"
+                >
+                  <AvIcon name="plus" size="md" />
+                </AvButton>
+              </div>
+            </div>
+
+            <div class="av-admin-filters">
+              <div class="av-admin-filter av-admin-filter--search">
+                <AvInput
+                  name="roadmap-search"
+                  type="search"
+                  placeholder="Search by roadmap name…"
+                  x-model="q"
+                  @input="setQuery($event.target.value)"
+                />
+              </div>
+
+              <div class="av-admin-filter av-admin-filter--dropdown">
+                <AvSelect
+                  name="roadmap-platform"
+                  aria-label="Filter by platform"
+                  x-model="platformId"
+                  @change="setPlatform($event.target.value)"
+                >
+                  <option value="">All platforms</option>
+                  <template x-for="platform in platforms" :key="platform.id">
+                    <option :value="String(platform.id)" x-text="platform.name"></option>
+                  </template>
+                </AvSelect>
+              </div>
+
+              <div class="av-admin-filter av-admin-filter--dropdown">
+                <AvSelect
+                  name="roadmap-subject"
+                  aria-label="Filter by subject"
+                  x-model="subjectId"
+                  @change="setSubject($event.target.value)"
+                >
+                  <option value="">All subjects</option>
+                  <template
+                    x-for="subject in (platformId ? subjects.filter((s) => String(s.platformId) === String(platformId)) : subjects)"
+                    :key="subject.id"
+                  >
+                    <option :value="String(subject.id)" x-text="subject.name"></option>
+                  </template>
+                </AvSelect>
+              </div>
+
+              <div class="av-admin-filter av-admin-filter--dropdown">
+                <AvSelect
+                  name="roadmap-topic"
+                  aria-label="Filter by topic"
+                  x-model="topicId"
+                  @change="setTopic($event.target.value)"
+                >
+                  <option value="">All topics</option>
+                  <template
+                    x-for="topic in (subjectId ? topics.filter((t) => String(t.subjectId) === String(subjectId)) : platformId ? topics.filter((t) => String(t.platformId) === String(platformId)) : topics)"
+                    :key="topic.id"
+                  >
+                    <option :value="String(topic.id)" x-text="topic.name"></option>
+                  </template>
+                </AvSelect>
+              </div>
+
+              <div class="av-admin-filter av-admin-filter--dropdown">
+                <AvSelect
+                  name="roadmap-status"
+                  aria-label="Filter by status"
+                  x-model="status"
+                  @change="setStatus($event.target.value)"
+                >
+                  <option value="all">All statuses</option>
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                </AvSelect>
+              </div>
+            </div>
+          </div>
+        </div>
+      </AvTableToolbar>
+
+      <template x-if="error">
+        <div class="av-alert av-alert-danger" role="status" x-text="error"></div>
+      </template>
+      <template x-if="success">
+        <div class="av-alert av-alert-success" role="status" x-text="success"></div>
+      </template>
+    </AvCard>
+
+    <div x-bind:aria-busy="loading">
+      <template x-if="!loading && total === 0">
+        <AvEmptyState
+          headline="No roadmaps yet"
+          description="Create the first roadmap to populate the table."
+          ctaLabel="Add roadmap"
+          x-bind:ctaDisabled="loading"
+          @cta="openCreate()"
+        />
+      </template>
+
+      <template x-if="total > 0">
+        <AvCard variant="soft" className="av-auth-stack-sm">
+          <div x-on:av-sort="setSort($event.detail.key, $event.detail.dir)">
+            <AvTable
+              stickyHeader
+              sortKey={sort}
+              sortDir={dir}
+              x-bind:data-sort-key="sort"
+              x-bind:data-sort-dir="dir"
+            >
+              <thead>
+                <tr>
+                  <th>
+                    <button class="av-table__sort" data-av-sort="id" data-av-sort-default="desc">
+                      ID
+                    </button>
+                  </th>
+                  <th>
+                    <button class="av-table__sort" data-av-sort="name">Roadmap</button>
+                  </th>
+                  <th>
+                    <button class="av-table__sort" data-av-sort="topicName">Topic</button>
+                  </th>
+                  <th>
+                    <button class="av-table__sort" data-av-sort="subjectName">Subject</button>
+                  </th>
+                  <th>
+                    <button class="av-table__sort" data-av-sort="platformName">Platform</button>
+                  </th>
+                  <th>
+                    <button class="av-table__sort" data-av-sort="qCount">Questions</button>
+                  </th>
+                  <th>
+                    <button class="av-table__sort" data-av-sort="status">Status</button>
+                  </th>
+                  <th class="av-table__th-actions">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template x-for="roadmap in items" :key="roadmap.id">
+                  <tr>
+                    <td x-text="roadmap.id"></td>
+                    <td>
+                      <div class="av-table__cell-strong" x-text="roadmap.name"></div>
+                    </td>
+                    <td class="av-table__cell-muted" x-text="roadmap.topicName || '—'"></td>
+                    <td class="av-table__cell-muted" x-text="roadmap.subjectName || '—'"></td>
+                    <td class="av-table__cell-muted" x-text="roadmap.platformName || '—'"></td>
+                    <td x-text="roadmap.qCount ?? 0"></td>
+                    <td>
+                      <span class="av-badge-primary" x-show="roadmap.isActive">Active</span>
+                      <span class="av-badge av-badge-soft" x-show="!roadmap.isActive">Inactive</span>
+                    </td>
+                    <td class="av-table__td-actions">
+                      <div class="av-table__cell-actions">
+                        <AvButton
+                          size="sm"
+                          variant="ghost"
+                          type="button"
+                          title="Edit"
+                          aria-label="Edit roadmap"
+                          @click.prevent="openEdit(roadmap)"
+                          :disabled="loading"
+                        >
+                          <AvIcon name="edit" size="sm" />
+                        </AvButton>
+                        <AvButton
+                          size="sm"
+                          variant="ghost"
+                          type="button"
+                          title="Delete"
+                          aria-label="Delete roadmap"
+                          @click.prevent="pendingDeleteId = roadmap.id; pendingDeleteName = roadmap.name; window.AvDialog?.open('roadmaps-delete-dialog')"
+                          :disabled="loading"
+                        >
+                          <AvIcon name="trash" size="sm" />
+                        </AvButton>
+                      </div>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </AvTable>
+          </div>
+        </AvCard>
+      </template>
+    </div>
+
+    <template x-if="!loading && totalPages > 1">
+      <div class="av-table-pager" role="navigation" aria-label="Pagination">
+        <div
+          class="av-table-pager__meta"
+          x-text="`Page ${total === 0 ? 0 : (page - 1) * pageSize + 1} - ${Math.min(page * pageSize, total)} of ${total} entries`"
+        ></div>
+        <div class="av-table-pager__buttons">
+          <AvButton
+            size="sm"
+            variant="ghost"
+            type="button"
+            @click.prevent="goToPage(page - 1)"
+            :disabled="page <= 1 || loading"
+            :aria-disabled="page <= 1 || loading"
+          >
+            <AvIcon name="chevron-left" size="md" />
+          </AvButton>
+          <AvButton
+            size="sm"
+            variant="ghost"
+            type="button"
+            @click.prevent="goToPage(page + 1)"
+            :disabled="page >= totalPages || loading"
+            :aria-disabled="page >= totalPages || loading"
+          >
+            <AvIcon name="chevron-right" size="md" />
+          </AvButton>
+        </div>
+      </div>
+    </template>
+
+    <template x-if="drawerOpen">
+      <div
+        class="av-drawer-overlay"
+        @click.self="closeDrawer()"
+        @keydown.escape.window="closeDrawer()"
+        @close-drawer="closeDrawer()"
+        x-cloak
+      >
+        <AvDrawer title="Manage roadmap" description="Create or edit a roadmap.">
+          <form class="av-auth-stack-md" @submit.prevent="submit()">
+            <AvSelect
+              label="Platform"
+              name="platformId"
+              required
+              x-model="form.platformId"
+            >
+              <option value="">Select platform</option>
+              {platforms.map((platform) => (
+                <option value={platform.id}>{platform.name}</option>
+              ))}
+            </AvSelect>
+            <AvSelect
+              label="Subject"
+              name="subjectId"
+              required
+              x-model="form.subjectId"
+            >
+              <option value="">Select subject</option>
+              {subjects.map((subject) => (
+                <option
+                  value={subject.id}
+                  data-platform-id={subject.platformId}
+                  x-show="!form.platformId || String(form.platformId) === String($el.dataset.platformId)"
+                >
+                  {subject.name}
+                </option>
+              ))}
+            </AvSelect>
+            <AvSelect
+              label="Topic"
+              name="topicId"
+              required
+              x-model="form.topicId"
+            >
+              <option value="">Select topic</option>
+              {topics.map((topic) => (
+                <option
+                  value={topic.id}
+                  data-platform-id={topic.platformId}
+                  data-subject-id={topic.subjectId}
+                  x-show="!form.subjectId ? (!form.platformId || String(form.platformId) === String($el.dataset.platformId)) : String(form.subjectId) === String($el.dataset.subjectId)"
+                >
+                  {topic.name}
+                </option>
+              ))}
+            </AvSelect>
+            <AvInput label="Roadmap name" name="name" placeholder="Roadmap name" required x-model="form.name" />
+            <AvInput
+              label="Questions"
+              name="qCount"
+              type="number"
+              min="0"
+              placeholder="0"
+              x-model="form.qCount"
+            />
+            <AvSelect
+              label="Status"
+              name="status"
+              x-bind:value="form.isActive ? 'active' : 'inactive'"
+              @change="form.isActive = $event.target.value === 'active'"
+            >
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </AvSelect>
+
+            <template x-if="error">
+              <div class="av-alert av-alert-danger" role="status" x-text="error"></div>
+            </template>
+          </form>
+
+          <div slot="footer">
+            <AvButton variant="ghost" type="button" @click="closeDrawer()">Cancel</AvButton>
+            <AvButton type="button" @click="submit" :disabled="loading">
+              <span x-show="!loading" x-text="editingId ? 'Save' : 'Create'"></span>
+              <span x-show="loading">Saving…</span>
+            </AvButton>
+          </div>
+        </AvDrawer>
+      </div>
+    </template>
+
+    <AvLoading x-show="loading" x-cloak label="Loading…" />
+
+    <AvConfirmDialog
+      id="roadmaps-delete-dialog"
+      headline="Delete roadmap?"
+      description="This action cannot be undone."
+      confirmLabel="Delete"
+      cancelLabel="Cancel"
+      variant="danger"
+      @av-confirm="pendingDeleteId && remove(pendingDeleteId)"
+      @av-cancel="pendingDeleteId = null; pendingDeleteName = null"
+    />
+  </div>
+</AdminLayout>

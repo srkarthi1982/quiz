@@ -1,0 +1,56 @@
+import { createPlatform, deletePlatform, fetchPlatforms, updatePlatform } from "./platform";
+import { createQuestion, deleteQuestion, fetchQuestions, fetchRandomQuestions, updateQuestion } from "./question";
+import { createRoadmap, deleteRoadmap, fetchRoadmaps, updateRoadmap } from "./roadmap";
+import { saveResult } from "./result";
+import { createSubject, deleteSubject, fetchSubjects, updateSubject } from "./subject";
+import { createTopic, deleteTopic, fetchTopics, updateTopic } from "./topic";
+
+export const quiz = {
+  fetchPlatforms,
+  createPlatform,
+  updatePlatform,
+  deletePlatform,
+  fetchSubjects,
+  createSubject,
+  updateSubject,
+  deleteSubject,
+  fetchTopics,
+  createTopic,
+  updateTopic,
+  deleteTopic,
+  fetchRoadmaps,
+  createRoadmap,
+  updateRoadmap,
+  deleteRoadmap,
+  fetchQuestions,
+  fetchRandomQuestions,
+  createQuestion,
+  updateQuestion,
+  deleteQuestion,
+  saveResult,
+};
+
+export {
+  fetchPlatforms,
+  createPlatform,
+  updatePlatform,
+  deletePlatform,
+  fetchSubjects,
+  createSubject,
+  updateSubject,
+  deleteSubject,
+  fetchTopics,
+  createTopic,
+  updateTopic,
+  deleteTopic,
+  fetchRoadmaps,
+  createRoadmap,
+  updateRoadmap,
+  deleteRoadmap,
+  fetchQuestions,
+  fetchRandomQuestions,
+  createQuestion,
+  updateQuestion,
+  deleteQuestion,
+  saveResult,
+};

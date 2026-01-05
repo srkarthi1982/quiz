@@ -1,0 +1,1822 @@
+[
+  {
+    "id": 1,
+    "platform_id": 12,
+    "is_active": true,
+    "name": "Web Development",
+    "q_count": 21508
+  },
+  {
+    "id": 2,
+    "platform_id": 12,
+    "is_active": true,
+    "name": "Mobile Development",
+    "q_count": 9140
+  },
+  {
+    "id": 3,
+    "platform_id": 12,
+    "is_active": true,
+    "name": "Data Structures & Algorithms",
+    "q_count": 9378
+  },
+  {
+    "id": 4,
+    "platform_id": 12,
+    "is_active": true,
+    "name": "Databases",
+    "q_count": 40848
+  },
+  {
+    "id": 5,
+    "platform_id": 12,
+    "is_active": true,
+    "name": "Cybersecurity",
+    "q_count": 5175
+  },
+  {
+    "id": 6,
+    "platform_id": 12,
+    "is_active": true,
+    "name": "Cloud Computing",
+    "q_count": 8388
+  },
+  {
+    "id": 7,
+    "platform_id": 12,
+    "is_active": true,
+    "name": "DevOps",
+    "q_count": 6260
+  },
+  {
+    "id": 8,
+    "platform_id": 12,
+    "is_active": true,
+    "name": "Software Engineering",
+    "q_count": 6718
+  },
+  {
+    "id": 9,
+    "platform_id": 12,
+    "is_active": true,
+    "name": "Game Development",
+    "q_count": 9967
+  },
+  {
+    "id": 10,
+    "platform_id": 12,
+    "is_active": true,
+    "name": "Machine Learning",
+    "q_count": 7550
+  },
+  {
+    "id": 11,
+    "platform_id": 7,
+    "is_active": true,
+    "name": "Verbal Reasoning",
+    "q_count": 4482
+  },
+  {
+    "id": 12,
+    "platform_id": 7,
+    "is_active": true,
+    "name": "Non-Verbal Reasoning",
+    "q_count": 4206
+  },
+  {
+    "id": 13,
+    "platform_id": 7,
+    "is_active": true,
+    "name": "Analytical Reasoning",
+    "q_count": 5099
+  },
+  {
+    "id": 14,
+    "platform_id": 7,
+    "is_active": true,
+    "name": "Critical Thinking",
+    "q_count": 4191
+  },
+  {
+    "id": 15,
+    "platform_id": 7,
+    "is_active": true,
+    "name": "Puzzles & Brain Teasers",
+    "q_count": 3395
+  },
+  {
+    "id": 16,
+    "platform_id": 16,
+    "is_active": true,
+    "name": "Cloud Computing",
+    "q_count": 3943
+  },
+  {
+    "id": 17,
+    "platform_id": 16,
+    "is_active": true,
+    "name": "Cybersecurity",
+    "q_count": 3139
+  },
+  {
+    "id": 18,
+    "platform_id": 16,
+    "is_active": true,
+    "name": "Networking",
+    "q_count": 2887
+  },
+  {
+    "id": 19,
+    "platform_id": 16,
+    "is_active": true,
+    "name": "Software Development",
+    "q_count": 3490
+  },
+  {
+    "id": 20,
+    "platform_id": 16,
+    "is_active": true,
+    "name": "Database Management",
+    "q_count": 4072
+  },
+  {
+    "id": 21,
+    "platform_id": 16,
+    "is_active": true,
+    "name": "IT Service Management",
+    "q_count": 3234
+  },
+  {
+    "id": 22,
+    "platform_id": 16,
+    "is_active": true,
+    "name": "DevOps & Automation",
+    "q_count": 3925
+  },
+  {
+    "id": 23,
+    "platform_id": 6,
+    "is_active": true,
+    "name": "Civil Services",
+    "q_count": 4388
+  },
+  {
+    "id": 24,
+    "platform_id": 6,
+    "is_active": true,
+    "name": "Banking Exams",
+    "q_count": 3442
+  },
+  {
+    "id": 25,
+    "platform_id": 6,
+    "is_active": true,
+    "name": "Railway Exams",
+    "q_count": 3428
+  },
+  {
+    "id": 26,
+    "platform_id": 6,
+    "is_active": true,
+    "name": "SSC Exams",
+    "q_count": 3935
+  },
+  {
+    "id": 27,
+    "platform_id": 6,
+    "is_active": true,
+    "name": "Defence Exams",
+    "q_count": 3864
+  },
+  {
+    "id": 28,
+    "platform_id": 6,
+    "is_active": true,
+    "name": "State Government Exams",
+    "q_count": 3206
+  },
+  {
+    "id": 29,
+    "platform_id": 6,
+    "is_active": true,
+    "name": "Teaching Eligibility Tests",
+    "q_count": 3790
+  },
+  {
+    "id": 30,
+    "platform_id": 3,
+    "is_active": true,
+    "name": "Law Entrance Exams",
+    "q_count": 3733
+  },
+  {
+    "id": 31,
+    "platform_id": 3,
+    "is_active": true,
+    "name": "Judiciary Exams",
+    "q_count": 3347
+  },
+  {
+    "id": 32,
+    "platform_id": 3,
+    "is_active": true,
+    "name": "Corporate Law",
+    "q_count": 3934
+  },
+  {
+    "id": 33,
+    "platform_id": 3,
+    "is_active": true,
+    "name": "Constitutional Law",
+    "q_count": 3375
+  },
+  {
+    "id": 34,
+    "platform_id": 3,
+    "is_active": true,
+    "name": "Criminal Law",
+    "q_count": 4941
+  },
+  {
+    "id": 35,
+    "platform_id": 3,
+    "is_active": true,
+    "name": "International Law",
+    "q_count": 3770
+  },
+  {
+    "id": 36,
+    "platform_id": 1,
+    "is_active": true,
+    "name": "Medical Entrance Exams",
+    "q_count": 4183
+  },
+  {
+    "id": 37,
+    "platform_id": 1,
+    "is_active": true,
+    "name": "Pre-Clinical Subjects",
+    "q_count": 3613
+  },
+  {
+    "id": 38,
+    "platform_id": 1,
+    "is_active": true,
+    "name": "Para-Clinical Subjects",
+    "q_count": 4347
+  },
+  {
+    "id": 39,
+    "platform_id": 1,
+    "is_active": true,
+    "name": "Clinical Subjects",
+    "q_count": 8919
+  },
+  {
+    "id": 40,
+    "platform_id": 1,
+    "is_active": true,
+    "name": "Medical Specializations",
+    "q_count": 7348
+  },
+  {
+    "id": 41,
+    "platform_id": 2,
+    "is_active": true,
+    "name": "Engineering Entrance Exams",
+    "q_count": 4105
+  },
+  {
+    "id": 42,
+    "platform_id": 2,
+    "is_active": true,
+    "name": "Core Engineering Subjects",
+    "q_count": 8300
+  },
+  {
+    "id": 43,
+    "platform_id": 2,
+    "is_active": true,
+    "name": "Specialized Engineering Fields",
+    "q_count": 8677
+  },
+  {
+    "id": 44,
+    "platform_id": 4,
+    "is_active": true,
+    "name": "Financial Markets and Instruments",
+    "q_count": 5048
+  },
+  {
+    "id": 45,
+    "platform_id": 4,
+    "is_active": true,
+    "name": "Corporate Finance and Accounting",
+    "q_count": 5436
+  },
+  {
+    "id": 46,
+    "platform_id": 4,
+    "is_active": true,
+    "name": "Investment Management",
+    "q_count": 3838
+  },
+  {
+    "id": 47,
+    "platform_id": 4,
+    "is_active": true,
+    "name": "Personal Finance",
+    "q_count": 3791
+  },
+  {
+    "id": 48,
+    "platform_id": 4,
+    "is_active": true,
+    "name": "Risk Management",
+    "q_count": 2836
+  },
+  {
+    "id": 49,
+    "platform_id": 5,
+    "is_active": true,
+    "name": "Road Signs and Signals",
+    "q_count": 7025
+  },
+  {
+    "id": 50,
+    "platform_id": 5,
+    "is_active": true,
+    "name": "Traffic Rules and Regulations",
+    "q_count": 8314
+  },
+  {
+    "id": 51,
+    "platform_id": 5,
+    "is_active": true,
+    "name": "Vehicle Operation and Control",
+    "q_count": 9005
+  },
+  {
+    "id": 52,
+    "platform_id": 5,
+    "is_active": true,
+    "name": "Safety Procedures and Emergency Handling",
+    "q_count": 9303
+  },
+  {
+    "id": 53,
+    "platform_id": 5,
+    "is_active": true,
+    "name": "Environmental Impact and Eco-driving",
+    "q_count": 8691
+  },
+  {
+    "id": 54,
+    "platform_id": 8,
+    "is_active": true,
+    "name": "Algebra",
+    "q_count": 4551
+  },
+  {
+    "id": 55,
+    "platform_id": 8,
+    "is_active": true,
+    "name": "Geometry",
+    "q_count": 4661
+  },
+  {
+    "id": 56,
+    "platform_id": 8,
+    "is_active": true,
+    "name": "Calculus",
+    "q_count": 5045
+  },
+  {
+    "id": 57,
+    "platform_id": 8,
+    "is_active": true,
+    "name": "Probability",
+    "q_count": 4629
+  },
+  {
+    "id": 58,
+    "platform_id": 8,
+    "is_active": true,
+    "name": "Statistics",
+    "q_count": 3670
+  },
+  {
+    "id": 59,
+    "platform_id": 10,
+    "is_active": true,
+    "name": "Ancient History",
+    "q_count": 6605
+  },
+  {
+    "id": 60,
+    "platform_id": 10,
+    "is_active": true,
+    "name": "Medieval History",
+    "q_count": 6526
+  },
+  {
+    "id": 61,
+    "platform_id": 10,
+    "is_active": true,
+    "name": "Modern History",
+    "q_count": 7578
+  },
+  {
+    "id": 62,
+    "platform_id": 11,
+    "is_active": true,
+    "name": "Physical Geography",
+    "q_count": 8793
+  },
+  {
+    "id": 63,
+    "platform_id": 11,
+    "is_active": true,
+    "name": "Human Geography",
+    "q_count": 7196
+  },
+  {
+    "id": 64,
+    "platform_id": 11,
+    "is_active": true,
+    "name": "Environmental Geography",
+    "q_count": 7657
+  },
+  {
+    "id": 65,
+    "platform_id": 13,
+    "is_active": true,
+    "name": "Communication Skills",
+    "q_count": 7712
+  },
+  {
+    "id": 66,
+    "platform_id": 13,
+    "is_active": true,
+    "name": "Leadership Skills",
+    "q_count": 6159
+  },
+  {
+    "id": 67,
+    "platform_id": 13,
+    "is_active": true,
+    "name": "Team Work",
+    "q_count": 6476
+  },
+  {
+    "id": 68,
+    "platform_id": 13,
+    "is_active": true,
+    "name": "Time Management",
+    "q_count": 6447
+  },
+  {
+    "id": 73,
+    "platform_id": 15,
+    "is_active": true,
+    "name": "Management",
+    "q_count": 5286
+  },
+  {
+    "id": 74,
+    "platform_id": 15,
+    "is_active": true,
+    "name": "Marketing",
+    "q_count": 3654
+  },
+  {
+    "id": 75,
+    "platform_id": 15,
+    "is_active": true,
+    "name": "Finance",
+    "q_count": 4769
+  },
+  {
+    "id": 76,
+    "platform_id": 15,
+    "is_active": true,
+    "name": "Entrepreneurship",
+    "q_count": 4570
+  },
+  {
+    "id": 85,
+    "platform_id": 17,
+    "is_active": true,
+    "name": "Marketing Fundamentals",
+    "q_count": 6334
+  },
+  {
+    "id": 86,
+    "platform_id": 17,
+    "is_active": true,
+    "name": "Digital Marketing",
+    "q_count": 6723
+  },
+  {
+    "id": 87,
+    "platform_id": 17,
+    "is_active": true,
+    "name": "Social Media Marketing",
+    "q_count": 6733
+  },
+  {
+    "id": 88,
+    "platform_id": 17,
+    "is_active": true,
+    "name": "Brand Management",
+    "q_count": 5281
+  },
+  {
+    "id": 89,
+    "platform_id": 18,
+    "is_active": true,
+    "name": "Classical Mechanics",
+    "q_count": 5850
+  },
+  {
+    "id": 90,
+    "platform_id": 18,
+    "is_active": true,
+    "name": "Quantum Physics",
+    "q_count": 3730
+  },
+  {
+    "id": 91,
+    "platform_id": 18,
+    "is_active": true,
+    "name": "Thermodynamics",
+    "q_count": 1693
+  },
+  {
+    "id": 92,
+    "platform_id": 18,
+    "is_active": true,
+    "name": "Electromagnetism",
+    "q_count": 3455
+  },
+  {
+    "id": 93,
+    "platform_id": 18,
+    "is_active": true,
+    "name": "Optics",
+    "q_count": 4216
+  },
+  {
+    "id": 94,
+    "platform_id": 18,
+    "is_active": true,
+    "name": "Nuclear Physics",
+    "q_count": 3302
+  },
+  {
+    "id": 95,
+    "platform_id": 19,
+    "is_active": true,
+    "name": "Organic Chemistry",
+    "q_count": 5581
+  },
+  {
+    "id": 96,
+    "platform_id": 19,
+    "is_active": true,
+    "name": "Inorganic Chemistry",
+    "q_count": 4246
+  },
+  {
+    "id": 97,
+    "platform_id": 19,
+    "is_active": true,
+    "name": "Physical Chemistry",
+    "q_count": 3935
+  },
+  {
+    "id": 98,
+    "platform_id": 19,
+    "is_active": true,
+    "name": "Analytical Chemistry",
+    "q_count": 4352
+  },
+  {
+    "id": 99,
+    "platform_id": 19,
+    "is_active": true,
+    "name": "Biochemistry",
+    "q_count": 3376
+  },
+  {
+    "id": 100,
+    "platform_id": 20,
+    "is_active": true,
+    "name": "Botany",
+    "q_count": 5993
+  },
+  {
+    "id": 101,
+    "platform_id": 20,
+    "is_active": true,
+    "name": "Zoology",
+    "q_count": 4990
+  },
+  {
+    "id": 102,
+    "platform_id": 20,
+    "is_active": true,
+    "name": "Microbiology",
+    "q_count": 3906
+  },
+  {
+    "id": 103,
+    "platform_id": 20,
+    "is_active": true,
+    "name": "Genetics",
+    "q_count": 3628
+  },
+  {
+    "id": 104,
+    "platform_id": 20,
+    "is_active": true,
+    "name": "Biotechnology",
+    "q_count": 3364
+  },
+  {
+    "id": 105,
+    "platform_id": 9,
+    "is_active": true,
+    "name": "Banking Basics",
+    "q_count": 4222
+  },
+  {
+    "id": 106,
+    "platform_id": 9,
+    "is_active": true,
+    "name": "Financial Instruments",
+    "q_count": 4752
+  },
+  {
+    "id": 107,
+    "platform_id": 9,
+    "is_active": true,
+    "name": "Banking Operations",
+    "q_count": 3525
+  },
+  {
+    "id": 108,
+    "platform_id": 9,
+    "is_active": true,
+    "name": "Risk Management in Banking",
+    "q_count": 3352
+  },
+  {
+    "id": 109,
+    "platform_id": 9,
+    "is_active": true,
+    "name": "Banking Regulations",
+    "q_count": 4967
+  },
+  {
+    "id": 138,
+    "platform_id": 14,
+    "is_active": true,
+    "name": "English Proficiency",
+    "q_count": 6714
+  },
+  {
+    "id": 139,
+    "platform_id": 14,
+    "is_active": true,
+    "name": "French",
+    "q_count": 6716
+  },
+  {
+    "id": 140,
+    "platform_id": 14,
+    "is_active": true,
+    "name": "Spanish",
+    "q_count": 7092
+  },
+  {
+    "id": 141,
+    "platform_id": 14,
+    "is_active": true,
+    "name": "German",
+    "q_count": 6841
+  },
+  {
+    "id": 142,
+    "platform_id": 12,
+    "is_active": true,
+    "name": "Artificial Intelligence",
+    "q_count": 19257
+  },
+  {
+    "id": 144,
+    "platform_id": 24,
+    "is_active": true,
+    "name": "History",
+    "q_count": 3095
+  },
+  {
+    "id": 145,
+    "platform_id": 24,
+    "is_active": true,
+    "name": "Geography",
+    "q_count": 2098
+  },
+  {
+    "id": 146,
+    "platform_id": 24,
+    "is_active": true,
+    "name": "Science",
+    "q_count": 2919
+  },
+  {
+    "id": 147,
+    "platform_id": 24,
+    "is_active": true,
+    "name": "Sports",
+    "q_count": 2677
+  },
+  {
+    "id": 148,
+    "platform_id": 24,
+    "is_active": true,
+    "name": "Politics",
+    "q_count": 1721
+  },
+  {
+    "id": 149,
+    "platform_id": 24,
+    "is_active": true,
+    "name": "Art & Literature",
+    "q_count": 3469
+  },
+  {
+    "id": 150,
+    "platform_id": 24,
+    "is_active": true,
+    "name": "Technology",
+    "q_count": 3674
+  },
+  {
+    "id": 151,
+    "platform_id": 24,
+    "is_active": true,
+    "name": "Economy",
+    "q_count": 3503
+  },
+  {
+    "id": 152,
+    "platform_id": 24,
+    "is_active": true,
+    "name": "Culture",
+    "q_count": 4148
+  },
+  {
+    "id": 153,
+    "platform_id": 24,
+    "is_active": true,
+    "name": "Current Affairs",
+    "q_count": 3662
+  },
+  {
+    "id": 155,
+    "platform_id": 12,
+    "is_active": true,
+    "name": "Programming Languages",
+    "q_count": 52798
+  },
+  {
+    "id": 156,
+    "platform_id": 29,
+    "is_active": true,
+    "name": "Manual Testing",
+    "q_count": 3485
+  },
+  {
+    "id": 157,
+    "platform_id": 29,
+    "is_active": true,
+    "name": "Automation Testing",
+    "q_count": 4662
+  },
+  {
+    "id": 158,
+    "platform_id": 29,
+    "is_active": true,
+    "name": "Performance Testing",
+    "q_count": 3566
+  },
+  {
+    "id": 159,
+    "platform_id": 29,
+    "is_active": true,
+    "name": "API Testing",
+    "q_count": 3320
+  },
+  {
+    "id": 160,
+    "platform_id": 29,
+    "is_active": true,
+    "name": "Security Testing",
+    "q_count": 2988
+  },
+  {
+    "id": 161,
+    "platform_id": 29,
+    "is_active": true,
+    "name": "Mobile Testing",
+    "q_count": 4376
+  },
+  {
+    "id": 162,
+    "platform_id": 29,
+    "is_active": true,
+    "name": "Database Testing",
+    "q_count": 3504
+  },
+  {
+    "id": 163,
+    "platform_id": 29,
+    "is_active": true,
+    "name": "DevOps for Testers",
+    "q_count": 3329
+  },
+  {
+    "id": 164,
+    "platform_id": 29,
+    "is_active": true,
+    "name": "Agile Testing",
+    "q_count": 3491
+  },
+  {
+    "id": 165,
+    "platform_id": 29,
+    "is_active": true,
+    "name": "Testing Tools and Technologies",
+    "q_count": 4810
+  },
+  {
+    "id": 166,
+    "platform_id": 30,
+    "is_active": true,
+    "name": "Movies & TV Shows",
+    "q_count": 3129
+  },
+  {
+    "id": 167,
+    "platform_id": 30,
+    "is_active": true,
+    "name": "Music",
+    "q_count": 3450
+  },
+  {
+    "id": 168,
+    "platform_id": 30,
+    "is_active": true,
+    "name": "Sports",
+    "q_count": 3002
+  },
+  {
+    "id": 169,
+    "platform_id": 30,
+    "is_active": true,
+    "name": "Video Games",
+    "q_count": 3496
+  },
+  {
+    "id": 170,
+    "platform_id": 30,
+    "is_active": true,
+    "name": "Celebrities & Pop Culture",
+    "q_count": 2679
+  },
+  {
+    "id": 171,
+    "platform_id": 30,
+    "is_active": true,
+    "name": "Cartoons & Animation",
+    "q_count": 2761
+  },
+  {
+    "id": 172,
+    "platform_id": 30,
+    "is_active": true,
+    "name": "Streaming Platforms",
+    "q_count": 2812
+  },
+  {
+    "id": 173,
+    "platform_id": 30,
+    "is_active": true,
+    "name": "Comics & Superheroes",
+    "q_count": 2585
+  },
+  {
+    "id": 174,
+    "platform_id": 30,
+    "is_active": true,
+    "name": "Award Shows & Ceremonies",
+    "q_count": 2200
+  },
+  {
+    "id": 175,
+    "platform_id": 30,
+    "is_active": true,
+    "name": "World Records & Fun Facts",
+    "q_count": 1973
+  },
+  {
+    "id": 176,
+    "platform_id": 31,
+    "is_active": true,
+    "name": "Environmental Studies",
+    "q_count": 2007
+  },
+  {
+    "id": 177,
+    "platform_id": 31,
+    "is_active": true,
+    "name": "Climate Change",
+    "q_count": 2781
+  },
+  {
+    "id": 178,
+    "platform_id": 31,
+    "is_active": true,
+    "name": "Sustainability",
+    "q_count": 2414
+  },
+  {
+    "id": 179,
+    "platform_id": 31,
+    "is_active": true,
+    "name": "Renewable Energy",
+    "q_count": 3249
+  },
+  {
+    "id": 180,
+    "platform_id": 31,
+    "is_active": true,
+    "name": "Ecology",
+    "q_count": 2917
+  },
+  {
+    "id": 181,
+    "platform_id": 31,
+    "is_active": true,
+    "name": "Environmental Policy",
+    "q_count": 3639
+  },
+  {
+    "id": 182,
+    "platform_id": 31,
+    "is_active": true,
+    "name": "Conservation Science",
+    "q_count": 2400
+  },
+  {
+    "id": 183,
+    "platform_id": 31,
+    "is_active": true,
+    "name": "Pollution & Waste Management",
+    "q_count": 3657
+  },
+  {
+    "id": 184,
+    "platform_id": 31,
+    "is_active": true,
+    "name": "Earth Science",
+    "q_count": 3608
+  },
+  {
+    "id": 185,
+    "platform_id": 32,
+    "is_active": true,
+    "name": "Literature",
+    "q_count": 7514
+  },
+  {
+    "id": 186,
+    "platform_id": 32,
+    "is_active": true,
+    "name": "History of Art",
+    "q_count": 8122
+  },
+  {
+    "id": 187,
+    "platform_id": 32,
+    "is_active": true,
+    "name": "Philosophy",
+    "q_count": 6931
+  },
+  {
+    "id": 188,
+    "platform_id": 32,
+    "is_active": true,
+    "name": "Music",
+    "q_count": 7582
+  },
+  {
+    "id": 189,
+    "platform_id": 32,
+    "is_active": true,
+    "name": "Visual Arts",
+    "q_count": 7262
+  },
+  {
+    "id": 190,
+    "platform_id": 32,
+    "is_active": true,
+    "name": "Performing Arts",
+    "q_count": 9215
+  },
+  {
+    "id": 191,
+    "platform_id": 32,
+    "is_active": true,
+    "name": "Linguistics",
+    "q_count": 7360
+  },
+  {
+    "id": 192,
+    "platform_id": 32,
+    "is_active": true,
+    "name": "Cultural Studies",
+    "q_count": 6242
+  },
+  {
+    "id": 193,
+    "platform_id": 32,
+    "is_active": true,
+    "name": "World History",
+    "q_count": 7561
+  },
+  {
+    "id": 194,
+    "platform_id": 32,
+    "is_active": true,
+    "name": "Religion & Mythology",
+    "q_count": 9059
+  },
+  {
+    "id": 195,
+    "platform_id": 33,
+    "is_active": true,
+    "name": "Travel Destinations",
+    "q_count": 4332
+  },
+  {
+    "id": 196,
+    "platform_id": 33,
+    "is_active": true,
+    "name": "Travel Planning",
+    "q_count": 4458
+  },
+  {
+    "id": 197,
+    "platform_id": 33,
+    "is_active": true,
+    "name": "Hospitality Management",
+    "q_count": 4669
+  },
+  {
+    "id": 198,
+    "platform_id": 33,
+    "is_active": true,
+    "name": "World Cultures",
+    "q_count": 4989
+  },
+  {
+    "id": 199,
+    "platform_id": 33,
+    "is_active": true,
+    "name": "Tourism Geography",
+    "q_count": 4143
+  },
+  {
+    "id": 200,
+    "platform_id": 34,
+    "is_active": true,
+    "name": "General Psychology",
+    "q_count": 3171
+  },
+  {
+    "id": 201,
+    "platform_id": 34,
+    "is_active": true,
+    "name": "Developmental Psychology",
+    "q_count": 4170
+  },
+  {
+    "id": 202,
+    "platform_id": 34,
+    "is_active": true,
+    "name": "Abnormal Psychology",
+    "q_count": 5537
+  },
+  {
+    "id": 203,
+    "platform_id": 34,
+    "is_active": true,
+    "name": "Social Psychology",
+    "q_count": 4109
+  },
+  {
+    "id": 204,
+    "platform_id": 34,
+    "is_active": true,
+    "name": "Cognitive Psychology",
+    "q_count": 4186
+  },
+  {
+    "id": 205,
+    "platform_id": 35,
+    "is_active": true,
+    "name": "Basic Mechanics",
+    "q_count": 4528
+  },
+  {
+    "id": 206,
+    "platform_id": 35,
+    "is_active": true,
+    "name": "Automobile Technology",
+    "q_count": 4869
+  },
+  {
+    "id": 207,
+    "platform_id": 35,
+    "is_active": true,
+    "name": "Industrial Machinery",
+    "q_count": 4393
+  },
+  {
+    "id": 208,
+    "platform_id": 35,
+    "is_active": true,
+    "name": "Engineering Drawing",
+    "q_count": 3853
+  },
+  {
+    "id": 209,
+    "platform_id": 35,
+    "is_active": true,
+    "name": "Maintenance & Repair",
+    "q_count": 3673
+  },
+  {
+    "id": 210,
+    "platform_id": 36,
+    "is_active": true,
+    "name": "World Mythologies",
+    "q_count": 5469
+  },
+  {
+    "id": 211,
+    "platform_id": 36,
+    "is_active": true,
+    "name": "Cultural Anthropology",
+    "q_count": 4407
+  },
+  {
+    "id": 212,
+    "platform_id": 36,
+    "is_active": true,
+    "name": "Folklore and Legends",
+    "q_count": 4456
+  },
+  {
+    "id": 213,
+    "platform_id": 36,
+    "is_active": true,
+    "name": "World Religions",
+    "q_count": 4220
+  },
+  {
+    "id": 214,
+    "platform_id": 36,
+    "is_active": true,
+    "name": "Festivals and Traditions",
+    "q_count": 3780
+  },
+  {
+    "id": 215,
+    "platform_id": 37,
+    "is_active": true,
+    "name": "Teaching Methodologies",
+    "q_count": 3954
+  },
+  {
+    "id": 216,
+    "platform_id": 37,
+    "is_active": true,
+    "name": "Curriculum Development",
+    "q_count": 3913
+  },
+  {
+    "id": 217,
+    "platform_id": 37,
+    "is_active": true,
+    "name": "Educational Psychology",
+    "q_count": 4263
+  },
+  {
+    "id": 218,
+    "platform_id": 37,
+    "is_active": true,
+    "name": "Instructional Technology",
+    "q_count": 4544
+  },
+  {
+    "id": 219,
+    "platform_id": 37,
+    "is_active": true,
+    "name": "Assessment & Evaluation",
+    "q_count": 4196
+  },
+  {
+    "id": 220,
+    "platform_id": 38,
+    "is_active": true,
+    "name": "Computer Networks Basics",
+    "q_count": 5261
+  },
+  {
+    "id": 221,
+    "platform_id": 38,
+    "is_active": true,
+    "name": "IP Addressing and Subnetting",
+    "q_count": 3398
+  },
+  {
+    "id": 222,
+    "platform_id": 38,
+    "is_active": true,
+    "name": "Protocols and Ports",
+    "q_count": 4881
+  },
+  {
+    "id": 223,
+    "platform_id": 38,
+    "is_active": true,
+    "name": "Network Security",
+    "q_count": 4702
+  },
+  {
+    "id": 224,
+    "platform_id": 38,
+    "is_active": true,
+    "name": "Wireless and Mobile Networks",
+    "q_count": 4510
+  },
+  {
+    "id": 524,
+    "platform_id": 39,
+    "is_active": true,
+    "name": "Moral Philosophy",
+    "q_count": 2965
+  },
+  {
+    "id": 525,
+    "platform_id": 39,
+    "is_active": true,
+    "name": "Philosophy of Mind",
+    "q_count": 2719
+  },
+  {
+    "id": 526,
+    "platform_id": 39,
+    "is_active": true,
+    "name": "Political Philosophy",
+    "q_count": 4624
+  },
+  {
+    "id": 527,
+    "platform_id": 40,
+    "is_active": true,
+    "name": "Solar System Exploration",
+    "q_count": 5321
+  },
+  {
+    "id": 528,
+    "platform_id": 40,
+    "is_active": true,
+    "name": "Stars and Galaxies",
+    "q_count": 4579
+  },
+  {
+    "id": 529,
+    "platform_id": 40,
+    "is_active": true,
+    "name": "Cosmology",
+    "q_count": 4653
+  },
+  {
+    "id": 530,
+    "platform_id": 40,
+    "is_active": true,
+    "name": "Space Missions",
+    "q_count": 6430
+  },
+  {
+    "id": 531,
+    "platform_id": 41,
+    "is_active": true,
+    "name": "Microeconomics",
+    "q_count": 6914
+  },
+  {
+    "id": 532,
+    "platform_id": 41,
+    "is_active": true,
+    "name": "Macroeconomics",
+    "q_count": 4808
+  },
+  {
+    "id": 533,
+    "platform_id": 41,
+    "is_active": true,
+    "name": "International Trade",
+    "q_count": 5781
+  },
+  {
+    "id": 534,
+    "platform_id": 41,
+    "is_active": true,
+    "name": "Development Economics",
+    "q_count": 5265
+  },
+  {
+    "id": 535,
+    "platform_id": 42,
+    "is_active": true,
+    "name": "English Grammar",
+    "q_count": 6402
+  },
+  {
+    "id": 536,
+    "platform_id": 42,
+    "is_active": true,
+    "name": "World Literature",
+    "q_count": 6747
+  },
+  {
+    "id": 537,
+    "platform_id": 42,
+    "is_active": true,
+    "name": "Poetry and Prose",
+    "q_count": 5550
+  },
+  {
+    "id": 538,
+    "platform_id": 42,
+    "is_active": true,
+    "name": "Reading Comprehension",
+    "q_count": 4934
+  },
+  {
+    "id": 539,
+    "platform_id": 43,
+    "is_active": true,
+    "name": "Human Nutrition",
+    "q_count": 6624
+  },
+  {
+    "id": 540,
+    "platform_id": 43,
+    "is_active": true,
+    "name": "Fitness and Exercise",
+    "q_count": 4866
+  },
+  {
+    "id": 541,
+    "platform_id": 43,
+    "is_active": true,
+    "name": "Preventive Healthcare",
+    "q_count": 4764
+  },
+  {
+    "id": 542,
+    "platform_id": 43,
+    "is_active": true,
+    "name": "Mental Health Awareness",
+    "q_count": 4350
+  },
+  {
+    "id": 543,
+    "platform_id": 44,
+    "is_active": true,
+    "name": "Ethical Hacking Basics",
+    "q_count": 5393
+  },
+  {
+    "id": 544,
+    "platform_id": 44,
+    "is_active": true,
+    "name": "Web Application Security",
+    "q_count": 4419
+  },
+  {
+    "id": 545,
+    "platform_id": 44,
+    "is_active": true,
+    "name": "Network Securities",
+    "q_count": 6049
+  },
+  {
+    "id": 546,
+    "platform_id": 44,
+    "is_active": true,
+    "name": "Cyber Law and Ethics",
+    "q_count": 5200
+  },
+  {
+    "id": 547,
+    "platform_id": 1,
+    "is_active": true,
+    "name": "Nursing",
+    "q_count": 11109
+  },
+  {
+    "id": 548,
+    "platform_id": 45,
+    "is_active": true,
+    "name": "Constitutional Studies",
+    "q_count": 6889
+  },
+  {
+    "id": 549,
+    "platform_id": 45,
+    "is_active": true,
+    "name": "Public Administration",
+    "q_count": 7774
+  },
+  {
+    "id": 550,
+    "platform_id": 45,
+    "is_active": true,
+    "name": "World Politics",
+    "q_count": 7538
+  },
+  {
+    "id": 551,
+    "platform_id": 45,
+    "is_active": true,
+    "name": "Indian Political System",
+    "q_count": 7545
+  },
+  {
+    "id": 552,
+    "platform_id": 45,
+    "is_active": true,
+    "name": "Civic Awareness",
+    "q_count": 7069
+  },
+  {
+    "id": 643,
+    "platform_id": 53,
+    "is_active": true,
+    "name": "Tamil Nadu State Board",
+    "q_count": 10024
+  },
+  {
+    "id": 644,
+    "platform_id": 53,
+    "is_active": true,
+    "name": "Karnataka SSLC & PUC",
+    "q_count": 8042
+  },
+  {
+    "id": 645,
+    "platform_id": 53,
+    "is_active": true,
+    "name": "Kerala Board of Public Examinations",
+    "q_count": 9377
+  },
+  {
+    "id": 646,
+    "platform_id": 53,
+    "is_active": true,
+    "name": "Maharashtra State Board (MSBSHSE)",
+    "q_count": 10604
+  },
+  {
+    "id": 647,
+    "platform_id": 53,
+    "is_active": true,
+    "name": "CBSE",
+    "q_count": 10808
+  },
+  {
+    "id": 648,
+    "platform_id": 53,
+    "is_active": true,
+    "name": "Andhra Pradesh / Telangana (BIE/APSCHE)",
+    "q_count": 10519
+  },
+  {
+    "id": 649,
+    "platform_id": 48,
+    "is_active": true,
+    "name": "Fundamentals of Cooking",
+    "q_count": 4655
+  },
+  {
+    "id": 650,
+    "platform_id": 48,
+    "is_active": true,
+    "name": "Cuisines of the World",
+    "q_count": 7613
+  },
+  {
+    "id": 651,
+    "platform_id": 48,
+    "is_active": true,
+    "name": "Nutrition & Dietetics",
+    "q_count": 5511
+  },
+  {
+    "id": 652,
+    "platform_id": 48,
+    "is_active": true,
+    "name": "Baking & Pastry Arts",
+    "q_count": 5923
+  },
+  {
+    "id": 653,
+    "platform_id": 48,
+    "is_active": true,
+    "name": "Food Presentation & Service",
+    "q_count": 4175
+  },
+  {
+    "id": 654,
+    "platform_id": 15,
+    "is_active": true,
+    "name": "Salesforce",
+    "q_count": 21078
+  },
+  {
+    "id": 655,
+    "platform_id": 47,
+    "is_active": true,
+    "name": "Arithmetic",
+    "q_count": 9034
+  },
+  {
+    "id": 656,
+    "platform_id": 47,
+    "is_active": true,
+    "name": "Algebra",
+    "q_count": 4969
+  },
+  {
+    "id": 657,
+    "platform_id": 47,
+    "is_active": true,
+    "name": "Geometry",
+    "q_count": 5393
+  },
+  {
+    "id": 658,
+    "platform_id": 47,
+    "is_active": true,
+    "name": "Mensuration",
+    "q_count": 3305
+  },
+  {
+    "id": 659,
+    "platform_id": 47,
+    "is_active": true,
+    "name": "Trigonometry",
+    "q_count": 2557
+  },
+  {
+    "id": 660,
+    "platform_id": 47,
+    "is_active": true,
+    "name": "Probability",
+    "q_count": 2399
+  },
+  {
+    "id": 661,
+    "platform_id": 47,
+    "is_active": true,
+    "name": "Statistics & Data Interpretation",
+    "q_count": 5724
+  },
+  {
+    "id": 662,
+    "platform_id": 47,
+    "is_active": true,
+    "name": "Number System",
+    "q_count": 3663
+  },
+  {
+    "id": 663,
+    "platform_id": 47,
+    "is_active": true,
+    "name": "Permutations & Combinations",
+    "q_count": 3328
+  },
+  {
+    "id": 664,
+    "platform_id": 47,
+    "is_active": true,
+    "name": "Time, Speed & Distance",
+    "q_count": 3784
+  },
+  {
+    "id": 665,
+    "platform_id": 47,
+    "is_active": true,
+    "name": "Time & Work",
+    "q_count": 2197
+  },
+  {
+    "id": 666,
+    "platform_id": 47,
+    "is_active": true,
+    "name": "Ratio & Proportion",
+    "q_count": 2338
+  },
+  {
+    "id": 667,
+    "platform_id": 47,
+    "is_active": true,
+    "name": "Percentages & Profit & Loss",
+    "q_count": 4355
+  },
+  {
+    "id": 668,
+    "platform_id": 47,
+    "is_active": true,
+    "name": "Simple & Compound Interest",
+    "q_count": 3850
+  },
+  {
+    "id": 669,
+    "platform_id": 39,
+    "is_active": true,
+    "name": "Logic & Critical Thinking",
+    "q_count": 3733
+  },
+  {
+    "id": 670,
+    "platform_id": 39,
+    "is_active": true,
+    "name": "Metaphysics",
+    "q_count": 4866
+  },
+  {
+    "id": 671,
+    "platform_id": 39,
+    "is_active": true,
+    "name": "Philosophy of Religion",
+    "q_count": 4481
+  },
+  {
+    "id": 672,
+    "platform_id": 39,
+    "is_active": true,
+    "name": "Aesthetics",
+    "q_count": 4815
+  },
+  {
+    "id": 673,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Mental Health",
+    "q_count": 5508
+  },
+  {
+    "id": 674,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Mindfulness & Meditation",
+    "q_count": 5960
+  },
+  {
+    "id": 675,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Stress Management",
+    "q_count": 5592
+  },
+  {
+    "id": 676,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Sleep Science & Hygiene",
+    "q_count": 5499
+  },
+  {
+    "id": 677,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Nutrition & Diet",
+    "q_count": 5675
+  },
+  {
+    "id": 678,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Fitness & Exercise Science",
+    "q_count": 6066
+  },
+  {
+    "id": 679,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Habit Building & Behavior Change",
+    "q_count": 5864
+  },
+  {
+    "id": 680,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Time Management & Productivity",
+    "q_count": 5282
+  },
+  {
+    "id": 681,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Emotional Intelligence",
+    "q_count": 5845
+  },
+  {
+    "id": 682,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Relationships & Communication",
+    "q_count": 5621
+  },
+  {
+    "id": 683,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Self-Care & Resilience",
+    "q_count": 6066
+  },
+  {
+    "id": 684,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Digital Wellbeing",
+    "q_count": 5366
+  },
+  {
+    "id": 685,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Work–Life Balance & Burnout",
+    "q_count": 6024
+  },
+  {
+    "id": 686,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Positive Psychology",
+    "q_count": 6035
+  },
+  {
+    "id": 687,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Yoga & Breathwork",
+    "q_count": 6651
+  },
+  {
+    "id": 688,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Longevity & Healthy Aging",
+    "q_count": 5652
+  },
+  {
+    "id": 689,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Women's Health",
+    "q_count": 6093
+  },
+  {
+    "id": 690,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Men's Health",
+    "q_count": 6499
+  },
+  {
+    "id": 691,
+    "platform_id": 46,
+    "is_active": true,
+    "name": "Substance Use & Recovery",
+    "q_count": 5849
+  }
+]

@@ -36,11 +36,13 @@ export const onRequest = defineMiddleware(async (context, next) => {
     const payload = verifySessionToken(token);
 
     if (payload?.userId) {
+      const roleId = payload.roleId ? Number(payload.roleId) : undefined;
+
       locals.user = {
         id: payload.userId,
         email: payload.email,
         name: payload.name,
-        roleId: payload.roleId ?? undefined,
+        roleId: Number.isFinite(roleId) ? roleId : undefined,
         stripeCustomerId: payload.stripeCustomerId ?? undefined,
       };
 

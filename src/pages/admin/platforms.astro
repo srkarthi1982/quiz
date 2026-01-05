@@ -1,0 +1,356 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import {
+  AvButton,
+  AvCard,
+  AvConfirmDialog,
+  AvDrawer,
+  AvEmptyState,
+  AvIcon,
+  AvInput,
+  AvLoading,
+  AvSelect,
+  AvTable,
+  AvTableToolbar,
+  AvTextarea,
+} from "@ansiversa/components";
+import { actions } from "astro:actions";
+import { PAGE_SIZE } from "../../stores/adminPlatforms";
+
+const sort = "id";
+const dir = "desc";
+
+const listResult = await Astro.callAction(actions.fetchPlatforms, {
+  page: 1,
+  pageSize: PAGE_SIZE,
+  sort: { column: sort, direction: dir },
+});
+
+const data = (listResult as any)?.data ?? (listResult as any) ?? {};
+const items = data?.items ?? [];
+const total = data?.total ?? 0;
+const page = data?.page ?? 1;
+const pageSize = data?.pageSize ?? PAGE_SIZE;
+const totalPages = Math.max(1, Math.ceil(total / pageSize));
+
+const initialState = {
+  items,
+  total,
+  page,
+  pageSize,
+  q: "",
+  typeFilter: "",
+  status: "all",
+  sort,
+  dir,
+  drawerOpen: false,
+  editingId: null,
+  pendingDeleteId: null,
+  pendingDeleteName: null,
+  form: { name: "", description: "", icon: "", type: "", qCount: 0, isActive: true },
+  loading: false,
+  error: null,
+  success: null,
+};
+---
+
+<AdminLayout
+  title="Platforms – Ansiversa"
+  description="Manage quiz platforms."
+  crumbItems={[
+    { label: "Home", href: "/" },
+    { label: "Administration", href: "/admin" },
+    { label: "Platforms" },
+  ]}
+>
+  <div
+    class="av-auth-stack-lg"
+    x-data="$store.adminPlatforms"
+    x-init="init && init(JSON.parse($el.dataset.initial))"
+    data-initial={JSON.stringify(initialState)}
+  >
+    <AvCard variant="soft" className="av-auth-stack-sm">
+      <AvTableToolbar title="Platforms">
+        <div slot="title" class="av-admin-titlewrap">
+          <h1 class="av-table-toolbar__title">
+            Platforms <span class="av-admin-count-inline" x-text="`(${total})`"></span>
+          </h1>
+        </div>
+
+        <div slot="search">
+          <div class="av-admin-toolbar-left">
+            <div class="av-admin-toolbar-top">
+              <p class="av-table-toolbar__subtitle av-m-0">Manage quiz platforms.</p>
+              <div class="av-admin-toolbar-actions">
+                <AvButton
+                  size="md"
+                  variant="ghost"
+                  type="button"
+                  title="Reset filters"
+                  aria-label="Reset filters"
+                  @click.prevent="resetFilters()"
+                  :disabled="loading"
+                >
+                  <AvIcon name="refresh" size="md" />
+                </AvButton>
+                <AvButton
+                  size="md"
+                  variant="primary"
+                  type="button"
+                  title="Add platform"
+                  aria-label="Add platform"
+                  @click.prevent="openCreate()"
+                  :disabled="loading"
+                >
+                  <AvIcon name="plus" size="md" />
+                </AvButton>
+              </div>
+            </div>
+
+            <div class="av-admin-filters">
+              <div class="av-admin-filter av-admin-filter--search">
+                <AvInput
+                  name="platform-search"
+                  type="search"
+                  placeholder="Search by platform name…"
+                  x-model="q"
+                  @input="setQuery($event.target.value)"
+                />
+              </div>
+
+              <div class="av-admin-filter av-admin-filter--search">
+                <AvInput
+                  name="platform-type"
+                  type="search"
+                  placeholder="Filter by type…"
+                  x-model="typeFilter"
+                  @input="setType($event.target.value)"
+                />
+              </div>
+
+              <div class="av-admin-filter av-admin-filter--dropdown">
+                <AvSelect
+                  name="platform-status"
+                  aria-label="Filter by status"
+                  x-model="status"
+                  @change="setStatus($event.target.value)"
+                >
+                  <option value="all">All statuses</option>
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                </AvSelect>
+              </div>
+            </div>
+          </div>
+        </div>
+      </AvTableToolbar>
+
+      <template x-if="error">
+        <div class="av-alert av-alert-danger" role="status" x-text="error"></div>
+      </template>
+      <template x-if="success">
+        <div class="av-alert av-alert-success" role="status" x-text="success"></div>
+      </template>
+    </AvCard>
+
+    <div x-bind:aria-busy="loading">
+      <template x-if="!loading && total === 0">
+        <AvEmptyState
+          headline="No platforms yet"
+          description="Create the first platform to populate the table."
+          ctaLabel="Add platform"
+          x-bind:ctaDisabled="loading"
+          @cta="openCreate()"
+        />
+      </template>
+
+      <template x-if="total > 0">
+        <AvCard variant="soft" className="av-auth-stack-sm">
+          <div x-on:av-sort="setSort($event.detail.key, $event.detail.dir)">
+            <AvTable
+              stickyHeader
+              sortKey={sort}
+              sortDir={dir}
+              x-bind:data-sort-key="sort"
+              x-bind:data-sort-dir="dir"
+            >
+              <thead>
+                <tr>
+                  <th>
+                    <button class="av-table__sort" data-av-sort="id" data-av-sort-default="desc">
+                      ID
+                    </button>
+                  </th>
+                  <th>
+                    <button class="av-table__sort" data-av-sort="name">Platform</button>
+                  </th>
+                  <th>
+                    <button class="av-table__sort" data-av-sort="type">Type</button>
+                  </th>
+                  <th>
+                    <button class="av-table__sort" data-av-sort="qCount">Questions</button>
+                  </th>
+                  <th>
+                    <button class="av-table__sort" data-av-sort="status">Status</button>
+                  </th>
+                  <th class="av-table__th-actions">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template x-for="platform in items" :key="platform.id">
+                  <tr>
+                    <td x-text="platform.id"></td>
+                    <td>
+                      <div class="av-table__cell-strong" x-text="platform.name"></div>
+                      <div class="av-table__cell-muted" x-text="platform.description || '—'"></div>
+                    </td>
+                    <td class="av-table__cell-muted" x-text="platform.type || '—'"></td>
+                    <td x-text="platform.qCount ?? 0"></td>
+                    <td>
+                      <span
+                        class="av-badge-primary"
+                        x-show="platform.isActive"
+                      >
+                        Active
+                      </span>
+                      <span
+                        class="av-badge av-badge-soft"
+                        x-show="!platform.isActive"
+                      >
+                        Inactive
+                      </span>
+                    </td>
+                    <td class="av-table__td-actions">
+                      <div class="av-table__cell-actions">
+                        <AvButton
+                          size="sm"
+                          variant="ghost"
+                          type="button"
+                          title="Edit"
+                          aria-label="Edit platform"
+                          @click.prevent="openEdit(platform)"
+                          :disabled="loading"
+                        >
+                          <AvIcon name="edit" size="sm" />
+                        </AvButton>
+                        <AvButton
+                          size="sm"
+                          variant="ghost"
+                          type="button"
+                          title="Delete"
+                          aria-label="Delete platform"
+                          @click.prevent="pendingDeleteId = platform.id; pendingDeleteName = platform.name; window.AvDialog?.open('platforms-delete-dialog')"
+                          :disabled="loading"
+                        >
+                          <AvIcon name="trash" size="sm" />
+                        </AvButton>
+                      </div>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </AvTable>
+          </div>
+        </AvCard>
+      </template>
+    </div>
+
+    <template x-if="!loading && totalPages > 1">
+      <div class="av-table-pager" role="navigation" aria-label="Pagination">
+        <div
+          class="av-table-pager__meta"
+          x-text="`Page ${total === 0 ? 0 : (page - 1) * pageSize + 1} - ${Math.min(page * pageSize, total)} of ${total} entries`"
+        ></div>
+        <div class="av-table-pager__buttons">
+          <AvButton
+            size="sm"
+            variant="ghost"
+            type="button"
+            @click.prevent="goToPage(page - 1)"
+            :disabled="page <= 1 || loading"
+            :aria-disabled="page <= 1 || loading"
+          >
+            <AvIcon name="chevron-left" size="md" />
+          </AvButton>
+          <AvButton
+            size="sm"
+            variant="ghost"
+            type="button"
+            @click.prevent="goToPage(page + 1)"
+            :disabled="page >= totalPages || loading"
+            :aria-disabled="page >= totalPages || loading"
+          >
+            <AvIcon name="chevron-right" size="md" />
+          </AvButton>
+        </div>
+      </div>
+    </template>
+
+    <template x-if="drawerOpen">
+      <div
+        class="av-drawer-overlay"
+        @click.self="closeDrawer()"
+        @keydown.escape.window="closeDrawer()"
+        @close-drawer="closeDrawer()"
+        x-cloak
+      >
+        <AvDrawer title="Manage platform" description="Create or edit a platform.">
+          <form class="av-auth-stack-md" @submit.prevent="submit()">
+            <AvInput label="Platform name" name="name" placeholder="Platform name" required x-model="form.name" />
+            <AvInput label="Type" name="type" placeholder="e.g. exam" x-model="form.type" />
+            <AvInput label="Icon" name="icon" placeholder="Icon name or slug" x-model="form.icon" />
+            <AvInput
+              label="Questions"
+              name="qCount"
+              type="number"
+              min="0"
+              placeholder="0"
+              x-model="form.qCount"
+            />
+            <AvSelect
+              label="Status"
+              name="status"
+              x-bind:value="form.isActive ? 'active' : 'inactive'"
+              @change="form.isActive = $event.target.value === 'active'"
+            >
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </AvSelect>
+            <AvTextarea
+              label="Description"
+              name="description"
+              placeholder="Optional description"
+              x-model="form.description"
+              rows={3}
+            />
+
+            <template x-if="error">
+              <div class="av-alert av-alert-danger" role="status" x-text="error"></div>
+            </template>
+          </form>
+
+          <div slot="footer">
+            <AvButton variant="ghost" type="button" @click="closeDrawer()">Cancel</AvButton>
+            <AvButton type="button" @click="submit" :disabled="loading">
+              <span x-show="!loading" x-text="editingId ? 'Save' : 'Create'"></span>
+              <span x-show="loading">Saving…</span>
+            </AvButton>
+          </div>
+        </AvDrawer>
+      </div>
+    </template>
+
+    <AvLoading x-show="loading" x-cloak label="Loading…" />
+
+    <AvConfirmDialog
+      id="platforms-delete-dialog"
+      headline="Delete platform?"
+      description="This action cannot be undone."
+      confirmLabel="Delete"
+      cancelLabel="Cancel"
+      variant="danger"
+      @av-confirm="pendingDeleteId && remove(pendingDeleteId)"
+      @av-cancel="pendingDeleteId = null; pendingDeleteName = null"
+    />
+  </div>
+</AdminLayout>

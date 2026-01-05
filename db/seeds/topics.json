@@ -1,0 +1,9458 @@
+[
+  {
+    "id": 1,
+    "platform_id": 12,
+    "subject_id": 1,
+    "name": "HTML",
+    "is_active": true,
+    "q_count": 4987
+  },
+  {
+    "id": 2,
+    "platform_id": 12,
+    "subject_id": 1,
+    "name": "JavaScript",
+    "is_active": true,
+    "q_count": 5409
+  },
+  {
+    "id": 3,
+    "platform_id": 12,
+    "subject_id": 1,
+    "name": "CSS",
+    "is_active": true,
+    "q_count": 2869
+  },
+  {
+    "id": 4,
+    "platform_id": 12,
+    "subject_id": 1,
+    "name": "React JS",
+    "is_active": true,
+    "q_count": 2601
+  },
+  {
+    "id": 5,
+    "platform_id": 12,
+    "subject_id": 2,
+    "name": "Android Development (Java/Kotlin)",
+    "is_active": true,
+    "q_count": 3163
+  },
+  {
+    "id": 6,
+    "platform_id": 12,
+    "subject_id": 2,
+    "name": "iOS Development (Swift)",
+    "is_active": true,
+    "q_count": 2756
+  },
+  {
+    "id": 7,
+    "platform_id": 12,
+    "subject_id": 2,
+    "name": "Cross-Platform (Flutter, React Native)",
+    "is_active": true,
+    "q_count": 3221
+  },
+  {
+    "id": 8,
+    "platform_id": 12,
+    "subject_id": 3,
+    "name": "Sorting & Searching",
+    "is_active": true,
+    "q_count": 3284
+  },
+  {
+    "id": 9,
+    "platform_id": 12,
+    "subject_id": 3,
+    "name": "Recursion & Backtracking",
+    "is_active": true,
+    "q_count": 2436
+  },
+  {
+    "id": 10,
+    "platform_id": 12,
+    "subject_id": 3,
+    "name": "Graph Theory",
+    "is_active": true,
+    "q_count": 2036
+  },
+  {
+    "id": 11,
+    "platform_id": 12,
+    "subject_id": 3,
+    "name": "Dynamic Programming",
+    "is_active": true,
+    "q_count": 1622
+  },
+  {
+    "id": 12,
+    "platform_id": 12,
+    "subject_id": 4,
+    "name": "Microsoft SQL Server",
+    "is_active": true,
+    "q_count": 3703
+  },
+  {
+    "id": 13,
+    "platform_id": 12,
+    "subject_id": 4,
+    "name": "Oracle",
+    "is_active": true,
+    "q_count": 3011
+  },
+  {
+    "id": 14,
+    "platform_id": 12,
+    "subject_id": 4,
+    "name": "MySQL",
+    "is_active": true,
+    "q_count": 4324
+  },
+  {
+    "id": 15,
+    "platform_id": 12,
+    "subject_id": 5,
+    "name": "Ethical Hacking",
+    "is_active": true,
+    "q_count": 1642
+  },
+  {
+    "id": 16,
+    "platform_id": 12,
+    "subject_id": 5,
+    "name": "Network Security",
+    "is_active": true,
+    "q_count": 1745
+  },
+  {
+    "id": 17,
+    "platform_id": 12,
+    "subject_id": 5,
+    "name": "Cryptography",
+    "is_active": true,
+    "q_count": 1788
+  },
+  {
+    "id": 18,
+    "platform_id": 12,
+    "subject_id": 6,
+    "name": "AWS Basics",
+    "is_active": true,
+    "q_count": 2723
+  },
+  {
+    "id": 19,
+    "platform_id": 12,
+    "subject_id": 6,
+    "name": "Azure Fundamentals",
+    "is_active": true,
+    "q_count": 2572
+  },
+  {
+    "id": 20,
+    "platform_id": 12,
+    "subject_id": 6,
+    "name": "Google Cloud Platform",
+    "is_active": true,
+    "q_count": 3093
+  },
+  {
+    "id": 21,
+    "platform_id": 12,
+    "subject_id": 7,
+    "name": "Docker & Kubernetes",
+    "is_active": true,
+    "q_count": 2660
+  },
+  {
+    "id": 22,
+    "platform_id": 12,
+    "subject_id": 7,
+    "name": "CI/CD Pipelines",
+    "is_active": true,
+    "q_count": 1793
+  },
+  {
+    "id": 23,
+    "platform_id": 12,
+    "subject_id": 7,
+    "name": "Infrastructure as Code",
+    "is_active": true,
+    "q_count": 1807
+  },
+  {
+    "id": 24,
+    "platform_id": 12,
+    "subject_id": 8,
+    "name": "Software Development Life Cycle",
+    "is_active": true,
+    "q_count": 2140
+  },
+  {
+    "id": 25,
+    "platform_id": 12,
+    "subject_id": 8,
+    "name": "Design Patterns",
+    "is_active": true,
+    "q_count": 2775
+  },
+  {
+    "id": 26,
+    "platform_id": 12,
+    "subject_id": 8,
+    "name": "Agile and Scrum Methodologies",
+    "is_active": true,
+    "q_count": 1803
+  },
+  {
+    "id": 27,
+    "platform_id": 12,
+    "subject_id": 9,
+    "name": "Unity Engine (C#)",
+    "is_active": true,
+    "q_count": 4030
+  },
+  {
+    "id": 28,
+    "platform_id": 12,
+    "subject_id": 9,
+    "name": "Unreal Engine (C++)",
+    "is_active": true,
+    "q_count": 3023
+  },
+  {
+    "id": 29,
+    "platform_id": 12,
+    "subject_id": 9,
+    "name": "Game Physics & AI",
+    "is_active": true,
+    "q_count": 2914
+  },
+  {
+    "id": 30,
+    "platform_id": 12,
+    "subject_id": 10,
+    "name": "Supervised & Unsupervised Learning",
+    "is_active": true,
+    "q_count": 2189
+  },
+  {
+    "id": 31,
+    "platform_id": 12,
+    "subject_id": 10,
+    "name": "Deep Learning & Neural Networks",
+    "is_active": true,
+    "q_count": 2474
+  },
+  {
+    "id": 32,
+    "platform_id": 12,
+    "subject_id": 10,
+    "name": "Natural Language Processing",
+    "is_active": true,
+    "q_count": 2887
+  },
+  {
+    "id": 33,
+    "platform_id": 7,
+    "subject_id": 11,
+    "name": "Syllogisms",
+    "is_active": true,
+    "q_count": 980
+  },
+  {
+    "id": 34,
+    "platform_id": 7,
+    "subject_id": 11,
+    "name": "Statement & Assumptions",
+    "is_active": true,
+    "q_count": 1372
+  },
+  {
+    "id": 35,
+    "platform_id": 7,
+    "subject_id": 11,
+    "name": "Blood Relations",
+    "is_active": true,
+    "q_count": 791
+  },
+  {
+    "id": 36,
+    "platform_id": 7,
+    "subject_id": 11,
+    "name": "Seating Arrangement",
+    "is_active": true,
+    "q_count": 1339
+  },
+  {
+    "id": 37,
+    "platform_id": 7,
+    "subject_id": 12,
+    "name": "Figure Completion",
+    "is_active": true,
+    "q_count": 651
+  },
+  {
+    "id": 38,
+    "platform_id": 7,
+    "subject_id": 12,
+    "name": "Pattern Matching",
+    "is_active": true,
+    "q_count": 1089
+  },
+  {
+    "id": 39,
+    "platform_id": 7,
+    "subject_id": 12,
+    "name": "Mirror & Water Images",
+    "is_active": true,
+    "q_count": 800
+  },
+  {
+    "id": 40,
+    "platform_id": 7,
+    "subject_id": 12,
+    "name": "Paper Folding & Cutting",
+    "is_active": true,
+    "q_count": 1666
+  },
+  {
+    "id": 41,
+    "platform_id": 7,
+    "subject_id": 13,
+    "name": "Cause and Effect",
+    "is_active": true,
+    "q_count": 1566
+  },
+  {
+    "id": 42,
+    "platform_id": 7,
+    "subject_id": 13,
+    "name": "Statement & Conclusion",
+    "is_active": true,
+    "q_count": 1171
+  },
+  {
+    "id": 43,
+    "platform_id": 7,
+    "subject_id": 13,
+    "name": "Coding & Decoding",
+    "is_active": true,
+    "q_count": 1173
+  },
+  {
+    "id": 44,
+    "platform_id": 7,
+    "subject_id": 13,
+    "name": "Logical Deduction",
+    "is_active": true,
+    "q_count": 1189
+  },
+  {
+    "id": 45,
+    "platform_id": 7,
+    "subject_id": 14,
+    "name": "Logical Fallacies",
+    "is_active": true,
+    "q_count": 697
+  },
+  {
+    "id": 46,
+    "platform_id": 7,
+    "subject_id": 14,
+    "name": "Analogies & Relationships",
+    "is_active": true,
+    "q_count": 1003
+  },
+  {
+    "id": 47,
+    "platform_id": 7,
+    "subject_id": 14,
+    "name": "Data Interpretation",
+    "is_active": true,
+    "q_count": 1143
+  },
+  {
+    "id": 48,
+    "platform_id": 7,
+    "subject_id": 14,
+    "name": "Inference & Judgement",
+    "is_active": true,
+    "q_count": 1348
+  },
+  {
+    "id": 49,
+    "platform_id": 7,
+    "subject_id": 15,
+    "name": "Number Puzzles",
+    "is_active": true,
+    "q_count": 974
+  },
+  {
+    "id": 50,
+    "platform_id": 7,
+    "subject_id": 15,
+    "name": "Word Puzzles",
+    "is_active": true,
+    "q_count": 1332
+  },
+  {
+    "id": 51,
+    "platform_id": 7,
+    "subject_id": 15,
+    "name": "Logical Sequences",
+    "is_active": true,
+    "q_count": 896
+  },
+  {
+    "id": 52,
+    "platform_id": 7,
+    "subject_id": 15,
+    "name": "Riddles & Lateral Thinking",
+    "is_active": true,
+    "q_count": 193
+  },
+  {
+    "id": 53,
+    "platform_id": 16,
+    "subject_id": 16,
+    "name": "AWS Certified Solutions Architect",
+    "is_active": true,
+    "q_count": 1206
+  },
+  {
+    "id": 54,
+    "platform_id": 16,
+    "subject_id": 16,
+    "name": "Google Cloud Professional Architect",
+    "is_active": true,
+    "q_count": 856
+  },
+  {
+    "id": 55,
+    "platform_id": 16,
+    "subject_id": 16,
+    "name": "Microsoft Azure Fundamentals",
+    "is_active": true,
+    "q_count": 1076
+  },
+  {
+    "id": 56,
+    "platform_id": 16,
+    "subject_id": 16,
+    "name": "Cloud Security & Compliance",
+    "is_active": true,
+    "q_count": 805
+  },
+  {
+    "id": 57,
+    "platform_id": 16,
+    "subject_id": 17,
+    "name": "Certified Ethical Hacker (CEH)",
+    "is_active": true,
+    "q_count": 1091
+  },
+  {
+    "id": 58,
+    "platform_id": 16,
+    "subject_id": 17,
+    "name": "CompTIA Security+",
+    "is_active": true,
+    "q_count": 639
+  },
+  {
+    "id": 59,
+    "platform_id": 16,
+    "subject_id": 17,
+    "name": "Certified Information Systems Security Professional (CISSP)",
+    "is_active": true,
+    "q_count": 756
+  },
+  {
+    "id": 60,
+    "platform_id": 16,
+    "subject_id": 17,
+    "name": "Penetration Testing & Vulnerability Assessment",
+    "is_active": true,
+    "q_count": 653
+  },
+  {
+    "id": 61,
+    "platform_id": 16,
+    "subject_id": 18,
+    "name": "Cisco Certified Network Associate (CCNA)",
+    "is_active": true,
+    "q_count": 802
+  },
+  {
+    "id": 62,
+    "platform_id": 16,
+    "subject_id": 18,
+    "name": "CompTIA Network+",
+    "is_active": true,
+    "q_count": 558
+  },
+  {
+    "id": 63,
+    "platform_id": 16,
+    "subject_id": 18,
+    "name": "Wireless Networking & Security",
+    "is_active": true,
+    "q_count": 769
+  },
+  {
+    "id": 64,
+    "platform_id": 16,
+    "subject_id": 18,
+    "name": "IPv6 Fundamentals",
+    "is_active": true,
+    "q_count": 758
+  },
+  {
+    "id": 65,
+    "platform_id": 16,
+    "subject_id": 19,
+    "name": "Microsoft Certified: Azure Developer Associate",
+    "is_active": true,
+    "q_count": 852
+  },
+  {
+    "id": 66,
+    "platform_id": 16,
+    "subject_id": 19,
+    "name": "Google Associate Android Developer",
+    "is_active": true,
+    "q_count": 1296
+  },
+  {
+    "id": 67,
+    "platform_id": 16,
+    "subject_id": 19,
+    "name": "Oracle Certified Java Developer",
+    "is_active": true,
+    "q_count": 680
+  },
+  {
+    "id": 68,
+    "platform_id": 16,
+    "subject_id": 19,
+    "name": "Secure Coding Practices",
+    "is_active": true,
+    "q_count": 662
+  },
+  {
+    "id": 69,
+    "platform_id": 16,
+    "subject_id": 20,
+    "name": "Microsoft Certified: Azure Database Administrator",
+    "is_active": true,
+    "q_count": 825
+  },
+  {
+    "id": 70,
+    "platform_id": 16,
+    "subject_id": 20,
+    "name": "Oracle Certified Professional: MySQL",
+    "is_active": true,
+    "q_count": 1067
+  },
+  {
+    "id": 71,
+    "platform_id": 16,
+    "subject_id": 20,
+    "name": "MongoDB Certified Developer Associate",
+    "is_active": true,
+    "q_count": 976
+  },
+  {
+    "id": 72,
+    "platform_id": 16,
+    "subject_id": 20,
+    "name": "PostgreSQL Administration & Optimization",
+    "is_active": true,
+    "q_count": 1204
+  },
+  {
+    "id": 73,
+    "platform_id": 16,
+    "subject_id": 21,
+    "name": "ITIL Foundation Certification",
+    "is_active": true,
+    "q_count": 776
+  },
+  {
+    "id": 74,
+    "platform_id": 16,
+    "subject_id": 21,
+    "name": "COBIT 2019 Framework",
+    "is_active": true,
+    "q_count": 722
+  },
+  {
+    "id": 75,
+    "platform_id": 16,
+    "subject_id": 21,
+    "name": "Lean Six Sigma for IT",
+    "is_active": true,
+    "q_count": 962
+  },
+  {
+    "id": 76,
+    "platform_id": 16,
+    "subject_id": 21,
+    "name": "Agile Service Management",
+    "is_active": true,
+    "q_count": 774
+  },
+  {
+    "id": 77,
+    "platform_id": 16,
+    "subject_id": 22,
+    "name": "Certified Kubernetes Administrator (CKA)",
+    "is_active": true,
+    "q_count": 826
+  },
+  {
+    "id": 78,
+    "platform_id": 16,
+    "subject_id": 22,
+    "name": "Docker Certified Associate (DCA)",
+    "is_active": true,
+    "q_count": 798
+  },
+  {
+    "id": 79,
+    "platform_id": 16,
+    "subject_id": 22,
+    "name": "AWS Certified DevOps Engineer",
+    "is_active": true,
+    "q_count": 1387
+  },
+  {
+    "id": 80,
+    "platform_id": 16,
+    "subject_id": 22,
+    "name": "Terraform Infrastructure as Code",
+    "is_active": true,
+    "q_count": 914
+  },
+  {
+    "id": 81,
+    "platform_id": 6,
+    "subject_id": 23,
+    "name": "UPSC Prelims",
+    "is_active": true,
+    "q_count": 887
+  },
+  {
+    "id": 82,
+    "platform_id": 6,
+    "subject_id": 23,
+    "name": "UPSC Mains",
+    "is_active": true,
+    "q_count": 1360
+  },
+  {
+    "id": 83,
+    "platform_id": 6,
+    "subject_id": 23,
+    "name": "Indian Polity",
+    "is_active": true,
+    "q_count": 1239
+  },
+  {
+    "id": 84,
+    "platform_id": 6,
+    "subject_id": 23,
+    "name": "Current Affairs",
+    "is_active": true,
+    "q_count": 902
+  },
+  {
+    "id": 85,
+    "platform_id": 6,
+    "subject_id": 24,
+    "name": "IBPS PO",
+    "is_active": true,
+    "q_count": 839
+  },
+  {
+    "id": 86,
+    "platform_id": 6,
+    "subject_id": 24,
+    "name": "IBPS Clerk",
+    "is_active": true,
+    "q_count": 911
+  },
+  {
+    "id": 87,
+    "platform_id": 6,
+    "subject_id": 24,
+    "name": "SBI PO",
+    "is_active": true,
+    "q_count": 963
+  },
+  {
+    "id": 88,
+    "platform_id": 6,
+    "subject_id": 24,
+    "name": "RBI Grade B",
+    "is_active": true,
+    "q_count": 729
+  },
+  {
+    "id": 89,
+    "platform_id": 6,
+    "subject_id": 25,
+    "name": "RRB NTPC",
+    "is_active": true,
+    "q_count": 677
+  },
+  {
+    "id": 90,
+    "platform_id": 6,
+    "subject_id": 25,
+    "name": "RRB Group D",
+    "is_active": true,
+    "q_count": 1168
+  },
+  {
+    "id": 91,
+    "platform_id": 6,
+    "subject_id": 25,
+    "name": "ALP and Technician",
+    "is_active": true,
+    "q_count": 800
+  },
+  {
+    "id": 92,
+    "platform_id": 6,
+    "subject_id": 25,
+    "name": "Railway Junior Engineer (JE)",
+    "is_active": true,
+    "q_count": 783
+  },
+  {
+    "id": 93,
+    "platform_id": 6,
+    "subject_id": 26,
+    "name": "SSC CGL",
+    "is_active": true,
+    "q_count": 923
+  },
+  {
+    "id": 94,
+    "platform_id": 6,
+    "subject_id": 26,
+    "name": "SSC CHSL",
+    "is_active": true,
+    "q_count": 763
+  },
+  {
+    "id": 95,
+    "platform_id": 6,
+    "subject_id": 26,
+    "name": "SSC GD Constable",
+    "is_active": true,
+    "q_count": 1198
+  },
+  {
+    "id": 96,
+    "platform_id": 6,
+    "subject_id": 26,
+    "name": "SSC Stenographer",
+    "is_active": true,
+    "q_count": 1051
+  },
+  {
+    "id": 97,
+    "platform_id": 6,
+    "subject_id": 27,
+    "name": "NDA & NA Exam",
+    "is_active": true,
+    "q_count": 1271
+  },
+  {
+    "id": 98,
+    "platform_id": 6,
+    "subject_id": 27,
+    "name": "CDS Exam",
+    "is_active": true,
+    "q_count": 1030
+  },
+  {
+    "id": 99,
+    "platform_id": 6,
+    "subject_id": 27,
+    "name": "AFCAT",
+    "is_active": true,
+    "q_count": 758
+  },
+  {
+    "id": 100,
+    "platform_id": 6,
+    "subject_id": 27,
+    "name": "Indian Coast Guard Exam",
+    "is_active": true,
+    "q_count": 805
+  },
+  {
+    "id": 101,
+    "platform_id": 6,
+    "subject_id": 28,
+    "name": "State PSC Exams",
+    "is_active": true,
+    "q_count": 996
+  },
+  {
+    "id": 102,
+    "platform_id": 6,
+    "subject_id": 28,
+    "name": "State Police Exams",
+    "is_active": true,
+    "q_count": 623
+  },
+  {
+    "id": 103,
+    "platform_id": 6,
+    "subject_id": 28,
+    "name": "State Revenue Exams",
+    "is_active": true,
+    "q_count": 772
+  },
+  {
+    "id": 104,
+    "platform_id": 6,
+    "subject_id": 28,
+    "name": "Gram Panchayat Exams",
+    "is_active": true,
+    "q_count": 815
+  },
+  {
+    "id": 105,
+    "platform_id": 6,
+    "subject_id": 29,
+    "name": "CTET",
+    "is_active": true,
+    "q_count": 788
+  },
+  {
+    "id": 106,
+    "platform_id": 6,
+    "subject_id": 29,
+    "name": "TET (State-Level)",
+    "is_active": true,
+    "q_count": 858
+  },
+  {
+    "id": 107,
+    "platform_id": 6,
+    "subject_id": 29,
+    "name": "UGC NET",
+    "is_active": true,
+    "q_count": 761
+  },
+  {
+    "id": 108,
+    "platform_id": 6,
+    "subject_id": 29,
+    "name": "KVS & NVS Recruitment",
+    "is_active": true,
+    "q_count": 1383
+  },
+  {
+    "id": 109,
+    "platform_id": 3,
+    "subject_id": 30,
+    "name": "CLAT",
+    "is_active": true,
+    "q_count": 1013
+  },
+  {
+    "id": 110,
+    "platform_id": 3,
+    "subject_id": 30,
+    "name": "AILET",
+    "is_active": true,
+    "q_count": 763
+  },
+  {
+    "id": 111,
+    "platform_id": 3,
+    "subject_id": 30,
+    "name": "LSAT India",
+    "is_active": true,
+    "q_count": 842
+  },
+  {
+    "id": 112,
+    "platform_id": 3,
+    "subject_id": 30,
+    "name": "SLAT",
+    "is_active": true,
+    "q_count": 1115
+  },
+  {
+    "id": 113,
+    "platform_id": 3,
+    "subject_id": 31,
+    "name": "PCS-J",
+    "is_active": true,
+    "q_count": 852
+  },
+  {
+    "id": 114,
+    "platform_id": 3,
+    "subject_id": 31,
+    "name": "Delhi Judicial Services",
+    "is_active": true,
+    "q_count": 892
+  },
+  {
+    "id": 115,
+    "platform_id": 3,
+    "subject_id": 31,
+    "name": "Madhya Pradesh Judiciary",
+    "is_active": true,
+    "q_count": 778
+  },
+  {
+    "id": 116,
+    "platform_id": 3,
+    "subject_id": 31,
+    "name": "Haryana Judiciary",
+    "is_active": true,
+    "q_count": 825
+  },
+  {
+    "id": 117,
+    "platform_id": 3,
+    "subject_id": 32,
+    "name": "Company Law",
+    "is_active": true,
+    "q_count": 1283
+  },
+  {
+    "id": 118,
+    "platform_id": 3,
+    "subject_id": 32,
+    "name": "Contract Law",
+    "is_active": true,
+    "q_count": 830
+  },
+  {
+    "id": 119,
+    "platform_id": 3,
+    "subject_id": 32,
+    "name": "Intellectual Property Rights",
+    "is_active": true,
+    "q_count": 706
+  },
+  {
+    "id": 120,
+    "platform_id": 3,
+    "subject_id": 32,
+    "name": "Competition Law",
+    "is_active": true,
+    "q_count": 1115
+  },
+  {
+    "id": 121,
+    "platform_id": 3,
+    "subject_id": 33,
+    "name": "Fundamental Rights",
+    "is_active": true,
+    "q_count": 863
+  },
+  {
+    "id": 122,
+    "platform_id": 3,
+    "subject_id": 33,
+    "name": "Directive Principles of State Policy",
+    "is_active": true,
+    "q_count": 719
+  },
+  {
+    "id": 123,
+    "platform_id": 3,
+    "subject_id": 33,
+    "name": "Separation of Powers",
+    "is_active": true,
+    "q_count": 1059
+  },
+  {
+    "id": 124,
+    "platform_id": 3,
+    "subject_id": 33,
+    "name": "Judicial Review",
+    "is_active": true,
+    "q_count": 734
+  },
+  {
+    "id": 125,
+    "platform_id": 3,
+    "subject_id": 34,
+    "name": "Indian Penal Code (IPC)",
+    "is_active": true,
+    "q_count": 1205
+  },
+  {
+    "id": 126,
+    "platform_id": 3,
+    "subject_id": 34,
+    "name": "Criminal Procedure Code (CrPC)",
+    "is_active": true,
+    "q_count": 1303
+  },
+  {
+    "id": 127,
+    "platform_id": 3,
+    "subject_id": 34,
+    "name": "Evidence Act",
+    "is_active": true,
+    "q_count": 1473
+  },
+  {
+    "id": 128,
+    "platform_id": 3,
+    "subject_id": 34,
+    "name": "Juvenile Justice Act",
+    "is_active": true,
+    "q_count": 960
+  },
+  {
+    "id": 129,
+    "platform_id": 3,
+    "subject_id": 35,
+    "name": "Public International Law",
+    "is_active": true,
+    "q_count": 1140
+  },
+  {
+    "id": 130,
+    "platform_id": 3,
+    "subject_id": 35,
+    "name": "Private International Law",
+    "is_active": true,
+    "q_count": 799
+  },
+  {
+    "id": 131,
+    "platform_id": 3,
+    "subject_id": 35,
+    "name": "Human Rights Law",
+    "is_active": true,
+    "q_count": 748
+  },
+  {
+    "id": 132,
+    "platform_id": 3,
+    "subject_id": 35,
+    "name": "Law of Treaties",
+    "is_active": true,
+    "q_count": 1083
+  },
+  {
+    "id": 133,
+    "platform_id": 1,
+    "subject_id": 36,
+    "name": "NEET UG",
+    "is_active": true,
+    "q_count": 1039
+  },
+  {
+    "id": 134,
+    "platform_id": 1,
+    "subject_id": 36,
+    "name": "NEET PG",
+    "is_active": true,
+    "q_count": 797
+  },
+  {
+    "id": 135,
+    "platform_id": 1,
+    "subject_id": 36,
+    "name": "AIIMS Entrance",
+    "is_active": true,
+    "q_count": 950
+  },
+  {
+    "id": 136,
+    "platform_id": 1,
+    "subject_id": 36,
+    "name": "JIPMER",
+    "is_active": true,
+    "q_count": 714
+  },
+  {
+    "id": 137,
+    "platform_id": 1,
+    "subject_id": 36,
+    "name": "FMGE",
+    "is_active": true,
+    "q_count": 683
+  },
+  {
+    "id": 138,
+    "platform_id": 1,
+    "subject_id": 37,
+    "name": "Anatomy",
+    "is_active": true,
+    "q_count": 1278
+  },
+  {
+    "id": 139,
+    "platform_id": 1,
+    "subject_id": 37,
+    "name": "Physiology",
+    "is_active": true,
+    "q_count": 1089
+  },
+  {
+    "id": 140,
+    "platform_id": 1,
+    "subject_id": 37,
+    "name": "Biochemistry",
+    "is_active": true,
+    "q_count": 1246
+  },
+  {
+    "id": 141,
+    "platform_id": 1,
+    "subject_id": 38,
+    "name": "Pathology",
+    "is_active": true,
+    "q_count": 1036
+  },
+  {
+    "id": 142,
+    "platform_id": 1,
+    "subject_id": 38,
+    "name": "Microbiology",
+    "is_active": true,
+    "q_count": 1299
+  },
+  {
+    "id": 143,
+    "platform_id": 1,
+    "subject_id": 38,
+    "name": "Pharmacology",
+    "is_active": true,
+    "q_count": 834
+  },
+  {
+    "id": 144,
+    "platform_id": 1,
+    "subject_id": 38,
+    "name": "Forensic Medicine",
+    "is_active": true,
+    "q_count": 1178
+  },
+  {
+    "id": 145,
+    "platform_id": 1,
+    "subject_id": 39,
+    "name": "General Medicine",
+    "is_active": true,
+    "q_count": 1149
+  },
+  {
+    "id": 146,
+    "platform_id": 1,
+    "subject_id": 39,
+    "name": "General Surgery",
+    "is_active": true,
+    "q_count": 1361
+  },
+  {
+    "id": 147,
+    "platform_id": 1,
+    "subject_id": 39,
+    "name": "Pediatrics",
+    "is_active": true,
+    "q_count": 1229
+  },
+  {
+    "id": 148,
+    "platform_id": 1,
+    "subject_id": 39,
+    "name": "Obstetrics and Gynecology",
+    "is_active": true,
+    "q_count": 1304
+  },
+  {
+    "id": 149,
+    "platform_id": 1,
+    "subject_id": 39,
+    "name": "Orthopedics",
+    "is_active": true,
+    "q_count": 1315
+  },
+  {
+    "id": 150,
+    "platform_id": 1,
+    "subject_id": 39,
+    "name": "Ophthalmology",
+    "is_active": true,
+    "q_count": 1213
+  },
+  {
+    "id": 151,
+    "platform_id": 1,
+    "subject_id": 39,
+    "name": "ENT (Otorhinolaryngology)",
+    "is_active": true,
+    "q_count": 1348
+  },
+  {
+    "id": 152,
+    "platform_id": 1,
+    "subject_id": 40,
+    "name": "Cardiology",
+    "is_active": true,
+    "q_count": 1312
+  },
+  {
+    "id": 153,
+    "platform_id": 1,
+    "subject_id": 40,
+    "name": "Neurology",
+    "is_active": true,
+    "q_count": 887
+  },
+  {
+    "id": 154,
+    "platform_id": 1,
+    "subject_id": 40,
+    "name": "Oncology",
+    "is_active": true,
+    "q_count": 987
+  },
+  {
+    "id": 155,
+    "platform_id": 1,
+    "subject_id": 40,
+    "name": "Radiology",
+    "is_active": true,
+    "q_count": 869
+  },
+  {
+    "id": 156,
+    "platform_id": 1,
+    "subject_id": 40,
+    "name": "Psychiatry",
+    "is_active": true,
+    "q_count": 1183
+  },
+  {
+    "id": 157,
+    "platform_id": 1,
+    "subject_id": 40,
+    "name": "Dermatology",
+    "is_active": true,
+    "q_count": 1080
+  },
+  {
+    "id": 158,
+    "platform_id": 1,
+    "subject_id": 40,
+    "name": "Anesthesiology",
+    "is_active": true,
+    "q_count": 1030
+  },
+  {
+    "id": 159,
+    "platform_id": 2,
+    "subject_id": 41,
+    "name": "JEE Main",
+    "is_active": true,
+    "q_count": 923
+  },
+  {
+    "id": 160,
+    "platform_id": 2,
+    "subject_id": 41,
+    "name": "JEE Advanced",
+    "is_active": true,
+    "q_count": 932
+  },
+  {
+    "id": 161,
+    "platform_id": 2,
+    "subject_id": 41,
+    "name": "BITSAT",
+    "is_active": true,
+    "q_count": 702
+  },
+  {
+    "id": 162,
+    "platform_id": 2,
+    "subject_id": 41,
+    "name": "VITEEE",
+    "is_active": true,
+    "q_count": 749
+  },
+  {
+    "id": 163,
+    "platform_id": 2,
+    "subject_id": 41,
+    "name": "SRMJEEE",
+    "is_active": true,
+    "q_count": 799
+  },
+  {
+    "id": 164,
+    "platform_id": 2,
+    "subject_id": 42,
+    "name": "Mathematics for Engineers",
+    "is_active": true,
+    "q_count": 884
+  },
+  {
+    "id": 165,
+    "platform_id": 2,
+    "subject_id": 42,
+    "name": "Physics for Engineers",
+    "is_active": true,
+    "q_count": 762
+  },
+  {
+    "id": 166,
+    "platform_id": 2,
+    "subject_id": 42,
+    "name": "Engineering Mechanics",
+    "is_active": true,
+    "q_count": 1256
+  },
+  {
+    "id": 167,
+    "platform_id": 2,
+    "subject_id": 42,
+    "name": "Thermodynamics",
+    "is_active": true,
+    "q_count": 730
+  },
+  {
+    "id": 168,
+    "platform_id": 2,
+    "subject_id": 42,
+    "name": "Electrical Circuits",
+    "is_active": true,
+    "q_count": 1234
+  },
+  {
+    "id": 169,
+    "platform_id": 2,
+    "subject_id": 42,
+    "name": "Digital Electronics",
+    "is_active": true,
+    "q_count": 1296
+  },
+  {
+    "id": 170,
+    "platform_id": 2,
+    "subject_id": 42,
+    "name": "Computer Programming",
+    "is_active": true,
+    "q_count": 1291
+  },
+  {
+    "id": 171,
+    "platform_id": 2,
+    "subject_id": 42,
+    "name": "Fluid Mechanics",
+    "is_active": true,
+    "q_count": 847
+  },
+  {
+    "id": 172,
+    "platform_id": 2,
+    "subject_id": 43,
+    "name": "Mechanical Engineering",
+    "is_active": true,
+    "q_count": 1222
+  },
+  {
+    "id": 173,
+    "platform_id": 2,
+    "subject_id": 43,
+    "name": "Civil Engineering",
+    "is_active": true,
+    "q_count": 1342
+  },
+  {
+    "id": 174,
+    "platform_id": 2,
+    "subject_id": 43,
+    "name": "Electrical Engineering",
+    "is_active": true,
+    "q_count": 1001
+  },
+  {
+    "id": 175,
+    "platform_id": 2,
+    "subject_id": 43,
+    "name": "Electronics and Communication Engineering",
+    "is_active": true,
+    "q_count": 734
+  },
+  {
+    "id": 176,
+    "platform_id": 2,
+    "subject_id": 43,
+    "name": "Computer Science and Engineering",
+    "is_active": true,
+    "q_count": 1290
+  },
+  {
+    "id": 177,
+    "platform_id": 2,
+    "subject_id": 43,
+    "name": "Chemical Engineering",
+    "is_active": true,
+    "q_count": 1017
+  },
+  {
+    "id": 178,
+    "platform_id": 2,
+    "subject_id": 43,
+    "name": "Aerospace Engineering",
+    "is_active": true,
+    "q_count": 1145
+  },
+  {
+    "id": 179,
+    "platform_id": 2,
+    "subject_id": 43,
+    "name": "Biomedical Engineering",
+    "is_active": true,
+    "q_count": 926
+  },
+  {
+    "id": 180,
+    "platform_id": 4,
+    "subject_id": 44,
+    "name": "Stock Market",
+    "is_active": true,
+    "q_count": 958
+  },
+  {
+    "id": 181,
+    "platform_id": 4,
+    "subject_id": 44,
+    "name": "Bonds and Fixed Income",
+    "is_active": true,
+    "q_count": 743
+  },
+  {
+    "id": 182,
+    "platform_id": 4,
+    "subject_id": 44,
+    "name": "Commodities Trading",
+    "is_active": true,
+    "q_count": 1172
+  },
+  {
+    "id": 183,
+    "platform_id": 4,
+    "subject_id": 44,
+    "name": "Forex and Currency Exchange",
+    "is_active": true,
+    "q_count": 1107
+  },
+  {
+    "id": 184,
+    "platform_id": 4,
+    "subject_id": 44,
+    "name": "Derivatives and Futures",
+    "is_active": true,
+    "q_count": 1068
+  },
+  {
+    "id": 185,
+    "platform_id": 4,
+    "subject_id": 45,
+    "name": "Financial Statements",
+    "is_active": true,
+    "q_count": 756
+  },
+  {
+    "id": 186,
+    "platform_id": 4,
+    "subject_id": 45,
+    "name": "Balance Sheets",
+    "is_active": true,
+    "q_count": 692
+  },
+  {
+    "id": 187,
+    "platform_id": 4,
+    "subject_id": 45,
+    "name": "Income Statement",
+    "is_active": true,
+    "q_count": 1098
+  },
+  {
+    "id": 188,
+    "platform_id": 4,
+    "subject_id": 45,
+    "name": "Cash Flow Statement",
+    "is_active": true,
+    "q_count": 1008
+  },
+  {
+    "id": 189,
+    "platform_id": 4,
+    "subject_id": 45,
+    "name": "Cost Accounting",
+    "is_active": true,
+    "q_count": 1033
+  },
+  {
+    "id": 190,
+    "platform_id": 4,
+    "subject_id": 45,
+    "name": "Financial Ratios",
+    "is_active": true,
+    "q_count": 849
+  },
+  {
+    "id": 191,
+    "platform_id": 4,
+    "subject_id": 46,
+    "name": "Stock Analysis",
+    "is_active": true,
+    "q_count": 673
+  },
+  {
+    "id": 192,
+    "platform_id": 4,
+    "subject_id": 46,
+    "name": "Mutual Funds",
+    "is_active": true,
+    "q_count": 763
+  },
+  {
+    "id": 193,
+    "platform_id": 4,
+    "subject_id": 46,
+    "name": "Portfolio Management",
+    "is_active": true,
+    "q_count": 811
+  },
+  {
+    "id": 194,
+    "platform_id": 4,
+    "subject_id": 46,
+    "name": "Hedge Funds",
+    "is_active": true,
+    "q_count": 873
+  },
+  {
+    "id": 195,
+    "platform_id": 4,
+    "subject_id": 46,
+    "name": "Private Equity",
+    "is_active": true,
+    "q_count": 718
+  },
+  {
+    "id": 196,
+    "platform_id": 4,
+    "subject_id": 47,
+    "name": "Budgeting and Saving",
+    "is_active": true,
+    "q_count": 716
+  },
+  {
+    "id": 197,
+    "platform_id": 4,
+    "subject_id": 47,
+    "name": "Debt Management",
+    "is_active": true,
+    "q_count": 751
+  },
+  {
+    "id": 198,
+    "platform_id": 4,
+    "subject_id": 47,
+    "name": "Retirement Planning",
+    "is_active": true,
+    "q_count": 794
+  },
+  {
+    "id": 199,
+    "platform_id": 4,
+    "subject_id": 47,
+    "name": "Tax Planning",
+    "is_active": true,
+    "q_count": 787
+  },
+  {
+    "id": 200,
+    "platform_id": 4,
+    "subject_id": 47,
+    "name": "Insurance and Risk Management",
+    "is_active": true,
+    "q_count": 743
+  },
+  {
+    "id": 201,
+    "platform_id": 4,
+    "subject_id": 48,
+    "name": "Enterprise Risk Management",
+    "is_active": true,
+    "q_count": 720
+  },
+  {
+    "id": 202,
+    "platform_id": 4,
+    "subject_id": 48,
+    "name": "Credit Risk Management",
+    "is_active": true,
+    "q_count": 732
+  },
+  {
+    "id": 203,
+    "platform_id": 4,
+    "subject_id": 48,
+    "name": "Market Risk Management",
+    "is_active": true,
+    "q_count": 742
+  },
+  {
+    "id": 204,
+    "platform_id": 4,
+    "subject_id": 48,
+    "name": "Operational Risk Management",
+    "is_active": true,
+    "q_count": 642
+  },
+  {
+    "id": 205,
+    "platform_id": 5,
+    "subject_id": 49,
+    "name": "Warning Signs",
+    "is_active": true,
+    "q_count": 1591
+  },
+  {
+    "id": 206,
+    "platform_id": 5,
+    "subject_id": 49,
+    "name": "Regulatory Signs",
+    "is_active": true,
+    "q_count": 1375
+  },
+  {
+    "id": 207,
+    "platform_id": 5,
+    "subject_id": 49,
+    "name": "Informational Signs",
+    "is_active": true,
+    "q_count": 1374
+  },
+  {
+    "id": 208,
+    "platform_id": 5,
+    "subject_id": 49,
+    "name": "Pedestrian Signals",
+    "is_active": true,
+    "q_count": 1422
+  },
+  {
+    "id": 209,
+    "platform_id": 5,
+    "subject_id": 49,
+    "name": "Traffic Lights",
+    "is_active": true,
+    "q_count": 1263
+  },
+  {
+    "id": 210,
+    "platform_id": 5,
+    "subject_id": 50,
+    "name": "Speed Limits",
+    "is_active": true,
+    "q_count": 1822
+  },
+  {
+    "id": 211,
+    "platform_id": 5,
+    "subject_id": 50,
+    "name": "Lane Discipline",
+    "is_active": true,
+    "q_count": 1624
+  },
+  {
+    "id": 212,
+    "platform_id": 5,
+    "subject_id": 50,
+    "name": "Right of Way",
+    "is_active": true,
+    "q_count": 1630
+  },
+  {
+    "id": 213,
+    "platform_id": 5,
+    "subject_id": 50,
+    "name": "Parking Rules",
+    "is_active": true,
+    "q_count": 1692
+  },
+  {
+    "id": 214,
+    "platform_id": 5,
+    "subject_id": 50,
+    "name": "Seat Belt and Safety Rules",
+    "is_active": true,
+    "q_count": 1546
+  },
+  {
+    "id": 215,
+    "platform_id": 5,
+    "subject_id": 51,
+    "name": "Starting and Stopping the Vehicle",
+    "is_active": true,
+    "q_count": 1743
+  },
+  {
+    "id": 216,
+    "platform_id": 5,
+    "subject_id": 51,
+    "name": "Shifting Gears",
+    "is_active": true,
+    "q_count": 1764
+  },
+  {
+    "id": 217,
+    "platform_id": 5,
+    "subject_id": 51,
+    "name": "Steering Control",
+    "is_active": true,
+    "q_count": 1825
+  },
+  {
+    "id": 218,
+    "platform_id": 5,
+    "subject_id": 51,
+    "name": "Braking Techniques",
+    "is_active": true,
+    "q_count": 1779
+  },
+  {
+    "id": 219,
+    "platform_id": 5,
+    "subject_id": 51,
+    "name": "Reverse Parking",
+    "is_active": true,
+    "q_count": 1894
+  },
+  {
+    "id": 220,
+    "platform_id": 5,
+    "subject_id": 52,
+    "name": "Basic First Aid",
+    "is_active": true,
+    "q_count": 1743
+  },
+  {
+    "id": 221,
+    "platform_id": 5,
+    "subject_id": 52,
+    "name": "Accident Procedures",
+    "is_active": true,
+    "q_count": 1664
+  },
+  {
+    "id": 222,
+    "platform_id": 5,
+    "subject_id": 52,
+    "name": "Fire Safety in Vehicles",
+    "is_active": true,
+    "q_count": 1568
+  },
+  {
+    "id": 223,
+    "platform_id": 5,
+    "subject_id": 52,
+    "name": "Emergency Braking",
+    "is_active": true,
+    "q_count": 1686
+  },
+  {
+    "id": 224,
+    "platform_id": 5,
+    "subject_id": 52,
+    "name": "Driving in Adverse Conditions",
+    "is_active": true,
+    "q_count": 2642
+  },
+  {
+    "id": 225,
+    "platform_id": 5,
+    "subject_id": 53,
+    "name": "Fuel Efficiency Tips",
+    "is_active": true,
+    "q_count": 2357
+  },
+  {
+    "id": 226,
+    "platform_id": 5,
+    "subject_id": 53,
+    "name": "Eco-friendly Driving Practices",
+    "is_active": true,
+    "q_count": 1838
+  },
+  {
+    "id": 227,
+    "platform_id": 5,
+    "subject_id": 53,
+    "name": "Reducing Carbon Footprint",
+    "is_active": true,
+    "q_count": 1725
+  },
+  {
+    "id": 228,
+    "platform_id": 5,
+    "subject_id": 53,
+    "name": "Vehicle Maintenance for Sustainability",
+    "is_active": true,
+    "q_count": 2771
+  },
+  {
+    "id": 229,
+    "platform_id": 8,
+    "subject_id": 54,
+    "name": "Linear Equations",
+    "is_active": true,
+    "q_count": 1137
+  },
+  {
+    "id": 230,
+    "platform_id": 8,
+    "subject_id": 54,
+    "name": "Polynomials",
+    "is_active": true,
+    "q_count": 816
+  },
+  {
+    "id": 231,
+    "platform_id": 8,
+    "subject_id": 54,
+    "name": "Quadratic Equations",
+    "is_active": true,
+    "q_count": 881
+  },
+  {
+    "id": 232,
+    "platform_id": 8,
+    "subject_id": 54,
+    "name": "Matrices and Determinants",
+    "is_active": true,
+    "q_count": 707
+  },
+  {
+    "id": 233,
+    "platform_id": 8,
+    "subject_id": 54,
+    "name": "Inequalities",
+    "is_active": true,
+    "q_count": 1010
+  },
+  {
+    "id": 234,
+    "platform_id": 8,
+    "subject_id": 55,
+    "name": "Lines and Angles",
+    "is_active": true,
+    "q_count": 1101
+  },
+  {
+    "id": 235,
+    "platform_id": 8,
+    "subject_id": 55,
+    "name": "Triangles and Quadrilaterals",
+    "is_active": true,
+    "q_count": 901
+  },
+  {
+    "id": 236,
+    "platform_id": 8,
+    "subject_id": 55,
+    "name": "Circles",
+    "is_active": true,
+    "q_count": 777
+  },
+  {
+    "id": 237,
+    "platform_id": 8,
+    "subject_id": 55,
+    "name": "Coordinate Geometry",
+    "is_active": true,
+    "q_count": 1237
+  },
+  {
+    "id": 238,
+    "platform_id": 8,
+    "subject_id": 55,
+    "name": "Solid Geometry",
+    "is_active": true,
+    "q_count": 645
+  },
+  {
+    "id": 239,
+    "platform_id": 8,
+    "subject_id": 56,
+    "name": "Limits and Continuity",
+    "is_active": true,
+    "q_count": 788
+  },
+  {
+    "id": 240,
+    "platform_id": 8,
+    "subject_id": 56,
+    "name": "Differentiation",
+    "is_active": true,
+    "q_count": 1212
+  },
+  {
+    "id": 241,
+    "platform_id": 8,
+    "subject_id": 56,
+    "name": "Integration",
+    "is_active": true,
+    "q_count": 1185
+  },
+  {
+    "id": 242,
+    "platform_id": 8,
+    "subject_id": 56,
+    "name": "Applications of Derivatives",
+    "is_active": true,
+    "q_count": 999
+  },
+  {
+    "id": 243,
+    "platform_id": 8,
+    "subject_id": 56,
+    "name": "Applications of Integrals",
+    "is_active": true,
+    "q_count": 861
+  },
+  {
+    "id": 244,
+    "platform_id": 8,
+    "subject_id": 57,
+    "name": "Probability Theory",
+    "is_active": true,
+    "q_count": 1119
+  },
+  {
+    "id": 245,
+    "platform_id": 8,
+    "subject_id": 57,
+    "name": "Permutations and Combinations",
+    "is_active": true,
+    "q_count": 857
+  },
+  {
+    "id": 246,
+    "platform_id": 8,
+    "subject_id": 57,
+    "name": "Random Variables",
+    "is_active": true,
+    "q_count": 1105
+  },
+  {
+    "id": 247,
+    "platform_id": 8,
+    "subject_id": 57,
+    "name": "Binomial Distribution",
+    "is_active": true,
+    "q_count": 774
+  },
+  {
+    "id": 248,
+    "platform_id": 8,
+    "subject_id": 57,
+    "name": "Normal Distribution",
+    "is_active": true,
+    "q_count": 774
+  },
+  {
+    "id": 249,
+    "platform_id": 8,
+    "subject_id": 58,
+    "name": "Descriptive Statistics",
+    "is_active": true,
+    "q_count": 793
+  },
+  {
+    "id": 250,
+    "platform_id": 8,
+    "subject_id": 58,
+    "name": "Inferential Statistics",
+    "is_active": true,
+    "q_count": 600
+  },
+  {
+    "id": 251,
+    "platform_id": 8,
+    "subject_id": 58,
+    "name": "Hypothesis Testing",
+    "is_active": true,
+    "q_count": 652
+  },
+  {
+    "id": 252,
+    "platform_id": 8,
+    "subject_id": 58,
+    "name": "Regression Analysis",
+    "is_active": true,
+    "q_count": 930
+  },
+  {
+    "id": 253,
+    "platform_id": 8,
+    "subject_id": 58,
+    "name": "Analysis of Variance (ANOVA)",
+    "is_active": true,
+    "q_count": 695
+  },
+  {
+    "id": 254,
+    "platform_id": 10,
+    "subject_id": 59,
+    "name": "Indus Valley Civilization",
+    "is_active": true,
+    "q_count": 1467
+  },
+  {
+    "id": 255,
+    "platform_id": 10,
+    "subject_id": 59,
+    "name": "Ancient Egypt",
+    "is_active": true,
+    "q_count": 1816
+  },
+  {
+    "id": 256,
+    "platform_id": 10,
+    "subject_id": 59,
+    "name": "Greek Civilization",
+    "is_active": true,
+    "q_count": 1144
+  },
+  {
+    "id": 257,
+    "platform_id": 10,
+    "subject_id": 59,
+    "name": "Roman Empire",
+    "is_active": true,
+    "q_count": 1206
+  },
+  {
+    "id": 258,
+    "platform_id": 10,
+    "subject_id": 59,
+    "name": "Mauryan Empire",
+    "is_active": true,
+    "q_count": 972
+  },
+  {
+    "id": 259,
+    "platform_id": 10,
+    "subject_id": 60,
+    "name": "The Byzantine Empire",
+    "is_active": true,
+    "q_count": 1590
+  },
+  {
+    "id": 260,
+    "platform_id": 10,
+    "subject_id": 60,
+    "name": "Feudalism in Europe",
+    "is_active": true,
+    "q_count": 1295
+  },
+  {
+    "id": 261,
+    "platform_id": 10,
+    "subject_id": 60,
+    "name": "The Crusades",
+    "is_active": true,
+    "q_count": 1389
+  },
+  {
+    "id": 262,
+    "platform_id": 10,
+    "subject_id": 60,
+    "name": "The Mongol Empire",
+    "is_active": true,
+    "q_count": 1026
+  },
+  {
+    "id": 263,
+    "platform_id": 10,
+    "subject_id": 60,
+    "name": "The Ottoman Empire",
+    "is_active": true,
+    "q_count": 1226
+  },
+  {
+    "id": 264,
+    "platform_id": 10,
+    "subject_id": 61,
+    "name": "World War I",
+    "is_active": true,
+    "q_count": 1404
+  },
+  {
+    "id": 265,
+    "platform_id": 10,
+    "subject_id": 61,
+    "name": "World War II",
+    "is_active": true,
+    "q_count": 1488
+  },
+  {
+    "id": 266,
+    "platform_id": 10,
+    "subject_id": 61,
+    "name": "The Cold War",
+    "is_active": true,
+    "q_count": 1642
+  },
+  {
+    "id": 267,
+    "platform_id": 10,
+    "subject_id": 61,
+    "name": "The Industrial Revolution",
+    "is_active": true,
+    "q_count": 1613
+  },
+  {
+    "id": 268,
+    "platform_id": 10,
+    "subject_id": 61,
+    "name": "Colonialism and Independence Movements",
+    "is_active": true,
+    "q_count": 1431
+  },
+  {
+    "id": 269,
+    "platform_id": 11,
+    "subject_id": 62,
+    "name": "Landforms and Geomorphology",
+    "is_active": true,
+    "q_count": 2361
+  },
+  {
+    "id": 270,
+    "platform_id": 11,
+    "subject_id": 62,
+    "name": "Climates and Weather Patterns",
+    "is_active": true,
+    "q_count": 1871
+  },
+  {
+    "id": 271,
+    "platform_id": 11,
+    "subject_id": 62,
+    "name": "Oceanography",
+    "is_active": true,
+    "q_count": 1408
+  },
+  {
+    "id": 272,
+    "platform_id": 11,
+    "subject_id": 62,
+    "name": "Natural Disasters",
+    "is_active": true,
+    "q_count": 1507
+  },
+  {
+    "id": 273,
+    "platform_id": 11,
+    "subject_id": 62,
+    "name": "Soils and Vegetation",
+    "is_active": true,
+    "q_count": 1646
+  },
+  {
+    "id": 274,
+    "platform_id": 11,
+    "subject_id": 63,
+    "name": "Population Distribution",
+    "is_active": true,
+    "q_count": 1346
+  },
+  {
+    "id": 275,
+    "platform_id": 11,
+    "subject_id": 63,
+    "name": "Urbanization and Migration",
+    "is_active": true,
+    "q_count": 1356
+  },
+  {
+    "id": 276,
+    "platform_id": 11,
+    "subject_id": 63,
+    "name": "Cultural Geography",
+    "is_active": true,
+    "q_count": 1239
+  },
+  {
+    "id": 277,
+    "platform_id": 11,
+    "subject_id": 63,
+    "name": "Economic Geography",
+    "is_active": true,
+    "q_count": 1867
+  },
+  {
+    "id": 278,
+    "platform_id": 11,
+    "subject_id": 63,
+    "name": "Political Geography",
+    "is_active": true,
+    "q_count": 1388
+  },
+  {
+    "id": 279,
+    "platform_id": 11,
+    "subject_id": 64,
+    "name": "Environmental Impact and Sustainability",
+    "is_active": true,
+    "q_count": 1152
+  },
+  {
+    "id": 280,
+    "platform_id": 11,
+    "subject_id": 64,
+    "name": "Climate Change",
+    "is_active": true,
+    "q_count": 1461
+  },
+  {
+    "id": 281,
+    "platform_id": 11,
+    "subject_id": 64,
+    "name": "Biodiversity and Conservation",
+    "is_active": true,
+    "q_count": 2036
+  },
+  {
+    "id": 282,
+    "platform_id": 11,
+    "subject_id": 64,
+    "name": "Environmental Pollution",
+    "is_active": true,
+    "q_count": 1588
+  },
+  {
+    "id": 283,
+    "platform_id": 11,
+    "subject_id": 64,
+    "name": "Resource Management",
+    "is_active": true,
+    "q_count": 1420
+  },
+  {
+    "id": 284,
+    "platform_id": 13,
+    "subject_id": 65,
+    "name": "Verbal Communication",
+    "is_active": true,
+    "q_count": 1587
+  },
+  {
+    "id": 285,
+    "platform_id": 13,
+    "subject_id": 65,
+    "name": "Non-verbal Communication",
+    "is_active": true,
+    "q_count": 1959
+  },
+  {
+    "id": 286,
+    "platform_id": 13,
+    "subject_id": 65,
+    "name": "Listening Skills",
+    "is_active": true,
+    "q_count": 1256
+  },
+  {
+    "id": 287,
+    "platform_id": 13,
+    "subject_id": 65,
+    "name": "Public Speaking",
+    "is_active": true,
+    "q_count": 1558
+  },
+  {
+    "id": 288,
+    "platform_id": 13,
+    "subject_id": 65,
+    "name": "Written Communication",
+    "is_active": true,
+    "q_count": 1352
+  },
+  {
+    "id": 289,
+    "platform_id": 13,
+    "subject_id": 66,
+    "name": "Motivating a Team",
+    "is_active": true,
+    "q_count": 1421
+  },
+  {
+    "id": 290,
+    "platform_id": 13,
+    "subject_id": 66,
+    "name": "Decision Making",
+    "is_active": true,
+    "q_count": 1128
+  },
+  {
+    "id": 291,
+    "platform_id": 13,
+    "subject_id": 66,
+    "name": "Conflict Resolution",
+    "is_active": true,
+    "q_count": 1548
+  },
+  {
+    "id": 292,
+    "platform_id": 13,
+    "subject_id": 66,
+    "name": "Delegation",
+    "is_active": true,
+    "q_count": 1055
+  },
+  {
+    "id": 293,
+    "platform_id": 13,
+    "subject_id": 66,
+    "name": "Vision and Goal Setting",
+    "is_active": true,
+    "q_count": 1007
+  },
+  {
+    "id": 294,
+    "platform_id": 13,
+    "subject_id": 67,
+    "name": "Collaboration and Cooperation",
+    "is_active": true,
+    "q_count": 1337
+  },
+  {
+    "id": 295,
+    "platform_id": 13,
+    "subject_id": 67,
+    "name": "Handling Group Dynamics",
+    "is_active": true,
+    "q_count": 1269
+  },
+  {
+    "id": 296,
+    "platform_id": 13,
+    "subject_id": 67,
+    "name": "Trust Building",
+    "is_active": true,
+    "q_count": 1227
+  },
+  {
+    "id": 297,
+    "platform_id": 13,
+    "subject_id": 67,
+    "name": "Problem Solving in Teams",
+    "is_active": true,
+    "q_count": 1409
+  },
+  {
+    "id": 298,
+    "platform_id": 13,
+    "subject_id": 67,
+    "name": "Cross-functional Teams",
+    "is_active": true,
+    "q_count": 1234
+  },
+  {
+    "id": 299,
+    "platform_id": 13,
+    "subject_id": 68,
+    "name": "Prioritization",
+    "is_active": true,
+    "q_count": 1331
+  },
+  {
+    "id": 300,
+    "platform_id": 13,
+    "subject_id": 68,
+    "name": "Task Scheduling",
+    "is_active": true,
+    "q_count": 1217
+  },
+  {
+    "id": 301,
+    "platform_id": 13,
+    "subject_id": 68,
+    "name": "Avoiding Procrastination",
+    "is_active": true,
+    "q_count": 1341
+  },
+  {
+    "id": 302,
+    "platform_id": 13,
+    "subject_id": 68,
+    "name": "Setting Deadlines",
+    "is_active": true,
+    "q_count": 1190
+  },
+  {
+    "id": 303,
+    "platform_id": 13,
+    "subject_id": 68,
+    "name": "Work-Life Balance",
+    "is_active": true,
+    "q_count": 1368
+  },
+  {
+    "id": 313,
+    "platform_id": 15,
+    "subject_id": 73,
+    "name": "Leadership and Strategy",
+    "is_active": true,
+    "q_count": 1244
+  },
+  {
+    "id": 314,
+    "platform_id": 15,
+    "subject_id": 73,
+    "name": "Project Management",
+    "is_active": true,
+    "q_count": 833
+  },
+  {
+    "id": 315,
+    "platform_id": 15,
+    "subject_id": 73,
+    "name": "Organizational Behavior",
+    "is_active": true,
+    "q_count": 1222
+  },
+  {
+    "id": 316,
+    "platform_id": 15,
+    "subject_id": 73,
+    "name": "Human Resource Management",
+    "is_active": true,
+    "q_count": 898
+  },
+  {
+    "id": 317,
+    "platform_id": 15,
+    "subject_id": 73,
+    "name": "Business Communication",
+    "is_active": true,
+    "q_count": 1089
+  },
+  {
+    "id": 318,
+    "platform_id": 15,
+    "subject_id": 74,
+    "name": "Marketing Principles",
+    "is_active": true,
+    "q_count": 682
+  },
+  {
+    "id": 319,
+    "platform_id": 15,
+    "subject_id": 74,
+    "name": "Digital Marketing",
+    "is_active": true,
+    "q_count": 806
+  },
+  {
+    "id": 320,
+    "platform_id": 15,
+    "subject_id": 74,
+    "name": "Branding",
+    "is_active": true,
+    "q_count": 746
+  },
+  {
+    "id": 321,
+    "platform_id": 15,
+    "subject_id": 74,
+    "name": "Market Research",
+    "is_active": true,
+    "q_count": 586
+  },
+  {
+    "id": 322,
+    "platform_id": 15,
+    "subject_id": 74,
+    "name": "Consumer Behavior",
+    "is_active": true,
+    "q_count": 834
+  },
+  {
+    "id": 323,
+    "platform_id": 15,
+    "subject_id": 75,
+    "name": "Corporate Finance",
+    "is_active": true,
+    "q_count": 1109
+  },
+  {
+    "id": 324,
+    "platform_id": 15,
+    "subject_id": 75,
+    "name": "Investment Analysis",
+    "is_active": true,
+    "q_count": 724
+  },
+  {
+    "id": 325,
+    "platform_id": 15,
+    "subject_id": 75,
+    "name": "Financial Markets",
+    "is_active": true,
+    "q_count": 1170
+  },
+  {
+    "id": 326,
+    "platform_id": 15,
+    "subject_id": 75,
+    "name": "Financial Accounting",
+    "is_active": true,
+    "q_count": 1136
+  },
+  {
+    "id": 327,
+    "platform_id": 15,
+    "subject_id": 75,
+    "name": "Risk Management",
+    "is_active": true,
+    "q_count": 630
+  },
+  {
+    "id": 328,
+    "platform_id": 15,
+    "subject_id": 76,
+    "name": "Business Idea Generation",
+    "is_active": true,
+    "q_count": 793
+  },
+  {
+    "id": 329,
+    "platform_id": 15,
+    "subject_id": 76,
+    "name": "Business Plan Development",
+    "is_active": true,
+    "q_count": 928
+  },
+  {
+    "id": 330,
+    "platform_id": 15,
+    "subject_id": 76,
+    "name": "Startup Funding",
+    "is_active": true,
+    "q_count": 867
+  },
+  {
+    "id": 331,
+    "platform_id": 15,
+    "subject_id": 76,
+    "name": "Scaling a Business",
+    "is_active": true,
+    "q_count": 1055
+  },
+  {
+    "id": 332,
+    "platform_id": 15,
+    "subject_id": 76,
+    "name": "Entrepreneurial Marketing",
+    "is_active": true,
+    "q_count": 927
+  },
+  {
+    "id": 338,
+    "platform_id": 17,
+    "subject_id": 85,
+    "name": "Marketing Strategies",
+    "is_active": true,
+    "q_count": 1268
+  },
+  {
+    "id": 339,
+    "platform_id": 17,
+    "subject_id": 85,
+    "name": "Marketing Research",
+    "is_active": true,
+    "q_count": 1089
+  },
+  {
+    "id": 340,
+    "platform_id": 17,
+    "subject_id": 85,
+    "name": "Customer Behavior",
+    "is_active": true,
+    "q_count": 1792
+  },
+  {
+    "id": 341,
+    "platform_id": 17,
+    "subject_id": 85,
+    "name": "Product Positioning",
+    "is_active": true,
+    "q_count": 951
+  },
+  {
+    "id": 342,
+    "platform_id": 17,
+    "subject_id": 85,
+    "name": "Pricing Strategies",
+    "is_active": true,
+    "q_count": 1234
+  },
+  {
+    "id": 343,
+    "platform_id": 17,
+    "subject_id": 86,
+    "name": "Search Engine Optimization (SEO)",
+    "is_active": true,
+    "q_count": 1175
+  },
+  {
+    "id": 344,
+    "platform_id": 17,
+    "subject_id": 86,
+    "name": "Email Marketing",
+    "is_active": true,
+    "q_count": 1153
+  },
+  {
+    "id": 345,
+    "platform_id": 17,
+    "subject_id": 86,
+    "name": "Content Marketing",
+    "is_active": true,
+    "q_count": 1212
+  },
+  {
+    "id": 346,
+    "platform_id": 17,
+    "subject_id": 86,
+    "name": "Google Ads",
+    "is_active": true,
+    "q_count": 1747
+  },
+  {
+    "id": 347,
+    "platform_id": 17,
+    "subject_id": 86,
+    "name": "Affiliate Marketing",
+    "is_active": true,
+    "q_count": 1436
+  },
+  {
+    "id": 348,
+    "platform_id": 17,
+    "subject_id": 87,
+    "name": "Facebook Advertising",
+    "is_active": true,
+    "q_count": 1260
+  },
+  {
+    "id": 349,
+    "platform_id": 17,
+    "subject_id": 87,
+    "name": "Instagram Marketing",
+    "is_active": true,
+    "q_count": 1653
+  },
+  {
+    "id": 350,
+    "platform_id": 17,
+    "subject_id": 87,
+    "name": "LinkedIn Marketing",
+    "is_active": true,
+    "q_count": 1322
+  },
+  {
+    "id": 351,
+    "platform_id": 17,
+    "subject_id": 87,
+    "name": "Social Media Analytics",
+    "is_active": true,
+    "q_count": 1226
+  },
+  {
+    "id": 352,
+    "platform_id": 17,
+    "subject_id": 87,
+    "name": "Influencer Marketing",
+    "is_active": true,
+    "q_count": 1272
+  },
+  {
+    "id": 353,
+    "platform_id": 17,
+    "subject_id": 88,
+    "name": "Brand Strategy",
+    "is_active": true,
+    "q_count": 1102
+  },
+  {
+    "id": 354,
+    "platform_id": 17,
+    "subject_id": 88,
+    "name": "Brand Identity",
+    "is_active": true,
+    "q_count": 985
+  },
+  {
+    "id": 355,
+    "platform_id": 17,
+    "subject_id": 88,
+    "name": "Brand Equity",
+    "is_active": true,
+    "q_count": 937
+  },
+  {
+    "id": 356,
+    "platform_id": 17,
+    "subject_id": 88,
+    "name": "Customer Loyalty",
+    "is_active": true,
+    "q_count": 1208
+  },
+  {
+    "id": 357,
+    "platform_id": 17,
+    "subject_id": 88,
+    "name": "Brand Communication",
+    "is_active": true,
+    "q_count": 1049
+  },
+  {
+    "id": 358,
+    "platform_id": 18,
+    "subject_id": 89,
+    "name": "Newtonian Mechanics",
+    "is_active": true,
+    "q_count": 2613
+  },
+  {
+    "id": 359,
+    "platform_id": 18,
+    "subject_id": 89,
+    "name": "Lagrangian Mechanics",
+    "is_active": true,
+    "q_count": 1562
+  },
+  {
+    "id": 360,
+    "platform_id": 18,
+    "subject_id": 89,
+    "name": "Rigid Body Dynamics",
+    "is_active": true,
+    "q_count": 1675
+  },
+  {
+    "id": 361,
+    "platform_id": 18,
+    "subject_id": 90,
+    "name": "Wave Function",
+    "is_active": true,
+    "q_count": 1974
+  },
+  {
+    "id": 362,
+    "platform_id": 18,
+    "subject_id": 90,
+    "name": "Schrodinger Equation",
+    "is_active": true,
+    "q_count": 1756
+  },
+  {
+    "id": 363,
+    "platform_id": 18,
+    "subject_id": 91,
+    "name": "Laws of Thermodynamics",
+    "is_active": true,
+    "q_count": 1693
+  },
+  {
+    "id": 364,
+    "platform_id": 18,
+    "subject_id": 92,
+    "name": "Electrostatics",
+    "is_active": true,
+    "q_count": 1810
+  },
+  {
+    "id": 365,
+    "platform_id": 18,
+    "subject_id": 92,
+    "name": "Magnetostatics",
+    "is_active": true,
+    "q_count": 1645
+  },
+  {
+    "id": 366,
+    "platform_id": 18,
+    "subject_id": 93,
+    "name": "Reflection and Refraction",
+    "is_active": true,
+    "q_count": 1664
+  },
+  {
+    "id": 367,
+    "platform_id": 18,
+    "subject_id": 93,
+    "name": "Lens and Mirrors",
+    "is_active": true,
+    "q_count": 2552
+  },
+  {
+    "id": 368,
+    "platform_id": 18,
+    "subject_id": 94,
+    "name": "Radioactive Decay",
+    "is_active": true,
+    "q_count": 1661
+  },
+  {
+    "id": 369,
+    "platform_id": 18,
+    "subject_id": 94,
+    "name": "Fission and Fusion",
+    "is_active": true,
+    "q_count": 1641
+  },
+  {
+    "id": 370,
+    "platform_id": 19,
+    "subject_id": 95,
+    "name": "Alkanes, Alkenes, Alkynes",
+    "is_active": true,
+    "q_count": 1790
+  },
+  {
+    "id": 371,
+    "platform_id": 19,
+    "subject_id": 95,
+    "name": "Aromatic Compounds",
+    "is_active": true,
+    "q_count": 1553
+  },
+  {
+    "id": 372,
+    "platform_id": 19,
+    "subject_id": 95,
+    "name": "Reactions in Organic Chemistry",
+    "is_active": true,
+    "q_count": 2238
+  },
+  {
+    "id": 373,
+    "platform_id": 19,
+    "subject_id": 96,
+    "name": "Transition Metals",
+    "is_active": true,
+    "q_count": 2248
+  },
+  {
+    "id": 374,
+    "platform_id": 19,
+    "subject_id": 96,
+    "name": "Acids and Bases",
+    "is_active": true,
+    "q_count": 1998
+  },
+  {
+    "id": 375,
+    "platform_id": 19,
+    "subject_id": 97,
+    "name": "Thermodynamics in Chemistry",
+    "is_active": true,
+    "q_count": 1742
+  },
+  {
+    "id": 376,
+    "platform_id": 19,
+    "subject_id": 97,
+    "name": "Chemical Kinetics",
+    "is_active": true,
+    "q_count": 2193
+  },
+  {
+    "id": 377,
+    "platform_id": 19,
+    "subject_id": 98,
+    "name": "Chromatography",
+    "is_active": true,
+    "q_count": 2142
+  },
+  {
+    "id": 378,
+    "platform_id": 19,
+    "subject_id": 98,
+    "name": "Spectroscopy",
+    "is_active": true,
+    "q_count": 2210
+  },
+  {
+    "id": 379,
+    "platform_id": 19,
+    "subject_id": 99,
+    "name": "Enzyme Kinetics",
+    "is_active": true,
+    "q_count": 1283
+  },
+  {
+    "id": 380,
+    "platform_id": 19,
+    "subject_id": 99,
+    "name": "Metabolism",
+    "is_active": true,
+    "q_count": 2093
+  },
+  {
+    "id": 381,
+    "platform_id": 20,
+    "subject_id": 100,
+    "name": "Plant Structure and Function",
+    "is_active": true,
+    "q_count": 2652
+  },
+  {
+    "id": 382,
+    "platform_id": 20,
+    "subject_id": 100,
+    "name": "Photosynthesis",
+    "is_active": true,
+    "q_count": 1600
+  },
+  {
+    "id": 383,
+    "platform_id": 20,
+    "subject_id": 100,
+    "name": "Plant Genetics",
+    "is_active": true,
+    "q_count": 1741
+  },
+  {
+    "id": 384,
+    "platform_id": 20,
+    "subject_id": 101,
+    "name": "Animal Classification",
+    "is_active": true,
+    "q_count": 2435
+  },
+  {
+    "id": 385,
+    "platform_id": 20,
+    "subject_id": 101,
+    "name": "Human Anatomy",
+    "is_active": true,
+    "q_count": 2555
+  },
+  {
+    "id": 386,
+    "platform_id": 20,
+    "subject_id": 102,
+    "name": "Bacteria and Viruses",
+    "is_active": true,
+    "q_count": 2038
+  },
+  {
+    "id": 387,
+    "platform_id": 20,
+    "subject_id": 102,
+    "name": "Fungi and Protists",
+    "is_active": true,
+    "q_count": 1868
+  },
+  {
+    "id": 388,
+    "platform_id": 20,
+    "subject_id": 103,
+    "name": "DNA and RNA",
+    "is_active": true,
+    "q_count": 1804
+  },
+  {
+    "id": 389,
+    "platform_id": 20,
+    "subject_id": 103,
+    "name": "Genetic Disorders",
+    "is_active": true,
+    "q_count": 1824
+  },
+  {
+    "id": 390,
+    "platform_id": 20,
+    "subject_id": 104,
+    "name": "Genetic Engineering",
+    "is_active": true,
+    "q_count": 2000
+  },
+  {
+    "id": 391,
+    "platform_id": 20,
+    "subject_id": 104,
+    "name": "Cloning and Stem Cells",
+    "is_active": true,
+    "q_count": 1364
+  },
+  {
+    "id": 392,
+    "platform_id": 9,
+    "subject_id": 105,
+    "name": "Introduction to Banking",
+    "is_active": true,
+    "q_count": 1967
+  },
+  {
+    "id": 393,
+    "platform_id": 9,
+    "subject_id": 105,
+    "name": "Types of Banks",
+    "is_active": true,
+    "q_count": 2255
+  },
+  {
+    "id": 394,
+    "platform_id": 9,
+    "subject_id": 106,
+    "name": "Loans and Advances",
+    "is_active": true,
+    "q_count": 2069
+  },
+  {
+    "id": 395,
+    "platform_id": 9,
+    "subject_id": 106,
+    "name": "Bonds and Securities",
+    "is_active": true,
+    "q_count": 2683
+  },
+  {
+    "id": 396,
+    "platform_id": 9,
+    "subject_id": 107,
+    "name": "Account Opening",
+    "is_active": true,
+    "q_count": 2014
+  },
+  {
+    "id": 397,
+    "platform_id": 9,
+    "subject_id": 107,
+    "name": "Cheque Clearing Process",
+    "is_active": true,
+    "q_count": 1511
+  },
+  {
+    "id": 398,
+    "platform_id": 9,
+    "subject_id": 108,
+    "name": "Credit Risk",
+    "is_active": true,
+    "q_count": 1749
+  },
+  {
+    "id": 399,
+    "platform_id": 9,
+    "subject_id": 108,
+    "name": "Operational Risk",
+    "is_active": true,
+    "q_count": 1603
+  },
+  {
+    "id": 400,
+    "platform_id": 9,
+    "subject_id": 109,
+    "name": "Basel Accords",
+    "is_active": true,
+    "q_count": 3091
+  },
+  {
+    "id": 401,
+    "platform_id": 9,
+    "subject_id": 109,
+    "name": "Regulatory Authorities",
+    "is_active": true,
+    "q_count": 1876
+  },
+  {
+    "id": 510,
+    "platform_id": 14,
+    "subject_id": 138,
+    "name": "Grammar and Usage",
+    "is_active": true,
+    "q_count": 1095
+  },
+  {
+    "id": 511,
+    "platform_id": 14,
+    "subject_id": 138,
+    "name": "Vocabulary and Spelling",
+    "is_active": true,
+    "q_count": 1067
+  },
+  {
+    "id": 512,
+    "platform_id": 14,
+    "subject_id": 138,
+    "name": "Listening Comprehension",
+    "is_active": true,
+    "q_count": 1542
+  },
+  {
+    "id": 513,
+    "platform_id": 14,
+    "subject_id": 138,
+    "name": "Reading Comprehension",
+    "is_active": true,
+    "q_count": 1475
+  },
+  {
+    "id": 514,
+    "platform_id": 14,
+    "subject_id": 138,
+    "name": "Writing Skills",
+    "is_active": true,
+    "q_count": 1535
+  },
+  {
+    "id": 515,
+    "platform_id": 14,
+    "subject_id": 139,
+    "name": "Grammar",
+    "is_active": true,
+    "q_count": 1501
+  },
+  {
+    "id": 516,
+    "platform_id": 14,
+    "subject_id": 139,
+    "name": "Vocabulary Skills",
+    "is_active": true,
+    "q_count": 1168
+  },
+  {
+    "id": 517,
+    "platform_id": 14,
+    "subject_id": 139,
+    "name": "Pronunciation and Phonics",
+    "is_active": true,
+    "q_count": 1403
+  },
+  {
+    "id": 518,
+    "platform_id": 14,
+    "subject_id": 139,
+    "name": "Communication Skills",
+    "is_active": true,
+    "q_count": 1343
+  },
+  {
+    "id": 519,
+    "platform_id": 14,
+    "subject_id": 139,
+    "name": "Conversational French",
+    "is_active": true,
+    "q_count": 1301
+  },
+  {
+    "id": 520,
+    "platform_id": 14,
+    "subject_id": 140,
+    "name": "Grammar and Syntax",
+    "is_active": true,
+    "q_count": 1562
+  },
+  {
+    "id": 521,
+    "platform_id": 14,
+    "subject_id": 140,
+    "name": "Vocabulary Skill",
+    "is_active": true,
+    "q_count": 1524
+  },
+  {
+    "id": 522,
+    "platform_id": 14,
+    "subject_id": 140,
+    "name": "Reading",
+    "is_active": true,
+    "q_count": 1493
+  },
+  {
+    "id": 523,
+    "platform_id": 14,
+    "subject_id": 140,
+    "name": "Pronunciation and Intonation",
+    "is_active": true,
+    "q_count": 1176
+  },
+  {
+    "id": 524,
+    "platform_id": 14,
+    "subject_id": 140,
+    "name": "Cultural Aspects of Spanish Language",
+    "is_active": true,
+    "q_count": 1337
+  },
+  {
+    "id": 525,
+    "platform_id": 14,
+    "subject_id": 141,
+    "name": "Grammar and Structure",
+    "is_active": true,
+    "q_count": 1384
+  },
+  {
+    "id": 526,
+    "platform_id": 14,
+    "subject_id": 141,
+    "name": "Vocabulary",
+    "is_active": true,
+    "q_count": 1087
+  },
+  {
+    "id": 527,
+    "platform_id": 14,
+    "subject_id": 141,
+    "name": "Writing Skill",
+    "is_active": true,
+    "q_count": 1470
+  },
+  {
+    "id": 528,
+    "platform_id": 14,
+    "subject_id": 141,
+    "name": "Pronunciation",
+    "is_active": true,
+    "q_count": 1414
+  },
+  {
+    "id": 529,
+    "platform_id": 14,
+    "subject_id": 141,
+    "name": "Listening Skill",
+    "is_active": true,
+    "q_count": 1486
+  },
+  {
+    "id": 530,
+    "platform_id": 12,
+    "subject_id": 1,
+    "name": "Alpine JS",
+    "is_active": true,
+    "q_count": 1724
+  },
+  {
+    "id": 532,
+    "platform_id": 12,
+    "subject_id": 1,
+    "name": "Angular JS",
+    "is_active": true,
+    "q_count": 1717
+  },
+  {
+    "id": 533,
+    "platform_id": 12,
+    "subject_id": 1,
+    "name": "Astro JS",
+    "is_active": true,
+    "q_count": 2201
+  },
+  {
+    "id": 544,
+    "platform_id": 24,
+    "subject_id": 144,
+    "name": "World War",
+    "is_active": true,
+    "q_count": 1101
+  },
+  {
+    "id": 545,
+    "platform_id": 24,
+    "subject_id": 144,
+    "name": "Ancient Civilizations",
+    "is_active": true,
+    "q_count": 997
+  },
+  {
+    "id": 546,
+    "platform_id": 24,
+    "subject_id": 144,
+    "name": "Indian Independence",
+    "is_active": true,
+    "q_count": 997
+  },
+  {
+    "id": 547,
+    "platform_id": 24,
+    "subject_id": 145,
+    "name": "Continents and Oceans",
+    "is_active": true,
+    "q_count": 532
+  },
+  {
+    "id": 548,
+    "platform_id": 24,
+    "subject_id": 145,
+    "name": "World Capitals",
+    "is_active": true,
+    "q_count": 535
+  },
+  {
+    "id": 549,
+    "platform_id": 24,
+    "subject_id": 145,
+    "name": "Mountains and Rivers",
+    "is_active": true,
+    "q_count": 1031
+  },
+  {
+    "id": 550,
+    "platform_id": 24,
+    "subject_id": 146,
+    "name": "Physics Basics",
+    "is_active": true,
+    "q_count": 816
+  },
+  {
+    "id": 551,
+    "platform_id": 24,
+    "subject_id": 146,
+    "name": "Human Body",
+    "is_active": true,
+    "q_count": 1286
+  },
+  {
+    "id": 552,
+    "platform_id": 24,
+    "subject_id": 146,
+    "name": "Space and Astronomy",
+    "is_active": true,
+    "q_count": 817
+  },
+  {
+    "id": 553,
+    "platform_id": 24,
+    "subject_id": 147,
+    "name": "Olympics",
+    "is_active": true,
+    "q_count": 694
+  },
+  {
+    "id": 554,
+    "platform_id": 24,
+    "subject_id": 147,
+    "name": "Cricket",
+    "is_active": true,
+    "q_count": 1071
+  },
+  {
+    "id": 555,
+    "platform_id": 24,
+    "subject_id": 147,
+    "name": "Football",
+    "is_active": true,
+    "q_count": 912
+  },
+  {
+    "id": 556,
+    "platform_id": 24,
+    "subject_id": 148,
+    "name": "World Leaders",
+    "is_active": true,
+    "q_count": 582
+  },
+  {
+    "id": 557,
+    "platform_id": 24,
+    "subject_id": 148,
+    "name": "Government Systems",
+    "is_active": true,
+    "q_count": 1139
+  },
+  {
+    "id": 558,
+    "platform_id": 24,
+    "subject_id": 149,
+    "name": "Famous Paintings",
+    "is_active": true,
+    "q_count": 846
+  },
+  {
+    "id": 559,
+    "platform_id": 24,
+    "subject_id": 149,
+    "name": "World Literature",
+    "is_active": true,
+    "q_count": 906
+  },
+  {
+    "id": 560,
+    "platform_id": 24,
+    "subject_id": 149,
+    "name": "Classical Music",
+    "is_active": true,
+    "q_count": 871
+  },
+  {
+    "id": 561,
+    "platform_id": 24,
+    "subject_id": 149,
+    "name": "Poetry and Poets",
+    "is_active": true,
+    "q_count": 846
+  },
+  {
+    "id": 562,
+    "platform_id": 24,
+    "subject_id": 150,
+    "name": "Internet and Web",
+    "is_active": true,
+    "q_count": 1274
+  },
+  {
+    "id": 563,
+    "platform_id": 24,
+    "subject_id": 150,
+    "name": "Inventions and Inventors",
+    "is_active": true,
+    "q_count": 743
+  },
+  {
+    "id": 564,
+    "platform_id": 24,
+    "subject_id": 150,
+    "name": "Computers and Hardware",
+    "is_active": true,
+    "q_count": 809
+  },
+  {
+    "id": 565,
+    "platform_id": 24,
+    "subject_id": 150,
+    "name": "Mobile Technology",
+    "is_active": true,
+    "q_count": 848
+  },
+  {
+    "id": 566,
+    "platform_id": 24,
+    "subject_id": 151,
+    "name": "Global Currencies",
+    "is_active": true,
+    "q_count": 728
+  },
+  {
+    "id": 567,
+    "platform_id": 24,
+    "subject_id": 151,
+    "name": "Economic Systems",
+    "is_active": true,
+    "q_count": 754
+  },
+  {
+    "id": 568,
+    "platform_id": 24,
+    "subject_id": 151,
+    "name": "International Trade",
+    "is_active": true,
+    "q_count": 798
+  },
+  {
+    "id": 569,
+    "platform_id": 24,
+    "subject_id": 151,
+    "name": "Indian Economy",
+    "is_active": true,
+    "q_count": 1223
+  },
+  {
+    "id": 570,
+    "platform_id": 24,
+    "subject_id": 152,
+    "name": "Festivals Around the World",
+    "is_active": true,
+    "q_count": 1276
+  },
+  {
+    "id": 571,
+    "platform_id": 24,
+    "subject_id": 152,
+    "name": "World Religions",
+    "is_active": true,
+    "q_count": 833
+  },
+  {
+    "id": 572,
+    "platform_id": 24,
+    "subject_id": 152,
+    "name": "Traditions and Customs",
+    "is_active": true,
+    "q_count": 865
+  },
+  {
+    "id": 573,
+    "platform_id": 24,
+    "subject_id": 152,
+    "name": "Languages and Scripts",
+    "is_active": true,
+    "q_count": 1174
+  },
+  {
+    "id": 574,
+    "platform_id": 24,
+    "subject_id": 153,
+    "name": "Recent World Events",
+    "is_active": true,
+    "q_count": 1012
+  },
+  {
+    "id": 575,
+    "platform_id": 24,
+    "subject_id": 153,
+    "name": "International Relations",
+    "is_active": true,
+    "q_count": 866
+  },
+  {
+    "id": 576,
+    "platform_id": 24,
+    "subject_id": 153,
+    "name": "Environmental News",
+    "is_active": true,
+    "q_count": 869
+  },
+  {
+    "id": 577,
+    "platform_id": 24,
+    "subject_id": 153,
+    "name": "Global Health Updates",
+    "is_active": true,
+    "q_count": 915
+  },
+  {
+    "id": 584,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "C",
+    "is_active": true,
+    "q_count": 3091
+  },
+  {
+    "id": 585,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "C++",
+    "is_active": true,
+    "q_count": 2764
+  },
+  {
+    "id": 586,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "Java",
+    "is_active": true,
+    "q_count": 3135
+  },
+  {
+    "id": 587,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "C#",
+    "is_active": true,
+    "q_count": 2650
+  },
+  {
+    "id": 588,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "Python",
+    "is_active": true,
+    "q_count": 4091
+  },
+  {
+    "id": 589,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "TypeScript",
+    "is_active": true,
+    "q_count": 2642
+  },
+  {
+    "id": 590,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "PHP",
+    "is_active": true,
+    "q_count": 3016
+  },
+  {
+    "id": 591,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "Ruby",
+    "is_active": true,
+    "q_count": 2834
+  },
+  {
+    "id": 592,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "Go (Golang)",
+    "is_active": true,
+    "q_count": 2265
+  },
+  {
+    "id": 593,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "Rust",
+    "is_active": true,
+    "q_count": 2813
+  },
+  {
+    "id": 594,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "Kotlin",
+    "is_active": true,
+    "q_count": 2787
+  },
+  {
+    "id": 595,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "Swift",
+    "is_active": true,
+    "q_count": 3324
+  },
+  {
+    "id": 596,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "Dart",
+    "is_active": true,
+    "q_count": 2888
+  },
+  {
+    "id": 597,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "Scala",
+    "is_active": true,
+    "q_count": 3068
+  },
+  {
+    "id": 598,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "Perl",
+    "is_active": true,
+    "q_count": 2622
+  },
+  {
+    "id": 599,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "R",
+    "is_active": true,
+    "q_count": 2292
+  },
+  {
+    "id": 600,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "MATLAB",
+    "is_active": true,
+    "q_count": 2015
+  },
+  {
+    "id": 601,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "Assembly Language",
+    "is_active": true,
+    "q_count": 2623
+  },
+  {
+    "id": 602,
+    "platform_id": 12,
+    "subject_id": 155,
+    "name": "Shell Scripting",
+    "is_active": true,
+    "q_count": 1878
+  },
+  {
+    "id": 603,
+    "platform_id": 29,
+    "subject_id": 156,
+    "name": "Fundamentals of Testing",
+    "is_active": true,
+    "q_count": 733
+  },
+  {
+    "id": 604,
+    "platform_id": 29,
+    "subject_id": 156,
+    "name": "Test Case Design Techniques",
+    "is_active": true,
+    "q_count": 816
+  },
+  {
+    "id": 605,
+    "platform_id": 29,
+    "subject_id": 156,
+    "name": "Defect Life Cycle",
+    "is_active": true,
+    "q_count": 797
+  },
+  {
+    "id": 606,
+    "platform_id": 29,
+    "subject_id": 156,
+    "name": "Functional and Non-functional Testing",
+    "is_active": true,
+    "q_count": 549
+  },
+  {
+    "id": 607,
+    "platform_id": 29,
+    "subject_id": 156,
+    "name": "Exploratory Testing",
+    "is_active": true,
+    "q_count": 590
+  },
+  {
+    "id": 608,
+    "platform_id": 29,
+    "subject_id": 157,
+    "name": "Introduction to Automation",
+    "is_active": true,
+    "q_count": 705
+  },
+  {
+    "id": 609,
+    "platform_id": 29,
+    "subject_id": 157,
+    "name": "Selenium WebDriver Basics",
+    "is_active": true,
+    "q_count": 1230
+  },
+  {
+    "id": 610,
+    "platform_id": 29,
+    "subject_id": 157,
+    "name": "Cypress Basics",
+    "is_active": true,
+    "q_count": 919
+  },
+  {
+    "id": 611,
+    "platform_id": 29,
+    "subject_id": 157,
+    "name": "Playwright Fundamentals",
+    "is_active": true,
+    "q_count": 1183
+  },
+  {
+    "id": 612,
+    "platform_id": 29,
+    "subject_id": 157,
+    "name": "Automation Frameworks (POM, BDD)",
+    "is_active": true,
+    "q_count": 625
+  },
+  {
+    "id": 613,
+    "platform_id": 29,
+    "subject_id": 158,
+    "name": "Performance Testing Basics",
+    "is_active": true,
+    "q_count": 839
+  },
+  {
+    "id": 614,
+    "platform_id": 29,
+    "subject_id": 158,
+    "name": "JMeter Fundamentals",
+    "is_active": true,
+    "q_count": 1270
+  },
+  {
+    "id": 615,
+    "platform_id": 29,
+    "subject_id": 158,
+    "name": "Load and Stress Testing",
+    "is_active": true,
+    "q_count": 660
+  },
+  {
+    "id": 616,
+    "platform_id": 29,
+    "subject_id": 158,
+    "name": "Performance Metrics Analysis",
+    "is_active": true,
+    "q_count": 797
+  },
+  {
+    "id": 617,
+    "platform_id": 29,
+    "subject_id": 159,
+    "name": "Introduction to APIs",
+    "is_active": true,
+    "q_count": 606
+  },
+  {
+    "id": 618,
+    "platform_id": 29,
+    "subject_id": 159,
+    "name": "Postman for API Testing",
+    "is_active": true,
+    "q_count": 1199
+  },
+  {
+    "id": 619,
+    "platform_id": 29,
+    "subject_id": 159,
+    "name": "REST vs SOAP APIs",
+    "is_active": true,
+    "q_count": 798
+  },
+  {
+    "id": 620,
+    "platform_id": 29,
+    "subject_id": 159,
+    "name": "Authentication Mechanisms (OAuth, API Key)",
+    "is_active": true,
+    "q_count": 717
+  },
+  {
+    "id": 621,
+    "platform_id": 29,
+    "subject_id": 160,
+    "name": "Security Testing Fundamentals",
+    "is_active": true,
+    "q_count": 786
+  },
+  {
+    "id": 622,
+    "platform_id": 29,
+    "subject_id": 160,
+    "name": "Common Vulnerabilities (OWASP Top 10)",
+    "is_active": true,
+    "q_count": 860
+  },
+  {
+    "id": 623,
+    "platform_id": 29,
+    "subject_id": 160,
+    "name": "SQL Injection",
+    "is_active": true,
+    "q_count": 678
+  },
+  {
+    "id": 624,
+    "platform_id": 29,
+    "subject_id": 160,
+    "name": "Cross-Site Scripting (XSS)",
+    "is_active": true,
+    "q_count": 664
+  },
+  {
+    "id": 625,
+    "platform_id": 29,
+    "subject_id": 161,
+    "name": "Mobile Testing Basics",
+    "is_active": true,
+    "q_count": 787
+  },
+  {
+    "id": 626,
+    "platform_id": 29,
+    "subject_id": 161,
+    "name": "Android Testing Essentials",
+    "is_active": true,
+    "q_count": 1106
+  },
+  {
+    "id": 627,
+    "platform_id": 29,
+    "subject_id": 161,
+    "name": "iOS Testing Essentials",
+    "is_active": true,
+    "q_count": 1287
+  },
+  {
+    "id": 628,
+    "platform_id": 29,
+    "subject_id": 161,
+    "name": "Appium Basics",
+    "is_active": true,
+    "q_count": 1196
+  },
+  {
+    "id": 629,
+    "platform_id": 29,
+    "subject_id": 162,
+    "name": "Database Testing Fundamentals",
+    "is_active": true,
+    "q_count": 860
+  },
+  {
+    "id": 630,
+    "platform_id": 29,
+    "subject_id": 162,
+    "name": "SQL Queries for Testing",
+    "is_active": true,
+    "q_count": 1096
+  },
+  {
+    "id": 631,
+    "platform_id": 29,
+    "subject_id": 162,
+    "name": "Stored Procedures Testing",
+    "is_active": true,
+    "q_count": 791
+  },
+  {
+    "id": 632,
+    "platform_id": 29,
+    "subject_id": 162,
+    "name": "Data Validation Techniques",
+    "is_active": true,
+    "q_count": 757
+  },
+  {
+    "id": 633,
+    "platform_id": 29,
+    "subject_id": 163,
+    "name": "Introduction to DevOps",
+    "is_active": true,
+    "q_count": 792
+  },
+  {
+    "id": 634,
+    "platform_id": 29,
+    "subject_id": 163,
+    "name": "CI/CD for Testing",
+    "is_active": true,
+    "q_count": 516
+  },
+  {
+    "id": 635,
+    "platform_id": 29,
+    "subject_id": 163,
+    "name": "Jenkins for Automation",
+    "is_active": true,
+    "q_count": 1215
+  },
+  {
+    "id": 636,
+    "platform_id": 29,
+    "subject_id": 163,
+    "name": "Docker Basics for Testers",
+    "is_active": true,
+    "q_count": 806
+  },
+  {
+    "id": 637,
+    "platform_id": 29,
+    "subject_id": 164,
+    "name": "Agile Testing Principles",
+    "is_active": true,
+    "q_count": 633
+  },
+  {
+    "id": 638,
+    "platform_id": 29,
+    "subject_id": 164,
+    "name": "Scrum and Testing Roles",
+    "is_active": true,
+    "q_count": 1186
+  },
+  {
+    "id": 639,
+    "platform_id": 29,
+    "subject_id": 164,
+    "name": "Test-Driven Development (TDD)",
+    "is_active": true,
+    "q_count": 644
+  },
+  {
+    "id": 640,
+    "platform_id": 29,
+    "subject_id": 164,
+    "name": "Behavior-Driven Development (BDD)",
+    "is_active": true,
+    "q_count": 1028
+  },
+  {
+    "id": 641,
+    "platform_id": 29,
+    "subject_id": 165,
+    "name": "Bug Tracking Tools (JIRA, Bugzilla)",
+    "is_active": true,
+    "q_count": 1331
+  },
+  {
+    "id": 642,
+    "platform_id": 29,
+    "subject_id": 165,
+    "name": "Test Management Tools (TestRail, Zephyr)",
+    "is_active": true,
+    "q_count": 1242
+  },
+  {
+    "id": 643,
+    "platform_id": 29,
+    "subject_id": 165,
+    "name": "Version Control Systems (Git Basics)",
+    "is_active": true,
+    "q_count": 1438
+  },
+  {
+    "id": 644,
+    "platform_id": 29,
+    "subject_id": 165,
+    "name": "Automation Reporting Tools",
+    "is_active": true,
+    "q_count": 799
+  },
+  {
+    "id": 645,
+    "platform_id": 30,
+    "subject_id": 166,
+    "name": "Oscar-Winning Films",
+    "is_active": true,
+    "q_count": 718
+  },
+  {
+    "id": 646,
+    "platform_id": 30,
+    "subject_id": 166,
+    "name": "Popular TV Series",
+    "is_active": true,
+    "q_count": 737
+  },
+  {
+    "id": 647,
+    "platform_id": 30,
+    "subject_id": 166,
+    "name": "Classic Hollywood Movies",
+    "is_active": true,
+    "q_count": 885
+  },
+  {
+    "id": 648,
+    "platform_id": 30,
+    "subject_id": 166,
+    "name": "Animated Movies",
+    "is_active": true,
+    "q_count": 789
+  },
+  {
+    "id": 649,
+    "platform_id": 30,
+    "subject_id": 167,
+    "name": "Pop Music Legends",
+    "is_active": true,
+    "q_count": 853
+  },
+  {
+    "id": 650,
+    "platform_id": 30,
+    "subject_id": 167,
+    "name": "Rock Bands History",
+    "is_active": true,
+    "q_count": 855
+  },
+  {
+    "id": 651,
+    "platform_id": 30,
+    "subject_id": 167,
+    "name": "Music Awards & Charts",
+    "is_active": true,
+    "q_count": 752
+  },
+  {
+    "id": 652,
+    "platform_id": 30,
+    "subject_id": 167,
+    "name": "Global Music Trends",
+    "is_active": true,
+    "q_count": 990
+  },
+  {
+    "id": 653,
+    "platform_id": 30,
+    "subject_id": 168,
+    "name": "Olympic Games Trivia",
+    "is_active": true,
+    "q_count": 795
+  },
+  {
+    "id": 654,
+    "platform_id": 30,
+    "subject_id": 168,
+    "name": "FIFA World Cup",
+    "is_active": true,
+    "q_count": 791
+  },
+  {
+    "id": 655,
+    "platform_id": 30,
+    "subject_id": 168,
+    "name": "Cricket Legends",
+    "is_active": true,
+    "q_count": 665
+  },
+  {
+    "id": 656,
+    "platform_id": 30,
+    "subject_id": 168,
+    "name": "Tennis Grand Slams",
+    "is_active": true,
+    "q_count": 751
+  },
+  {
+    "id": 657,
+    "platform_id": 30,
+    "subject_id": 169,
+    "name": "Gaming Consoles History",
+    "is_active": true,
+    "q_count": 872
+  },
+  {
+    "id": 658,
+    "platform_id": 30,
+    "subject_id": 169,
+    "name": "Top Esports Titles",
+    "is_active": true,
+    "q_count": 865
+  },
+  {
+    "id": 659,
+    "platform_id": 30,
+    "subject_id": 169,
+    "name": "Famous Video Game Characters",
+    "is_active": true,
+    "q_count": 825
+  },
+  {
+    "id": 660,
+    "platform_id": 30,
+    "subject_id": 169,
+    "name": "Retro Games",
+    "is_active": true,
+    "q_count": 934
+  },
+  {
+    "id": 661,
+    "platform_id": 30,
+    "subject_id": 170,
+    "name": "Famous Personalities",
+    "is_active": true,
+    "q_count": 786
+  },
+  {
+    "id": 662,
+    "platform_id": 30,
+    "subject_id": 170,
+    "name": "Viral Internet Trends",
+    "is_active": true,
+    "q_count": 935
+  },
+  {
+    "id": 663,
+    "platform_id": 30,
+    "subject_id": 170,
+    "name": "Fashion Icons",
+    "is_active": true,
+    "q_count": 958
+  },
+  {
+    "id": 664,
+    "platform_id": 30,
+    "subject_id": 171,
+    "name": "Classic Cartoons",
+    "is_active": true,
+    "q_count": 1004
+  },
+  {
+    "id": 665,
+    "platform_id": 30,
+    "subject_id": 171,
+    "name": "Disney and Pixar Movies",
+    "is_active": true,
+    "q_count": 805
+  },
+  {
+    "id": 666,
+    "platform_id": 30,
+    "subject_id": 171,
+    "name": "Anime Basics",
+    "is_active": true,
+    "q_count": 952
+  },
+  {
+    "id": 667,
+    "platform_id": 30,
+    "subject_id": 172,
+    "name": "Netflix Originals",
+    "is_active": true,
+    "q_count": 900
+  },
+  {
+    "id": 668,
+    "platform_id": 30,
+    "subject_id": 172,
+    "name": "Amazon Prime Hits",
+    "is_active": true,
+    "q_count": 972
+  },
+  {
+    "id": 669,
+    "platform_id": 30,
+    "subject_id": 172,
+    "name": "Top Hulu Shows",
+    "is_active": true,
+    "q_count": 940
+  },
+  {
+    "id": 670,
+    "platform_id": 30,
+    "subject_id": 173,
+    "name": "Marvel Universe",
+    "is_active": true,
+    "q_count": 899
+  },
+  {
+    "id": 671,
+    "platform_id": 30,
+    "subject_id": 173,
+    "name": "DC Comics Trivia",
+    "is_active": true,
+    "q_count": 887
+  },
+  {
+    "id": 672,
+    "platform_id": 30,
+    "subject_id": 173,
+    "name": "Superhero Origins",
+    "is_active": true,
+    "q_count": 799
+  },
+  {
+    "id": 673,
+    "platform_id": 30,
+    "subject_id": 174,
+    "name": "Academy Awards (Oscars)",
+    "is_active": true,
+    "q_count": 696
+  },
+  {
+    "id": 674,
+    "platform_id": 30,
+    "subject_id": 174,
+    "name": "Grammy Awards",
+    "is_active": true,
+    "q_count": 853
+  },
+  {
+    "id": 675,
+    "platform_id": 30,
+    "subject_id": 174,
+    "name": "Golden Globe Awards",
+    "is_active": true,
+    "q_count": 651
+  },
+  {
+    "id": 676,
+    "platform_id": 30,
+    "subject_id": 175,
+    "name": "Guinness World Records",
+    "is_active": true,
+    "q_count": 754
+  },
+  {
+    "id": 677,
+    "platform_id": 30,
+    "subject_id": 175,
+    "name": "Amazing Entertainment Facts",
+    "is_active": true,
+    "q_count": 654
+  },
+  {
+    "id": 678,
+    "platform_id": 30,
+    "subject_id": 175,
+    "name": "Bizarre Celebrity Records",
+    "is_active": true,
+    "q_count": 565
+  },
+  {
+    "id": 679,
+    "platform_id": 31,
+    "subject_id": 176,
+    "name": "Environmental Components",
+    "is_active": true,
+    "q_count": 621
+  },
+  {
+    "id": 680,
+    "platform_id": 31,
+    "subject_id": 176,
+    "name": "Natural Resources",
+    "is_active": true,
+    "q_count": 725
+  },
+  {
+    "id": 681,
+    "platform_id": 31,
+    "subject_id": 176,
+    "name": "Ecosystems",
+    "is_active": true,
+    "q_count": 661
+  },
+  {
+    "id": 682,
+    "platform_id": 31,
+    "subject_id": 177,
+    "name": "Global Warming",
+    "is_active": true,
+    "q_count": 719
+  },
+  {
+    "id": 683,
+    "platform_id": 31,
+    "subject_id": 177,
+    "name": "Greenhouse Effect",
+    "is_active": true,
+    "q_count": 648
+  },
+  {
+    "id": 684,
+    "platform_id": 31,
+    "subject_id": 177,
+    "name": "Carbon Footprint",
+    "is_active": true,
+    "q_count": 739
+  },
+  {
+    "id": 685,
+    "platform_id": 31,
+    "subject_id": 177,
+    "name": "Climate Agreements",
+    "is_active": true,
+    "q_count": 675
+  },
+  {
+    "id": 686,
+    "platform_id": 31,
+    "subject_id": 178,
+    "name": "Sustainable Agriculture",
+    "is_active": true,
+    "q_count": 776
+  },
+  {
+    "id": 687,
+    "platform_id": 31,
+    "subject_id": 178,
+    "name": "Green Architecture",
+    "is_active": true,
+    "q_count": 814
+  },
+  {
+    "id": 688,
+    "platform_id": 31,
+    "subject_id": 178,
+    "name": "Zero Waste Lifestyle",
+    "is_active": true,
+    "q_count": 824
+  },
+  {
+    "id": 689,
+    "platform_id": 31,
+    "subject_id": 179,
+    "name": "Solar Energy",
+    "is_active": true,
+    "q_count": 867
+  },
+  {
+    "id": 690,
+    "platform_id": 31,
+    "subject_id": 179,
+    "name": "Wind Energy",
+    "is_active": true,
+    "q_count": 873
+  },
+  {
+    "id": 691,
+    "platform_id": 31,
+    "subject_id": 179,
+    "name": "Hydropower",
+    "is_active": true,
+    "q_count": 845
+  },
+  {
+    "id": 692,
+    "platform_id": 31,
+    "subject_id": 179,
+    "name": "Bioenergy",
+    "is_active": true,
+    "q_count": 664
+  },
+  {
+    "id": 693,
+    "platform_id": 31,
+    "subject_id": 180,
+    "name": "Food Chains",
+    "is_active": true,
+    "q_count": 680
+  },
+  {
+    "id": 694,
+    "platform_id": 31,
+    "subject_id": 180,
+    "name": "Biodiversity",
+    "is_active": true,
+    "q_count": 651
+  },
+  {
+    "id": 695,
+    "platform_id": 31,
+    "subject_id": 180,
+    "name": "Population Ecology",
+    "is_active": true,
+    "q_count": 887
+  },
+  {
+    "id": 696,
+    "platform_id": 31,
+    "subject_id": 180,
+    "name": "Community Ecology",
+    "is_active": true,
+    "q_count": 699
+  },
+  {
+    "id": 697,
+    "platform_id": 31,
+    "subject_id": 181,
+    "name": "Environmental Laws",
+    "is_active": true,
+    "q_count": 1167
+  },
+  {
+    "id": 698,
+    "platform_id": 31,
+    "subject_id": 181,
+    "name": "Kyoto Protocol",
+    "is_active": true,
+    "q_count": 693
+  },
+  {
+    "id": 699,
+    "platform_id": 31,
+    "subject_id": 181,
+    "name": "Paris Agreement",
+    "is_active": true,
+    "q_count": 933
+  },
+  {
+    "id": 700,
+    "platform_id": 31,
+    "subject_id": 181,
+    "name": "UN Sustainable Development Goals",
+    "is_active": true,
+    "q_count": 846
+  },
+  {
+    "id": 701,
+    "platform_id": 31,
+    "subject_id": 182,
+    "name": "Wildlife Conservation",
+    "is_active": true,
+    "q_count": 767
+  },
+  {
+    "id": 702,
+    "platform_id": 31,
+    "subject_id": 182,
+    "name": "Forest Conservation",
+    "is_active": true,
+    "q_count": 775
+  },
+  {
+    "id": 703,
+    "platform_id": 31,
+    "subject_id": 182,
+    "name": "Marine Conservation",
+    "is_active": true,
+    "q_count": 858
+  },
+  {
+    "id": 704,
+    "platform_id": 31,
+    "subject_id": 183,
+    "name": "Air Pollution",
+    "is_active": true,
+    "q_count": 792
+  },
+  {
+    "id": 705,
+    "platform_id": 31,
+    "subject_id": 183,
+    "name": "Water Pollution",
+    "is_active": true,
+    "q_count": 830
+  },
+  {
+    "id": 706,
+    "platform_id": 31,
+    "subject_id": 183,
+    "name": "Solid Waste Management",
+    "is_active": true,
+    "q_count": 1223
+  },
+  {
+    "id": 707,
+    "platform_id": 31,
+    "subject_id": 183,
+    "name": "Recycling Techniques",
+    "is_active": true,
+    "q_count": 812
+  },
+  {
+    "id": 708,
+    "platform_id": 31,
+    "subject_id": 184,
+    "name": "Rock Cycle",
+    "is_active": true,
+    "q_count": 791
+  },
+  {
+    "id": 709,
+    "platform_id": 31,
+    "subject_id": 184,
+    "name": "Weather Patterns",
+    "is_active": true,
+    "q_count": 837
+  },
+  {
+    "id": 710,
+    "platform_id": 31,
+    "subject_id": 184,
+    "name": "Ocean Currents",
+    "is_active": true,
+    "q_count": 719
+  },
+  {
+    "id": 711,
+    "platform_id": 31,
+    "subject_id": 184,
+    "name": "Soil Conservation",
+    "is_active": true,
+    "q_count": 1261
+  },
+  {
+    "id": 730,
+    "platform_id": 32,
+    "subject_id": 185,
+    "name": "Classical Literature",
+    "is_active": true,
+    "q_count": 1386
+  },
+  {
+    "id": 731,
+    "platform_id": 32,
+    "subject_id": 185,
+    "name": "Modern Literature",
+    "is_active": true,
+    "q_count": 1432
+  },
+  {
+    "id": 732,
+    "platform_id": 32,
+    "subject_id": 185,
+    "name": "Poetry Analysis",
+    "is_active": true,
+    "q_count": 1396
+  },
+  {
+    "id": 733,
+    "platform_id": 32,
+    "subject_id": 185,
+    "name": "Drama and Plays",
+    "is_active": true,
+    "q_count": 1376
+  },
+  {
+    "id": 734,
+    "platform_id": 32,
+    "subject_id": 185,
+    "name": "Literary Criticism",
+    "is_active": true,
+    "q_count": 1924
+  },
+  {
+    "id": 735,
+    "platform_id": 32,
+    "subject_id": 186,
+    "name": "Ancient Art",
+    "is_active": true,
+    "q_count": 2039
+  },
+  {
+    "id": 736,
+    "platform_id": 32,
+    "subject_id": 186,
+    "name": "Renaissance Art",
+    "is_active": true,
+    "q_count": 1349
+  },
+  {
+    "id": 737,
+    "platform_id": 32,
+    "subject_id": 186,
+    "name": "Modern Art Movements",
+    "is_active": true,
+    "q_count": 2005
+  },
+  {
+    "id": 738,
+    "platform_id": 32,
+    "subject_id": 186,
+    "name": "Art Interpretation",
+    "is_active": true,
+    "q_count": 1403
+  },
+  {
+    "id": 739,
+    "platform_id": 32,
+    "subject_id": 186,
+    "name": "Famous Artists & Artworks",
+    "is_active": true,
+    "q_count": 1326
+  },
+  {
+    "id": 740,
+    "platform_id": 32,
+    "subject_id": 187,
+    "name": "Ethics and Morality",
+    "is_active": true,
+    "q_count": 1175
+  },
+  {
+    "id": 741,
+    "platform_id": 32,
+    "subject_id": 187,
+    "name": "Logic and Reasoning",
+    "is_active": true,
+    "q_count": 1675
+  },
+  {
+    "id": 742,
+    "platform_id": 32,
+    "subject_id": 187,
+    "name": "Political Philosophy",
+    "is_active": true,
+    "q_count": 1376
+  },
+  {
+    "id": 743,
+    "platform_id": 32,
+    "subject_id": 187,
+    "name": "Existentialism",
+    "is_active": true,
+    "q_count": 1290
+  },
+  {
+    "id": 744,
+    "platform_id": 32,
+    "subject_id": 187,
+    "name": "Eastern Philosophy",
+    "is_active": true,
+    "q_count": 1415
+  },
+  {
+    "id": 769,
+    "platform_id": 32,
+    "subject_id": 188,
+    "name": "History of Music",
+    "is_active": true,
+    "q_count": 1341
+  },
+  {
+    "id": 770,
+    "platform_id": 32,
+    "subject_id": 188,
+    "name": "Musical Instruments",
+    "is_active": true,
+    "q_count": 1347
+  },
+  {
+    "id": 771,
+    "platform_id": 32,
+    "subject_id": 188,
+    "name": "Art of Classical Music",
+    "is_active": true,
+    "q_count": 1337
+  },
+  {
+    "id": 772,
+    "platform_id": 32,
+    "subject_id": 188,
+    "name": "Modern Music Genres",
+    "is_active": true,
+    "q_count": 2354
+  },
+  {
+    "id": 773,
+    "platform_id": 32,
+    "subject_id": 188,
+    "name": "Music Theory Basics",
+    "is_active": true,
+    "q_count": 1203
+  },
+  {
+    "id": 774,
+    "platform_id": 32,
+    "subject_id": 189,
+    "name": "Painting Techniques",
+    "is_active": true,
+    "q_count": 1325
+  },
+  {
+    "id": 775,
+    "platform_id": 32,
+    "subject_id": 189,
+    "name": "Sculpture",
+    "is_active": true,
+    "q_count": 1301
+  },
+  {
+    "id": 776,
+    "platform_id": 32,
+    "subject_id": 189,
+    "name": "Photography Basics",
+    "is_active": true,
+    "q_count": 1375
+  },
+  {
+    "id": 777,
+    "platform_id": 32,
+    "subject_id": 189,
+    "name": "Digital Art",
+    "is_active": true,
+    "q_count": 1987
+  },
+  {
+    "id": 778,
+    "platform_id": 32,
+    "subject_id": 189,
+    "name": "Graphic Design",
+    "is_active": true,
+    "q_count": 1274
+  },
+  {
+    "id": 779,
+    "platform_id": 32,
+    "subject_id": 190,
+    "name": "Theatre and Drama",
+    "is_active": true,
+    "q_count": 1984
+  },
+  {
+    "id": 780,
+    "platform_id": 32,
+    "subject_id": 190,
+    "name": "Dance Forms",
+    "is_active": true,
+    "q_count": 1344
+  },
+  {
+    "id": 781,
+    "platform_id": 32,
+    "subject_id": 190,
+    "name": "Film and Cinema Studies",
+    "is_active": true,
+    "q_count": 2056
+  },
+  {
+    "id": 782,
+    "platform_id": 32,
+    "subject_id": 190,
+    "name": "Acting Techniques",
+    "is_active": true,
+    "q_count": 1879
+  },
+  {
+    "id": 783,
+    "platform_id": 32,
+    "subject_id": 190,
+    "name": "Musical Theatre",
+    "is_active": true,
+    "q_count": 1952
+  },
+  {
+    "id": 784,
+    "platform_id": 32,
+    "subject_id": 191,
+    "name": "Phonetics and Phonology",
+    "is_active": true,
+    "q_count": 1812
+  },
+  {
+    "id": 785,
+    "platform_id": 32,
+    "subject_id": 191,
+    "name": "Syntax and Grammar",
+    "is_active": true,
+    "q_count": 1612
+  },
+  {
+    "id": 786,
+    "platform_id": 32,
+    "subject_id": 191,
+    "name": "Semantics",
+    "is_active": true,
+    "q_count": 1059
+  },
+  {
+    "id": 787,
+    "platform_id": 32,
+    "subject_id": 191,
+    "name": "Language Evolution",
+    "is_active": true,
+    "q_count": 1775
+  },
+  {
+    "id": 788,
+    "platform_id": 32,
+    "subject_id": 191,
+    "name": "Sociolinguistics",
+    "is_active": true,
+    "q_count": 1102
+  },
+  {
+    "id": 789,
+    "platform_id": 32,
+    "subject_id": 192,
+    "name": "Cultural Anthropology",
+    "is_active": true,
+    "q_count": 1219
+  },
+  {
+    "id": 790,
+    "platform_id": 32,
+    "subject_id": 192,
+    "name": "Popular Culture",
+    "is_active": true,
+    "q_count": 1191
+  },
+  {
+    "id": 791,
+    "platform_id": 32,
+    "subject_id": 192,
+    "name": "Media and Society",
+    "is_active": true,
+    "q_count": 1334
+  },
+  {
+    "id": 792,
+    "platform_id": 32,
+    "subject_id": 192,
+    "name": "Cross-Cultural Communication",
+    "is_active": true,
+    "q_count": 1466
+  },
+  {
+    "id": 793,
+    "platform_id": 32,
+    "subject_id": 192,
+    "name": "Globalization and Culture",
+    "is_active": true,
+    "q_count": 1032
+  },
+  {
+    "id": 795,
+    "platform_id": 32,
+    "subject_id": 193,
+    "name": "Ancient Civilization",
+    "is_active": true,
+    "q_count": 1883
+  },
+  {
+    "id": 796,
+    "platform_id": 32,
+    "subject_id": 193,
+    "name": "Medieval Period",
+    "is_active": true,
+    "q_count": 1627
+  },
+  {
+    "id": 797,
+    "platform_id": 32,
+    "subject_id": 193,
+    "name": "Colonialism and Empires",
+    "is_active": true,
+    "q_count": 1331
+  },
+  {
+    "id": 798,
+    "platform_id": 32,
+    "subject_id": 193,
+    "name": "Modern World Events",
+    "is_active": true,
+    "q_count": 1255
+  },
+  {
+    "id": 799,
+    "platform_id": 32,
+    "subject_id": 193,
+    "name": "Revolutions and Reforms",
+    "is_active": true,
+    "q_count": 1465
+  },
+  {
+    "id": 800,
+    "platform_id": 32,
+    "subject_id": 194,
+    "name": "Comparative Religion",
+    "is_active": true,
+    "q_count": 1984
+  },
+  {
+    "id": 801,
+    "platform_id": 32,
+    "subject_id": 194,
+    "name": "Greek Mythology",
+    "is_active": true,
+    "q_count": 1376
+  },
+  {
+    "id": 802,
+    "platform_id": 32,
+    "subject_id": 194,
+    "name": "Hindu Mythology",
+    "is_active": true,
+    "q_count": 1566
+  },
+  {
+    "id": 803,
+    "platform_id": 32,
+    "subject_id": 194,
+    "name": "Christianity and Bible Studies",
+    "is_active": true,
+    "q_count": 2083
+  },
+  {
+    "id": 804,
+    "platform_id": 32,
+    "subject_id": 194,
+    "name": "Mythological Creatures and Legends",
+    "is_active": true,
+    "q_count": 2050
+  },
+  {
+    "id": 816,
+    "platform_id": 33,
+    "subject_id": 195,
+    "name": "Famous Landmarks",
+    "is_active": true,
+    "q_count": 1454
+  },
+  {
+    "id": 817,
+    "platform_id": 33,
+    "subject_id": 195,
+    "name": "UNESCO World Heritage Sites",
+    "is_active": true,
+    "q_count": 1331
+  },
+  {
+    "id": 818,
+    "platform_id": 33,
+    "subject_id": 195,
+    "name": "Popular Beaches and Resorts",
+    "is_active": true,
+    "q_count": 1547
+  },
+  {
+    "id": 819,
+    "platform_id": 33,
+    "subject_id": 196,
+    "name": "Trip Budgeting",
+    "is_active": true,
+    "q_count": 1319
+  },
+  {
+    "id": 820,
+    "platform_id": 33,
+    "subject_id": 196,
+    "name": "Visa and Passport Information",
+    "is_active": true,
+    "q_count": 1217
+  },
+  {
+    "id": 821,
+    "platform_id": 33,
+    "subject_id": 196,
+    "name": "Travel Safety Tips",
+    "is_active": true,
+    "q_count": 1922
+  },
+  {
+    "id": 822,
+    "platform_id": 33,
+    "subject_id": 197,
+    "name": "Hotel Management Basics",
+    "is_active": true,
+    "q_count": 1846
+  },
+  {
+    "id": 823,
+    "platform_id": 33,
+    "subject_id": 197,
+    "name": "Customer Service",
+    "is_active": true,
+    "q_count": 1397
+  },
+  {
+    "id": 824,
+    "platform_id": 33,
+    "subject_id": 197,
+    "name": "Restaurant Operations",
+    "is_active": true,
+    "q_count": 1426
+  },
+  {
+    "id": 825,
+    "platform_id": 33,
+    "subject_id": 198,
+    "name": "Cultural Etiquette",
+    "is_active": true,
+    "q_count": 1738
+  },
+  {
+    "id": 826,
+    "platform_id": 33,
+    "subject_id": 198,
+    "name": "Festivals All Around the World",
+    "is_active": true,
+    "q_count": 1265
+  },
+  {
+    "id": 827,
+    "platform_id": 33,
+    "subject_id": 198,
+    "name": "Languages and Dialects",
+    "is_active": true,
+    "q_count": 1986
+  },
+  {
+    "id": 828,
+    "platform_id": 33,
+    "subject_id": 199,
+    "name": "Continents and Regions",
+    "is_active": true,
+    "q_count": 1437
+  },
+  {
+    "id": 829,
+    "platform_id": 33,
+    "subject_id": 199,
+    "name": "Climate and Tourism",
+    "is_active": true,
+    "q_count": 1268
+  },
+  {
+    "id": 830,
+    "platform_id": 33,
+    "subject_id": 199,
+    "name": "Adventure Travel Locations",
+    "is_active": true,
+    "q_count": 1438
+  },
+  {
+    "id": 831,
+    "platform_id": 34,
+    "subject_id": 200,
+    "name": "Introduction to Psychology",
+    "is_active": true,
+    "q_count": 1515
+  },
+  {
+    "id": 832,
+    "platform_id": 34,
+    "subject_id": 200,
+    "name": "Psychological Theories",
+    "is_active": true,
+    "q_count": 1656
+  },
+  {
+    "id": 833,
+    "platform_id": 34,
+    "subject_id": 201,
+    "name": "Stages of Development",
+    "is_active": true,
+    "q_count": 1477
+  },
+  {
+    "id": 834,
+    "platform_id": 34,
+    "subject_id": 201,
+    "name": "Child Psychology",
+    "is_active": true,
+    "q_count": 2693
+  },
+  {
+    "id": 835,
+    "platform_id": 34,
+    "subject_id": 202,
+    "name": "Mental Disorders",
+    "is_active": true,
+    "q_count": 3255
+  },
+  {
+    "id": 836,
+    "platform_id": 34,
+    "subject_id": 202,
+    "name": "Therapies and Treatments",
+    "is_active": true,
+    "q_count": 2282
+  },
+  {
+    "id": 837,
+    "platform_id": 34,
+    "subject_id": 203,
+    "name": "Group Behavior",
+    "is_active": true,
+    "q_count": 1624
+  },
+  {
+    "id": 838,
+    "platform_id": 34,
+    "subject_id": 203,
+    "name": "Interpersonal Relationships",
+    "is_active": true,
+    "q_count": 2485
+  },
+  {
+    "id": 839,
+    "platform_id": 34,
+    "subject_id": 204,
+    "name": "Memory and Learning",
+    "is_active": true,
+    "q_count": 2535
+  },
+  {
+    "id": 840,
+    "platform_id": 34,
+    "subject_id": 204,
+    "name": "Problem Solving and Decision Making",
+    "is_active": true,
+    "q_count": 1651
+  },
+  {
+    "id": 841,
+    "platform_id": 35,
+    "subject_id": 205,
+    "name": "Simple Machines",
+    "is_active": true,
+    "q_count": 1947
+  },
+  {
+    "id": 842,
+    "platform_id": 35,
+    "subject_id": 205,
+    "name": "Force and Motion",
+    "is_active": true,
+    "q_count": 2581
+  },
+  {
+    "id": 843,
+    "platform_id": 35,
+    "subject_id": 206,
+    "name": "Vehicle Engines",
+    "is_active": true,
+    "q_count": 3177
+  },
+  {
+    "id": 844,
+    "platform_id": 35,
+    "subject_id": 206,
+    "name": "Transmission Systems",
+    "is_active": true,
+    "q_count": 1692
+  },
+  {
+    "id": 845,
+    "platform_id": 35,
+    "subject_id": 207,
+    "name": "Manufacturing Equipment",
+    "is_active": true,
+    "q_count": 2479
+  },
+  {
+    "id": 846,
+    "platform_id": 35,
+    "subject_id": 207,
+    "name": "Safety Procedures",
+    "is_active": true,
+    "q_count": 1914
+  },
+  {
+    "id": 847,
+    "platform_id": 35,
+    "subject_id": 208,
+    "name": "Technical Sketching",
+    "is_active": true,
+    "q_count": 1809
+  },
+  {
+    "id": 848,
+    "platform_id": 35,
+    "subject_id": 208,
+    "name": "CAD Basics",
+    "is_active": true,
+    "q_count": 2044
+  },
+  {
+    "id": 849,
+    "platform_id": 35,
+    "subject_id": 209,
+    "name": "Preventive Maintenance",
+    "is_active": true,
+    "q_count": 1925
+  },
+  {
+    "id": 850,
+    "platform_id": 35,
+    "subject_id": 209,
+    "name": "Machine Troubleshooting",
+    "is_active": true,
+    "q_count": 1748
+  },
+  {
+    "id": 852,
+    "platform_id": 36,
+    "subject_id": 210,
+    "name": "Greeks Mythology",
+    "is_active": true,
+    "q_count": 1839
+  },
+  {
+    "id": 853,
+    "platform_id": 36,
+    "subject_id": 210,
+    "name": "Norse Mythology",
+    "is_active": true,
+    "q_count": 1724
+  },
+  {
+    "id": 854,
+    "platform_id": 36,
+    "subject_id": 210,
+    "name": "Egyptian Mythology",
+    "is_active": true,
+    "q_count": 1906
+  },
+  {
+    "id": 855,
+    "platform_id": 36,
+    "subject_id": 211,
+    "name": "Human Societies",
+    "is_active": true,
+    "q_count": 2595
+  },
+  {
+    "id": 856,
+    "platform_id": 36,
+    "subject_id": 211,
+    "name": "Cultural Evolution",
+    "is_active": true,
+    "q_count": 1812
+  },
+  {
+    "id": 857,
+    "platform_id": 36,
+    "subject_id": 212,
+    "name": "Folk Tales",
+    "is_active": true,
+    "q_count": 2168
+  },
+  {
+    "id": 858,
+    "platform_id": 36,
+    "subject_id": 212,
+    "name": "Mythical Creatures",
+    "is_active": true,
+    "q_count": 2288
+  },
+  {
+    "id": 859,
+    "platform_id": 36,
+    "subject_id": 213,
+    "name": "Major World Religions",
+    "is_active": true,
+    "q_count": 2081
+  },
+  {
+    "id": 860,
+    "platform_id": 36,
+    "subject_id": 213,
+    "name": "Religious Rituals",
+    "is_active": true,
+    "q_count": 2139
+  },
+  {
+    "id": 861,
+    "platform_id": 36,
+    "subject_id": 214,
+    "name": "Traditional Festivals",
+    "is_active": true,
+    "q_count": 1916
+  },
+  {
+    "id": 862,
+    "platform_id": 36,
+    "subject_id": 214,
+    "name": "Cultural Celebrations",
+    "is_active": true,
+    "q_count": 1864
+  },
+  {
+    "id": 863,
+    "platform_id": 37,
+    "subject_id": 215,
+    "name": "Active Learning Strategies",
+    "is_active": true,
+    "q_count": 2164
+  },
+  {
+    "id": 864,
+    "platform_id": 37,
+    "subject_id": 215,
+    "name": "Differentiated Instruction",
+    "is_active": true,
+    "q_count": 1790
+  },
+  {
+    "id": 865,
+    "platform_id": 37,
+    "subject_id": 216,
+    "name": "Syllabus Design",
+    "is_active": true,
+    "q_count": 1922
+  },
+  {
+    "id": 866,
+    "platform_id": 37,
+    "subject_id": 216,
+    "name": "Curriculum Assessment",
+    "is_active": true,
+    "q_count": 1991
+  },
+  {
+    "id": 867,
+    "platform_id": 37,
+    "subject_id": 217,
+    "name": "Learning Theories",
+    "is_active": true,
+    "q_count": 2127
+  },
+  {
+    "id": 868,
+    "platform_id": 37,
+    "subject_id": 217,
+    "name": "Motivation in Education",
+    "is_active": true,
+    "q_count": 2136
+  },
+  {
+    "id": 869,
+    "platform_id": 37,
+    "subject_id": 218,
+    "name": "e-Learning Tools",
+    "is_active": true,
+    "q_count": 2197
+  },
+  {
+    "id": 870,
+    "platform_id": 37,
+    "subject_id": 218,
+    "name": "Classroom Technologies",
+    "is_active": true,
+    "q_count": 2347
+  },
+  {
+    "id": 871,
+    "platform_id": 37,
+    "subject_id": 219,
+    "name": "Formative and Summative Assessment",
+    "is_active": true,
+    "q_count": 2551
+  },
+  {
+    "id": 872,
+    "platform_id": 37,
+    "subject_id": 219,
+    "name": "Rubrics and Grading",
+    "is_active": true,
+    "q_count": 1645
+  },
+  {
+    "id": 873,
+    "platform_id": 38,
+    "subject_id": 220,
+    "name": "OSI Model",
+    "is_active": true,
+    "q_count": 1856
+  },
+  {
+    "id": 874,
+    "platform_id": 38,
+    "subject_id": 220,
+    "name": "Network Topologies",
+    "is_active": true,
+    "q_count": 1399
+  },
+  {
+    "id": 875,
+    "platform_id": 38,
+    "subject_id": 220,
+    "name": "Networking Devices",
+    "is_active": true,
+    "q_count": 2006
+  },
+  {
+    "id": 876,
+    "platform_id": 38,
+    "subject_id": 221,
+    "name": "IPv4 vs IPv6",
+    "is_active": true,
+    "q_count": 1109
+  },
+  {
+    "id": 877,
+    "platform_id": 38,
+    "subject_id": 221,
+    "name": "Subnetting Concepts",
+    "is_active": true,
+    "q_count": 1436
+  },
+  {
+    "id": 878,
+    "platform_id": 38,
+    "subject_id": 221,
+    "name": "Address Classes",
+    "is_active": true,
+    "q_count": 853
+  },
+  {
+    "id": 879,
+    "platform_id": 38,
+    "subject_id": 222,
+    "name": "TCP/IP Suite",
+    "is_active": true,
+    "q_count": 1545
+  },
+  {
+    "id": 880,
+    "platform_id": 38,
+    "subject_id": 222,
+    "name": "Common Network Ports",
+    "is_active": true,
+    "q_count": 1833
+  },
+  {
+    "id": 881,
+    "platform_id": 38,
+    "subject_id": 222,
+    "name": "HTTP, FTP, SMTP, DNS",
+    "is_active": true,
+    "q_count": 1503
+  },
+  {
+    "id": 882,
+    "platform_id": 38,
+    "subject_id": 223,
+    "name": "Firewalls and VPNs",
+    "is_active": true,
+    "q_count": 1203
+  },
+  {
+    "id": 883,
+    "platform_id": 38,
+    "subject_id": 223,
+    "name": "Common Threats",
+    "is_active": true,
+    "q_count": 1830
+  },
+  {
+    "id": 884,
+    "platform_id": 38,
+    "subject_id": 223,
+    "name": "Secure Protocols",
+    "is_active": true,
+    "q_count": 1669
+  },
+  {
+    "id": 885,
+    "platform_id": 38,
+    "subject_id": 224,
+    "name": "Wi-Fi Standards",
+    "is_active": true,
+    "q_count": 1491
+  },
+  {
+    "id": 886,
+    "platform_id": 38,
+    "subject_id": 224,
+    "name": "Wireless Security",
+    "is_active": true,
+    "q_count": 1373
+  },
+  {
+    "id": 887,
+    "platform_id": 38,
+    "subject_id": 224,
+    "name": "Mobile Data Networks",
+    "is_active": true,
+    "q_count": 1646
+  },
+  {
+    "id": 1694,
+    "platform_id": 39,
+    "subject_id": 524,
+    "name": "Utilitarianism",
+    "is_active": true,
+    "q_count": 977
+  },
+  {
+    "id": 1695,
+    "platform_id": 39,
+    "subject_id": 524,
+    "name": "Deontology",
+    "is_active": true,
+    "q_count": 1042
+  },
+  {
+    "id": 1696,
+    "platform_id": 39,
+    "subject_id": 524,
+    "name": "Virtue Ethics",
+    "is_active": true,
+    "q_count": 946
+  },
+  {
+    "id": 1697,
+    "platform_id": 39,
+    "subject_id": 525,
+    "name": "Consciousness",
+    "is_active": true,
+    "q_count": 948
+  },
+  {
+    "id": 1698,
+    "platform_id": 39,
+    "subject_id": 525,
+    "name": "Free Will",
+    "is_active": true,
+    "q_count": 837
+  },
+  {
+    "id": 1699,
+    "platform_id": 39,
+    "subject_id": 525,
+    "name": "Dualism",
+    "is_active": true,
+    "q_count": 934
+  },
+  {
+    "id": 1700,
+    "platform_id": 39,
+    "subject_id": 526,
+    "name": "Justice",
+    "is_active": true,
+    "q_count": 1465
+  },
+  {
+    "id": 1701,
+    "platform_id": 39,
+    "subject_id": 526,
+    "name": "Liberty",
+    "is_active": true,
+    "q_count": 1575
+  },
+  {
+    "id": 1702,
+    "platform_id": 39,
+    "subject_id": 526,
+    "name": "Rights",
+    "is_active": true,
+    "q_count": 1584
+  },
+  {
+    "id": 1703,
+    "platform_id": 40,
+    "subject_id": 527,
+    "name": "Planets",
+    "is_active": true,
+    "q_count": 1740
+  },
+  {
+    "id": 1704,
+    "platform_id": 40,
+    "subject_id": 527,
+    "name": "Moons",
+    "is_active": true,
+    "q_count": 2004
+  },
+  {
+    "id": 1705,
+    "platform_id": 40,
+    "subject_id": 527,
+    "name": "Asteroids",
+    "is_active": true,
+    "q_count": 1577
+  },
+  {
+    "id": 1706,
+    "platform_id": 40,
+    "subject_id": 528,
+    "name": "Life Cycle of Stars",
+    "is_active": true,
+    "q_count": 1640
+  },
+  {
+    "id": 1707,
+    "platform_id": 40,
+    "subject_id": 528,
+    "name": "Milky Way",
+    "is_active": true,
+    "q_count": 1479
+  },
+  {
+    "id": 1708,
+    "platform_id": 40,
+    "subject_id": 528,
+    "name": "Black Holes",
+    "is_active": true,
+    "q_count": 1460
+  },
+  {
+    "id": 1709,
+    "platform_id": 40,
+    "subject_id": 529,
+    "name": "Big Bang Theory",
+    "is_active": true,
+    "q_count": 1527
+  },
+  {
+    "id": 1710,
+    "platform_id": 40,
+    "subject_id": 529,
+    "name": "Dark Matter",
+    "is_active": true,
+    "q_count": 1359
+  },
+  {
+    "id": 1711,
+    "platform_id": 40,
+    "subject_id": 529,
+    "name": "Universe Expansion",
+    "is_active": true,
+    "q_count": 1767
+  },
+  {
+    "id": 1712,
+    "platform_id": 40,
+    "subject_id": 530,
+    "name": "Apollo Missions",
+    "is_active": true,
+    "q_count": 2538
+  },
+  {
+    "id": 1713,
+    "platform_id": 40,
+    "subject_id": 530,
+    "name": "Mars Rover",
+    "is_active": true,
+    "q_count": 2072
+  },
+  {
+    "id": 1714,
+    "platform_id": 40,
+    "subject_id": 530,
+    "name": "Space Telescopes",
+    "is_active": true,
+    "q_count": 1820
+  },
+  {
+    "id": 1715,
+    "platform_id": 41,
+    "subject_id": 531,
+    "name": "Supply and Demand",
+    "is_active": true,
+    "q_count": 2943
+  },
+  {
+    "id": 1716,
+    "platform_id": 41,
+    "subject_id": 531,
+    "name": "Market Structures",
+    "is_active": true,
+    "q_count": 1639
+  },
+  {
+    "id": 1717,
+    "platform_id": 41,
+    "subject_id": 531,
+    "name": "Elasticity",
+    "is_active": true,
+    "q_count": 2332
+  },
+  {
+    "id": 1718,
+    "platform_id": 41,
+    "subject_id": 532,
+    "name": "GDP",
+    "is_active": true,
+    "q_count": 1582
+  },
+  {
+    "id": 1719,
+    "platform_id": 41,
+    "subject_id": 532,
+    "name": "Inflation",
+    "is_active": true,
+    "q_count": 1633
+  },
+  {
+    "id": 1720,
+    "platform_id": 41,
+    "subject_id": 532,
+    "name": "Fiscal Policy",
+    "is_active": true,
+    "q_count": 1593
+  },
+  {
+    "id": 1721,
+    "platform_id": 41,
+    "subject_id": 533,
+    "name": "Globalization",
+    "is_active": true,
+    "q_count": 2245
+  },
+  {
+    "id": 1722,
+    "platform_id": 41,
+    "subject_id": 533,
+    "name": "Trade Agreements",
+    "is_active": true,
+    "q_count": 1863
+  },
+  {
+    "id": 1723,
+    "platform_id": 41,
+    "subject_id": 533,
+    "name": "Tariffs",
+    "is_active": true,
+    "q_count": 1673
+  },
+  {
+    "id": 1724,
+    "platform_id": 41,
+    "subject_id": 534,
+    "name": "Poverty",
+    "is_active": true,
+    "q_count": 1593
+  },
+  {
+    "id": 1725,
+    "platform_id": 41,
+    "subject_id": 534,
+    "name": "Economic Growth",
+    "is_active": true,
+    "q_count": 1730
+  },
+  {
+    "id": 1726,
+    "platform_id": 41,
+    "subject_id": 534,
+    "name": "Sustainable Development",
+    "is_active": true,
+    "q_count": 1942
+  },
+  {
+    "id": 1727,
+    "platform_id": 42,
+    "subject_id": 535,
+    "name": "Tenses",
+    "is_active": true,
+    "q_count": 2376
+  },
+  {
+    "id": 1728,
+    "platform_id": 42,
+    "subject_id": 535,
+    "name": "Parts of Speech",
+    "is_active": true,
+    "q_count": 2756
+  },
+  {
+    "id": 1729,
+    "platform_id": 42,
+    "subject_id": 535,
+    "name": "Punctuation",
+    "is_active": true,
+    "q_count": 1270
+  },
+  {
+    "id": 1730,
+    "platform_id": 42,
+    "subject_id": 536,
+    "name": "Shakespeare",
+    "is_active": true,
+    "q_count": 2111
+  },
+  {
+    "id": 1731,
+    "platform_id": 42,
+    "subject_id": 536,
+    "name": "World Classics",
+    "is_active": true,
+    "q_count": 2367
+  },
+  {
+    "id": 1732,
+    "platform_id": 42,
+    "subject_id": 536,
+    "name": "Modern Literatures",
+    "is_active": true,
+    "q_count": 2269
+  },
+  {
+    "id": 1733,
+    "platform_id": 42,
+    "subject_id": 537,
+    "name": "Forms of Poetry",
+    "is_active": true,
+    "q_count": 1843
+  },
+  {
+    "id": 1734,
+    "platform_id": 42,
+    "subject_id": 537,
+    "name": "Prose Styles",
+    "is_active": true,
+    "q_count": 1894
+  },
+  {
+    "id": 1735,
+    "platform_id": 42,
+    "subject_id": 537,
+    "name": "Literary Devices",
+    "is_active": true,
+    "q_count": 1813
+  },
+  {
+    "id": 1736,
+    "platform_id": 42,
+    "subject_id": 538,
+    "name": "Passage Analysis",
+    "is_active": true,
+    "q_count": 2681
+  },
+  {
+    "id": 1737,
+    "platform_id": 42,
+    "subject_id": 538,
+    "name": "Critical Thinking Questions",
+    "is_active": true,
+    "q_count": 2253
+  },
+  {
+    "id": 1738,
+    "platform_id": 43,
+    "subject_id": 539,
+    "name": "Macronutrients",
+    "is_active": true,
+    "q_count": 2866
+  },
+  {
+    "id": 1739,
+    "platform_id": 43,
+    "subject_id": 539,
+    "name": "Vitamins and Minerals",
+    "is_active": true,
+    "q_count": 2085
+  },
+  {
+    "id": 1740,
+    "platform_id": 43,
+    "subject_id": 539,
+    "name": "Balanced Diet",
+    "is_active": true,
+    "q_count": 1673
+  },
+  {
+    "id": 1741,
+    "platform_id": 43,
+    "subject_id": 540,
+    "name": "Cardio Workouts",
+    "is_active": true,
+    "q_count": 1759
+  },
+  {
+    "id": 1742,
+    "platform_id": 43,
+    "subject_id": 540,
+    "name": "Strength Training",
+    "is_active": true,
+    "q_count": 1664
+  },
+  {
+    "id": 1743,
+    "platform_id": 43,
+    "subject_id": 540,
+    "name": "Flexibility Routines",
+    "is_active": true,
+    "q_count": 1443
+  },
+  {
+    "id": 1744,
+    "platform_id": 43,
+    "subject_id": 541,
+    "name": "Vaccinations",
+    "is_active": true,
+    "q_count": 1511
+  },
+  {
+    "id": 1745,
+    "platform_id": 43,
+    "subject_id": 541,
+    "name": "Regular Screenings",
+    "is_active": true,
+    "q_count": 1638
+  },
+  {
+    "id": 1746,
+    "platform_id": 43,
+    "subject_id": 541,
+    "name": "Hygiene Practices",
+    "is_active": true,
+    "q_count": 1615
+  },
+  {
+    "id": 1747,
+    "platform_id": 43,
+    "subject_id": 542,
+    "name": "Stress Management",
+    "is_active": true,
+    "q_count": 1407
+  },
+  {
+    "id": 1748,
+    "platform_id": 43,
+    "subject_id": 542,
+    "name": "Anxiety Disorders",
+    "is_active": true,
+    "q_count": 1551
+  },
+  {
+    "id": 1749,
+    "platform_id": 43,
+    "subject_id": 542,
+    "name": "Mindfulness",
+    "is_active": true,
+    "q_count": 1392
+  },
+  {
+    "id": 1756,
+    "platform_id": 44,
+    "subject_id": 543,
+    "name": "Footprinting",
+    "is_active": true,
+    "q_count": 1414
+  },
+  {
+    "id": 1757,
+    "platform_id": 44,
+    "subject_id": 543,
+    "name": "Scanning Networks",
+    "is_active": true,
+    "q_count": 1966
+  },
+  {
+    "id": 1758,
+    "platform_id": 44,
+    "subject_id": 543,
+    "name": "Enumeration",
+    "is_active": true,
+    "q_count": 2013
+  },
+  {
+    "id": 1759,
+    "platform_id": 44,
+    "subject_id": 544,
+    "name": "SQL Injections",
+    "is_active": true,
+    "q_count": 1753
+  },
+  {
+    "id": 1760,
+    "platform_id": 44,
+    "subject_id": 544,
+    "name": "Cross-Site Scriptings (XSS)",
+    "is_active": true,
+    "q_count": 1571
+  },
+  {
+    "id": 1761,
+    "platform_id": 44,
+    "subject_id": 544,
+    "name": "Cross-Site Request Forgery (CSRF)",
+    "is_active": true,
+    "q_count": 1095
+  },
+  {
+    "id": 1762,
+    "platform_id": 44,
+    "subject_id": 545,
+    "name": "Firewalls",
+    "is_active": true,
+    "q_count": 2004
+  },
+  {
+    "id": 1763,
+    "platform_id": 44,
+    "subject_id": 545,
+    "name": "VPNs",
+    "is_active": true,
+    "q_count": 1726
+  },
+  {
+    "id": 1764,
+    "platform_id": 44,
+    "subject_id": 545,
+    "name": "IDS/IPS Systems",
+    "is_active": true,
+    "q_count": 2319
+  },
+  {
+    "id": 1765,
+    "platform_id": 44,
+    "subject_id": 546,
+    "name": "Data Privacy",
+    "is_active": true,
+    "q_count": 1940
+  },
+  {
+    "id": 1766,
+    "platform_id": 44,
+    "subject_id": 546,
+    "name": "Cybercrimes",
+    "is_active": true,
+    "q_count": 1691
+  },
+  {
+    "id": 1767,
+    "platform_id": 44,
+    "subject_id": 546,
+    "name": "Legal Aspects",
+    "is_active": true,
+    "q_count": 1569
+  },
+  {
+    "id": 1768,
+    "platform_id": 12,
+    "subject_id": 4,
+    "name": "PostgreSQL",
+    "is_active": true,
+    "q_count": 4639
+  },
+  {
+    "id": 1769,
+    "platform_id": 12,
+    "subject_id": 4,
+    "name": "MongoDB",
+    "is_active": true,
+    "q_count": 2894
+  },
+  {
+    "id": 1770,
+    "platform_id": 12,
+    "subject_id": 4,
+    "name": "SQLite",
+    "is_active": true,
+    "q_count": 3066
+  },
+  {
+    "id": 1771,
+    "platform_id": 12,
+    "subject_id": 4,
+    "name": "Redis",
+    "is_active": true,
+    "q_count": 3348
+  },
+  {
+    "id": 1772,
+    "platform_id": 12,
+    "subject_id": 4,
+    "name": "Cassandra",
+    "is_active": true,
+    "q_count": 2785
+  },
+  {
+    "id": 1773,
+    "platform_id": 12,
+    "subject_id": 4,
+    "name": "MariaDB",
+    "is_active": true,
+    "q_count": 2965
+  },
+  {
+    "id": 1774,
+    "platform_id": 12,
+    "subject_id": 4,
+    "name": "Elasticsearch",
+    "is_active": true,
+    "q_count": 1991
+  },
+  {
+    "id": 1775,
+    "platform_id": 12,
+    "subject_id": 4,
+    "name": "Firebase",
+    "is_active": true,
+    "q_count": 2628
+  },
+  {
+    "id": 1776,
+    "platform_id": 12,
+    "subject_id": 4,
+    "name": "IBM Db2",
+    "is_active": true,
+    "q_count": 2857
+  },
+  {
+    "id": 1777,
+    "platform_id": 12,
+    "subject_id": 4,
+    "name": "Amazon Aurora",
+    "is_active": true,
+    "q_count": 2637
+  },
+  {
+    "id": 1778,
+    "platform_id": 12,
+    "subject_id": 142,
+    "name": "Machine Learning",
+    "is_active": true,
+    "q_count": 1669
+  },
+  {
+    "id": 1779,
+    "platform_id": 12,
+    "subject_id": 142,
+    "name": "Deep Learning",
+    "is_active": true,
+    "q_count": 1810
+  },
+  {
+    "id": 1780,
+    "platform_id": 12,
+    "subject_id": 142,
+    "name": "Neural Networks",
+    "is_active": true,
+    "q_count": 1339
+  },
+  {
+    "id": 1781,
+    "platform_id": 12,
+    "subject_id": 142,
+    "name": "Natural Language Processing (NLP)",
+    "is_active": true,
+    "q_count": 2133
+  },
+  {
+    "id": 1782,
+    "platform_id": 12,
+    "subject_id": 142,
+    "name": "Computer Vision",
+    "is_active": true,
+    "q_count": 1795
+  },
+  {
+    "id": 1783,
+    "platform_id": 12,
+    "subject_id": 142,
+    "name": "AI Ethics",
+    "is_active": true,
+    "q_count": 1746
+  },
+  {
+    "id": 1784,
+    "platform_id": 12,
+    "subject_id": 142,
+    "name": "Reinforcement Learning",
+    "is_active": true,
+    "q_count": 1930
+  },
+  {
+    "id": 1785,
+    "platform_id": 12,
+    "subject_id": 142,
+    "name": "Expert Systems",
+    "is_active": true,
+    "q_count": 1771
+  },
+  {
+    "id": 1786,
+    "platform_id": 12,
+    "subject_id": 142,
+    "name": "Robotics",
+    "is_active": true,
+    "q_count": 2817
+  },
+  {
+    "id": 1787,
+    "platform_id": 12,
+    "subject_id": 142,
+    "name": "Generative AI & Large Language Models",
+    "is_active": true,
+    "q_count": 2247
+  },
+  {
+    "id": 1793,
+    "platform_id": 1,
+    "subject_id": 547,
+    "name": "Anatomy and Physiology",
+    "is_active": true,
+    "q_count": 1173
+  },
+  {
+    "id": 1794,
+    "platform_id": 1,
+    "subject_id": 547,
+    "name": "Fundamentals of Nursing",
+    "is_active": true,
+    "q_count": 1098
+  },
+  {
+    "id": 1795,
+    "platform_id": 1,
+    "subject_id": 547,
+    "name": "Medical-Surgical Nursing",
+    "is_active": true,
+    "q_count": 1126
+  },
+  {
+    "id": 1796,
+    "platform_id": 1,
+    "subject_id": 547,
+    "name": "Pediatric Nursing",
+    "is_active": true,
+    "q_count": 1182
+  },
+  {
+    "id": 1797,
+    "platform_id": 1,
+    "subject_id": 547,
+    "name": "Maternal and Child Health",
+    "is_active": true,
+    "q_count": 745
+  },
+  {
+    "id": 1798,
+    "platform_id": 1,
+    "subject_id": 547,
+    "name": "Community Health Nursing",
+    "is_active": true,
+    "q_count": 771
+  },
+  {
+    "id": 1799,
+    "platform_id": 1,
+    "subject_id": 547,
+    "name": "Psychiatric Nursing",
+    "is_active": true,
+    "q_count": 1230
+  },
+  {
+    "id": 1800,
+    "platform_id": 1,
+    "subject_id": 547,
+    "name": "Nursing Ethics and Law",
+    "is_active": true,
+    "q_count": 1116
+  },
+  {
+    "id": 1801,
+    "platform_id": 1,
+    "subject_id": 547,
+    "name": "Pathology and Microbiology",
+    "is_active": true,
+    "q_count": 655
+  },
+  {
+    "id": 1802,
+    "platform_id": 1,
+    "subject_id": 547,
+    "name": "Nutrition and Dietetics",
+    "is_active": true,
+    "q_count": 796
+  },
+  {
+    "id": 1803,
+    "platform_id": 1,
+    "subject_id": 547,
+    "name": "First Aid and Emergency Nursing",
+    "is_active": true,
+    "q_count": 1217
+  },
+  {
+    "id": 1834,
+    "platform_id": 45,
+    "subject_id": 548,
+    "name": "Preamble and Philosophy",
+    "is_active": true,
+    "q_count": 700
+  },
+  {
+    "id": 1835,
+    "platform_id": 45,
+    "subject_id": 548,
+    "name": "Federalism",
+    "is_active": true,
+    "q_count": 918
+  },
+  {
+    "id": 1836,
+    "platform_id": 45,
+    "subject_id": 548,
+    "name": "Fundamental Constitutional Rights",
+    "is_active": true,
+    "q_count": 699
+  },
+  {
+    "id": 1837,
+    "platform_id": 45,
+    "subject_id": 548,
+    "name": "Principles of State Policy",
+    "is_active": true,
+    "q_count": 727
+  },
+  {
+    "id": 1838,
+    "platform_id": 45,
+    "subject_id": 548,
+    "name": "Amendment Procedure",
+    "is_active": true,
+    "q_count": 426
+  },
+  {
+    "id": 1839,
+    "platform_id": 45,
+    "subject_id": 548,
+    "name": "Schedules of the Constitution",
+    "is_active": true,
+    "q_count": 623
+  },
+  {
+    "id": 1840,
+    "platform_id": 45,
+    "subject_id": 548,
+    "name": "Separations of Powers",
+    "is_active": true,
+    "q_count": 895
+  },
+  {
+    "id": 1841,
+    "platform_id": 45,
+    "subject_id": 548,
+    "name": "Judicial Reviews",
+    "is_active": true,
+    "q_count": 650
+  },
+  {
+    "id": 1842,
+    "platform_id": 45,
+    "subject_id": 548,
+    "name": "Emergency Provisions",
+    "is_active": true,
+    "q_count": 620
+  },
+  {
+    "id": 1843,
+    "platform_id": 45,
+    "subject_id": 548,
+    "name": "Constitutional Commissions & Bodies",
+    "is_active": true,
+    "q_count": 631
+  },
+  {
+    "id": 1844,
+    "platform_id": 45,
+    "subject_id": 549,
+    "name": "Bureaucracy and Civil Services",
+    "is_active": true,
+    "q_count": 659
+  },
+  {
+    "id": 1845,
+    "platform_id": 45,
+    "subject_id": 549,
+    "name": "Public Policy Formulation",
+    "is_active": true,
+    "q_count": 756
+  },
+  {
+    "id": 1846,
+    "platform_id": 45,
+    "subject_id": 549,
+    "name": "Administrative Law",
+    "is_active": true,
+    "q_count": 744
+  },
+  {
+    "id": 1847,
+    "platform_id": 45,
+    "subject_id": 549,
+    "name": "E-Governance Initiatives",
+    "is_active": true,
+    "q_count": 792
+  },
+  {
+    "id": 1848,
+    "platform_id": 45,
+    "subject_id": 549,
+    "name": "Budgeting and Public Finance",
+    "is_active": true,
+    "q_count": 1045
+  },
+  {
+    "id": 1849,
+    "platform_id": 45,
+    "subject_id": 549,
+    "name": "Human Resource Management in Government",
+    "is_active": true,
+    "q_count": 1152
+  },
+  {
+    "id": 1850,
+    "platform_id": 45,
+    "subject_id": 549,
+    "name": "Accountability Mechanisms",
+    "is_active": true,
+    "q_count": 639
+  },
+  {
+    "id": 1851,
+    "platform_id": 45,
+    "subject_id": 549,
+    "name": "Decentralization and Panchayati Raj",
+    "is_active": true,
+    "q_count": 615
+  },
+  {
+    "id": 1852,
+    "platform_id": 45,
+    "subject_id": 549,
+    "name": "Good Governance Indicators",
+    "is_active": true,
+    "q_count": 598
+  },
+  {
+    "id": 1853,
+    "platform_id": 45,
+    "subject_id": 549,
+    "name": "Public Sector Undertakings",
+    "is_active": true,
+    "q_count": 774
+  },
+  {
+    "id": 1854,
+    "platform_id": 45,
+    "subject_id": 550,
+    "name": "United Nations System",
+    "is_active": true,
+    "q_count": 825
+  },
+  {
+    "id": 1855,
+    "platform_id": 45,
+    "subject_id": 550,
+    "name": "International Law and Treaties",
+    "is_active": true,
+    "q_count": 654
+  },
+  {
+    "id": 1856,
+    "platform_id": 45,
+    "subject_id": 550,
+    "name": "Globalization and Its Impact",
+    "is_active": true,
+    "q_count": 755
+  },
+  {
+    "id": 1857,
+    "platform_id": 45,
+    "subject_id": 550,
+    "name": "Diplomacy and Foreign Policy",
+    "is_active": true,
+    "q_count": 794
+  },
+  {
+    "id": 1858,
+    "platform_id": 45,
+    "subject_id": 550,
+    "name": "Geopolitics and Strategic Studies",
+    "is_active": true,
+    "q_count": 936
+  },
+  {
+    "id": 1859,
+    "platform_id": 45,
+    "subject_id": 550,
+    "name": "Human Rights Regimes",
+    "is_active": true,
+    "q_count": 795
+  },
+  {
+    "id": 1860,
+    "platform_id": 45,
+    "subject_id": 550,
+    "name": "International Trade Agreements",
+    "is_active": true,
+    "q_count": 653
+  },
+  {
+    "id": 1861,
+    "platform_id": 45,
+    "subject_id": 550,
+    "name": "Regional Blocs (EU, ASEAN, etc.)",
+    "is_active": true,
+    "q_count": 702
+  },
+  {
+    "id": 1862,
+    "platform_id": 45,
+    "subject_id": 550,
+    "name": "Environmental Politics",
+    "is_active": true,
+    "q_count": 731
+  },
+  {
+    "id": 1863,
+    "platform_id": 45,
+    "subject_id": 550,
+    "name": "Conflict Resolution and Peacekeeping",
+    "is_active": true,
+    "q_count": 693
+  },
+  {
+    "id": 1864,
+    "platform_id": 45,
+    "subject_id": 551,
+    "name": "Parliamentary Structure",
+    "is_active": true,
+    "q_count": 890
+  },
+  {
+    "id": 1865,
+    "platform_id": 45,
+    "subject_id": 551,
+    "name": "President and Prime Minister Roles",
+    "is_active": true,
+    "q_count": 627
+  },
+  {
+    "id": 1866,
+    "platform_id": 45,
+    "subject_id": 551,
+    "name": "Election Commission of India",
+    "is_active": true,
+    "q_count": 580
+  },
+  {
+    "id": 1867,
+    "platform_id": 45,
+    "subject_id": 551,
+    "name": "State Governments and Governors",
+    "is_active": true,
+    "q_count": 768
+  },
+  {
+    "id": 1868,
+    "platform_id": 45,
+    "subject_id": 551,
+    "name": "Local Self-Government",
+    "is_active": true,
+    "q_count": 764
+  },
+  {
+    "id": 1869,
+    "platform_id": 45,
+    "subject_id": 551,
+    "name": "Judiciary in India",
+    "is_active": true,
+    "q_count": 986
+  },
+  {
+    "id": 1870,
+    "platform_id": 45,
+    "subject_id": 551,
+    "name": "Federalism in Practice",
+    "is_active": true,
+    "q_count": 594
+  },
+  {
+    "id": 1871,
+    "platform_id": 45,
+    "subject_id": 551,
+    "name": "Major Political Parties",
+    "is_active": true,
+    "q_count": 744
+  },
+  {
+    "id": 1872,
+    "platform_id": 45,
+    "subject_id": 551,
+    "name": "Electoral Reforms",
+    "is_active": true,
+    "q_count": 706
+  },
+  {
+    "id": 1873,
+    "platform_id": 45,
+    "subject_id": 551,
+    "name": "Coalition Politics",
+    "is_active": true,
+    "q_count": 886
+  },
+  {
+    "id": 1874,
+    "platform_id": 45,
+    "subject_id": 552,
+    "name": "Voting Rights and Processes",
+    "is_active": true,
+    "q_count": 617
+  },
+  {
+    "id": 1875,
+    "platform_id": 45,
+    "subject_id": 552,
+    "name": "Citizen Responsibilities",
+    "is_active": true,
+    "q_count": 757
+  },
+  {
+    "id": 1876,
+    "platform_id": 45,
+    "subject_id": 552,
+    "name": "Right to Information (RTI)",
+    "is_active": true,
+    "q_count": 554
+  },
+  {
+    "id": 1877,
+    "platform_id": 45,
+    "subject_id": 552,
+    "name": "Public Health Awareness",
+    "is_active": true,
+    "q_count": 758
+  },
+  {
+    "id": 1878,
+    "platform_id": 45,
+    "subject_id": 552,
+    "name": "Urban Civic Amenities",
+    "is_active": true,
+    "q_count": 755
+  },
+  {
+    "id": 1879,
+    "platform_id": 45,
+    "subject_id": 552,
+    "name": "Environmental Citizenship",
+    "is_active": true,
+    "q_count": 761
+  },
+  {
+    "id": 1880,
+    "platform_id": 45,
+    "subject_id": 552,
+    "name": "Consumer Rights",
+    "is_active": true,
+    "q_count": 690
+  },
+  {
+    "id": 1881,
+    "platform_id": 45,
+    "subject_id": 552,
+    "name": "Gender Equality and Rights",
+    "is_active": true,
+    "q_count": 609
+  },
+  {
+    "id": 1882,
+    "platform_id": 45,
+    "subject_id": 552,
+    "name": "Digital Literacy and E-Services",
+    "is_active": true,
+    "q_count": 791
+  },
+  {
+    "id": 1883,
+    "platform_id": 45,
+    "subject_id": 552,
+    "name": "Community Service & Volunteering",
+    "is_active": true,
+    "q_count": 777
+  },
+  {
+    "id": 1885,
+    "platform_id": 53,
+    "subject_id": 643,
+    "name": "Tamil (Class 10)",
+    "is_active": true,
+    "q_count": 793
+  },
+  {
+    "id": 1886,
+    "platform_id": 53,
+    "subject_id": 643,
+    "name": "English (Class 10)",
+    "is_active": true,
+    "q_count": 805
+  },
+  {
+    "id": 1887,
+    "platform_id": 53,
+    "subject_id": 643,
+    "name": "Mathematics (Class 10)",
+    "is_active": true,
+    "q_count": 641
+  },
+  {
+    "id": 1888,
+    "platform_id": 53,
+    "subject_id": 643,
+    "name": "Science (Class 10)",
+    "is_active": true,
+    "q_count": 430
+  },
+  {
+    "id": 1889,
+    "platform_id": 53,
+    "subject_id": 643,
+    "name": "Social Science (Class 10)",
+    "is_active": true,
+    "q_count": 749
+  },
+  {
+    "id": 1890,
+    "platform_id": 53,
+    "subject_id": 643,
+    "name": "Tamil (Class 11/12)",
+    "is_active": true,
+    "q_count": 435
+  },
+  {
+    "id": 1891,
+    "platform_id": 53,
+    "subject_id": 643,
+    "name": "English (Class 11/12)",
+    "is_active": true,
+    "q_count": 592
+  },
+  {
+    "id": 1892,
+    "platform_id": 53,
+    "subject_id": 643,
+    "name": "Physics (Class 11/12)",
+    "is_active": true,
+    "q_count": 1131
+  },
+  {
+    "id": 1893,
+    "platform_id": 53,
+    "subject_id": 643,
+    "name": "Chemistry (Class 11/12)",
+    "is_active": true,
+    "q_count": 685
+  },
+  {
+    "id": 1894,
+    "platform_id": 53,
+    "subject_id": 643,
+    "name": "Biology (Class 11/12)",
+    "is_active": true,
+    "q_count": 555
+  },
+  {
+    "id": 1895,
+    "platform_id": 53,
+    "subject_id": 643,
+    "name": "Mathematics (Class 11/12)",
+    "is_active": true,
+    "q_count": 594
+  },
+  {
+    "id": 1896,
+    "platform_id": 53,
+    "subject_id": 643,
+    "name": "Computer Science (Class 11/12)",
+    "is_active": true,
+    "q_count": 590
+  },
+  {
+    "id": 1897,
+    "platform_id": 53,
+    "subject_id": 643,
+    "name": "Commerce (Class 11/12)",
+    "is_active": true,
+    "q_count": 612
+  },
+  {
+    "id": 1898,
+    "platform_id": 53,
+    "subject_id": 643,
+    "name": "Accountancy (Class 11/12)",
+    "is_active": true,
+    "q_count": 523
+  },
+  {
+    "id": 1899,
+    "platform_id": 53,
+    "subject_id": 643,
+    "name": "Economics (Class 11/12)",
+    "is_active": true,
+    "q_count": 889
+  },
+  {
+    "id": 1900,
+    "platform_id": 53,
+    "subject_id": 644,
+    "name": "Kannada (Class 10)",
+    "is_active": true,
+    "q_count": 766
+  },
+  {
+    "id": 1901,
+    "platform_id": 53,
+    "subject_id": 644,
+    "name": "English (Class 10)",
+    "is_active": true,
+    "q_count": 457
+  },
+  {
+    "id": 1902,
+    "platform_id": 53,
+    "subject_id": 644,
+    "name": "Mathematics (Class 10)",
+    "is_active": true,
+    "q_count": 775
+  },
+  {
+    "id": 1903,
+    "platform_id": 53,
+    "subject_id": 644,
+    "name": "Science (Class 10)",
+    "is_active": true,
+    "q_count": 338
+  },
+  {
+    "id": 1904,
+    "platform_id": 53,
+    "subject_id": 644,
+    "name": "Social Science (Class 10)",
+    "is_active": true,
+    "q_count": 723
+  },
+  {
+    "id": 1905,
+    "platform_id": 53,
+    "subject_id": 644,
+    "name": "Kannada (Class 11/12)",
+    "is_active": true,
+    "q_count": 0
+  },
+  {
+    "id": 1906,
+    "platform_id": 53,
+    "subject_id": 644,
+    "name": "English (Class 11/12)",
+    "is_active": true,
+    "q_count": 390
+  },
+  {
+    "id": 1907,
+    "platform_id": 53,
+    "subject_id": 644,
+    "name": "Physics (Class 11/12)",
+    "is_active": true,
+    "q_count": 469
+  },
+  {
+    "id": 1908,
+    "platform_id": 53,
+    "subject_id": 644,
+    "name": "Chemistry (Class 11/12)",
+    "is_active": true,
+    "q_count": 697
+  },
+  {
+    "id": 1909,
+    "platform_id": 53,
+    "subject_id": 644,
+    "name": "Biology (Class 11/12)",
+    "is_active": true,
+    "q_count": 459
+  },
+  {
+    "id": 1910,
+    "platform_id": 53,
+    "subject_id": 644,
+    "name": "Mathematics (Class 11/12)",
+    "is_active": true,
+    "q_count": 618
+  },
+  {
+    "id": 1911,
+    "platform_id": 53,
+    "subject_id": 644,
+    "name": "Computer Science (Class 11/12)",
+    "is_active": true,
+    "q_count": 430
+  },
+  {
+    "id": 1912,
+    "platform_id": 53,
+    "subject_id": 644,
+    "name": "Business Studies (Class 11/12)",
+    "is_active": true,
+    "q_count": 590
+  },
+  {
+    "id": 1913,
+    "platform_id": 53,
+    "subject_id": 644,
+    "name": "Accountancy (Class 11/12)",
+    "is_active": true,
+    "q_count": 636
+  },
+  {
+    "id": 1914,
+    "platform_id": 53,
+    "subject_id": 644,
+    "name": "Economics (Class 11/12)",
+    "is_active": true,
+    "q_count": 694
+  },
+  {
+    "id": 1915,
+    "platform_id": 53,
+    "subject_id": 645,
+    "name": "Malayalam (Class 10)",
+    "is_active": true,
+    "q_count": 707
+  },
+  {
+    "id": 1916,
+    "platform_id": 53,
+    "subject_id": 645,
+    "name": "English (Class 10)",
+    "is_active": true,
+    "q_count": 638
+  },
+  {
+    "id": 1917,
+    "platform_id": 53,
+    "subject_id": 645,
+    "name": "Mathematics (Class 10)",
+    "is_active": true,
+    "q_count": 741
+  },
+  {
+    "id": 1918,
+    "platform_id": 53,
+    "subject_id": 645,
+    "name": "Science (Class 10)",
+    "is_active": true,
+    "q_count": 469
+  },
+  {
+    "id": 1919,
+    "platform_id": 53,
+    "subject_id": 645,
+    "name": "Social Science (Class 10)",
+    "is_active": true,
+    "q_count": 673
+  },
+  {
+    "id": 1920,
+    "platform_id": 53,
+    "subject_id": 645,
+    "name": "Malayalam (Class 11/12)",
+    "is_active": true,
+    "q_count": 590
+  },
+  {
+    "id": 1921,
+    "platform_id": 53,
+    "subject_id": 645,
+    "name": "English (Class 11/12)",
+    "is_active": true,
+    "q_count": 644
+  },
+  {
+    "id": 1922,
+    "platform_id": 53,
+    "subject_id": 645,
+    "name": "Physics (Class 11/12)",
+    "is_active": true,
+    "q_count": 467
+  },
+  {
+    "id": 1923,
+    "platform_id": 53,
+    "subject_id": 645,
+    "name": "Chemistry (Class 11/12)",
+    "is_active": true,
+    "q_count": 767
+  },
+  {
+    "id": 1924,
+    "platform_id": 53,
+    "subject_id": 645,
+    "name": "Biology (Class 11/12)",
+    "is_active": true,
+    "q_count": 544
+  },
+  {
+    "id": 1925,
+    "platform_id": 53,
+    "subject_id": 645,
+    "name": "Mathematics (Class 11/12)",
+    "is_active": true,
+    "q_count": 694
+  },
+  {
+    "id": 1926,
+    "platform_id": 53,
+    "subject_id": 645,
+    "name": "Computer Science (Class 11/12)",
+    "is_active": true,
+    "q_count": 568
+  },
+  {
+    "id": 1927,
+    "platform_id": 53,
+    "subject_id": 645,
+    "name": "Accountancy (Class 11/12)",
+    "is_active": true,
+    "q_count": 750
+  },
+  {
+    "id": 1928,
+    "platform_id": 53,
+    "subject_id": 645,
+    "name": "Economics (Class 11/12)",
+    "is_active": true,
+    "q_count": 574
+  },
+  {
+    "id": 1929,
+    "platform_id": 53,
+    "subject_id": 645,
+    "name": "Business Studies (Class 11/12)",
+    "is_active": true,
+    "q_count": 551
+  },
+  {
+    "id": 1930,
+    "platform_id": 53,
+    "subject_id": 646,
+    "name": "Marathi (Class 10)",
+    "is_active": true,
+    "q_count": 717
+  },
+  {
+    "id": 1931,
+    "platform_id": 53,
+    "subject_id": 646,
+    "name": "English (Class 10)",
+    "is_active": true,
+    "q_count": 433
+  },
+  {
+    "id": 1932,
+    "platform_id": 53,
+    "subject_id": 646,
+    "name": "Mathematics (Class 10)",
+    "is_active": true,
+    "q_count": 812
+  },
+  {
+    "id": 1933,
+    "platform_id": 53,
+    "subject_id": 646,
+    "name": "Science (Class 10)",
+    "is_active": true,
+    "q_count": 692
+  },
+  {
+    "id": 1934,
+    "platform_id": 53,
+    "subject_id": 646,
+    "name": "Social Science (Class 10)",
+    "is_active": true,
+    "q_count": 696
+  },
+  {
+    "id": 1935,
+    "platform_id": 53,
+    "subject_id": 646,
+    "name": "Marathi (Class 11/12)",
+    "is_active": true,
+    "q_count": 669
+  },
+  {
+    "id": 1936,
+    "platform_id": 53,
+    "subject_id": 646,
+    "name": "English (Class 11/12)",
+    "is_active": true,
+    "q_count": 631
+  },
+  {
+    "id": 1937,
+    "platform_id": 53,
+    "subject_id": 646,
+    "name": "Physics (Class 11/12)",
+    "is_active": true,
+    "q_count": 569
+  },
+  {
+    "id": 1938,
+    "platform_id": 53,
+    "subject_id": 646,
+    "name": "Chemistry (Class 11/12)",
+    "is_active": true,
+    "q_count": 778
+  },
+  {
+    "id": 1939,
+    "platform_id": 53,
+    "subject_id": 646,
+    "name": "Biology (Class 11/12)",
+    "is_active": true,
+    "q_count": 517
+  },
+  {
+    "id": 1940,
+    "platform_id": 53,
+    "subject_id": 646,
+    "name": "Mathematics (Class 11/12)",
+    "is_active": true,
+    "q_count": 1489
+  },
+  {
+    "id": 1941,
+    "platform_id": 53,
+    "subject_id": 646,
+    "name": "Computer Science (Class 11/12)",
+    "is_active": true,
+    "q_count": 566
+  },
+  {
+    "id": 1942,
+    "platform_id": 53,
+    "subject_id": 646,
+    "name": "Economics (Class 11/12)",
+    "is_active": true,
+    "q_count": 725
+  },
+  {
+    "id": 1943,
+    "platform_id": 53,
+    "subject_id": 646,
+    "name": "Book Keeping & Accountancy (Class 11/12)",
+    "is_active": true,
+    "q_count": 710
+  },
+  {
+    "id": 1944,
+    "platform_id": 53,
+    "subject_id": 646,
+    "name": "Organization of Commerce (Class 11/12)",
+    "is_active": true,
+    "q_count": 600
+  },
+  {
+    "id": 1945,
+    "platform_id": 53,
+    "subject_id": 647,
+    "name": "Hindi (Class 10)",
+    "is_active": true,
+    "q_count": 438
+  },
+  {
+    "id": 1946,
+    "platform_id": 53,
+    "subject_id": 647,
+    "name": "English (Class 10)",
+    "is_active": true,
+    "q_count": 914
+  },
+  {
+    "id": 1947,
+    "platform_id": 53,
+    "subject_id": 647,
+    "name": "Mathematics (Class 10)",
+    "is_active": true,
+    "q_count": 894
+  },
+  {
+    "id": 1948,
+    "platform_id": 53,
+    "subject_id": 647,
+    "name": "Science (Class 10)",
+    "is_active": true,
+    "q_count": 954
+  },
+  {
+    "id": 1949,
+    "platform_id": 53,
+    "subject_id": 647,
+    "name": "Social Science (Class 10)",
+    "is_active": true,
+    "q_count": 637
+  },
+  {
+    "id": 1950,
+    "platform_id": 53,
+    "subject_id": 647,
+    "name": "Hindi (Class 11/12)",
+    "is_active": true,
+    "q_count": 431
+  },
+  {
+    "id": 1951,
+    "platform_id": 53,
+    "subject_id": 647,
+    "name": "English (Class 11/12)",
+    "is_active": true,
+    "q_count": 594
+  },
+  {
+    "id": 1952,
+    "platform_id": 53,
+    "subject_id": 647,
+    "name": "Physics (Class 11/12)",
+    "is_active": true,
+    "q_count": 1272
+  },
+  {
+    "id": 1953,
+    "platform_id": 53,
+    "subject_id": 647,
+    "name": "Chemistry (Class 11/12)",
+    "is_active": true,
+    "q_count": 723
+  },
+  {
+    "id": 1954,
+    "platform_id": 53,
+    "subject_id": 647,
+    "name": "Biology (Class 11/12)",
+    "is_active": true,
+    "q_count": 523
+  },
+  {
+    "id": 1955,
+    "platform_id": 53,
+    "subject_id": 647,
+    "name": "Mathematics (Class 11/12)",
+    "is_active": true,
+    "q_count": 950
+  },
+  {
+    "id": 1956,
+    "platform_id": 53,
+    "subject_id": 647,
+    "name": "Computer Science (Class 11/12)",
+    "is_active": true,
+    "q_count": 652
+  },
+  {
+    "id": 1957,
+    "platform_id": 53,
+    "subject_id": 647,
+    "name": "Business Studies (Class 11/12)",
+    "is_active": true,
+    "q_count": 608
+  },
+  {
+    "id": 1958,
+    "platform_id": 53,
+    "subject_id": 647,
+    "name": "Accountancy (Class 11/12)",
+    "is_active": true,
+    "q_count": 545
+  },
+  {
+    "id": 1959,
+    "platform_id": 53,
+    "subject_id": 647,
+    "name": "Economics (Class 11/12)",
+    "is_active": true,
+    "q_count": 673
+  },
+  {
+    "id": 1960,
+    "platform_id": 53,
+    "subject_id": 648,
+    "name": "Telugu (Class 10)",
+    "is_active": true,
+    "q_count": 735
+  },
+  {
+    "id": 1961,
+    "platform_id": 53,
+    "subject_id": 648,
+    "name": "English (Class 10)",
+    "is_active": true,
+    "q_count": 574
+  },
+  {
+    "id": 1962,
+    "platform_id": 53,
+    "subject_id": 648,
+    "name": "Mathematics (Class 10)",
+    "is_active": true,
+    "q_count": 646
+  },
+  {
+    "id": 1963,
+    "platform_id": 53,
+    "subject_id": 648,
+    "name": "Science (Class 10)",
+    "is_active": true,
+    "q_count": 514
+  },
+  {
+    "id": 1964,
+    "platform_id": 53,
+    "subject_id": 648,
+    "name": "Social Studies (Class 10)",
+    "is_active": true,
+    "q_count": 665
+  },
+  {
+    "id": 1965,
+    "platform_id": 53,
+    "subject_id": 648,
+    "name": "Telugu (Class 11/12)",
+    "is_active": true,
+    "q_count": 670
+  },
+  {
+    "id": 1966,
+    "platform_id": 53,
+    "subject_id": 648,
+    "name": "English (Class 11/12)",
+    "is_active": true,
+    "q_count": 642
+  },
+  {
+    "id": 1967,
+    "platform_id": 53,
+    "subject_id": 648,
+    "name": "Physics (Class 11/12)",
+    "is_active": true,
+    "q_count": 1279
+  },
+  {
+    "id": 1968,
+    "platform_id": 53,
+    "subject_id": 648,
+    "name": "Chemistry (Class 11/12)",
+    "is_active": true,
+    "q_count": 691
+  },
+  {
+    "id": 1969,
+    "platform_id": 53,
+    "subject_id": 648,
+    "name": "Biology (Class 11/12)",
+    "is_active": true,
+    "q_count": 516
+  },
+  {
+    "id": 1970,
+    "platform_id": 53,
+    "subject_id": 648,
+    "name": "Mathematics (Class 11/12)",
+    "is_active": true,
+    "q_count": 680
+  },
+  {
+    "id": 1971,
+    "platform_id": 53,
+    "subject_id": 648,
+    "name": "Economics (Class 11/12)",
+    "is_active": true,
+    "q_count": 927
+  },
+  {
+    "id": 1972,
+    "platform_id": 53,
+    "subject_id": 648,
+    "name": "Commerce (Class 11/12)",
+    "is_active": true,
+    "q_count": 522
+  },
+  {
+    "id": 1973,
+    "platform_id": 53,
+    "subject_id": 648,
+    "name": "Civics (Class 11/12)",
+    "is_active": true,
+    "q_count": 683
+  },
+  {
+    "id": 1974,
+    "platform_id": 53,
+    "subject_id": 648,
+    "name": "History (Class 11/12)",
+    "is_active": true,
+    "q_count": 775
+  },
+  {
+    "id": 1975,
+    "platform_id": 48,
+    "subject_id": 649,
+    "name": "Knife Skills",
+    "is_active": true,
+    "q_count": 944
+  },
+  {
+    "id": 1976,
+    "platform_id": 48,
+    "subject_id": 649,
+    "name": "Cooking Methods",
+    "is_active": true,
+    "q_count": 1526
+  },
+  {
+    "id": 1977,
+    "platform_id": 48,
+    "subject_id": 649,
+    "name": "Food Safety & Hygiene",
+    "is_active": true,
+    "q_count": 992
+  },
+  {
+    "id": 1978,
+    "platform_id": 48,
+    "subject_id": 649,
+    "name": "Kitchen Tools & Equipment",
+    "is_active": true,
+    "q_count": 1193
+  },
+  {
+    "id": 1979,
+    "platform_id": 48,
+    "subject_id": 650,
+    "name": "French Cuisine",
+    "is_active": true,
+    "q_count": 1100
+  },
+  {
+    "id": 1980,
+    "platform_id": 48,
+    "subject_id": 650,
+    "name": "Italian Cuisine",
+    "is_active": true,
+    "q_count": 1659
+  },
+  {
+    "id": 1981,
+    "platform_id": 48,
+    "subject_id": 650,
+    "name": "Indian Cuisine",
+    "is_active": true,
+    "q_count": 1720
+  },
+  {
+    "id": 1982,
+    "platform_id": 48,
+    "subject_id": 650,
+    "name": "Chinese Cuisine",
+    "is_active": true,
+    "q_count": 1190
+  },
+  {
+    "id": 1983,
+    "platform_id": 48,
+    "subject_id": 650,
+    "name": "Middle Eastern Cuisine",
+    "is_active": true,
+    "q_count": 1944
+  },
+  {
+    "id": 1984,
+    "platform_id": 48,
+    "subject_id": 651,
+    "name": "Macronutrients Basics",
+    "is_active": true,
+    "q_count": 930
+  },
+  {
+    "id": 1985,
+    "platform_id": 48,
+    "subject_id": 651,
+    "name": "Balanced Meal Planning",
+    "is_active": true,
+    "q_count": 1678
+  },
+  {
+    "id": 1986,
+    "platform_id": 48,
+    "subject_id": 651,
+    "name": "Special Diets",
+    "is_active": true,
+    "q_count": 1951
+  },
+  {
+    "id": 1987,
+    "platform_id": 48,
+    "subject_id": 651,
+    "name": "Food Labels & Portion Control",
+    "is_active": true,
+    "q_count": 952
+  },
+  {
+    "id": 1988,
+    "platform_id": 48,
+    "subject_id": 652,
+    "name": "Breads",
+    "is_active": true,
+    "q_count": 1354
+  },
+  {
+    "id": 1989,
+    "platform_id": 48,
+    "subject_id": 652,
+    "name": "Cakes & Frosting",
+    "is_active": true,
+    "q_count": 1437
+  },
+  {
+    "id": 1990,
+    "platform_id": 48,
+    "subject_id": 652,
+    "name": "Pastries & Pies",
+    "is_active": true,
+    "q_count": 1638
+  },
+  {
+    "id": 1991,
+    "platform_id": 48,
+    "subject_id": 652,
+    "name": "Cookies & Confections",
+    "is_active": true,
+    "q_count": 1494
+  },
+  {
+    "id": 1992,
+    "platform_id": 48,
+    "subject_id": 653,
+    "name": "Plating Essentials",
+    "is_active": true,
+    "q_count": 1150
+  },
+  {
+    "id": 1993,
+    "platform_id": 48,
+    "subject_id": 653,
+    "name": "Garnishes & Color Theory",
+    "is_active": true,
+    "q_count": 949
+  },
+  {
+    "id": 1994,
+    "platform_id": 48,
+    "subject_id": 653,
+    "name": "Table Service Basics",
+    "is_active": true,
+    "q_count": 1025
+  },
+  {
+    "id": 1995,
+    "platform_id": 48,
+    "subject_id": 653,
+    "name": "Menu Planning & Costing",
+    "is_active": true,
+    "q_count": 1051
+  },
+  {
+    "id": 1996,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Fundamentals",
+    "is_active": true,
+    "q_count": 808
+  },
+  {
+    "id": 1997,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Administration",
+    "is_active": true,
+    "q_count": 709
+  },
+  {
+    "id": 1998,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Developer Basics (Apex & Visualforce)",
+    "is_active": true,
+    "q_count": 899
+  },
+  {
+    "id": 1999,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Lightning Experience",
+    "is_active": true,
+    "q_count": 832
+  },
+  {
+    "id": 2000,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Sales Cloud",
+    "is_active": true,
+    "q_count": 850
+  },
+  {
+    "id": 2001,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Service Cloud",
+    "is_active": true,
+    "q_count": 921
+  },
+  {
+    "id": 2002,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Marketing Cloud",
+    "is_active": true,
+    "q_count": 1065
+  },
+  {
+    "id": 2003,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Commerce Cloud",
+    "is_active": true,
+    "q_count": 1117
+  },
+  {
+    "id": 2004,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Pardot (B2B Marketing Automation)",
+    "is_active": true,
+    "q_count": 1026
+  },
+  {
+    "id": 2005,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Einstein (AI & Analytics)",
+    "is_active": true,
+    "q_count": 783
+  },
+  {
+    "id": 2006,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Security & Access Management",
+    "is_active": true,
+    "q_count": 603
+  },
+  {
+    "id": 2007,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Data Management & Integration",
+    "is_active": true,
+    "q_count": 954
+  },
+  {
+    "id": 2008,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Reporting & Dashboards",
+    "is_active": true,
+    "q_count": 843
+  },
+  {
+    "id": 2009,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce AppExchange & Custom Apps",
+    "is_active": true,
+    "q_count": 828
+  },
+  {
+    "id": 2010,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Flow & Automation (Process Builder, Flows, Workflows)",
+    "is_active": true,
+    "q_count": 906
+  },
+  {
+    "id": 2011,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Mobile App & Mobile Administration",
+    "is_active": true,
+    "q_count": 680
+  },
+  {
+    "id": 2012,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Field Service",
+    "is_active": true,
+    "q_count": 770
+  },
+  {
+    "id": 2013,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Industry Solutions",
+    "is_active": true,
+    "q_count": 1044
+  },
+  {
+    "id": 2014,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Certification Prep – Administrator",
+    "is_active": true,
+    "q_count": 560
+  },
+  {
+    "id": 2015,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Certification Prep – Platform App Builder",
+    "is_active": true,
+    "q_count": 531
+  },
+  {
+    "id": 2016,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Certification Prep – Platform Developer I",
+    "is_active": true,
+    "q_count": 547
+  },
+  {
+    "id": 2017,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Certification Prep – Platform Developer II",
+    "is_active": true,
+    "q_count": 548
+  },
+  {
+    "id": 2018,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Certification Prep – Advanced Administrator",
+    "is_active": true,
+    "q_count": 658
+  },
+  {
+    "id": 2019,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Certification Prep – Sales Cloud Consultant",
+    "is_active": true,
+    "q_count": 643
+  },
+  {
+    "id": 2020,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Certification Prep – Service Cloud Consultant",
+    "is_active": true,
+    "q_count": 649
+  },
+  {
+    "id": 2021,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Certification Prep – Marketing Cloud Consultant",
+    "is_active": true,
+    "q_count": 651
+  },
+  {
+    "id": 2022,
+    "platform_id": 15,
+    "subject_id": 654,
+    "name": "Salesforce Certification Prep – Technical Architect",
+    "is_active": true,
+    "q_count": 653
+  },
+  {
+    "id": 2023,
+    "platform_id": 47,
+    "subject_id": 655,
+    "name": "Simplification & Approximation",
+    "is_active": true,
+    "q_count": 753
+  },
+  {
+    "id": 2024,
+    "platform_id": 47,
+    "subject_id": 655,
+    "name": "Average",
+    "is_active": true,
+    "q_count": 657
+  },
+  {
+    "id": 2025,
+    "platform_id": 47,
+    "subject_id": 655,
+    "name": "HCF & LCM",
+    "is_active": true,
+    "q_count": 754
+  },
+  {
+    "id": 2026,
+    "platform_id": 47,
+    "subject_id": 655,
+    "name": "Percentage",
+    "is_active": true,
+    "q_count": 841
+  },
+  {
+    "id": 2027,
+    "platform_id": 47,
+    "subject_id": 655,
+    "name": "Profit & Loss",
+    "is_active": true,
+    "q_count": 823
+  },
+  {
+    "id": 2028,
+    "platform_id": 47,
+    "subject_id": 655,
+    "name": "Discount",
+    "is_active": true,
+    "q_count": 921
+  },
+  {
+    "id": 2029,
+    "platform_id": 47,
+    "subject_id": 655,
+    "name": "Simple Interest",
+    "is_active": true,
+    "q_count": 675
+  },
+  {
+    "id": 2030,
+    "platform_id": 47,
+    "subject_id": 655,
+    "name": "Compound Interest",
+    "is_active": true,
+    "q_count": 861
+  },
+  {
+    "id": 2031,
+    "platform_id": 47,
+    "subject_id": 655,
+    "name": "Ratio & Proportion",
+    "is_active": true,
+    "q_count": 1019
+  },
+  {
+    "id": 2032,
+    "platform_id": 47,
+    "subject_id": 655,
+    "name": "Partnership",
+    "is_active": true,
+    "q_count": 890
+  },
+  {
+    "id": 2033,
+    "platform_id": 47,
+    "subject_id": 655,
+    "name": "Mixtures & Alligation",
+    "is_active": true,
+    "q_count": 840
+  },
+  {
+    "id": 2034,
+    "platform_id": 47,
+    "subject_id": 656,
+    "name": "Linear Equations",
+    "is_active": true,
+    "q_count": 1100
+  },
+  {
+    "id": 2035,
+    "platform_id": 47,
+    "subject_id": 656,
+    "name": "Quadratic Equations",
+    "is_active": true,
+    "q_count": 806
+  },
+  {
+    "id": 2036,
+    "platform_id": 47,
+    "subject_id": 656,
+    "name": "Polynomials",
+    "is_active": true,
+    "q_count": 612
+  },
+  {
+    "id": 2037,
+    "platform_id": 47,
+    "subject_id": 656,
+    "name": "Inequalities",
+    "is_active": true,
+    "q_count": 912
+  },
+  {
+    "id": 2038,
+    "platform_id": 47,
+    "subject_id": 656,
+    "name": "Algebraic Identities",
+    "is_active": true,
+    "q_count": 727
+  },
+  {
+    "id": 2039,
+    "platform_id": 47,
+    "subject_id": 656,
+    "name": "Functions",
+    "is_active": true,
+    "q_count": 812
+  },
+  {
+    "id": 2040,
+    "platform_id": 47,
+    "subject_id": 657,
+    "name": "Lines & Angles",
+    "is_active": true,
+    "q_count": 885
+  },
+  {
+    "id": 2041,
+    "platform_id": 47,
+    "subject_id": 657,
+    "name": "Triangles",
+    "is_active": true,
+    "q_count": 1073
+  },
+  {
+    "id": 2042,
+    "platform_id": 47,
+    "subject_id": 657,
+    "name": "Circles",
+    "is_active": true,
+    "q_count": 885
+  },
+  {
+    "id": 2043,
+    "platform_id": 47,
+    "subject_id": 657,
+    "name": "Polygons",
+    "is_active": true,
+    "q_count": 617
+  },
+  {
+    "id": 2044,
+    "platform_id": 47,
+    "subject_id": 657,
+    "name": "Coordinate Geometry",
+    "is_active": true,
+    "q_count": 1216
+  },
+  {
+    "id": 2045,
+    "platform_id": 47,
+    "subject_id": 657,
+    "name": "Three-Dimensional Geometry",
+    "is_active": true,
+    "q_count": 717
+  },
+  {
+    "id": 2046,
+    "platform_id": 47,
+    "subject_id": 658,
+    "name": "Areas of 2D Figures",
+    "is_active": true,
+    "q_count": 1120
+  },
+  {
+    "id": 2047,
+    "platform_id": 47,
+    "subject_id": 658,
+    "name": "Surface Area of Solids",
+    "is_active": true,
+    "q_count": 742
+  },
+  {
+    "id": 2048,
+    "platform_id": 47,
+    "subject_id": 658,
+    "name": "Volume of Solids",
+    "is_active": true,
+    "q_count": 719
+  },
+  {
+    "id": 2049,
+    "platform_id": 47,
+    "subject_id": 658,
+    "name": "Perimeter of Figures",
+    "is_active": true,
+    "q_count": 724
+  },
+  {
+    "id": 2050,
+    "platform_id": 47,
+    "subject_id": 659,
+    "name": "Trigonometric Ratios",
+    "is_active": true,
+    "q_count": 658
+  },
+  {
+    "id": 2051,
+    "platform_id": 47,
+    "subject_id": 659,
+    "name": "Heights & Distances",
+    "is_active": true,
+    "q_count": 726
+  },
+  {
+    "id": 2052,
+    "platform_id": 47,
+    "subject_id": 659,
+    "name": "Trigonometric Identities",
+    "is_active": true,
+    "q_count": 660
+  },
+  {
+    "id": 2053,
+    "platform_id": 47,
+    "subject_id": 659,
+    "name": "Inverse Trigonometry",
+    "is_active": true,
+    "q_count": 513
+  },
+  {
+    "id": 2054,
+    "platform_id": 47,
+    "subject_id": 660,
+    "name": "Basic Probability Rules",
+    "is_active": true,
+    "q_count": 777
+  },
+  {
+    "id": 2055,
+    "platform_id": 47,
+    "subject_id": 660,
+    "name": "Conditional Probability",
+    "is_active": true,
+    "q_count": 726
+  },
+  {
+    "id": 2056,
+    "platform_id": 47,
+    "subject_id": 660,
+    "name": "Bayes’ Theorem",
+    "is_active": true,
+    "q_count": 896
+  },
+  {
+    "id": 2057,
+    "platform_id": 47,
+    "subject_id": 661,
+    "name": "Mean, Median, Mode",
+    "is_active": true,
+    "q_count": 867
+  },
+  {
+    "id": 2058,
+    "platform_id": 47,
+    "subject_id": 661,
+    "name": "Standard Deviation & Variance",
+    "is_active": true,
+    "q_count": 952
+  },
+  {
+    "id": 2059,
+    "platform_id": 47,
+    "subject_id": 661,
+    "name": "Data Tables",
+    "is_active": true,
+    "q_count": 953
+  },
+  {
+    "id": 2060,
+    "platform_id": 47,
+    "subject_id": 661,
+    "name": "Bar Graphs",
+    "is_active": true,
+    "q_count": 844
+  },
+  {
+    "id": 2061,
+    "platform_id": 47,
+    "subject_id": 661,
+    "name": "Line Graphs",
+    "is_active": true,
+    "q_count": 769
+  },
+  {
+    "id": 2062,
+    "platform_id": 47,
+    "subject_id": 661,
+    "name": "Pie Charts",
+    "is_active": true,
+    "q_count": 648
+  },
+  {
+    "id": 2063,
+    "platform_id": 47,
+    "subject_id": 661,
+    "name": "Caselets",
+    "is_active": true,
+    "q_count": 691
+  },
+  {
+    "id": 2064,
+    "platform_id": 47,
+    "subject_id": 662,
+    "name": "Divisibility",
+    "is_active": true,
+    "q_count": 399
+  },
+  {
+    "id": 2065,
+    "platform_id": 47,
+    "subject_id": 662,
+    "name": "Factors & Multiples",
+    "is_active": true,
+    "q_count": 741
+  },
+  {
+    "id": 2066,
+    "platform_id": 47,
+    "subject_id": 662,
+    "name": "Prime Numbers",
+    "is_active": true,
+    "q_count": 319
+  },
+  {
+    "id": 2067,
+    "platform_id": 47,
+    "subject_id": 662,
+    "name": "Remainders",
+    "is_active": true,
+    "q_count": 744
+  },
+  {
+    "id": 2068,
+    "platform_id": 47,
+    "subject_id": 662,
+    "name": "Surds & Indices",
+    "is_active": true,
+    "q_count": 914
+  },
+  {
+    "id": 2069,
+    "platform_id": 47,
+    "subject_id": 662,
+    "name": "Logarithms",
+    "is_active": true,
+    "q_count": 546
+  },
+  {
+    "id": 2070,
+    "platform_id": 47,
+    "subject_id": 663,
+    "name": "Fundamental Counting Principle",
+    "is_active": true,
+    "q_count": 634
+  },
+  {
+    "id": 2071,
+    "platform_id": 47,
+    "subject_id": 663,
+    "name": "Permutations",
+    "is_active": true,
+    "q_count": 657
+  },
+  {
+    "id": 2072,
+    "platform_id": 47,
+    "subject_id": 663,
+    "name": "Circular Permutations",
+    "is_active": true,
+    "q_count": 631
+  },
+  {
+    "id": 2073,
+    "platform_id": 47,
+    "subject_id": 663,
+    "name": "Combinations",
+    "is_active": true,
+    "q_count": 689
+  },
+  {
+    "id": 2074,
+    "platform_id": 47,
+    "subject_id": 663,
+    "name": "Probability with PnC",
+    "is_active": true,
+    "q_count": 717
+  },
+  {
+    "id": 2075,
+    "platform_id": 47,
+    "subject_id": 664,
+    "name": "Relative Speed",
+    "is_active": true,
+    "q_count": 788
+  },
+  {
+    "id": 2076,
+    "platform_id": 47,
+    "subject_id": 664,
+    "name": "Trains",
+    "is_active": true,
+    "q_count": 803
+  },
+  {
+    "id": 2077,
+    "platform_id": 47,
+    "subject_id": 664,
+    "name": "Boats & Streams",
+    "is_active": true,
+    "q_count": 792
+  },
+  {
+    "id": 2078,
+    "platform_id": 47,
+    "subject_id": 664,
+    "name": "Races",
+    "is_active": true,
+    "q_count": 794
+  },
+  {
+    "id": 2079,
+    "platform_id": 47,
+    "subject_id": 664,
+    "name": "Average Speed",
+    "is_active": true,
+    "q_count": 607
+  },
+  {
+    "id": 2080,
+    "platform_id": 47,
+    "subject_id": 665,
+    "name": "Work Efficiency",
+    "is_active": true,
+    "q_count": 630
+  },
+  {
+    "id": 2081,
+    "platform_id": 47,
+    "subject_id": 665,
+    "name": "Pipes & Cisterns",
+    "is_active": true,
+    "q_count": 813
+  },
+  {
+    "id": 2082,
+    "platform_id": 47,
+    "subject_id": 665,
+    "name": "Wages & Work",
+    "is_active": true,
+    "q_count": 754
+  },
+  {
+    "id": 2083,
+    "platform_id": 47,
+    "subject_id": 666,
+    "name": "Direct & Inverse Proportion",
+    "is_active": true,
+    "q_count": 797
+  },
+  {
+    "id": 2084,
+    "platform_id": 47,
+    "subject_id": 666,
+    "name": "Partnership (Capital/Time)",
+    "is_active": true,
+    "q_count": 705
+  },
+  {
+    "id": 2085,
+    "platform_id": 47,
+    "subject_id": 666,
+    "name": "Mixing Problems",
+    "is_active": true,
+    "q_count": 836
+  },
+  {
+    "id": 2086,
+    "platform_id": 47,
+    "subject_id": 667,
+    "name": "Basic Percentage Problems",
+    "is_active": true,
+    "q_count": 801
+  },
+  {
+    "id": 2087,
+    "platform_id": 47,
+    "subject_id": 667,
+    "name": "Successive Percentage Changes",
+    "is_active": true,
+    "q_count": 845
+  },
+  {
+    "id": 2088,
+    "platform_id": 47,
+    "subject_id": 667,
+    "name": "Profit & Loss",
+    "is_active": true,
+    "q_count": 1121
+  },
+  {
+    "id": 2089,
+    "platform_id": 47,
+    "subject_id": 667,
+    "name": "Discount",
+    "is_active": true,
+    "q_count": 844
+  },
+  {
+    "id": 2090,
+    "platform_id": 47,
+    "subject_id": 667,
+    "name": "Marked Price vs Selling Price",
+    "is_active": true,
+    "q_count": 744
+  },
+  {
+    "id": 2091,
+    "platform_id": 47,
+    "subject_id": 668,
+    "name": "Simple Interest Basics",
+    "is_active": true,
+    "q_count": 786
+  },
+  {
+    "id": 2092,
+    "platform_id": 47,
+    "subject_id": 668,
+    "name": "Compound Interest Basics",
+    "is_active": true,
+    "q_count": 879
+  },
+  {
+    "id": 2093,
+    "platform_id": 47,
+    "subject_id": 668,
+    "name": "Growth/Depreciation Problems",
+    "is_active": true,
+    "q_count": 924
+  },
+  {
+    "id": 2094,
+    "platform_id": 47,
+    "subject_id": 668,
+    "name": "Installments",
+    "is_active": true,
+    "q_count": 1261
+  },
+  {
+    "id": 2095,
+    "platform_id": 39,
+    "subject_id": 669,
+    "name": "Deductive Logic",
+    "is_active": true,
+    "q_count": 1207
+  },
+  {
+    "id": 2096,
+    "platform_id": 39,
+    "subject_id": 669,
+    "name": "Inductive Reasoning",
+    "is_active": true,
+    "q_count": 859
+  },
+  {
+    "id": 2097,
+    "platform_id": 39,
+    "subject_id": 669,
+    "name": "Logical Fallacies",
+    "is_active": true,
+    "q_count": 833
+  },
+  {
+    "id": 2098,
+    "platform_id": 39,
+    "subject_id": 669,
+    "name": "Argumentation",
+    "is_active": true,
+    "q_count": 834
+  },
+  {
+    "id": 2099,
+    "platform_id": 39,
+    "subject_id": 670,
+    "name": "Identity & Change",
+    "is_active": true,
+    "q_count": 1113
+  },
+  {
+    "id": 2100,
+    "platform_id": 39,
+    "subject_id": 670,
+    "name": "Causation",
+    "is_active": true,
+    "q_count": 1301
+  },
+  {
+    "id": 2101,
+    "platform_id": 39,
+    "subject_id": 670,
+    "name": "Time & Space",
+    "is_active": true,
+    "q_count": 1339
+  },
+  {
+    "id": 2102,
+    "platform_id": 39,
+    "subject_id": 670,
+    "name": "Personal Identity",
+    "is_active": true,
+    "q_count": 1113
+  },
+  {
+    "id": 2103,
+    "platform_id": 39,
+    "subject_id": 671,
+    "name": "Existence of God",
+    "is_active": true,
+    "q_count": 1114
+  },
+  {
+    "id": 2104,
+    "platform_id": 39,
+    "subject_id": 671,
+    "name": "Problem of Evil",
+    "is_active": true,
+    "q_count": 996
+  },
+  {
+    "id": 2105,
+    "platform_id": 39,
+    "subject_id": 671,
+    "name": "Faith & Reason",
+    "is_active": true,
+    "q_count": 1377
+  },
+  {
+    "id": 2106,
+    "platform_id": 39,
+    "subject_id": 671,
+    "name": "Religious Experience",
+    "is_active": true,
+    "q_count": 994
+  },
+  {
+    "id": 2107,
+    "platform_id": 39,
+    "subject_id": 672,
+    "name": "Nature of Beauty",
+    "is_active": true,
+    "q_count": 1486
+  },
+  {
+    "id": 2108,
+    "platform_id": 39,
+    "subject_id": 672,
+    "name": "Philosophy of Art",
+    "is_active": true,
+    "q_count": 1039
+  },
+  {
+    "id": 2109,
+    "platform_id": 39,
+    "subject_id": 672,
+    "name": "Aesthetic Experience",
+    "is_active": true,
+    "q_count": 1228
+  },
+  {
+    "id": 2110,
+    "platform_id": 39,
+    "subject_id": 672,
+    "name": "Criticism & Interpretation",
+    "is_active": true,
+    "q_count": 1062
+  },
+  {
+    "id": 2111,
+    "platform_id": 46,
+    "subject_id": 673,
+    "name": "Anxiety Basics",
+    "is_active": true,
+    "q_count": 818
+  },
+  {
+    "id": 2112,
+    "platform_id": 46,
+    "subject_id": 673,
+    "name": "Depression Awareness",
+    "is_active": true,
+    "q_count": 962
+  },
+  {
+    "id": 2113,
+    "platform_id": 46,
+    "subject_id": 673,
+    "name": "CBT Techniques",
+    "is_active": true,
+    "q_count": 942
+  },
+  {
+    "id": 2114,
+    "platform_id": 46,
+    "subject_id": 673,
+    "name": "Coping Skills",
+    "is_active": true,
+    "q_count": 983
+  },
+  {
+    "id": 2115,
+    "platform_id": 46,
+    "subject_id": 673,
+    "name": "When to Seek Help",
+    "is_active": true,
+    "q_count": 831
+  },
+  {
+    "id": 2116,
+    "platform_id": 46,
+    "subject_id": 673,
+    "name": "Mental Health Myths",
+    "is_active": true,
+    "q_count": 972
+  },
+  {
+    "id": 2117,
+    "platform_id": 46,
+    "subject_id": 674,
+    "name": "Mindful Breathing",
+    "is_active": true,
+    "q_count": 807
+  },
+  {
+    "id": 2118,
+    "platform_id": 46,
+    "subject_id": 674,
+    "name": "Body Scan",
+    "is_active": true,
+    "q_count": 904
+  },
+  {
+    "id": 2119,
+    "platform_id": 46,
+    "subject_id": 674,
+    "name": "Loving-Kindness (Metta)",
+    "is_active": true,
+    "q_count": 870
+  },
+  {
+    "id": 2120,
+    "platform_id": 46,
+    "subject_id": 674,
+    "name": "Mindful Eating",
+    "is_active": true,
+    "q_count": 794
+  },
+  {
+    "id": 2121,
+    "platform_id": 46,
+    "subject_id": 674,
+    "name": "Mindful Walking",
+    "is_active": true,
+    "q_count": 1189
+  },
+  {
+    "id": 2122,
+    "platform_id": 46,
+    "subject_id": 674,
+    "name": "Everyday Mindfulness",
+    "is_active": true,
+    "q_count": 1396
+  },
+  {
+    "id": 2123,
+    "platform_id": 46,
+    "subject_id": 675,
+    "name": "Stress Response (Fight–Flight)",
+    "is_active": true,
+    "q_count": 969
+  },
+  {
+    "id": 2124,
+    "platform_id": 46,
+    "subject_id": 675,
+    "name": "Acute vs Chronic Stress",
+    "is_active": true,
+    "q_count": 1080
+  },
+  {
+    "id": 2125,
+    "platform_id": 46,
+    "subject_id": 675,
+    "name": "Relaxation Techniques",
+    "is_active": true,
+    "q_count": 939
+  },
+  {
+    "id": 2126,
+    "platform_id": 46,
+    "subject_id": 675,
+    "name": "Cognitive Reframing",
+    "is_active": true,
+    "q_count": 681
+  },
+  {
+    "id": 2127,
+    "platform_id": 46,
+    "subject_id": 675,
+    "name": "Stress Journaling & Tracking",
+    "is_active": true,
+    "q_count": 881
+  },
+  {
+    "id": 2128,
+    "platform_id": 46,
+    "subject_id": 675,
+    "name": "Workplace Stress",
+    "is_active": true,
+    "q_count": 1042
+  },
+  {
+    "id": 2129,
+    "platform_id": 46,
+    "subject_id": 676,
+    "name": "Sleep Stages & Cycles",
+    "is_active": true,
+    "q_count": 858
+  },
+  {
+    "id": 2130,
+    "platform_id": 46,
+    "subject_id": 676,
+    "name": "Circadian Rhythm",
+    "is_active": true,
+    "q_count": 960
+  },
+  {
+    "id": 2131,
+    "platform_id": 46,
+    "subject_id": 676,
+    "name": "Bedroom Environment",
+    "is_active": true,
+    "q_count": 1095
+  },
+  {
+    "id": 2132,
+    "platform_id": 46,
+    "subject_id": 676,
+    "name": "Insomnia Strategies",
+    "is_active": true,
+    "q_count": 936
+  },
+  {
+    "id": 2133,
+    "platform_id": 46,
+    "subject_id": 676,
+    "name": "Napping Best Practices",
+    "is_active": true,
+    "q_count": 736
+  },
+  {
+    "id": 2134,
+    "platform_id": 46,
+    "subject_id": 676,
+    "name": "Tech & Blue Light",
+    "is_active": true,
+    "q_count": 914
+  },
+  {
+    "id": 2135,
+    "platform_id": 46,
+    "subject_id": 677,
+    "name": "Macronutrients 101",
+    "is_active": true,
+    "q_count": 1029
+  },
+  {
+    "id": 2136,
+    "platform_id": 46,
+    "subject_id": 677,
+    "name": "Micronutrients 101",
+    "is_active": true,
+    "q_count": 901
+  },
+  {
+    "id": 2137,
+    "platform_id": 46,
+    "subject_id": 677,
+    "name": "Hydration Essentials",
+    "is_active": true,
+    "q_count": 811
+  },
+  {
+    "id": 2138,
+    "platform_id": 46,
+    "subject_id": 677,
+    "name": "Reading Food Labels",
+    "is_active": true,
+    "q_count": 903
+  },
+  {
+    "id": 2139,
+    "platform_id": 46,
+    "subject_id": 677,
+    "name": "Balanced Plate Method",
+    "is_active": true,
+    "q_count": 930
+  },
+  {
+    "id": 2140,
+    "platform_id": 46,
+    "subject_id": 677,
+    "name": "Meal Planning Basics",
+    "is_active": true,
+    "q_count": 1101
+  },
+  {
+    "id": 2141,
+    "platform_id": 46,
+    "subject_id": 678,
+    "name": "Aerobic Training",
+    "is_active": true,
+    "q_count": 916
+  },
+  {
+    "id": 2142,
+    "platform_id": 46,
+    "subject_id": 678,
+    "name": "Strength Training",
+    "is_active": true,
+    "q_count": 968
+  },
+  {
+    "id": 2143,
+    "platform_id": 46,
+    "subject_id": 678,
+    "name": "Flexibility & Mobility",
+    "is_active": true,
+    "q_count": 867
+  },
+  {
+    "id": 2144,
+    "platform_id": 46,
+    "subject_id": 678,
+    "name": "HIIT Basics",
+    "is_active": true,
+    "q_count": 871
+  },
+  {
+    "id": 2145,
+    "platform_id": 46,
+    "subject_id": 678,
+    "name": "Injury Prevention",
+    "is_active": true,
+    "q_count": 1533
+  },
+  {
+    "id": 2146,
+    "platform_id": 46,
+    "subject_id": 678,
+    "name": "Warm-up & Cooldown",
+    "is_active": true,
+    "q_count": 911
+  },
+  {
+    "id": 2147,
+    "platform_id": 46,
+    "subject_id": 679,
+    "name": "Habit Loop (Cue–Routine–Reward)",
+    "is_active": true,
+    "q_count": 998
+  },
+  {
+    "id": 2148,
+    "platform_id": 46,
+    "subject_id": 679,
+    "name": "Tiny Habits",
+    "is_active": true,
+    "q_count": 863
+  },
+  {
+    "id": 2149,
+    "platform_id": 46,
+    "subject_id": 679,
+    "name": "SMART Goals",
+    "is_active": true,
+    "q_count": 1175
+  },
+  {
+    "id": 2150,
+    "platform_id": 46,
+    "subject_id": 679,
+    "name": "Motivation vs Discipline",
+    "is_active": true,
+    "q_count": 987
+  },
+  {
+    "id": 2151,
+    "platform_id": 46,
+    "subject_id": 679,
+    "name": "Habit Tracking",
+    "is_active": true,
+    "q_count": 918
+  },
+  {
+    "id": 2152,
+    "platform_id": 46,
+    "subject_id": 679,
+    "name": "Breaking Bad Habits",
+    "is_active": true,
+    "q_count": 923
+  },
+  {
+    "id": 2153,
+    "platform_id": 46,
+    "subject_id": 680,
+    "name": "Eisenhower Matrix",
+    "is_active": true,
+    "q_count": 887
+  },
+  {
+    "id": 2154,
+    "platform_id": 46,
+    "subject_id": 680,
+    "name": "Deep Work",
+    "is_active": true,
+    "q_count": 874
+  },
+  {
+    "id": 2155,
+    "platform_id": 46,
+    "subject_id": 680,
+    "name": "Pomodoro Technique",
+    "is_active": true,
+    "q_count": 934
+  },
+  {
+    "id": 2156,
+    "platform_id": 46,
+    "subject_id": 680,
+    "name": "Calendar Blocking",
+    "is_active": true,
+    "q_count": 930
+  },
+  {
+    "id": 2157,
+    "platform_id": 46,
+    "subject_id": 680,
+    "name": "Beat Procrastination",
+    "is_active": true,
+    "q_count": 919
+  },
+  {
+    "id": 2158,
+    "platform_id": 46,
+    "subject_id": 680,
+    "name": "Energy Management",
+    "is_active": true,
+    "q_count": 738
+  },
+  {
+    "id": 2159,
+    "platform_id": 46,
+    "subject_id": 681,
+    "name": "Self-Awareness",
+    "is_active": true,
+    "q_count": 882
+  },
+  {
+    "id": 2160,
+    "platform_id": 46,
+    "subject_id": 681,
+    "name": "Self-Regulation",
+    "is_active": true,
+    "q_count": 804
+  },
+  {
+    "id": 2161,
+    "platform_id": 46,
+    "subject_id": 681,
+    "name": "Empathy",
+    "is_active": true,
+    "q_count": 957
+  },
+  {
+    "id": 2162,
+    "platform_id": 46,
+    "subject_id": 681,
+    "name": "Social Skills",
+    "is_active": true,
+    "q_count": 1262
+  },
+  {
+    "id": 2163,
+    "platform_id": 46,
+    "subject_id": 681,
+    "name": "Intrinsic Motivation",
+    "is_active": true,
+    "q_count": 1000
+  },
+  {
+    "id": 2164,
+    "platform_id": 46,
+    "subject_id": 681,
+    "name": "Conflict De-escalation",
+    "is_active": true,
+    "q_count": 940
+  },
+  {
+    "id": 2165,
+    "platform_id": 46,
+    "subject_id": 682,
+    "name": "Active Listening",
+    "is_active": true,
+    "q_count": 820
+  },
+  {
+    "id": 2166,
+    "platform_id": 46,
+    "subject_id": 682,
+    "name": "Nonviolent Communication",
+    "is_active": true,
+    "q_count": 890
+  },
+  {
+    "id": 2167,
+    "platform_id": 46,
+    "subject_id": 682,
+    "name": "Setting Boundaries",
+    "is_active": true,
+    "q_count": 794
+  },
+  {
+    "id": 2168,
+    "platform_id": 46,
+    "subject_id": 682,
+    "name": "Attachment Styles",
+    "is_active": true,
+    "q_count": 1447
+  },
+  {
+    "id": 2169,
+    "platform_id": 46,
+    "subject_id": 682,
+    "name": "Healthy Disagreements",
+    "is_active": true,
+    "q_count": 793
+  },
+  {
+    "id": 2170,
+    "platform_id": 46,
+    "subject_id": 682,
+    "name": "Support Networks",
+    "is_active": true,
+    "q_count": 877
+  },
+  {
+    "id": 2171,
+    "platform_id": 46,
+    "subject_id": 683,
+    "name": "Self-Compassion",
+    "is_active": true,
+    "q_count": 836
+  },
+  {
+    "id": 2172,
+    "platform_id": 46,
+    "subject_id": 683,
+    "name": "Gratitude Practices",
+    "is_active": true,
+    "q_count": 912
+  },
+  {
+    "id": 2173,
+    "platform_id": 46,
+    "subject_id": 683,
+    "name": "Resilience Skills",
+    "is_active": true,
+    "q_count": 1349
+  },
+  {
+    "id": 2174,
+    "platform_id": 46,
+    "subject_id": 683,
+    "name": "Burnout Signs",
+    "is_active": true,
+    "q_count": 816
+  },
+  {
+    "id": 2175,
+    "platform_id": 46,
+    "subject_id": 683,
+    "name": "Recovery Plans",
+    "is_active": true,
+    "q_count": 1048
+  },
+  {
+    "id": 2176,
+    "platform_id": 46,
+    "subject_id": 683,
+    "name": "Nature & Wellbeing",
+    "is_active": true,
+    "q_count": 1105
+  },
+  {
+    "id": 2177,
+    "platform_id": 46,
+    "subject_id": 684,
+    "name": "Screen-Time Management",
+    "is_active": true,
+    "q_count": 956
+  },
+  {
+    "id": 2178,
+    "platform_id": 46,
+    "subject_id": 684,
+    "name": "Social Media Hygiene",
+    "is_active": true,
+    "q_count": 909
+  },
+  {
+    "id": 2179,
+    "platform_id": 46,
+    "subject_id": 684,
+    "name": "Notifications Detox",
+    "is_active": true,
+    "q_count": 892
+  },
+  {
+    "id": 2180,
+    "platform_id": 46,
+    "subject_id": 684,
+    "name": "Information Diet",
+    "is_active": true,
+    "q_count": 790
+  },
+  {
+    "id": 2181,
+    "platform_id": 46,
+    "subject_id": 684,
+    "name": "Cyberbullying Awareness",
+    "is_active": true,
+    "q_count": 974
+  },
+  {
+    "id": 2182,
+    "platform_id": 46,
+    "subject_id": 684,
+    "name": "Ergonomics & Posture",
+    "is_active": true,
+    "q_count": 845
+  },
+  {
+    "id": 2183,
+    "platform_id": 46,
+    "subject_id": 685,
+    "name": "Workload Management",
+    "is_active": true,
+    "q_count": 1162
+  },
+  {
+    "id": 2184,
+    "platform_id": 46,
+    "subject_id": 685,
+    "name": "Microbreaks & Recovery",
+    "is_active": true,
+    "q_count": 580
+  },
+  {
+    "id": 2185,
+    "platform_id": 46,
+    "subject_id": 685,
+    "name": "Psychological Safety",
+    "is_active": true,
+    "q_count": 1280
+  },
+  {
+    "id": 2186,
+    "platform_id": 46,
+    "subject_id": 685,
+    "name": "Saying No (Boundaries)",
+    "is_active": true,
+    "q_count": 798
+  },
+  {
+    "id": 2187,
+    "platform_id": 46,
+    "subject_id": 685,
+    "name": "Rest & Vacation Planning",
+    "is_active": true,
+    "q_count": 863
+  },
+  {
+    "id": 2188,
+    "platform_id": 46,
+    "subject_id": 685,
+    "name": "Return-to-Work Routines",
+    "is_active": true,
+    "q_count": 1341
+  },
+  {
+    "id": 2189,
+    "platform_id": 46,
+    "subject_id": 686,
+    "name": "Character Strengths",
+    "is_active": true,
+    "q_count": 1152
+  },
+  {
+    "id": 2190,
+    "platform_id": 46,
+    "subject_id": 686,
+    "name": "Flow",
+    "is_active": true,
+    "q_count": 1302
+  },
+  {
+    "id": 2191,
+    "platform_id": 46,
+    "subject_id": 686,
+    "name": "Optimism & Gratitude",
+    "is_active": true,
+    "q_count": 954
+  },
+  {
+    "id": 2192,
+    "platform_id": 46,
+    "subject_id": 686,
+    "name": "Meaning & Purpose",
+    "is_active": true,
+    "q_count": 961
+  },
+  {
+    "id": 2193,
+    "platform_id": 46,
+    "subject_id": 686,
+    "name": "Savoring",
+    "is_active": true,
+    "q_count": 767
+  },
+  {
+    "id": 2194,
+    "platform_id": 46,
+    "subject_id": 686,
+    "name": "Goal Orientation",
+    "is_active": true,
+    "q_count": 899
+  },
+  {
+    "id": 2195,
+    "platform_id": 46,
+    "subject_id": 687,
+    "name": "Asana Basics",
+    "is_active": true,
+    "q_count": 1081
+  },
+  {
+    "id": 2196,
+    "platform_id": 46,
+    "subject_id": 687,
+    "name": "Pranayama",
+    "is_active": true,
+    "q_count": 1273
+  },
+  {
+    "id": 2197,
+    "platform_id": 46,
+    "subject_id": 687,
+    "name": "Sun Salutations",
+    "is_active": true,
+    "q_count": 1028
+  },
+  {
+    "id": 2198,
+    "platform_id": 46,
+    "subject_id": 687,
+    "name": "Restorative Yoga",
+    "is_active": true,
+    "q_count": 1280
+  },
+  {
+    "id": 2199,
+    "platform_id": 46,
+    "subject_id": 687,
+    "name": "Yoga Nidra",
+    "is_active": true,
+    "q_count": 1046
+  },
+  {
+    "id": 2200,
+    "platform_id": 46,
+    "subject_id": 687,
+    "name": "Safety & Alignment",
+    "is_active": true,
+    "q_count": 943
+  },
+  {
+    "id": 2201,
+    "platform_id": 46,
+    "subject_id": 688,
+    "name": "Lifestyle Pillars",
+    "is_active": true,
+    "q_count": 955
+  },
+  {
+    "id": 2202,
+    "platform_id": 46,
+    "subject_id": 688,
+    "name": "Strength After 40",
+    "is_active": true,
+    "q_count": 902
+  },
+  {
+    "id": 2203,
+    "platform_id": 46,
+    "subject_id": 688,
+    "name": "Brain Health",
+    "is_active": true,
+    "q_count": 1090
+  },
+  {
+    "id": 2204,
+    "platform_id": 46,
+    "subject_id": 688,
+    "name": "Bone Health",
+    "is_active": true,
+    "q_count": 865
+  },
+  {
+    "id": 2205,
+    "platform_id": 46,
+    "subject_id": 688,
+    "name": "Preventive Screenings",
+    "is_active": true,
+    "q_count": 945
+  },
+  {
+    "id": 2206,
+    "platform_id": 46,
+    "subject_id": 688,
+    "name": "Blue Zones Lessons",
+    "is_active": true,
+    "q_count": 895
+  },
+  {
+    "id": 2207,
+    "platform_id": 46,
+    "subject_id": 689,
+    "name": "Menstrual Health Basics",
+    "is_active": true,
+    "q_count": 950
+  },
+  {
+    "id": 2208,
+    "platform_id": 46,
+    "subject_id": 689,
+    "name": "Pregnancy Wellness",
+    "is_active": true,
+    "q_count": 930
+  },
+  {
+    "id": 2209,
+    "platform_id": 46,
+    "subject_id": 689,
+    "name": "Postpartum Care",
+    "is_active": true,
+    "q_count": 915
+  },
+  {
+    "id": 2210,
+    "platform_id": 46,
+    "subject_id": 689,
+    "name": "Perimenopause & Menopause",
+    "is_active": true,
+    "q_count": 1218
+  },
+  {
+    "id": 2211,
+    "platform_id": 46,
+    "subject_id": 689,
+    "name": "PCOS Awareness",
+    "is_active": true,
+    "q_count": 905
+  },
+  {
+    "id": 2212,
+    "platform_id": 46,
+    "subject_id": 689,
+    "name": "Iron & Calcium Needs",
+    "is_active": true,
+    "q_count": 1175
+  },
+  {
+    "id": 2213,
+    "platform_id": 46,
+    "subject_id": 690,
+    "name": "Heart Health",
+    "is_active": true,
+    "q_count": 949
+  },
+  {
+    "id": 2214,
+    "platform_id": 46,
+    "subject_id": 690,
+    "name": "Prostate Health Basics",
+    "is_active": true,
+    "q_count": 985
+  },
+  {
+    "id": 2215,
+    "platform_id": 46,
+    "subject_id": 690,
+    "name": "Testosterone: Facts & Myths",
+    "is_active": true,
+    "q_count": 1235
+  },
+  {
+    "id": 2216,
+    "platform_id": 46,
+    "subject_id": 690,
+    "name": "Mental Health in Men",
+    "is_active": true,
+    "q_count": 1585
+  },
+  {
+    "id": 2217,
+    "platform_id": 46,
+    "subject_id": 690,
+    "name": "Fitness After 40",
+    "is_active": true,
+    "q_count": 917
+  },
+  {
+    "id": 2218,
+    "platform_id": 46,
+    "subject_id": 690,
+    "name": "Preventive Screenings",
+    "is_active": true,
+    "q_count": 828
+  },
+  {
+    "id": 2219,
+    "platform_id": 46,
+    "subject_id": 691,
+    "name": "Risk Factors",
+    "is_active": true,
+    "q_count": 1429
+  },
+  {
+    "id": 2220,
+    "platform_id": 46,
+    "subject_id": 691,
+    "name": "Alcohol Moderation",
+    "is_active": true,
+    "q_count": 962
+  },
+  {
+    "id": 2221,
+    "platform_id": 46,
+    "subject_id": 691,
+    "name": "Nicotine Cessation",
+    "is_active": true,
+    "q_count": 775
+  },
+  {
+    "id": 2222,
+    "platform_id": 46,
+    "subject_id": 691,
+    "name": "Opioids Awareness",
+    "is_active": true,
+    "q_count": 875
+  },
+  {
+    "id": 2223,
+    "platform_id": 46,
+    "subject_id": 691,
+    "name": "Harm Reduction",
+    "is_active": true,
+    "q_count": 794
+  },
+  {
+    "id": 2224,
+    "platform_id": 46,
+    "subject_id": 691,
+    "name": "Support Resources",
+    "is_active": true,
+    "q_count": 1014
+  }
+]
