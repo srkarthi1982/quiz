@@ -1,0 +1,733 @@
+---
+import AppShell from "../layouts/AppShell.astro";
+import { AvButton, AvCard, AvContainer, AvEmptyState, AvIcon, AvInput, AvLoading } from "@ansiversa/components";
+import { actions } from "astro:actions";
+
+const title = "Quiz - Ansiversa";
+const description = "Pick a platform, topic, and level to launch your quiz.";
+
+const platformsResult = await Astro.callAction(actions.fetchPlatforms, {
+  page: 1,
+  pageSize: 500,
+  filters: { status: "active" },
+  sort: { column: "name", direction: "asc" },
+});
+
+const subjectsResult = await Astro.callAction(actions.fetchSubjects, {
+  page: 1,
+  pageSize: 500,
+  filters: { status: "active" },
+  sort: { column: "name", direction: "asc" },
+});
+
+const topicsResult = await Astro.callAction(actions.fetchTopics, {
+  page: 1,
+  pageSize: 2000,
+  filters: { status: "active" },
+  sort: { column: "name", direction: "asc" },
+});
+
+const platformData = (platformsResult as any)?.data ?? platformsResult ?? {};
+const subjectData = (subjectsResult as any)?.data ?? subjectsResult ?? {};
+const topicData = (topicsResult as any)?.data ?? topicsResult ?? {};
+
+const initialState = {
+  list: {
+    platforms: platformData?.items ?? [],
+    subjects: subjectData?.items ?? [],
+    topics: topicData?.items ?? [],
+    roadmaps: [],
+    questions: [],
+  },
+  step: 1,
+  search: "",
+  selection: {
+    platformId: null,
+    subjectId: null,
+    topicId: null,
+    roadmapId: null,
+    levelId: null,
+    answers: [],
+  },
+  currentQuestion: 0,
+  isCompleted: false,
+  mark: 0,
+  showAnswers: false,
+  loading: false,
+  error: null,
+  roadmapPage: 1,
+  roadmapTotal: 0,
+  roadmapPageSize: 48,
+};
+---
+
+<AppShell title={title} description={description}>
+  <section class="av-section quiz-section">
+    <AvContainer>
+      <div
+        class="av-auth-stack-lg"
+        x-data="$store.quiz"
+        x-init="init && init(JSON.parse($el.dataset.initial))"
+        data-initial={JSON.stringify(initialState)}
+      >
+        <AvCard className="quiz-shell">
+          <div class="quiz-shell__head">
+            <div>
+              <p class="quiz-shell__eyebrow">Step <span x-text="step"></span> of 6</p>
+              <h2 class="quiz-shell__title" x-text="stepTitle"></h2>
+              <p class="quiz-shell__subtitle" x-show="step === 6 && !isCompleted">
+                Answer all questions and submit when you are ready.
+              </p>
+              <p class="quiz-shell__subtitle" x-show="isCompleted">
+                Review your results or restart with a new topic.
+              </p>
+            </div>
+            <div class="quiz-shell__search" x-show="step < 5">
+              <AvInput
+                name="quiz-search"
+                type="search"
+                placeholder="Search by name..."
+                x-model="search"
+                @input="setSearch($event.target.value)"
+                :disabled="loading"
+              />
+            </div>
+          </div>
+
+          <div class="quiz-stepper">
+            <template x-for="stepItem in steps" :key="stepItem.id">
+              <button
+                class="quiz-stepper__item"
+                :class="step === stepItem.id ? 'is-active' : ''"
+                @click="goToStep(stepItem.id)"
+                :disabled="!canNavigateTo(stepItem.id)"
+                type="button"
+              >
+                <span class="quiz-stepper__index" x-text="stepItem.id"></span>
+                <span class="quiz-stepper__label" x-text="stepItem.label"></span>
+              </button>
+            </template>
+          </div>
+
+          <div class="quiz-summary">
+            <div>
+              <p class="quiz-summary__label">Platform</p>
+              <p class="quiz-summary__value" x-text="platformLabel"></p>
+            </div>
+            <div>
+              <p class="quiz-summary__label">Subject</p>
+              <p class="quiz-summary__value" x-text="subjectLabel"></p>
+            </div>
+            <div>
+              <p class="quiz-summary__label">Topic</p>
+              <p class="quiz-summary__value" x-text="topicLabel"></p>
+            </div>
+            <div class="quiz-summary__roadmap">
+              <p class="quiz-summary__label">Roadmap</p>
+              <p class="quiz-summary__value" x-text="roadmapLabel"></p>
+            </div>
+            <div>
+              <p class="quiz-summary__label">Level</p>
+              <p class="quiz-summary__value" x-text="levelLabel"></p>
+            </div>
+          </div>
+
+          <div class="quiz-shell__body">
+            <div class="quiz-error" x-show="error" x-text="error"></div>
+
+            <div x-show="step === 1" x-cloak>
+              <template x-if="filteredPlatforms.length === 0 && !loading">
+                <AvEmptyState
+                  headline="No platforms found"
+                  description="Try a different search or check back soon."
+                />
+              </template>
+              <div class="quiz-grid">
+                <template x-for="platform in filteredPlatforms" :key="`platform-${platform.id}`">
+                  <button
+                    class="quiz-option"
+                    :class="selection.platformId === platform.id ? 'is-selected' : ''"
+                    @click.prevent="choosePlatform(platform.id)"
+                    :disabled="loading"
+                    type="button"
+                  >
+                    <div class="quiz-option__header">
+                      <p class="quiz-option__title" x-text="platform.name"></p>
+                      <span class="quiz-pill" x-text="platform.qCount ? platform.qCount.toLocaleString() : '0'"></span>
+                    </div>
+                  </button>
+                </template>
+              </div>
+            </div>
+
+            <div x-show="step === 2" x-cloak>
+              <template x-if="filteredSubjects.length === 0 && !loading">
+                <AvEmptyState
+                  headline="No subjects found"
+                  description="Try another platform or adjust the search."
+                />
+              </template>
+              <div class="quiz-grid">
+                <template x-for="subject in filteredSubjects" :key="`subject-${subject.id}`">
+                  <button
+                    class="quiz-option"
+                    :class="selection.subjectId === subject.id ? 'is-selected' : ''"
+                    @click.prevent="chooseSubject(subject.id)"
+                    :disabled="loading"
+                    type="button"
+                  >
+                    <div class="quiz-option__header">
+                      <p class="quiz-option__title" x-text="subject.name"></p>
+                      <span class="quiz-pill" x-text="subject.qCount ? subject.qCount.toLocaleString() : '0'"></span>
+                    </div>
+                  </button>
+                </template>
+              </div>
+            </div>
+
+            <div x-show="step === 3" x-cloak>
+              <template x-if="filteredTopics.length === 0 && !loading">
+                <AvEmptyState
+                  headline="No topics found"
+                  description="Try another subject or adjust the search."
+                />
+              </template>
+              <div class="quiz-grid">
+                <template x-for="topic in filteredTopics" :key="`topic-${topic.id}`">
+                  <button
+                    class="quiz-option"
+                    :class="selection.topicId === topic.id ? 'is-selected' : ''"
+                    @click.prevent="chooseTopic(topic.id)"
+                    :disabled="loading"
+                    type="button"
+                  >
+                    <div class="quiz-option__header">
+                      <p class="quiz-option__title" x-text="topic.name"></p>
+                      <span class="quiz-pill" x-text="topic.qCount ? topic.qCount.toLocaleString() : '0'"></span>
+                    </div>
+                  </button>
+                </template>
+              </div>
+            </div>
+
+            <div x-show="step === 4" x-cloak>
+              <template x-if="filteredRoadmaps.length === 0 && !loading">
+                <AvEmptyState
+                  headline="No roadmaps found"
+                  description="Try a different topic or search."
+                />
+              </template>
+              <div class="quiz-grid">
+                <template x-for="roadmap in filteredRoadmaps" :key="`roadmap-${roadmap.id}`">
+                  <button
+                    class="quiz-option"
+                    :class="selection.roadmapId === roadmap.id ? 'is-selected' : ''"
+                    @click.prevent="chooseRoadmap(roadmap.id)"
+                    :disabled="loading"
+                    type="button"
+                  >
+                    <div class="quiz-option__header">
+                      <p class="quiz-option__title" x-text="roadmap.name"></p>
+                      <span class="quiz-pill" x-text="roadmap.qCount ? roadmap.qCount.toLocaleString() : '0'"></span>
+                    </div>
+                  </button>
+                </template>
+              </div>
+              <div class="quiz-loadmore" x-show="roadmapHasMore && !loading">
+                <AvButton variant="ghost" size="sm" type="button" @click="loadMoreRoadmaps()">
+                  Load more roadmaps
+                </AvButton>
+              </div>
+            </div>
+
+            <div x-show="step === 5" x-cloak>
+              <div class="quiz-grid quiz-grid--levels">
+                <template x-for="level in list.levels" :key="level.id">
+                  <button
+                    class="quiz-option"
+                    :class="selection.levelId === level.id ? 'is-selected' : ''"
+                    @click.prevent="chooseLevel(level.id)"
+                    :disabled="loading"
+                    type="button"
+                  >
+                    <div class="quiz-option__header">
+                      <p class="quiz-option__title" x-text="level.name"></p>
+                      <span class="quiz-pill" x-text="level.id"></span>
+                    </div>
+                  </button>
+                </template>
+              </div>
+            </div>
+
+            <div x-show="step === 6" x-cloak>
+              <template x-if="totalQuestions === 0 && !loading">
+                <AvEmptyState
+                  headline="No questions ready"
+                  description="Try a different roadmap or level to generate a fresh quiz."
+                />
+              </template>
+
+              <template x-if="totalQuestions > 0">
+                <div class="quiz-question-card" x-show="!isCompleted">
+                  <div class="quiz-question-card__head">
+                    <p class="quiz-question-card__eyebrow">
+                      Question <span x-text="currentQuestion + 1"></span> of <span x-text="totalQuestions"></span>
+                    </p>
+                    <h3 class="quiz-question-card__title" x-text="currentQuestionItem?.questionText"></h3>
+                  </div>
+
+                  <ul class="quiz-options">
+                    <template x-for="(option, index) in currentQuestionItem?.options ?? []" :key="`option-${index}`">
+                      <li>
+                        <label class="quiz-option-row">
+                          <input
+                            type="radio"
+                            class="quiz-option-input"
+                            :name="`question-${currentQuestion}`"
+                            :value="index"
+                            x-model="selection.answers[currentQuestion]"
+                          />
+                          <span class="quiz-option-text" x-text="option"></span>
+                        </label>
+                      </li>
+                    </template>
+                  </ul>
+
+                  <div class="quiz-question-card__nav">
+                    <div class="quiz-question-card__nav-left">
+                      <AvButton
+                        variant="ghost"
+                        size="sm"
+                        type="button"
+                        @click="previousQuestion()"
+                        :disabled="currentQuestion === 0"
+                      >
+                        <AvIcon name="chevron-left" size="sm" />
+                        Previous
+                      </AvButton>
+                      <AvButton
+                        variant="ghost"
+                        size="sm"
+                        type="button"
+                        @click="nextQuestion()"
+                        :disabled="currentQuestion >= totalQuestions - 1"
+                      >
+                        Next
+                        <AvIcon name="chevron-right" size="sm" />
+                      </AvButton>
+                    </div>
+                    <AvButton size="sm" type="button" @click="finishQuiz()" :disabled="!canSubmit">
+                      Submit answers
+                    </AvButton>
+                  </div>
+                </div>
+              </template>
+
+              <div class="quiz-result" x-show="isCompleted" x-cloak>
+                <AvCard variant="soft" className="quiz-result__score">
+                  <div>
+                    <p class="quiz-result__label">Score</p>
+                    <p class="quiz-result__note">
+                      Correct answers out of <span x-text="totalQuestions"></span>
+                    </p>
+                  </div>
+                  <span class="quiz-result__value" x-text="`${mark} / ${totalQuestions}`"></span>
+                </AvCard>
+                <div class="quiz-result__actions">
+                  <AvButton variant="outline" size="sm" type="button" @click="reset()">Restart</AvButton>
+                  <AvButton variant="ghost" size="sm" type="button" @click="showAnswers = true">
+                    View answers
+                  </AvButton>
+                </div>
+              </div>
+            </div>
+
+            <div class="quiz-answer-review" x-show="showAnswers" x-cloak>
+              <AvCard variant="soft">
+                <div class="quiz-answer-review__head">
+                  <h3>Answer review</h3>
+                  <AvButton variant="ghost" size="sm" type="button" @click="showAnswers = false">Close</AvButton>
+                </div>
+                <div class="quiz-answer-review__list">
+                  <template x-for="(question, index) in list.questions" :key="`review-${question.id}`">
+                    <div class="quiz-answer-review__item">
+                      <div class="quiz-answer-review__title">
+                        <span class="quiz-answer-review__index" x-text="index + 1"></span>
+                        <p x-text="question.questionText"></p>
+                      </div>
+                      <div class="quiz-answer-review__body">
+                        <p>
+                          Your answer:
+                          <span
+                            class="quiz-answer-review__answer"
+                            :class="selection.answers[index] === question.correctIndex ? 'is-correct' : 'is-wrong'"
+                            x-text="selection.answers[index] >= 0 ? question.options[selection.answers[index]] : 'Not answered'"
+                          ></span>
+                        </p>
+                        <p>
+                          Correct answer:
+                          <span class="quiz-answer-review__answer is-correct" x-text="question.options[question.correctIndex]"></span>
+                        </p>
+                        <p
+                          class="quiz-answer-review__explanation"
+                          x-show="question.explanation"
+                          x-text="question.explanation"
+                        ></p>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </AvCard>
+            </div>
+          </div>
+
+          <AvLoading x-show="loading" x-cloak label="Loading quiz data..." />
+        </AvCard>
+      </div>
+    </AvContainer>
+  </section>
+</AppShell>
+
+<style>
+  .quiz-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .quiz-section {
+    border-top: 0;
+  }
+  .quiz-section > .av-container {
+    padding-top: 1.5rem;
+  }
+  .quiz-shell__head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .quiz-shell__eyebrow {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(148, 163, 184, 0.8);
+    margin-bottom: 0.35rem;
+  }
+  .quiz-shell__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #f8fafc;
+  }
+  .quiz-shell__subtitle {
+    font-size: 0.85rem;
+    color: rgba(148, 163, 184, 0.9);
+    margin-top: 0.35rem;
+  }
+  .quiz-shell__search {
+    min-width: 220px;
+  }
+  .quiz-stepper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+  .quiz-stepper__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(30, 41, 59, 0.7);
+    background: rgba(15, 23, 42, 0.6);
+    color: rgba(226, 232, 240, 0.8);
+    font-size: 0.8rem;
+    transition: border 0.2s ease, color 0.2s ease;
+  }
+  .quiz-stepper__item.is-active {
+    border-color: rgba(14, 165, 233, 0.8);
+    color: #e2e8f0;
+  }
+  .quiz-stepper__item:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .quiz-stepper__index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 999px;
+    background: rgba(14, 165, 233, 0.2);
+    color: #7dd3fc;
+    font-weight: 600;
+    font-size: 0.7rem;
+  }
+  .quiz-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(30, 41, 59, 0.6);
+    background: rgba(15, 23, 42, 0.7);
+  }
+  .quiz-summary__roadmap {
+    grid-column: auto;
+  }
+  @media (min-width: 1024px) {
+    .quiz-summary {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+    .quiz-summary__roadmap {
+      grid-column: span 2;
+    }
+  }
+  .quiz-summary__label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(148, 163, 184, 0.8);
+    margin-bottom: 0.3rem;
+  }
+  .quiz-summary__value {
+    font-size: 0.9rem;
+    color: #f8fafc;
+  }
+  .quiz-shell__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .quiz-error {
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(248, 113, 113, 0.4);
+    background: rgba(127, 29, 29, 0.2);
+    color: #fecaca;
+    font-size: 0.85rem;
+  }
+  .quiz-grid {
+    display: grid;
+    gap: 0.85rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .quiz-grid--levels {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  @media (min-width: 1024px) {
+    .quiz-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .quiz-grid--roadmap {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .quiz-option {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 1.1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(30, 41, 59, 0.6);
+    background: rgba(15, 23, 42, 0.55);
+    color: #e2e8f0;
+    text-align: left;
+    transition: border 0.2s ease, transform 0.2s ease;
+  }
+  .quiz-option__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .quiz-option:hover {
+    border-color: rgba(14, 165, 233, 0.5);
+    transform: translateY(-1px);
+  }
+  .quiz-option.is-selected {
+    border-color: rgba(14, 165, 233, 0.9);
+    background: rgba(14, 116, 144, 0.25);
+  }
+  .quiz-option:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .quiz-option__title {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .quiz-option__meta {
+    font-size: 0.75rem;
+    color: rgba(148, 163, 184, 0.9);
+    margin-top: 0.35rem;
+  }
+  .quiz-pill {
+    align-self: flex-start;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(14, 165, 233, 0.15);
+    color: #7dd3fc;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+  .quiz-loadmore {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  .quiz-question-card {
+    padding: 1.25rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(30, 41, 59, 0.6);
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .quiz-question-card__eyebrow {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(148, 163, 184, 0.8);
+  }
+  .quiz-question-card__title {
+    margin-top: 0.5rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #f8fafc;
+  }
+  .quiz-options {
+    margin-top: 1rem;
+    display: grid;
+    gap: 0.65rem;
+  }
+  .quiz-option-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.65rem 0.8rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(30, 41, 59, 0.6);
+    background: rgba(15, 23, 42, 0.45);
+    transition: border 0.2s ease;
+  }
+  .quiz-option-row:hover {
+    border-color: rgba(14, 165, 233, 0.5);
+  }
+  .quiz-option-input {
+    accent-color: #38bdf8;
+  }
+  .quiz-option-text {
+    font-size: 0.85rem;
+    color: #e2e8f0;
+  }
+  .quiz-question-card__nav {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .quiz-question-card__nav-left {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .quiz-result__score {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .quiz-result__label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #f8fafc;
+  }
+  .quiz-result__note {
+    font-size: 0.75rem;
+    color: rgba(148, 163, 184, 0.8);
+    margin-top: 0.25rem;
+  }
+  .quiz-result__value {
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .quiz-result__actions {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .quiz-answer-review {
+    margin-top: 1rem;
+  }
+  .quiz-answer-review__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .quiz-answer-review__list {
+    margin-top: 1rem;
+    display: grid;
+    gap: 1rem;
+  }
+  .quiz-answer-review__item {
+    padding: 0.85rem 1rem;
+    border-radius: 0.85rem;
+    border: 1px solid rgba(30, 41, 59, 0.6);
+    background: rgba(15, 23, 42, 0.45);
+  }
+  .quiz-answer-review__title {
+    display: flex;
+    gap: 0.75rem;
+    font-weight: 600;
+    color: #e2e8f0;
+  }
+  .quiz-answer-review__index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 999px;
+    background: rgba(14, 165, 233, 0.2);
+    color: #7dd3fc;
+    font-size: 0.75rem;
+  }
+  .quiz-answer-review__body {
+    margin-top: 0.65rem;
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    color: rgba(226, 232, 240, 0.85);
+  }
+  .quiz-answer-review__answer {
+    font-weight: 600;
+    margin-left: 0.35rem;
+  }
+  .quiz-answer-review__answer.is-correct {
+    color: #34d399;
+  }
+  .quiz-answer-review__answer.is-wrong {
+    color: #f87171;
+  }
+  .quiz-answer-review__explanation {
+    margin-top: 0.4rem;
+    color: rgba(148, 163, 184, 0.9);
+  }
+  @media (max-width: 640px) {
+    .quiz-shell__head {
+      align-items: flex-start;
+    }
+    .quiz-shell__search {
+      width: 100%;
+    }
+  }
+</style>

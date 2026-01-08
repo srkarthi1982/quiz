@@ -153,3 +153,10 @@ Behavior:
 - Drawer select fix:
   - `subjects.astro` uses server-rendered platform options for correct selection on edit.
   - `topics.astro` and `roadmaps.astro` use server-rendered options + `x-show` filtering via `data-*`.
+- Added admin Questions page + store:
+  - Page: `quiz/src/pages/admin/questions.astro`.
+  - Store: `quiz/src/stores/adminQuestions.ts` (filters, CRUD, roadmap-aware dropdown).
+
+## 12. Next Session
+
+- Continue in evening with data migration work (pending).

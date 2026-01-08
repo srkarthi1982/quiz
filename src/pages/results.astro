@@ -1,0 +1,703 @@
+---
+import AppShell from "../layouts/AppShell.astro";
+import { AvButton, AvCard, AvContainer, AvEmptyState, AvIcon, AvPageHeader } from "@ansiversa/components";
+import { resultRepository } from "../actions/repositories";
+import { db, Question, Platform, Subject, Topic, Roadmap, Result, eq, desc, inArray } from "astro:db";
+
+const user = Astro.locals.user;
+const rootAppUrl = Astro.locals.rootAppUrl ?? "https://ansiversa.com";
+
+if (!user) {
+  const loginUrl = new URL("/login", rootAppUrl);
+  loginUrl.searchParams.set("returnTo", Astro.url.toString());
+  return Astro.redirect(loginUrl.toString());
+}
+
+const title = "Quiz Results - Ansiversa";
+const description = "Review past quiz attempts and drill into detailed answers.";
+
+const pageSize = 8;
+const requestedPage = Number.parseInt(Astro.url.searchParams.get("page") ?? "1", 10);
+const page = Number.isFinite(requestedPage) && requestedPage > 0 ? requestedPage : 1;
+
+const paginated = await resultRepository.getPaginatedData({
+  where: () => eq(Result.userId, user.id),
+  orderBy: () => desc(Result.createdAt),
+  page,
+  pageSize,
+});
+
+const results = paginated.data;
+const total = Number(paginated.total ?? 0);
+const totalPages = Math.max(1, Math.ceil(total / pageSize));
+const pagination = {
+  page,
+  totalPages,
+  hasPreviousPage: page > 1,
+  hasNextPage: page < totalPages,
+};
+
+const normalizeOptions = (value: unknown): string[] => {
+  if (Array.isArray(value)) {
+    return value
+      .map((entry) => {
+        if (typeof entry === "string") return entry;
+        if (typeof entry === "number" || typeof entry === "boolean") return String(entry);
+        try {
+          return JSON.stringify(entry);
+        } catch {
+          return "";
+        }
+      })
+      .filter((entry) => entry.length > 0);
+  }
+  if (value && typeof value === "object") {
+    return Object.values(value as Record<string, unknown>)
+      .map((entry) => {
+        if (typeof entry === "string") return entry;
+        if (typeof entry === "number" || typeof entry === "boolean") return String(entry);
+        try {
+          return JSON.stringify(entry);
+        } catch {
+          return "";
+        }
+      })
+      .filter((entry) => entry.length > 0);
+  }
+  return [];
+};
+
+type RawResponse = { id?: unknown; a?: unknown; s?: unknown };
+
+const questionIds = new Set<number>();
+const platformIds = new Set<number>();
+const subjectIds = new Set<number>();
+const topicIds = new Set<number>();
+const roadmapIds = new Set<number>();
+
+const parsedResults = results.map((result) => {
+  if (Number.isFinite(result.platformId)) platformIds.add(Number(result.platformId));
+  if (Number.isFinite(result.subjectId)) subjectIds.add(Number(result.subjectId));
+  if (Number.isFinite(result.topicId)) topicIds.add(Number(result.topicId));
+  if (Number.isFinite(result.roadmapId)) roadmapIds.add(Number(result.roadmapId));
+
+  const responses: RawResponse[] = Array.isArray(result.responses) ? (result.responses as RawResponse[]) : [];
+  responses.forEach((entry) => {
+    const qid = typeof entry?.id === "number" ? entry.id : Number(entry?.id);
+    if (Number.isFinite(qid)) {
+      questionIds.add(qid);
+    }
+  });
+
+  return { result, responses };
+});
+
+const questionRows =
+  questionIds.size > 0
+    ? await db
+        .select()
+        .from(Question)
+        .where(inArray(Question.id, Array.from(questionIds)))
+    : [];
+
+const questionMap = new Map(
+  questionRows.map((row) => [
+    row.id,
+    {
+      id: row.id,
+      questionText: row.q,
+      options: normalizeOptions(row.o),
+      explanation: typeof row.e === "string" ? row.e : "",
+      level: typeof row.l === "string" ? row.l : null,
+    },
+  ]),
+);
+
+const platformMap = await (async () => {
+  if (platformIds.size === 0) return new Map<number, string>();
+  const rows = await db
+    .select({ id: Platform.id, name: Platform.name })
+    .from(Platform)
+    .where(inArray(Platform.id, Array.from(platformIds)));
+  return new Map(rows.map((row) => [row.id, row.name ?? `Platform ${row.id}`]));
+})();
+
+const subjectMap = await (async () => {
+  if (subjectIds.size === 0) return new Map<number, string>();
+  const rows = await db
+    .select({ id: Subject.id, name: Subject.name })
+    .from(Subject)
+    .where(inArray(Subject.id, Array.from(subjectIds)));
+  return new Map(rows.map((row) => [row.id, row.name ?? `Subject ${row.id}`]));
+})();
+
+const topicMap = await (async () => {
+  if (topicIds.size === 0) return new Map<number, string>();
+  const rows = await db
+    .select({ id: Topic.id, name: Topic.name })
+    .from(Topic)
+    .where(inArray(Topic.id, Array.from(topicIds)));
+  return new Map(rows.map((row) => [row.id, row.name ?? `Topic ${row.id}`]));
+})();
+
+const roadmapMap = await (async () => {
+  if (roadmapIds.size === 0) return new Map<number, string>();
+  const rows = await db
+    .select({ id: Roadmap.id, name: Roadmap.name })
+    .from(Roadmap)
+    .where(inArray(Roadmap.id, Array.from(roadmapIds)));
+  return new Map(rows.map((row) => [row.id, row.name ?? `Roadmap ${row.id}`]));
+})();
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  dateStyle: "medium",
+  timeStyle: "short",
+});
+
+const levelMap: Record<string, string> = { E: "Easy", M: "Medium", D: "Hard" };
+
+const resultsPayload = parsedResults.map(({ result, responses }) => {
+  const markValue = typeof result.mark === "number" ? result.mark : Number(result.mark ?? 0);
+  const enriched = responses
+    .map((entry) => {
+      const questionId = typeof entry?.id === "number" ? entry.id : Number(entry?.id);
+      if (!Number.isFinite(questionId)) return null;
+      const question = questionMap.get(questionId);
+      const correctIndex = typeof entry?.a === "number" ? entry.a : Number(entry?.a);
+      const rawSelected = entry?.s ?? null;
+      const selectedIndex =
+        typeof rawSelected === "number"
+          ? rawSelected
+          : typeof rawSelected === "string"
+            ? Number(rawSelected)
+            : Number(rawSelected ?? Number.NaN);
+      const normalizedSelectedIndex = Number.isFinite(selectedIndex) ? Number(selectedIndex) : -1;
+      return {
+        questionId,
+        questionText: question?.questionText ?? "Question unavailable",
+        options: question?.options ?? [],
+        explanation: question?.explanation ?? "",
+        level: question?.level ?? null,
+        correctIndex: Number.isFinite(correctIndex) ? correctIndex : -1,
+        selectedIndex: normalizedSelectedIndex,
+        selectionCaptured: normalizedSelectedIndex >= 0,
+        selectionFallback: false,
+      };
+    })
+    .filter(Boolean);
+
+  if (markValue === enriched.length) {
+    enriched.forEach((entry) => {
+      if (!entry.selectionCaptured && entry.correctIndex >= 0) {
+        entry.selectedIndex = entry.correctIndex;
+        entry.selectionCaptured = true;
+        entry.selectionFallback = true;
+      }
+    });
+  }
+
+  const createdAt =
+    result.createdAt instanceof Date ? result.createdAt : new Date(result.createdAt ?? Date.now());
+
+  return {
+    id: result.id,
+    mark: typeof result.mark === "number" ? result.mark : Number(result.mark ?? 0),
+    totalQuestions: enriched.length,
+    level: result.level,
+    levelLabel: levelMap[result.level ?? ""] ?? "--",
+    createdAtISO: createdAt.toISOString(),
+    createdAtLabel: dateFormatter.format(createdAt),
+    platformName: platformMap.get(Number(result.platformId)) ?? `Platform ${result.platformId}`,
+    subjectName: subjectMap.get(Number(result.subjectId)) ?? `Subject ${result.subjectId}`,
+    topicName: topicMap.get(Number(result.topicId)) ?? `Topic ${result.topicId}`,
+    roadmapName: roadmapMap.get(Number(result.roadmapId)) ?? `Roadmap ${result.roadmapId}`,
+    responses: enriched,
+  };
+});
+
+const computePageNumbers = (current: number, totalPagesCount: number): Array<number | "ellipsis"> => {
+  if (totalPagesCount <= 7) {
+    return Array.from({ length: totalPagesCount }, (_, index) => index + 1);
+  }
+  const pages = new Set<number>([1, totalPagesCount, current]);
+  for (let offset = 1; offset <= 2; offset += 1) {
+    if (current - offset > 1) pages.add(current - offset);
+    if (current + offset < totalPagesCount) pages.add(current + offset);
+  }
+  const sorted = Array.from(pages).sort((a, b) => a - b);
+  const result: Array<number | "ellipsis"> = [];
+  sorted.forEach((value, index) => {
+    result.push(value);
+    const next = sorted[index + 1];
+    if (typeof next === "number" && next - value > 1) {
+      result.push("ellipsis");
+    }
+  });
+  return result;
+};
+
+const pageNumbers = computePageNumbers(pagination.page, pagination.totalPages);
+const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c");
+---
+
+<AppShell title={title} description={description}>
+  <AvPageHeader title="Results" description={description} />
+
+  <section class="av-section">
+    <AvContainer>
+      <div
+        class="av-auth-stack-lg"
+        x-data={`(() => ({ modalOpen: false, selected: null, results: ${resultsSerialized} }))()`}
+      >
+        <AvCard className="results-shell">
+          <div class="results-shell__head">
+            <div>
+              <p class="results-shell__eyebrow">Quiz history</p>
+              <h2 class="results-shell__title">Your recent attempts</h2>
+              <p class="results-shell__subtitle">
+                Review the latest results and open any attempt for a full answer breakdown.
+              </p>
+            </div>
+            <div class="results-shell__actions">
+              <AvButton href="/quiz">Retake a quiz</AvButton>
+            </div>
+          </div>
+
+          <template x-if="results.length === 0">
+            <AvEmptyState
+              headline="No results yet"
+              description="Take your first quiz to start tracking your progress."
+              ctaLabel="Start a quiz"
+              ctaHref="/quiz"
+            />
+          </template>
+
+          <template x-if="results.length > 0">
+            <div class="results-grid">
+              <template x-for="result in results" :key="`result-${result.id}`">
+                <AvCard variant="soft" className="results-card">
+                  <div class="results-card__top">
+                    <div>
+                      <p class="results-card__label">Attempt #<span x-text="result.id"></span></p>
+                      <h3 class="results-card__score">
+                        Score <span x-text="`${result.mark} / ${result.totalQuestions}`"></span>
+                      </h3>
+                      <p class="results-card__meta">Taken on <span x-text="result.createdAtLabel"></span></p>
+                    </div>
+                    <div class="results-card__chips">
+                      <span class="results-pill" x-text="result.levelLabel"></span>
+                      <span class="results-pill" x-text="`${result.totalQuestions} questions`"></span>
+                    </div>
+                  </div>
+                  <div class="results-card__details">
+                    <dl>
+                      <div>
+                        <dt>Platform</dt>
+                        <dd x-text="result.platformName"></dd>
+                      </div>
+                      <div>
+                        <dt>Subject</dt>
+                        <dd x-text="result.subjectName"></dd>
+                      </div>
+                      <div>
+                        <dt>Topic</dt>
+                        <dd x-text="result.topicName"></dd>
+                      </div>
+                      <div>
+                        <dt>Roadmap</dt>
+                        <dd x-text="result.roadmapName"></dd>
+                      </div>
+                    </dl>
+                    <div class="results-card__cta">
+                      <AvButton
+                        size="sm"
+                        variant="ghost"
+                        type="button"
+                        @click="selected = result; modalOpen = true"
+                      >
+                        View answers
+                      </AvButton>
+                    </div>
+                  </div>
+                </AvCard>
+              </template>
+            </div>
+          </template>
+
+          {pagination.totalPages > 1 && (
+            <nav class="results-pagination">
+              <div>Page {pagination.page} of {pagination.totalPages}</div>
+              <div class="results-pagination__links">
+                {pagination.hasPreviousPage ? (
+                  <a class="results-pagination__link" href={`?page=${pagination.page - 1}`}>
+                    <AvIcon name="chevron-left" size="sm" /> Previous
+                  </a>
+                ) : (
+                  <span class="results-pagination__link is-disabled">
+                    <AvIcon name="chevron-left" size="sm" /> Previous
+                  </span>
+                )}
+                {pageNumbers.map((item) =>
+                  item === "ellipsis" ? (
+                    <span class="results-pagination__ellipsis">...</span>
+                  ) : (
+                    <a
+                      class={`results-pagination__number ${item === pagination.page ? "is-active" : ""}`}
+                      href={`?page=${item}`}
+                    >
+                      {item}
+                    </a>
+                  ),
+                )}
+                {pagination.hasNextPage ? (
+                  <a class="results-pagination__link" href={`?page=${pagination.page + 1}`}>
+                    Next <AvIcon name="chevron-right" size="sm" />
+                  </a>
+                ) : (
+                  <span class="results-pagination__link is-disabled">
+                    Next <AvIcon name="chevron-right" size="sm" />
+                  </span>
+                )}
+              </div>
+            </nav>
+          )}
+        </AvCard>
+
+        <template x-if="modalOpen && selected">
+          <div class="results-modal" x-cloak>
+            <div class="results-modal__backdrop" @click="modalOpen = false"></div>
+            <div class="results-modal__panel">
+              <div class="results-modal__head">
+                <div>
+                  <p class="results-modal__eyebrow">Answer review</p>
+                  <h3 class="results-modal__title" x-text="`Attempt #${selected.id}`"></h3>
+                  <p class="results-modal__subtitle" x-text="selected.createdAtLabel"></p>
+                </div>
+                <AvButton variant="ghost" size="sm" type="button" @click="modalOpen = false">
+                  Close
+                </AvButton>
+              </div>
+
+              <div class="results-modal__summary">
+                <div>
+                  <p>Score</p>
+                  <strong x-text="`${selected.mark} / ${selected.totalQuestions}`"></strong>
+                </div>
+                <div>
+                  <p>Level</p>
+                  <strong x-text="selected.levelLabel"></strong>
+                </div>
+                <div>
+                  <p>Platform</p>
+                  <strong x-text="selected.platformName"></strong>
+                </div>
+                <div>
+                  <p>Roadmap</p>
+                  <strong x-text="selected.roadmapName"></strong>
+                </div>
+              </div>
+
+              <div class="results-modal__list">
+                <template x-for="(question, index) in selected.responses" :key="`response-${question.questionId}`">
+                  <div class="results-modal__item">
+                    <div class="results-modal__question">
+                      <span x-text="index + 1"></span>
+                      <p x-text="question.questionText"></p>
+                    </div>
+                    <div class="results-modal__answers">
+                      <p>
+                        Your answer:
+                        <span
+                          class="results-modal__answer"
+                          :class="question.selectedIndex === question.correctIndex ? 'is-correct' : 'is-wrong'"
+                          x-text="question.selectedIndex >= 0 ? question.options[question.selectedIndex] : 'Not answered'"
+                        ></span>
+                      </p>
+                      <p>
+                        Correct answer:
+                        <span class="results-modal__answer is-correct" x-text="question.options[question.correctIndex]"></span>
+                      </p>
+                      <p class="results-modal__explanation" x-show="question.explanation" x-text="question.explanation"></p>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </AvContainer>
+  </section>
+</AppShell>
+
+<style>
+  .results-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  .results-shell__head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .results-shell__eyebrow {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: rgba(148, 163, 184, 0.7);
+    margin-bottom: 0.4rem;
+  }
+  .results-shell__title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #f8fafc;
+  }
+  .results-shell__subtitle {
+    font-size: 0.85rem;
+    color: rgba(148, 163, 184, 0.9);
+    max-width: 32rem;
+  }
+  .results-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  .results-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .results-card__top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .results-card__label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: rgba(148, 163, 184, 0.7);
+  }
+  .results-card__score {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #f8fafc;
+    margin-top: 0.35rem;
+  }
+  .results-card__meta {
+    font-size: 0.8rem;
+    color: rgba(148, 163, 184, 0.8);
+    margin-top: 0.2rem;
+  }
+  .results-card__chips {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .results-pill {
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(14, 165, 233, 0.18);
+    color: #7dd3fc;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+  .results-card__details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .results-card__details dl {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    font-size: 0.85rem;
+    color: rgba(226, 232, 240, 0.85);
+  }
+  .results-card__details dt {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(148, 163, 184, 0.7);
+    margin-bottom: 0.3rem;
+  }
+  .results-card__cta {
+    display: flex;
+    align-items: center;
+  }
+  .results-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: rgba(148, 163, 184, 0.85);
+  }
+  .results-pagination__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .results-pagination__link,
+  .results-pagination__number {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(30, 41, 59, 0.6);
+    font-size: 0.75rem;
+    color: rgba(226, 232, 240, 0.85);
+    transition: border 0.2s ease;
+  }
+  .results-pagination__number {
+    width: 2.2rem;
+    justify-content: center;
+    padding: 0.35rem 0;
+  }
+  .results-pagination__number.is-active {
+    border-color: rgba(14, 165, 233, 0.8);
+    color: #e2e8f0;
+  }
+  .results-pagination__link.is-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .results-pagination__ellipsis {
+    padding: 0 0.4rem;
+    color: rgba(148, 163, 184, 0.8);
+  }
+  .results-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+  .results-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.75);
+  }
+  .results-modal__panel {
+    position: relative;
+    z-index: 1;
+    width: min(860px, 100%);
+    max-height: 80vh;
+    overflow: auto;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(30, 41, 59, 0.7);
+    background: rgba(15, 23, 42, 0.95);
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.45);
+  }
+  .results-modal__head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+  .results-modal__eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.7rem;
+    color: rgba(148, 163, 184, 0.7);
+  }
+  .results-modal__title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #f8fafc;
+    margin-top: 0.35rem;
+  }
+  .results-modal__subtitle {
+    font-size: 0.8rem;
+    color: rgba(148, 163, 184, 0.85);
+    margin-top: 0.25rem;
+  }
+  .results-modal__summary {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    padding: 0.85rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(30, 41, 59, 0.6);
+    background: rgba(15, 23, 42, 0.75);
+    font-size: 0.8rem;
+    color: rgba(226, 232, 240, 0.85);
+  }
+  .results-modal__summary strong {
+    display: block;
+    margin-top: 0.25rem;
+    color: #f8fafc;
+    font-weight: 600;
+  }
+  .results-modal__list {
+    margin-top: 1.25rem;
+    display: grid;
+    gap: 1rem;
+  }
+  .results-modal__item {
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(30, 41, 59, 0.6);
+    background: rgba(15, 23, 42, 0.75);
+  }
+  .results-modal__question {
+    display: flex;
+    gap: 0.75rem;
+    font-weight: 600;
+    color: #f8fafc;
+  }
+  .results-modal__question span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 999px;
+    background: rgba(14, 165, 233, 0.2);
+    color: #7dd3fc;
+    font-size: 0.75rem;
+  }
+  .results-modal__answers {
+    margin-top: 0.75rem;
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    color: rgba(226, 232, 240, 0.85);
+  }
+  .results-modal__answer {
+    font-weight: 600;
+    margin-left: 0.35rem;
+  }
+  .results-modal__answer.is-correct {
+    color: #34d399;
+  }
+  .results-modal__answer.is-wrong {
+    color: #f87171;
+  }
+  .results-modal__explanation {
+    color: rgba(148, 163, 184, 0.9);
+    margin-top: 0.4rem;
+  }
+  @media (max-width: 640px) {
+    .results-shell__head {
+      align-items: flex-start;
+    }
+    .results-modal__panel {
+      padding: 1.25rem;
+    }
+  }
+</style>

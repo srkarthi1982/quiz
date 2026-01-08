@@ -4,6 +4,7 @@ import { registerAdminQuestionsStore } from "./stores/adminQuestions";
 import { registerAdminSubjectsStore } from "./stores/adminSubjects";
 import { registerAdminTopicsStore } from "./stores/adminTopics";
 import { registerAdminRoadmapsStore } from "./stores/adminRoadmaps";
+import { registerQuizStore } from "./stores/quiz";
 
 export default function initAlpine(Alpine: Alpine) {
   registerAdminPlatformsStore(Alpine);
@@ -11,6 +12,7 @@ export default function initAlpine(Alpine: Alpine) {
   registerAdminSubjectsStore(Alpine);
   registerAdminTopicsStore(Alpine);
   registerAdminRoadmapsStore(Alpine);
+  registerQuizStore(Alpine);
 
   if (typeof window !== "undefined") {
     window.Alpine = Alpine;
