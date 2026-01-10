@@ -184,6 +184,13 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
     throw new Error("fetchRandomQuestions action not found.");
   }
 
+  private async callSaveResult(payload: any) {
+    const a: any = actions as any;
+    if (a?.saveResult) return await a.saveResult(payload);
+    if (a?.quiz?.saveResult) return await a.quiz.saveResult(payload);
+    throw new Error("saveResult action not found.");
+  }
+
   get totalQuestions() {
     return Array.isArray(this.list.questions) ? this.list.questions.length : 0;
   }
@@ -397,7 +404,7 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
           name: this.search ? this.search : undefined,
           status: "active",
         },
-        sort: { column: "name", direction: "asc" },
+        sort: { column: "id", direction: "asc" },
       });
 
       const data = this.unwrapResult(res);
@@ -486,7 +493,7 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
     this.currentQuestion += 1;
   }
 
-  finishQuiz() {
+  async finishQuiz() {
     if (!this.canSubmit) return;
     const score = this.list.questions.reduce((total, question, index) => {
       return total + (this.selection.answers[index] === question.correctIndex ? 1 : 0);
@@ -494,6 +501,33 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
 
     this.mark = score;
     this.isCompleted = true;
+    this.error = null;
+
+    const { platformId, subjectId, topicId, roadmapId, levelId } = this.selection;
+    if (!platformId || !subjectId || !topicId || !roadmapId || !levelId) {
+      return;
+    }
+
+    const responses = this.list.questions.map((question, index) => ({
+      id: question.id,
+      a: question.correctIndex,
+      s: typeof this.selection.answers[index] === "number" ? this.selection.answers[index] : -1,
+    }));
+
+    try {
+      const res = await this.callSaveResult({
+        platformId,
+        subjectId,
+        topicId,
+        roadmapId,
+        level: levelId,
+        mark: score,
+        responses,
+      });
+      this.unwrapResult(res);
+    } catch (err) {
+      this.error = safeErrorMessage(err, "Failed to save result.");
+    }
   }
 
   reset() {

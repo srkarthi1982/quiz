@@ -160,3 +160,17 @@ Behavior:
 ## 12. Next Session
 
 - Continue in evening with data migration work (pending).
+
+---
+
+## 13. Question Migration (Jan 2025)
+
+- Added question seed script: `quiz/db/seeds/question.ts` (reads JSON, chunk insert size 500, auto-generates `Question.id`).
+- Seeded question JSON batches in order: `1-20`, `24`, `29-48`, `53` (all from `quiz/public/` during migration).
+- Remote DB verified counts:
+  - After initial seeds: 633,924
+  - After 14–20: 816,022
+  - After 24 + 29–48 + 53: 1,576,521
+- Found duplicates vs Supabase source; distinct count mismatch of 128,000.
+- Ran dedupe cleanup on remote DB (keep min `id` by `platformId/subjectId/topicId/roadmapId/q`); final count: **1,448,521** (matches Supabase).
+- Moved all JSON files from `quiz/public/` to `automation/quiz-migration/` in workspace.

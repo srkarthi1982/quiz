@@ -1,6 +1,6 @@
 ---
 import AppShell from "../layouts/AppShell.astro";
-import { AvButton, AvCard, AvContainer, AvEmptyState, AvIcon, AvPageHeader } from "@ansiversa/components";
+import { AvBreadcrumb, AvButton, AvCard, AvContainer, AvEmptyState, AvIcon, AvPageHeader } from "@ansiversa/components";
 import { resultRepository } from "../actions/repositories";
 import { db, Question, Platform, Subject, Topic, Roadmap, Result, eq, desc, inArray } from "astro:db";
 
@@ -241,6 +241,18 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
 ---
 
 <AppShell title={title} description={description}>
+  <section class="av-faq-public__crumb">
+    <AvContainer size="default">
+      <AvBreadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Quiz", href: "/quiz" },
+          { label: "Results" },
+        ]}
+      />
+    </AvContainer>
+  </section>
+
   <AvPageHeader title="Results" description={description} />
 
   <section class="av-section">

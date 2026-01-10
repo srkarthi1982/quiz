@@ -1,6 +1,15 @@
 ---
 import AppShell from "../layouts/AppShell.astro";
-import { AvButton, AvCard, AvContainer, AvEmptyState, AvIcon, AvInput, AvLoading } from "@ansiversa/components";
+import {
+  AvBreadcrumb,
+  AvButton,
+  AvCard,
+  AvContainer,
+  AvEmptyState,
+  AvIcon,
+  AvInput,
+  AvLoading,
+} from "@ansiversa/components";
 import { actions } from "astro:actions";
 
 const title = "Quiz - Ansiversa";
@@ -62,6 +71,17 @@ const initialState = {
 ---
 
 <AppShell title={title} description={description}>
+  <section class="av-faq-public__crumb">
+    <AvContainer size="default">
+      <AvBreadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Quiz" },
+        ]}
+      />
+    </AvContainer>
+  </section>
+
   <section class="av-section quiz-section">
     <AvContainer>
       <div
@@ -285,7 +305,7 @@ const initialState = {
                             class="quiz-option-input"
                             :name="`question-${currentQuestion}`"
                             :value="index"
-                            x-model="selection.answers[currentQuestion]"
+                            x-model.number="selection.answers[currentQuestion]"
                           />
                           <span class="quiz-option-text" x-text="option"></span>
                         </label>
@@ -301,9 +321,9 @@ const initialState = {
                         type="button"
                         @click="previousQuestion()"
                         :disabled="currentQuestion === 0"
+                        aria-label="Previous question"
                       >
                         <AvIcon name="chevron-left" size="sm" />
-                        Previous
                       </AvButton>
                       <AvButton
                         variant="ghost"
@@ -311,13 +331,13 @@ const initialState = {
                         type="button"
                         @click="nextQuestion()"
                         :disabled="currentQuestion >= totalQuestions - 1"
+                        aria-label="Next question"
                       >
-                        Next
                         <AvIcon name="chevron-right" size="sm" />
                       </AvButton>
                     </div>
                     <AvButton size="sm" type="button" @click="finishQuiz()" :disabled="!canSubmit">
-                      Submit answers
+                      Submit
                     </AvButton>
                   </div>
                 </div>
@@ -398,7 +418,7 @@ const initialState = {
     border-top: 0;
   }
   .quiz-section > .av-container {
-    padding-top: 1.5rem;
+    padding-top: 0;
   }
   .quiz-shell__head {
     display: flex;
@@ -429,21 +449,29 @@ const initialState = {
   }
   .quiz-stepper {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 0.75rem;
     justify-content: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .quiz-stepper::-webkit-scrollbar {
+    display: none;
   }
   .quiz-stepper__item {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 0.75rem;
+    justify-content: center;
+    padding: 0;
+    width: 2.6rem;
+    height: 2.6rem;
     border-radius: 999px;
     border: 1px solid rgba(30, 41, 59, 0.7);
     background: rgba(15, 23, 42, 0.6);
     color: rgba(226, 232, 240, 0.8);
     font-size: 0.8rem;
     transition: border 0.2s ease, color 0.2s ease;
+    flex: 0 0 auto;
   }
   .quiz-stepper__item.is-active {
     border-color: rgba(14, 165, 233, 0.8);
@@ -457,13 +485,16 @@ const initialState = {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 100%;
+    height: 100%;
     border-radius: 999px;
-    background: rgba(14, 165, 233, 0.2);
+    background: rgba(14, 165, 233, 0.15);
     color: #7dd3fc;
     font-weight: 600;
-    font-size: 0.7rem;
+    font-size: 0.85rem;
+  }
+  .quiz-stepper__label {
+    display: none;
   }
   .quiz-summary {
     display: grid;
