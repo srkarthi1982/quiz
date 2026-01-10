@@ -174,3 +174,16 @@ Behavior:
 - Found duplicates vs Supabase source; distinct count mismatch of 128,000.
 - Ran dedupe cleanup on remote DB (keep min `id` by `platformId/subjectId/topicId/roadmapId/q`); final count: **1,448,521** (matches Supabase).
 - Moved all JSON files from `quiz/public/` to `automation/quiz-migration/` in workspace.
+
+---
+
+## 14. Quiz UX + Results Save (Jan 2025)
+
+- Quiz flow now saves results on submit via `saveResult` action (responses include correct index + selected index).
+- Fixed scoring bug by coercing selected answers to numbers (`x-model.number`).
+- Quiz roadmap list now sorted by `id` ascending.
+- Quiz landing CTAs now link to `/quiz` instead of external URL.
+- Breadcrumbs added to `quiz` and `results` pages; aligned with admin style and reduced top gap.
+- Stepper changed to single-row number circles (labels hidden) and enlarged size.
+- Quiz nav buttons updated: Previous/Next icon-only on left, Submit on right.
+- Removed `quiz/public/quiz-example-page.astro` and `quiz/public/results-sample.astro`.
