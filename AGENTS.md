@@ -187,3 +187,19 @@ Behavior:
 - Stepper changed to single-row number circles (labels hidden) and enlarged size.
 - Quiz nav buttons updated: Previous/Next icon-only on left, Submit on right.
 - Removed `quiz/public/quiz-example-page.astro` and `quiz/public/results-sample.astro`.
+
+---
+
+## 15. Landing + Results Polish (Jan 2025)
+
+- Quiz landing page recreated with premium layout, new hero, stats, process steps, and platform highlights.
+- Added platform section (top 5 Academy `type=A` + Professional `type=P`) sourced from `Platform` table.
+- “What makes Quiz different” converted to `AvTimeline` items.
+- “How it feels to use” converted to `av-steps` layout from web landing.
+- Renamed quiz page to `test.astro`; updated internal links to `/test`.
+- Results modal adjusted: latest-first ordering, score/level badges on title row, metadata order, and answer table layout.
+- Answer review in `test.astro` switched to table layout; labels right-aligned.
+- Close buttons use `AvIcon` (added `x` icon in components package).
+- Quiz summary grid set to equal column widths on desktop.
+- Added `x-cloak` to error panel to prevent initial flash.
+- Tested: `npm run build` (Astro build with remote DB) ✅
