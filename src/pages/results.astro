@@ -22,7 +22,7 @@ const page = Number.isFinite(requestedPage) && requestedPage > 0 ? requestedPage
 
 const paginated = await resultRepository.getPaginatedData({
   where: () => eq(Result.userId, user.id),
-  orderBy: () => desc(Result.createdAt),
+  orderBy: () => [desc(Result.createdAt), desc(Result.id)],
   page,
   pageSize,
 });
@@ -246,7 +246,7 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
       <AvBreadcrumb
         items={[
           { label: "Home", href: "/" },
-          { label: "Quiz", href: "/quiz" },
+          { label: "Quiz", href: "/test" },
           { label: "Results" },
         ]}
       />
@@ -271,7 +271,7 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
               </p>
             </div>
             <div class="results-shell__actions">
-              <AvButton href="/quiz">Retake a quiz</AvButton>
+              <AvButton href="/test">Retake a quiz</AvButton>
             </div>
           </div>
 
@@ -280,7 +280,7 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
               headline="No results yet"
               description="Take your first quiz to start tracking your progress."
               ctaLabel="Start a quiz"
-              ctaHref="/quiz"
+              ctaHref="/test"
             />
           </template>
 
@@ -381,27 +381,36 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
             <div class="results-modal__panel">
               <div class="results-modal__head">
                 <div>
-                  <p class="results-modal__eyebrow">Answer review</p>
-                  <h3 class="results-modal__title" x-text="`Attempt #${selected.id}`"></h3>
+                  <div class="results-modal__title-row">
+                    <h3 class="results-modal__title" x-text="`Attempt #${selected.id}`"></h3>
+                    <span class="results-modal__badge" x-text="`${selected.mark} / ${selected.totalQuestions}`"></span>
+                    <span class="results-modal__badge results-modal__badge--level" x-text="selected.levelLabel"></span>
+                  </div>
                   <p class="results-modal__subtitle" x-text="selected.createdAtLabel"></p>
                 </div>
-                <AvButton variant="ghost" size="sm" type="button" @click="modalOpen = false">
-                  Close
+                <AvButton
+                  variant="ghost"
+                  size="sm"
+                  type="button"
+                  @click="modalOpen = false"
+                  aria-label="Close result details"
+                >
+                  <AvIcon name="x" size="sm" />
                 </AvButton>
               </div>
 
               <div class="results-modal__summary">
                 <div>
-                  <p>Score</p>
-                  <strong x-text="`${selected.mark} / ${selected.totalQuestions}`"></strong>
-                </div>
-                <div>
-                  <p>Level</p>
-                  <strong x-text="selected.levelLabel"></strong>
-                </div>
-                <div>
                   <p>Platform</p>
                   <strong x-text="selected.platformName"></strong>
+                </div>
+                <div>
+                  <p>Subject</p>
+                  <strong x-text="selected.subjectName"></strong>
+                </div>
+                <div>
+                  <p>Topic</p>
+                  <strong x-text="selected.topicName"></strong>
                 </div>
                 <div>
                   <p>Roadmap</p>
@@ -417,19 +426,30 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
                       <p x-text="question.questionText"></p>
                     </div>
                     <div class="results-modal__answers">
-                      <p>
-                        Your answer:
-                        <span
-                          class="results-modal__answer"
-                          :class="question.selectedIndex === question.correctIndex ? 'is-correct' : 'is-wrong'"
-                          x-text="question.selectedIndex >= 0 ? question.options[question.selectedIndex] : 'Not answered'"
-                        ></span>
-                      </p>
-                      <p>
-                        Correct answer:
-                        <span class="results-modal__answer is-correct" x-text="question.options[question.correctIndex]"></span>
-                      </p>
-                      <p class="results-modal__explanation" x-show="question.explanation" x-text="question.explanation"></p>
+                      <table>
+                        <tr>
+                          <td>Your answer:</td>
+                          <td>
+                            <span
+                              class="results-modal__answer"
+                              :class="question.selectedIndex === question.correctIndex ? 'is-correct' : 'is-wrong'"
+                              x-text="question.selectedIndex >= 0 ? question.options[question.selectedIndex] : 'Not answered'"
+                            ></span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Correct answer:</td>
+                          <td>
+                            <span class="results-modal__answer is-correct" x-text="question.options[question.correctIndex]"></span>
+                          </td>
+                        </tr>
+                        <tr x-show="question.explanation">
+                          <td>Explanation:</td>
+                          <td>
+                            <span class="results-modal__explanation" x-text="question.explanation"></span>
+                          </td>
+                        </tr>
+                      </table>
                     </div>
                   </div>
                 </template>
@@ -633,6 +653,28 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
     color: #f8fafc;
     margin-top: 0.35rem;
   }
+  .results-modal__title-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  .results-modal__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(14, 165, 233, 0.6);
+    background: rgba(14, 165, 233, 0.15);
+    color: #7dd3fc;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .results-modal__badge--level {
+    border-color: rgba(148, 163, 184, 0.6);
+    background: rgba(148, 163, 184, 0.15);
+    color: rgba(226, 232, 240, 0.9);
+  }
   .results-modal__subtitle {
     font-size: 0.8rem;
     color: rgba(148, 163, 184, 0.85);
@@ -685,10 +727,25 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
   }
   .results-modal__answers {
     margin-top: 0.75rem;
-    display: grid;
-    gap: 0.35rem;
     font-size: 0.8rem;
     color: rgba(226, 232, 240, 0.85);
+  }
+  .results-modal__answers table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .results-modal__answers td {
+    padding: 0.2rem 0;
+    vertical-align: top;
+  }
+  .results-modal__answers td:first-child {
+    width: 150px;
+    text-align: right;
+    padding-right: 0.75rem;
+    color: rgba(148, 163, 184, 0.85);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
   }
   .results-modal__answer {
     font-weight: 600;

@@ -1,256 +1,611 @@
 ---
 import AppShell from "../layouts/AppShell.astro";
-import { AvContainer, AvButton } from "@ansiversa/components";
+import { AvContainer, AvButton, AvTimeline } from "@ansiversa/components";
+import { Platform, db, eq, asc } from "astro:db";
 
 const title = "Quiz – Ansiversa";
 const description = "Create, organize, and share quizzes easily.";
+
+const quizTimelineItems = [
+  {
+    date: "Pillar 01",
+    title: "Roadmap-first structure",
+    body: "Keep questions aligned to syllabi, chapters, or career tracks with clarity.",
+  },
+  {
+    date: "Pillar 02",
+    title: "Instant feedback",
+    body: "Correct answers, explanations, and scoring appear the moment the quiz ends.",
+  },
+  {
+    date: "Pillar 03",
+    title: "Reusable by design",
+    body: "Build once and reuse across batches, teams, or semesters without rework.",
+  },
+  {
+    date: "Pillar 04",
+    title: "Clean admin control",
+    body: "Manage platforms, subjects, topics, and questions with the same Ansiversa UI.",
+  },
+  {
+    date: "Pillar 05",
+    title: "Result history",
+    body: "All attempts are stored and reviewable with full answer breakdowns.",
+  },
+  {
+    date: "Pillar 06",
+    title: "Scales across domains",
+    body: "Medical, engineering, law, finance, aptitude, and more in one system.",
+  },
+];
+
+const academyPlatforms = await db
+  .select({ id: Platform.id, name: Platform.name, description: Platform.description })
+  .from(Platform)
+  .where(eq(Platform.type, "A"))
+  .orderBy(asc(Platform.id))
+  .limit(5);
+
+const professionalPlatforms = await db
+  .select({ id: Platform.id, name: Platform.name, description: Platform.description })
+  .from(Platform)
+  .where(eq(Platform.type, "P"))
+  .orderBy(asc(Platform.id))
+  .limit(5);
 ---
 
 <AppShell title={title} description={description}>
-  <!-- Hero -->
-  <section class="av-hero">
-    <AvContainer size="narrow" className="av-hero__content--narrow">
-      <div class="av-hero__content">
+  <section class="quiz-hero">
+    <AvContainer size="default">
+      <div class="quiz-hero__grid">
+        <div class="quiz-hero__text">
+          <div class="av-kicker">
+            <span>Learning · Ansiversa Mini App</span>
+          </div>
+          <h1 class="quiz-hero__title">Quiz</h1>
+          <p class="quiz-hero__lead">
+            Build clean, focused quizzes that feel premium to take and effortless to manage.
+            Pick a topic, run the quiz, and store results automatically.
+          </p>
+          <div class="quiz-hero__bullets">
+            <span>Structured by platform, subject, topic, roadmap</span>
+            <span>Instant scoring with review-ready explanations</span>
+            <span>Results tracked per learner, ready for insights</span>
+          </div>
+          <div class="quiz-hero__cta">
+            <AvButton href="/test">Launch Quiz</AvButton>
+            <AvButton href="/results" variant="ghost">View Results</AvButton>
+          </div>
+          <p class="quiz-hero__note">No setup. No clutter. Just clean flows.</p>
+        </div>
+
+        <div class="quiz-hero__panel">
+          <div class="quiz-hero__panel-card">
+            <p class="quiz-hero__panel-kicker">Your flow</p>
+            <h3 class="quiz-hero__panel-title">Six steps to a finished attempt</h3>
+            <ol class="quiz-hero__panel-steps">
+              <li><span>1</span>Choose platform</li>
+              <li><span>2</span>Select subject &amp; topic</li>
+              <li><span>3</span>Pick a roadmap</li>
+              <li><span>4</span>Set level</li>
+              <li><span>5</span>Answer questions</li>
+              <li><span>6</span>Save results</li>
+            </ol>
+            <div class="quiz-hero__panel-footer">
+              <div>
+                <p class="quiz-hero__panel-label">Avg. completion</p>
+                <p class="quiz-hero__panel-value">~4 min</p>
+              </div>
+              <div>
+                <p class="quiz-hero__panel-label">Format</p>
+                <p class="quiz-hero__panel-value">10 questions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-hero__stats">
+        <div class="quiz-stat">
+          <p class="quiz-stat__value">1.4M+</p>
+          <p class="quiz-stat__label">Questions indexed</p>
+        </div>
+        <div class="quiz-stat">
+          <p class="quiz-stat__value">Multi-level</p>
+          <p class="quiz-stat__label">Easy, Medium, Hard</p>
+        </div>
+        <div class="quiz-stat">
+          <p class="quiz-stat__value">Results</p>
+          <p class="quiz-stat__label">Saved per attempt</p>
+        </div>
+      </div>
+    </AvContainer>
+  </section>
+
+  <section class="av-section">
+    <AvContainer size="default">
+      <div class="quiz-section__header">
+        <h2 class="av-section-title">What makes Quiz different</h2>
+        <p class="av-section-lead">
+          It is built for calm, premium learning flows. Everything is purposeful, nothing is noisy.
+        </p>
+      </div>
+      <AvTimeline items={quizTimelineItems} />
+    </AvContainer>
+  </section>
+
+  <section class="av-section quiz-process">
+    <AvContainer size="default">
+      <div class="av-section-header">
         <div class="av-kicker">
-          <span>Learning · Ansiversa Mini App</span>
+          <span>How it feels</span>
         </div>
-        <h1 class="av-gradient-text">Quiz</h1>
-        <p>
-          Create, organize, and share quizzes in minutes — with clean flows for both
-          educators and learners.
-        </p>
-        <ul class="mt-4 space-y-1 text-slate-300 text-sm">
-          <li>• Support for multiple question types.</li>
-          <li>• Instant scoring and clear results.</li>
-          <li>• Works beautifully across Ansiversa learning apps.</li>
-        </ul>
-      </div>
-      <div class="av-cta-row">
-        <AvButton href="/quiz">Launch Quiz</AvButton>
-      </div>
-    </AvContainer>
-  </section>
-
-  <!-- Problem -->
-  <section class="av-section">
-    <AvContainer size="narrow">
-      <div class="av-section-header">
-        <h2 class="av-section-title">The problem it solves</h2>
+        <h2 class="av-section-title">How it feels to use</h2>
         <p class="av-section-lead">
-          Quizzes are often scattered across spreadsheets, PDFs, and different tools.
+          A guided flow that keeps learners focused, and gives mentors quick insight.
         </p>
       </div>
-      <div class="av-section-body space-y-3 text-slate-300 text-sm">
-        <p>
-          Teachers and trainers spend too much time copying questions, recalculating scores,
-          exporting marks, and sharing links across multiple platforms.
-        </p>
-        <p>
-          Learners get confused links, inconsistent formats, and zero continuity with the
-          rest of their learning tools.
-        </p>
-        <p>
-          <strong>Quiz</strong> brings this into one place — inside the same Ansiversa ecosystem
-          that powers your other learning mini apps.
-        </p>
-      </div>
-    </AvContainer>
-  </section>
 
-  <!-- What you can do with Quiz -->
-  <section class="av-section">
-    <AvContainer size="narrow">
-      <div class="av-section-header">
-        <h2 class="av-section-title">What you can do with Quiz</h2>
-        <p class="av-section-lead">
-          A focused mini app for building and running quizzes without the clutter.
-        </p>
-      </div>
-      <div class="av-section-body grid gap-4 md:grid-cols-2 text-sm text-slate-300">
-        <div class="rounded-2xl border border-slate-800/70 bg-slate-900/40 p-4 space-y-1.5">
-          <h3 class="font-semibold text-slate-50">Create structured quizzes</h3>
-          <p>
-            Build topic-wise or chapter-wise quizzes with clear titles, sections, and
-            time limits — instead of loose questions living in random documents.
-          </p>
-        </div>
-        <div class="rounded-2xl border border-slate-800/70 bg-slate-900/40 p-4 space-y-1.5">
-          <h3 class="font-semibold text-slate-50">Run quick checks or full tests</h3>
-          <p>
-            Use Quiz for short knowledge checks after a lesson, or combine multiple
-            sections to form a more serious test or assessment.
-          </p>
-        </div>
-        <div class="rounded-2xl border border-slate-800/70 bg-slate-900/40 p-4 space-y-1.5">
-          <h3 class="font-semibold text-slate-50">See scores instantly</h3>
-          <p>
-            Let the app handle scoring and basic analysis so you can focus on teaching,
-            mentoring, or guiding the next steps.
-          </p>
-        </div>
-        <div class="rounded-2xl border border-slate-800/70 bg-slate-900/40 p-4 space-y-1.5">
-          <h3 class="font-semibold text-slate-50">Reuse across batches &amp; years</h3>
-          <p>
-            Once created, quizzes can be reused with new students, teams, or cohorts
-            without rebuilding everything from scratch.
-          </p>
-        </div>
-      </div>
-    </AvContainer>
-  </section>
+      <ol class="av-steps">
+        <li class="av-step">
+          <span class="av-step-number">1</span>
+          <div class="av-step-body">
+            <h3 class="av-card-heading">Pick a topic with clarity</h3>
+            <p>Filters make it easy to reach the right roadmap without scrolling forever.</p>
+          </div>
+        </li>
 
-  <!-- Why this mini app feels different -->
-  <section class="av-section">
-    <AvContainer size="narrow">
-      <div class="av-section-header">
-        <h2 class="av-section-title">Why Quiz feels different</h2>
-        <p class="av-section-lead">
-          A focused mini app inside the larger Ansiversa ecosystem.
-        </p>
-      </div>
-      <div class="av-section-body space-y-3 text-slate-300 text-sm">
-        <ul class="space-y-2 list-disc list-inside">
-          <li>Designed specifically for learners, students, and educators.</li>
-          <li>Removes distractions so you can focus on actual understanding.</li>
-          <li>Shares the same clean UI as other Ansiversa learning apps.</li>
-          <li>Plays nicely with tools like FlashNote, Exam, and Knowledge Duel.</li>
-        </ul>
-      </div>
-    </AvContainer>
-  </section>
+        <li class="av-step">
+          <span class="av-step-number">2</span>
+          <div class="av-step-body">
+            <h3 class="av-card-heading">Answer with zero distractions</h3>
+            <p>One question at a time, crisp options, and a clean progress rhythm.</p>
+          </div>
+        </li>
 
-  <!-- How it works -->
-  <section class="av-section">
-    <AvContainer size="narrow">
-      <div class="av-section-header">
-        <h2 class="av-section-title">How it works</h2>
-        <p class="av-section-lead">
-          Simple, clear steps so people can start in under a minute.
-        </p>
-      </div>
-      <ol class="av-section-body space-y-2 text-slate-300 text-sm list-decimal list-inside">
-        <li>Open Quiz in your browser.</li>
-        <li>Create a quiz for a topic, chapter, or concept you want to test.</li>
-        <li>Add questions, configure options, and set time or marks.</li>
-        <li>Share the quiz with learners or students.</li>
-        <li>Review scores and identify which concepts need more revision.</li>
+        <li class="av-step">
+          <span class="av-step-number">3</span>
+          <div class="av-step-body">
+            <h3 class="av-card-heading">Review and save automatically</h3>
+            <p>Scores and answer reviews are stored so learners can see improvement.</p>
+          </div>
+        </li>
       </ol>
     </AvContainer>
   </section>
 
-  <!-- Who it's for -->
   <section class="av-section">
-    <AvContainer size="narrow">
-      <div class="av-section-header">
-        <h2 class="av-section-title">Who can use Quiz</h2>
+    <AvContainer size="default">
+      <div class="quiz-section__header">
+        <h2 class="av-section-title">Who uses Quiz</h2>
         <p class="av-section-lead">
-          Any environment where people are learning, training, or being assessed.
+          From classrooms to corporate training, Quiz fits any learning environment.
         </p>
       </div>
-      <div class="av-section-body grid gap-4 md:grid-cols-2 text-sm text-slate-300">
-        <div class="rounded-2xl border border-slate-800/70 bg-slate-900/40 p-4 space-y-1.5">
-          <h3 class="font-semibold text-slate-50">Teachers &amp; schools</h3>
-          <p>
-            Chapter-end quizzes, objective tests, and quick class pulses to see
-            who is following and who needs more support.
-          </p>
+      <div class="quiz-audience-grid">
+        <div class="quiz-audience">
+          <h3>Schools &amp; teachers</h3>
+          <p>Chapter-end quizzes and quick checks to track class understanding.</p>
         </div>
-        <div class="rounded-2xl border border-slate-800/70 bg-slate-900/40 p-4 space-y-1.5">
-          <h3 class="font-semibold text-slate-50">Coaching centers</h3>
-          <p>
-            Topic-wise practice tests for board exams, entrance exams, and competitive
-            preparation — fully online and reusable.
-          </p>
+        <div class="quiz-audience">
+          <h3>Coaching institutes</h3>
+          <p>Entrance exam practice with structured topics and difficulty levels.</p>
         </div>
-        <div class="rounded-2xl border border-slate-800/70 bg-slate-900/40 p-4 space-y-1.5">
-          <h3 class="font-semibold text-slate-50">Companies &amp; teams</h3>
-          <p>
-            Onboarding checks, policy understanding, and quick skill assessments for
-            internal trainings and workshops.
-          </p>
+        <div class="quiz-audience">
+          <h3>Teams &amp; HR</h3>
+          <p>Onboarding knowledge checks, policy assessments, and skill evaluations.</p>
         </div>
-        <div class="rounded-2xl border border-slate-800/70 bg-slate-900/40 p-4 space-y-1.5">
-          <h3 class="font-semibold text-slate-50">Self-learners &amp; students</h3>
-          <p>
-            Build your own quizzes from notes and use them as a revision engine
-            before important exams or interviews.
-          </p>
+        <div class="quiz-audience">
+          <h3>Self learners</h3>
+          <p>Build personalized quizzes for fast revision and stronger recall.</p>
         </div>
       </div>
     </AvContainer>
   </section>
 
-  <!-- Works with other Ansiversa learning apps -->
   <section class="av-section">
-    <AvContainer size="narrow">
-      <div class="av-section-header">
-        <h2 class="av-section-title">Works beautifully with other learning apps</h2>
+    <AvContainer size="default">
+      <div class="quiz-section__header">
+        <h2 class="av-section-title">Works with your learning stack</h2>
         <p class="av-section-lead">
-          Quiz is one mini app inside a larger, connected learning ecosystem.
+          Quiz is designed to complement other Ansiversa mini apps.
         </p>
       </div>
-      <div class="av-section-body grid gap-4 md:grid-cols-3 text-sm text-slate-300">
+      <div class="quiz-apps-grid">
         <a
           href="https://flashnote.ansiversa.com"
-          class="block rounded-2xl border border-slate-800/70 bg-slate-900/40 p-4 hover:border-sky-500/70 transition"
+          class="quiz-app-card"
         >
-          <p class="text-xs font-semibold uppercase tracking-wide text-sky-400">
-            FlashNote
-          </p>
-          <p class="mt-1 font-medium text-slate-50">
-            Convert notes into flashcards instantly.
-          </p>
-          <p class="mt-1">
-            Teach a topic using notes, then turn those key points into quick recall
-            quizzes using FlashNote + Quiz.
-          </p>
+          <p class="quiz-app-card__label">FlashNote</p>
+          <h3>Turn notes into recall-ready prompts.</h3>
+          <p>Teach with notes, then convert them into instant quizzes.</p>
         </a>
         <a
           href="https://exam.ansiversa.com"
-          class="block rounded-2xl border border-slate-800/70 bg-slate-900/40 p-4 hover:border-sky-500/70 transition"
+          class="quiz-app-card"
         >
-          <p class="text-xs font-semibold uppercase tracking-wide text-sky-400">
-            Exam Simulator
-          </p>
-          <p class="mt-1 font-medium text-slate-50">
-            Create timed mock exams with scoring.
-          </p>
-          <p class="mt-1">
-            Start with smaller quizzes in Quiz, then upgrade learners into full
-            exam-style mocks when they are ready.
-          </p>
+          <p class="quiz-app-card__label">Exam Simulator</p>
+          <h3>Scale up to timed mock exams.</h3>
+          <p>Start with quizzes, then build full exam flows.</p>
         </a>
         <a
           href="https://knowledge-duel.ansiversa.com"
-          class="block rounded-2xl border border-slate-800/70 bg-slate-900/40 p-4 hover:border-sky-500/70 transition"
+          class="quiz-app-card"
         >
-          <p class="text-xs font-semibold uppercase tracking-wide text-sky-400">
-            Knowledge Duel
-          </p>
-          <p class="mt-1 font-medium text-slate-50">
-            Fast-paced trivia battles.
-          </p>
-          <p class="mt-1">
-            Turn serious quiz content into live, game-like battles for revision
-            sessions or fun class competitions.
-          </p>
+          <p class="quiz-app-card__label">Knowledge Duel</p>
+          <h3>Bring quizzes into live battles.</h3>
+          <p>Use quiz content for fast, competitive revisions.</p>
         </a>
       </div>
     </AvContainer>
   </section>
 
-  <!-- Final CTA -->
   <section class="av-section">
-    <AvContainer size="narrow">
-      <div class="av-section-header">
-        <h2 class="av-section-title">Ready to try Quiz?</h2>
+    <AvContainer size="default">
+      <div class="quiz-section__header">
+        <h2 class="av-section-title">Top platforms</h2>
         <p class="av-section-lead">
-          Open the app, follow the simple flow, and let it handle the heavy lifting.
+          Curated starters from our Academy and Professional tracks.
         </p>
       </div>
-      <div class="av-cta-row">
-        <AvButton href="/quiz">Start with Quiz</AvButton>
+      <div class="quiz-platforms-grid">
+        <div class="quiz-platforms-card">
+          <p class="quiz-platforms-card__label">Academy (A)</p>
+          <ul>
+            {academyPlatforms.map((platform) => (
+              <li key={`academy-${platform.id}`}>
+                <span class="quiz-platforms-card__name">{platform.name}</span>
+                {platform.description ? (
+                  <span class="quiz-platforms-card__meta">{platform.description}</span>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="quiz-platforms-card">
+          <p class="quiz-platforms-card__label">Professional (P)</p>
+          <ul>
+            {professionalPlatforms.map((platform) => (
+              <li key={`professional-${platform.id}`}>
+                <span class="quiz-platforms-card__name">{platform.name}</span>
+                {platform.description ? (
+                  <span class="quiz-platforms-card__meta">{platform.description}</span>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </AvContainer>
+  </section>
+
+  <section class="av-section quiz-final">
+    <AvContainer size="default">
+      <div class="quiz-final__content">
+        <div>
+          <h2 class="av-section-title">Ready to build your first quiz?</h2>
+          <p class="av-section-lead">
+            Launch the mini app and start testing knowledge in minutes.
+          </p>
+        </div>
+        <div class="quiz-final__cta">
+          <AvButton href="/test">Start with Quiz</AvButton>
+        </div>
       </div>
     </AvContainer>
   </section>
 </AppShell>
+
+<style>
+  .quiz-hero {
+    position: relative;
+    padding: 4rem 0 2.5rem;
+    background: radial-gradient(circle at top left, rgba(14, 165, 233, 0.18), transparent 55%),
+      radial-gradient(circle at 80% 0%, rgba(56, 189, 248, 0.15), transparent 50%);
+  }
+  .quiz-hero__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    align-items: center;
+  }
+  .quiz-hero__title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: #f8fafc;
+    margin: 0.35rem 0 0.75rem;
+  }
+  .quiz-hero__lead {
+    color: rgba(226, 232, 240, 0.85);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  .quiz-hero__bullets {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    color: rgba(148, 163, 184, 0.9);
+    font-size: 0.9rem;
+  }
+  .quiz-hero__bullets span {
+    padding-left: 1.1rem;
+    position: relative;
+  }
+  .quiz-hero__bullets span::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: rgba(56, 189, 248, 0.7);
+  }
+  .quiz-hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+  }
+  .quiz-hero__note {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: rgba(148, 163, 184, 0.85);
+  }
+  .quiz-hero__panel-card {
+    border-radius: 1.5rem;
+    border: 1px solid rgba(30, 41, 59, 0.7);
+    background: rgba(15, 23, 42, 0.75);
+    padding: 1.75rem;
+    box-shadow: 0 20px 60px rgba(2, 8, 23, 0.35);
+  }
+  .quiz-hero__panel-kicker {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(148, 163, 184, 0.8);
+    margin-bottom: 0.4rem;
+  }
+  .quiz-hero__panel-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #f8fafc;
+    margin-bottom: 1rem;
+  }
+  .quiz-hero__panel-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.65rem;
+    color: rgba(226, 232, 240, 0.85);
+    font-size: 0.9rem;
+  }
+  .quiz-hero__panel-steps li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .quiz-hero__panel-steps span {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.75rem;
+    background: rgba(14, 165, 233, 0.2);
+    color: #7dd3fc;
+  }
+  .quiz-hero__panel-footer {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(30, 41, 59, 0.6);
+  }
+  .quiz-hero__panel-label {
+    font-size: 0.75rem;
+    color: rgba(148, 163, 184, 0.75);
+    margin-bottom: 0.25rem;
+  }
+  .quiz-hero__panel-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e2e8f0;
+  }
+  .quiz-hero__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .quiz-stat {
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(30, 41, 59, 0.6);
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .quiz-stat__value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #f8fafc;
+  }
+  .quiz-stat__label {
+    font-size: 0.85rem;
+    color: rgba(148, 163, 184, 0.85);
+  }
+  .quiz-section__header {
+    max-width: 46rem;
+    margin-bottom: 2rem;
+  }
+  .quiz-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .quiz-feature {
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(30, 41, 59, 0.65);
+    background: rgba(15, 23, 42, 0.6);
+    color: rgba(226, 232, 240, 0.85);
+  }
+  .quiz-feature h3 {
+    color: #f8fafc;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .quiz-process {
+    position: relative;
+  }
+  .quiz-process__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .quiz-process__step {
+    padding: 1.5rem;
+    border-radius: 1.25rem;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.4));
+    border: 1px solid rgba(30, 41, 59, 0.55);
+  }
+  .quiz-process__index {
+    color: rgba(56, 189, 248, 0.9);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+  }
+  .quiz-process__step h3 {
+    margin: 0.6rem 0 0.4rem;
+    color: #f8fafc;
+    font-size: 1rem;
+  }
+  .quiz-process__step p {
+    color: rgba(148, 163, 184, 0.9);
+    font-size: 0.9rem;
+  }
+  .quiz-audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .quiz-audience {
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(30, 41, 59, 0.6);
+    background: rgba(15, 23, 42, 0.6);
+  }
+  .quiz-audience h3 {
+    color: #f8fafc;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .quiz-audience p {
+    color: rgba(148, 163, 184, 0.9);
+    font-size: 0.9rem;
+  }
+  .quiz-apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .quiz-platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .quiz-platforms-card {
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(30, 41, 59, 0.65);
+    background: rgba(15, 23, 42, 0.6);
+  }
+  .quiz-platforms-card__label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(56, 189, 248, 0.9);
+    margin-bottom: 1rem;
+  }
+  .quiz-platforms-card ul {
+    display: grid;
+    gap: 0.75rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .quiz-platforms-card li {
+    display: grid;
+    gap: 0.25rem;
+  }
+  .quiz-platforms-card__name {
+    color: #f8fafc;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .quiz-platforms-card__meta {
+    color: rgba(148, 163, 184, 0.9);
+    font-size: 0.85rem;
+  }
+  .quiz-app-card {
+    display: block;
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(30, 41, 59, 0.65);
+    background: rgba(15, 23, 42, 0.6);
+    color: rgba(226, 232, 240, 0.85);
+    transition: border 0.2s ease, transform 0.2s ease;
+  }
+  .quiz-app-card:hover {
+    border-color: rgba(56, 189, 248, 0.6);
+    transform: translateY(-2px);
+  }
+  .quiz-app-card__label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(56, 189, 248, 0.9);
+  }
+  .quiz-app-card h3 {
+    margin-top: 0.6rem;
+    color: #f8fafc;
+    font-size: 1rem;
+  }
+  .quiz-app-card p {
+    margin-top: 0.5rem;
+    color: rgba(148, 163, 184, 0.9);
+    font-size: 0.9rem;
+  }
+  .quiz-final {
+    border-top: 0;
+  }
+  .quiz-final__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 2.5rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(30, 41, 59, 0.7);
+    background: rgba(15, 23, 42, 0.7);
+  }
+  .quiz-final__cta {
+    flex: 0 0 auto;
+  }
+  @media (max-width: 768px) {
+    .quiz-hero {
+      padding-top: 3rem;
+    }
+    .quiz-hero__panel-card {
+      padding: 1.5rem;
+    }
+    .quiz-final__content {
+      padding: 1.5rem;
+    }
+  }
+</style>

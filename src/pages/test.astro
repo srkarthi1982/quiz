@@ -146,14 +146,10 @@ const initialState = {
               <p class="quiz-summary__label">Roadmap</p>
               <p class="quiz-summary__value" x-text="roadmapLabel"></p>
             </div>
-            <div>
-              <p class="quiz-summary__label">Level</p>
-              <p class="quiz-summary__value" x-text="levelLabel"></p>
-            </div>
           </div>
 
           <div class="quiz-shell__body">
-            <div class="quiz-error" x-show="error" x-text="error"></div>
+            <div class="quiz-error" x-show="error" x-text="error" x-cloak></div>
 
             <div x-show="step === 1" x-cloak>
               <template x-if="filteredPlatforms.length === 0 && !loading">
@@ -290,9 +286,12 @@ const initialState = {
               <template x-if="totalQuestions > 0">
                 <div class="quiz-question-card" x-show="!isCompleted">
                   <div class="quiz-question-card__head">
-                    <p class="quiz-question-card__eyebrow">
-                      Question <span x-text="currentQuestion + 1"></span> of <span x-text="totalQuestions"></span>
-                    </p>
+                    <div class="quiz-question-card__eyebrow-row">
+                      <p class="quiz-question-card__eyebrow">
+                        Question <span x-text="currentQuestion + 1"></span> of <span x-text="totalQuestions"></span>
+                      </p>
+                      <span class="quiz-question-card__badge" x-text="levelLabel"></span>
+                    </div>
                     <h3 class="quiz-question-card__title" x-text="currentQuestionItem?.questionText"></h3>
                   </div>
 
@@ -366,7 +365,15 @@ const initialState = {
               <AvCard variant="soft">
                 <div class="quiz-answer-review__head">
                   <h3>Answer review</h3>
-                  <AvButton variant="ghost" size="sm" type="button" @click="showAnswers = false">Close</AvButton>
+                  <AvButton
+                    variant="ghost"
+                    size="sm"
+                    type="button"
+                    @click="showAnswers = false"
+                    aria-label="Close answer review"
+                  >
+                    <AvIcon name="x" size="sm" />
+                  </AvButton>
                 </div>
                 <div class="quiz-answer-review__list">
                   <template x-for="(question, index) in list.questions" :key="`review-${question.id}`">
@@ -376,23 +383,30 @@ const initialState = {
                         <p x-text="question.questionText"></p>
                       </div>
                       <div class="quiz-answer-review__body">
-                        <p>
-                          Your answer:
-                          <span
-                            class="quiz-answer-review__answer"
-                            :class="selection.answers[index] === question.correctIndex ? 'is-correct' : 'is-wrong'"
-                            x-text="selection.answers[index] >= 0 ? question.options[selection.answers[index]] : 'Not answered'"
-                          ></span>
-                        </p>
-                        <p>
-                          Correct answer:
-                          <span class="quiz-answer-review__answer is-correct" x-text="question.options[question.correctIndex]"></span>
-                        </p>
-                        <p
-                          class="quiz-answer-review__explanation"
-                          x-show="question.explanation"
-                          x-text="question.explanation"
-                        ></p>
+                        <table>
+                          <tr>
+                            <td>Your answer:</td>
+                            <td>
+                              <span
+                                class="quiz-answer-review__answer"
+                                :class="selection.answers[index] === question.correctIndex ? 'is-correct' : 'is-wrong'"
+                                x-text="selection.answers[index] >= 0 ? question.options[selection.answers[index]] : 'Not answered'"
+                              ></span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Correct answer:</td>
+                            <td>
+                              <span class="quiz-answer-review__answer is-correct" x-text="question.options[question.correctIndex]"></span>
+                            </td>
+                          </tr>
+                          <tr x-show="question.explanation">
+                            <td>Explanation:</td>
+                            <td>
+                              <span class="quiz-answer-review__explanation" x-text="question.explanation"></span>
+                            </td>
+                          </tr>
+                        </table>
                       </div>
                     </div>
                   </template>
@@ -510,10 +524,10 @@ const initialState = {
   }
   @media (min-width: 1024px) {
     .quiz-summary {
-      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
     .quiz-summary__roadmap {
-      grid-column: span 2;
+      grid-column: auto;
     }
   }
   .quiz-summary__label {
@@ -620,6 +634,26 @@ const initialState = {
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: rgba(148, 163, 184, 0.8);
+  }
+  .quiz-question-card__eyebrow-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .quiz-question-card__badge {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.5rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(14, 165, 233, 0.6);
+    background: rgba(14, 165, 233, 0.15);
+    color: #7dd3fc;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: normal;
   }
   .quiz-question-card__title {
     margin-top: 0.5rem;
@@ -734,10 +768,25 @@ const initialState = {
   }
   .quiz-answer-review__body {
     margin-top: 0.65rem;
-    display: grid;
-    gap: 0.35rem;
     font-size: 0.8rem;
     color: rgba(226, 232, 240, 0.85);
+  }
+  .quiz-answer-review__body table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .quiz-answer-review__body td {
+    padding: 0.2rem 0;
+    vertical-align: top;
+  }
+  .quiz-answer-review__body td:first-child {
+    width: 150px;
+    text-align: right;
+    padding-right: 0.75rem;
+    color: rgba(148, 163, 184, 0.85);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
   }
   .quiz-answer-review__answer {
     font-weight: 600;
