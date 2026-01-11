@@ -20,7 +20,7 @@ import { PAGE_SIZE } from "../../stores/adminPlatforms";
 const sort = "id";
 const dir = "desc";
 
-const listResult = await Astro.callAction(actions.fetchPlatforms, {
+const listResult = await Astro.callAction(actions.admin.fetchPlatforms, {
   page: 1,
   pageSize: PAGE_SIZE,
   sort: { column: sort, direction: dir },
@@ -331,7 +331,7 @@ const initialState = {
 
           <div slot="footer">
             <AvButton variant="ghost" type="button" @click="closeDrawer()">Cancel</AvButton>
-            <AvButton type="button" @click="submit" :disabled="loading">
+            <AvButton type="button" @click="submit()" :disabled="loading">
               <span x-show="!loading" x-text="editingId ? 'Save' : 'Create'"></span>
               <span x-show="loading">Saving…</span>
             </AvButton>
@@ -349,7 +349,7 @@ const initialState = {
       confirmLabel="Delete"
       cancelLabel="Cancel"
       variant="danger"
-      @av-confirm="pendingDeleteId && remove(pendingDeleteId)"
+      @av-confirm="pendingDeleteId && (remove(pendingDeleteId), pendingDeleteId = null, pendingDeleteName = null)"
       @av-cancel="pendingDeleteId = null; pendingDeleteName = null"
     />
   </div>

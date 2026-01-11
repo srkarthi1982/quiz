@@ -27,7 +27,8 @@ const paginated = await resultRepository.getPaginatedData({
   pageSize,
 });
 
-const results = paginated.data;
+type ResultRow = typeof Result.$inferSelect;
+const results = paginated.data as ResultRow[];
 const total = Number(paginated.total ?? 0);
 const totalPages = Math.max(1, Math.ceil(total / pageSize));
 const pagination = {
@@ -184,7 +185,7 @@ const resultsPayload = parsedResults.map(({ result, responses }) => {
         selectionFallback: false,
       };
     })
-    .filter(Boolean);
+    .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
 
   if (markValue === enriched.length) {
     enriched.forEach((entry) => {
@@ -376,7 +377,7 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
         </AvCard>
 
         <template x-if="modalOpen && selected">
-          <div class="results-modal" x-cloak>
+          <div class="results-modal" x-cloak @keydown.window.escape="modalOpen = false">
             <div class="results-modal__backdrop" @click="modalOpen = false"></div>
             <div class="results-modal__panel">
               <div class="results-modal__head">
@@ -440,7 +441,10 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
                         <tr>
                           <td>Correct answer:</td>
                           <td>
-                            <span class="results-modal__answer is-correct" x-text="question.options[question.correctIndex]"></span>
+                              <span
+                                class="results-modal__answer is-correct"
+                                x-text="question.correctIndex >= 0 ? question.options[question.correctIndex] : 'Unavailable'"
+                              ></span>
                           </td>
                         </tr>
                         <tr x-show="question.explanation">

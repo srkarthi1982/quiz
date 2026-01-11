@@ -248,3 +248,19 @@ Behavior:
 - Admin routes gated by roleId = 1 in middleware.
 - Removed `/admin/results` link from admin dashboard (route not implemented).
 - Updated package identity to `@ansiversa/quiz` and set `private: true`.
+
+---
+
+## 21. Admin Pages Final Touches
+
+- Admin SSR calls now use `actions.admin.*` namespace.
+- Drawer submit buttons call `submit()` explicitly.
+- Delete confirm now clears pending delete state after confirm.
+
+---
+
+## 22. Admin Questions Hardened
+
+- Increased SSR roadmap list size for questions filter (2000).
+- Drawer platform/subject/topic selects now use Alpine lists with filtered templates.
+- Error alerts use `role="alert"` on the questions page.

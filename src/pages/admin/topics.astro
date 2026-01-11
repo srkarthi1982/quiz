@@ -19,19 +19,19 @@ import { PAGE_SIZE } from "../../stores/adminTopics";
 const sort = "id";
 const dir = "desc";
 
-const listResult = await Astro.callAction(actions.fetchTopics, {
+const listResult = await Astro.callAction(actions.admin.fetchTopics, {
   page: 1,
   pageSize: PAGE_SIZE,
   sort: { column: sort, direction: dir },
 });
 
-const platformsResult = await Astro.callAction(actions.fetchPlatforms, {
+const platformsResult = await Astro.callAction(actions.admin.fetchPlatforms, {
   page: 1,
   pageSize: 500,
   sort: { column: "name", direction: "asc" },
 });
 
-const subjectsResult = await Astro.callAction(actions.fetchSubjects, {
+const subjectsResult = await Astro.callAction(actions.admin.fetchSubjects, {
   page: 1,
   pageSize: 500,
   sort: { column: "name", direction: "asc" },
@@ -342,9 +342,9 @@ const initialState = {
               x-model="form.platformId"
             >
               <option value="">Select platform</option>
-              {platforms.map((platform) => (
-                <option value={platform.id}>{platform.name}</option>
-              ))}
+              <template x-for="platform in platforms" :key="platform.id">
+                <option :value="platform.id" x-text="platform.name"></option>
+              </template>
             </AvSelect>
             <AvSelect
               label="Subject"
@@ -353,15 +353,12 @@ const initialState = {
               x-model="form.subjectId"
             >
               <option value="">Select subject</option>
-              {subjects.map((subject) => (
-                <option
-                  value={subject.id}
-                  data-platform-id={subject.platformId}
-                  x-show="!form.platformId || String(form.platformId) === String($el.dataset.platformId)"
-                >
-                  {subject.name}
-                </option>
-              ))}
+              <template
+                x-for="subject in (form.platformId ? subjects.filter((item) => String(item.platformId) === String(form.platformId)) : subjects)"
+                :key="subject.id"
+              >
+                <option :value="subject.id" x-text="subject.name"></option>
+              </template>
             </AvSelect>
             <AvInput label="Topic name" name="name" placeholder="Topic name" required x-model="form.name" />
             <AvInput
@@ -389,7 +386,7 @@ const initialState = {
 
           <div slot="footer">
             <AvButton variant="ghost" type="button" @click="closeDrawer()">Cancel</AvButton>
-            <AvButton type="button" @click="submit" :disabled="loading">
+            <AvButton type="button" @click="submit()" :disabled="loading">
               <span x-show="!loading" x-text="editingId ? 'Save' : 'Create'"></span>
               <span x-show="loading">Saving…</span>
             </AvButton>
@@ -407,7 +404,7 @@ const initialState = {
       confirmLabel="Delete"
       cancelLabel="Cancel"
       variant="danger"
-      @av-confirm="pendingDeleteId && remove(pendingDeleteId)"
+      @av-confirm="pendingDeleteId && (remove(pendingDeleteId), pendingDeleteId = null, pendingDeleteName = null)"
       @av-cancel="pendingDeleteId = null; pendingDeleteName = null"
     />
   </div>

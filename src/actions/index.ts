@@ -1,6 +1,28 @@
 import { quiz } from "./quiz";
 
 export const server = {
+  admin: {
+    fetchPlatforms: quiz.fetchPlatforms,
+    createPlatform: quiz.createPlatform,
+    updatePlatform: quiz.updatePlatform,
+    deletePlatform: quiz.deletePlatform,
+    fetchSubjects: quiz.fetchSubjects,
+    createSubject: quiz.createSubject,
+    updateSubject: quiz.updateSubject,
+    deleteSubject: quiz.deleteSubject,
+    fetchTopics: quiz.fetchTopics,
+    createTopic: quiz.createTopic,
+    updateTopic: quiz.updateTopic,
+    deleteTopic: quiz.deleteTopic,
+    fetchRoadmaps: quiz.fetchRoadmaps,
+    createRoadmap: quiz.createRoadmap,
+    updateRoadmap: quiz.updateRoadmap,
+    deleteRoadmap: quiz.deleteRoadmap,
+    fetchQuestions: quiz.fetchQuestions,
+    createQuestion: quiz.createQuestion,
+    updateQuestion: quiz.updateQuestion,
+    deleteQuestion: quiz.deleteQuestion,
+  },
   fetchPlatforms: quiz.fetchPlatforms,
   createPlatform: quiz.createPlatform,
   updatePlatform: quiz.updatePlatform,

@@ -19,13 +19,13 @@ import { PAGE_SIZE } from "../../stores/adminSubjects";
 const sort = "id";
 const dir = "desc";
 
-const listResult = await Astro.callAction(actions.fetchSubjects, {
+const listResult = await Astro.callAction(actions.admin.fetchSubjects, {
   page: 1,
   pageSize: PAGE_SIZE,
   sort: { column: sort, direction: dir },
 });
 
-const platformsResult = await Astro.callAction(actions.fetchPlatforms, {
+const platformsResult = await Astro.callAction(actions.admin.fetchPlatforms, {
   page: 1,
   pageSize: 500,
   sort: { column: "name", direction: "asc" },
@@ -308,9 +308,9 @@ const initialState = {
               @change="form.platformId = $event.target.value"
             >
               <option value="">Select platform</option>
-              {platforms.map((platform) => (
-                <option value={platform.id}>{platform.name}</option>
-              ))}
+              <template x-for="platform in platforms" :key="platform.id">
+                <option :value="platform.id" x-text="platform.name"></option>
+              </template>
             </AvSelect>
             <AvInput label="Subject name" name="name" placeholder="Subject name" required x-model="form.name" />
             <AvInput
@@ -338,7 +338,7 @@ const initialState = {
 
           <div slot="footer">
             <AvButton variant="ghost" type="button" @click="closeDrawer()">Cancel</AvButton>
-            <AvButton type="button" @click="submit" :disabled="loading">
+            <AvButton type="button" @click="submit()" :disabled="loading">
               <span x-show="!loading" x-text="editingId ? 'Save' : 'Create'"></span>
               <span x-show="loading">Saving…</span>
             </AvButton>
@@ -356,7 +356,7 @@ const initialState = {
       confirmLabel="Delete"
       cancelLabel="Cancel"
       variant="danger"
-      @av-confirm="pendingDeleteId && remove(pendingDeleteId)"
+      @av-confirm="pendingDeleteId && (remove(pendingDeleteId), pendingDeleteId = null, pendingDeleteName = null)"
       @av-cancel="pendingDeleteId = null; pendingDeleteName = null"
     />
   </div>

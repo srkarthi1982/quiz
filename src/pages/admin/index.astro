@@ -72,7 +72,7 @@ const filteredItems = normalizedQuery
     {filteredItems.length ? (
       <div class="av-grid-auto av-grid-auto--260">
         {filteredItems.map((item) => (
-          <AvCard variant="soft" className="av-card--fullheight">
+          <AvCard variant="soft" className="av-card--fullheight" data-key={item.href}>
             <div class="av-auth-stack-xxs">
               <h3 class="av-card-heading av-m-0">
                 <a href={item.href} class="av-text-strong">{item.label}</a>
