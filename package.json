@@ -1,7 +1,7 @@
 {
-  "name": "@ansiversa/app-starter",
+  "name": "@ansiversa/quiz",
   "version": "1.0.0",
-  "private": false,
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "astro dev --remote",

@@ -13,6 +13,8 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const { cookies, locals, url } = context;
   const pathname = url.pathname;
 
+  const publicRoutes = new Set(["/"]);
+
   // Allow static assets
   if (
     pathname.startsWith("/_astro/") ||
@@ -57,9 +59,19 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   // ✅ ENFORCE AUTH (protect everything in mini-app)
   if (!locals.isAuthenticated) {
+    if (publicRoutes.has(pathname)) {
+      return next();
+    }
     const loginUrl = new URL("/login", ROOT_APP_URL);
     loginUrl.searchParams.set("returnTo", url.toString()); // ✅ full URL back to quiz
     return context.redirect(loginUrl.toString());
+  }
+
+  if (pathname.startsWith("/admin")) {
+    const roleId = Number(locals.user?.roleId);
+    if (!Number.isFinite(roleId) || roleId !== 1) {
+      return context.redirect("/");
+    }
   }
 
   return next();

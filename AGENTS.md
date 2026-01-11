@@ -239,3 +239,12 @@ Behavior:
 
 - Quiz store roadmap search debounced (250ms) with request token to avoid stale list updates.
 - AdminQuestions explanation typing relaxed to optional/null for safer UI handling.
+
+---
+
+## 20. Routing + Security Fixes
+
+- Landing route `/` is public; middleware now allows it without auth.
+- Admin routes gated by roleId = 1 in middleware.
+- Removed `/admin/results` link from admin dashboard (route not implemented).
+- Updated package identity to `@ansiversa/quiz` and set `private: true`.
