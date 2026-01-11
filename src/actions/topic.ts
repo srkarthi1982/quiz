@@ -1,7 +1,8 @@
-import { ActionError, defineAction } from "astro:actions";
+import { ActionError, defineAction, type ActionAPIContext } from "astro:actions";
 import { z } from "astro:schema";
 import { Platform, Subject, Topic, and, asc, desc, eq, gte, lte, sql } from "astro:db";
 import { platformRepository, subjectRepository, topicQueryRepository, topicRepository } from "./repositories";
+import { requireAdmin } from "./_guards";
 
 type SqlCondition = NonNullable<Parameters<typeof and>[number]>;
 type TopicRow = typeof Topic.$inferSelect;
@@ -188,7 +189,8 @@ export const fetchTopics = defineAction({
 
 export const createTopic = defineAction({
   input: topicPayloadSchema,
-  async handler(input) {
+  async handler(input, context: ActionAPIContext) {
+    requireAdmin(context);
     const payload = normalizeInput(input);
 
     const platform = await platformRepository.getById((table) => table.id, payload.platformId);
@@ -251,7 +253,8 @@ export const updateTopic = defineAction({
   input: topicPayloadSchema.extend({
     id: z.number().int().min(1, "Topic id is required"),
   }),
-  async handler(input) {
+  async handler(input, context: ActionAPIContext) {
+    requireAdmin(context);
     const payload = normalizeInput(input);
     const { id } = input;
 
@@ -311,7 +314,8 @@ export const deleteTopic = defineAction({
   input: z.object({
     id: z.number().int().min(1, "Topic id is required"),
   }),
-  async handler({ id }) {
+  async handler({ id }, context: ActionAPIContext) {
+    requireAdmin(context);
     const deleted = await topicRepository.delete((table) => eq(table.id, id));
 
     if (!deleted?.[0]) {

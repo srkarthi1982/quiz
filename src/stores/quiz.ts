@@ -125,6 +125,8 @@ const resolveCorrectIndex = (options: string[], answerKey: string) => {
 };
 
 export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultState> {
+  private _roadmapQueryTimer: number | null = null;
+  private _roadmapReqId = 0;
   step = 1;
   search = "";
   steps = defaultState().steps;
@@ -311,7 +313,11 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
   setSearch(value: string) {
     this.search = value ?? "";
     if (this.step === 4) {
-      this.loadRoadmaps(true);
+      if (this._roadmapQueryTimer) window.clearTimeout(this._roadmapQueryTimer);
+      this._roadmapQueryTimer = window.setTimeout(() => {
+        this.loadRoadmaps(true);
+        this._roadmapQueryTimer = null;
+      }, 250);
     }
   }
 
@@ -383,6 +389,7 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
     if (!this.selection.platformId || !this.selection.subjectId || !this.selection.topicId) {
       return;
     }
+    const requestId = ++this._roadmapReqId;
 
     if (reset) {
       this.roadmapPage = 1;
@@ -409,6 +416,7 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
 
       const data = this.unwrapResult(res);
       const items = (data?.items ?? []) as RoadmapItem[];
+      if (requestId !== this._roadmapReqId) return;
       const existing = reset ? [] : this.list.roadmaps;
       const merged = [...existing, ...items].reduce((acc: RoadmapItem[], item) => {
         if (!acc.some((entry) => entry.id === item.id)) acc.push(item);

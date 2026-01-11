@@ -11,7 +11,7 @@ export type AdminQuestionItem = {
   questionText: string;
   options: string[];
   answerKey: string;
-  explanation: string;
+  explanation?: string | null;
   level: "E" | "M" | "D";
   isActive: boolean;
   platformName?: string | null;

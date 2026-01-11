@@ -1,7 +1,7 @@
 ---
 import AppShell from "../layouts/AppShell.astro";
 import { AvContainer, AvButton, AvTimeline } from "@ansiversa/components";
-import { Platform, db, eq, asc } from "astro:db";
+import { Platform, Question, Roadmap, count, db, eq, asc } from "astro:db";
 
 const title = "Quiz – Ansiversa";
 const description = "Create, organize, and share quizzes easily.";
@@ -15,7 +15,7 @@ const quizTimelineItems = [
   {
     date: "Pillar 02",
     title: "Instant feedback",
-    body: "Correct answers, explanations, and scoring appear the moment the quiz ends.",
+    body: "Correct answers and scoring appear the moment the quiz ends.",
   },
   {
     date: "Pillar 03",
@@ -52,6 +52,30 @@ const professionalPlatforms = await db
   .where(eq(Platform.type, "P"))
   .orderBy(asc(Platform.id))
   .limit(5);
+
+const [{ value: questionCountRaw } = { value: 0 }] = await db
+  .select({ value: count() })
+  .from(Question);
+const [{ value: roadmapCountRaw } = { value: 0 }] = await db
+  .select({ value: count() })
+  .from(Roadmap);
+const [{ value: platformCountRaw } = { value: 0 }] = await db
+  .select({ value: count() })
+  .from(Platform);
+
+const questionCount = Number(questionCountRaw ?? 0);
+const roadmapCount = Number(roadmapCountRaw ?? 0);
+const platformCount = Number(platformCountRaw ?? 0);
+
+const formatCompact = (value: number) => {
+  if (value >= 1_000_000) {
+    return `${(value / 1_000_000).toFixed(2).replace(/\.?0+$/, "")}M`;
+  }
+  if (value >= 1_000) {
+    return `${(value / 1_000).toFixed(1).replace(/\.0$/, "")}K`;
+  }
+  return value.toLocaleString();
+};
 ---
 
 <AppShell title={title} description={description}>
@@ -68,12 +92,12 @@ const professionalPlatforms = await db
             Pick a topic, run the quiz, and store results automatically.
           </p>
           <div class="quiz-hero__bullets">
-            <span>Structured by platform, subject, topic, roadmap</span>
-            <span>Instant scoring with review-ready explanations</span>
-            <span>Results tracked per learner, ready for insights</span>
+            <span>Structured taxonomy: platform → subject → topic → roadmap</span>
+            <span>Instant scoring + review-ready breakdown</span>
+            <span>Attempts saved per user for progress tracking</span>
           </div>
           <div class="quiz-hero__cta">
-            <AvButton href="/test">Launch Quiz</AvButton>
+            <AvButton href="/quiz">Launch Quiz</AvButton>
             <AvButton href="/results" variant="ghost">View Results</AvButton>
           </div>
           <p class="quiz-hero__note">No setup. No clutter. Just clean flows.</p>
@@ -107,16 +131,16 @@ const professionalPlatforms = await db
 
       <div class="quiz-hero__stats">
         <div class="quiz-stat">
-          <p class="quiz-stat__value">1.4M+</p>
+          <p class="quiz-stat__value">{formatCompact(questionCount)}</p>
           <p class="quiz-stat__label">Questions indexed</p>
         </div>
         <div class="quiz-stat">
-          <p class="quiz-stat__value">Multi-level</p>
-          <p class="quiz-stat__label">Easy, Medium, Hard</p>
+          <p class="quiz-stat__value">{formatCompact(roadmapCount)}</p>
+          <p class="quiz-stat__label">Roadmaps ready</p>
         </div>
         <div class="quiz-stat">
-          <p class="quiz-stat__value">Results</p>
-          <p class="quiz-stat__label">Saved per attempt</p>
+          <p class="quiz-stat__value">{formatCompact(platformCount)}</p>
+          <p class="quiz-stat__label">Platforms covered</p>
         </div>
       </div>
     </AvContainer>
@@ -251,30 +275,54 @@ const professionalPlatforms = await db
       <div class="quiz-platforms-grid">
         <div class="quiz-platforms-card">
           <p class="quiz-platforms-card__label">Academy (A)</p>
-          <ul>
-            {academyPlatforms.map((platform) => (
-              <li key={`academy-${platform.id}`}>
-                <span class="quiz-platforms-card__name">{platform.name}</span>
-                {platform.description ? (
-                  <span class="quiz-platforms-card__meta">{platform.description}</span>
-                ) : null}
-              </li>
-            ))}
-          </ul>
+          {academyPlatforms.length ? (
+            <ul>
+              {academyPlatforms.map((platform) => (
+                <li data-key={`academy-${platform.id}`}>
+                  <span class="quiz-platforms-card__name">{platform.name}</span>
+                  {platform.description ? (
+                    <span class="quiz-platforms-card__meta">{platform.description}</span>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p class="quiz-platforms-card__empty">More coming soon.</p>
+          )}
         </div>
         <div class="quiz-platforms-card">
           <p class="quiz-platforms-card__label">Professional (P)</p>
-          <ul>
-            {professionalPlatforms.map((platform) => (
-              <li key={`professional-${platform.id}`}>
-                <span class="quiz-platforms-card__name">{platform.name}</span>
-                {platform.description ? (
-                  <span class="quiz-platforms-card__meta">{platform.description}</span>
-                ) : null}
-              </li>
-            ))}
-          </ul>
+          {professionalPlatforms.length ? (
+            <ul>
+              {professionalPlatforms.map((platform) => (
+                <li data-key={`professional-${platform.id}`}>
+                  <span class="quiz-platforms-card__name">{platform.name}</span>
+                  {platform.description ? (
+                    <span class="quiz-platforms-card__meta">{platform.description}</span>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p class="quiz-platforms-card__empty">More coming soon.</p>
+          )}
         </div>
+      </div>
+    </AvContainer>
+  </section>
+
+  <section class="av-section">
+    <AvContainer size="default">
+      <div class="quiz-section__header">
+        <h2 class="av-section-title">Built like a system</h2>
+        <p class="av-section-lead">
+          Quiz follows the same architecture and governance standards as every Ansiversa mini app.
+        </p>
+      </div>
+      <div class="quiz-proof">
+        <div class="quiz-proof__item">Roadmap-first taxonomy: platform → subject → topic → roadmap.</div>
+        <div class="quiz-proof__item">Results saved per user with full answer review.</div>
+        <div class="quiz-proof__item">Verified admin tables: Platform, Subject, Topic, Roadmap, Question, Result.</div>
       </div>
     </AvContainer>
   </section>
@@ -289,7 +337,7 @@ const professionalPlatforms = await db
           </p>
         </div>
         <div class="quiz-final__cta">
-          <AvButton href="/test">Start with Quiz</AvButton>
+          <AvButton href="/quiz">Start with Quiz</AvButton>
         </div>
       </div>
     </AvContainer>
@@ -550,6 +598,26 @@ const professionalPlatforms = await db
   .quiz-platforms-card__meta {
     color: rgba(148, 163, 184, 0.9);
     font-size: 0.85rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .quiz-platforms-card__empty {
+    color: rgba(148, 163, 184, 0.85);
+    font-size: 0.85rem;
+  }
+  .quiz-proof {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .quiz-proof__item {
+    padding: 0.85rem 1rem;
+    border-radius: 0.9rem;
+    border: 1px solid rgba(30, 41, 59, 0.6);
+    background: rgba(15, 23, 42, 0.6);
+    color: rgba(226, 232, 240, 0.9);
+    font-size: 0.9rem;
   }
   .quiz-app-card {
     display: block;

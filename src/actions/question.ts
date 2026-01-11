@@ -1,4 +1,4 @@
-import { ActionError, defineAction } from "astro:actions";
+import { ActionError, defineAction, type ActionAPIContext } from "astro:actions";
 import { z } from "astro:schema";
 import { Platform, Question, Roadmap, Subject, Topic, and, asc, count, db, desc, eq, sql } from "astro:db";
 import {
@@ -9,6 +9,7 @@ import {
   subjectRepository,
   topicRepository,
 } from "./repositories";
+import { requireAdmin, requireUser } from "./_guards";
 
 type SqlCondition = NonNullable<Parameters<typeof and>[number]>;
 type QuestionRow = typeof Question.$inferSelect;
@@ -269,7 +270,8 @@ export const fetchQuestions = defineAction({
     filters: questionFiltersSchema.optional(),
     sort: questionSortSchema.optional(),
   }),
-  async handler({ page, pageSize, filters, sort }) {
+  async handler({ page, pageSize, filters, sort }, context: ActionAPIContext) {
+    requireAdmin(context);
     const normalizedFilters = normalizeFilters(filters);
     const normalizedSort = sort ?? null;
 
@@ -369,7 +371,8 @@ export const fetchRandomQuestions = defineAction({
     filters: questionFiltersSchema.optional(),
     excludeIds: z.array(z.number().int().min(1)).optional(),
   }),
-  async handler({ filters, excludeIds }) {
+  async handler({ filters, excludeIds }, context: ActionAPIContext) {
+    requireUser(context);
     const normalizedFilters = normalizeFilters(filters);
     const normalizedExcludeIds = Array.isArray(excludeIds)
       ? Array.from(
@@ -462,7 +465,8 @@ export const fetchRandomQuestions = defineAction({
 
 export const createQuestion = defineAction({
   input: questionPayloadSchema,
-  async handler(input) {
+  async handler(input, context: ActionAPIContext) {
+    requireAdmin(context);
     const payload = normalizeInput(input);
 
     const platformRow = await platformRepository.getById((table) => table.id, payload.platformId);
@@ -565,7 +569,8 @@ export const updateQuestion = defineAction({
   input: questionPayloadSchema.extend({
     id: z.number().int().min(1, "Question id is required"),
   }),
-  async handler(input) {
+  async handler(input, context: ActionAPIContext) {
+    requireAdmin(context);
     const payload = normalizeInput(input);
     const { id } = input;
 
@@ -665,7 +670,8 @@ export const deleteQuestion = defineAction({
   input: z.object({
     id: z.number().int().min(1, "Question id is required"),
   }),
-  async handler({ id }) {
+  async handler({ id }, context: ActionAPIContext) {
+    requireAdmin(context);
     const deleted = await questionRepository.delete((table) => eq(table.id, id));
 
     if (!deleted?.[0]) {

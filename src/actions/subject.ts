@@ -1,7 +1,8 @@
-import { ActionError, defineAction } from "astro:actions";
+import { ActionError, defineAction, type ActionAPIContext } from "astro:actions";
 import { z } from "astro:schema";
 import { Platform, Subject, and, asc, desc, eq, gte, lte, sql } from "astro:db";
 import { platformRepository, subjectQueryRepository, subjectRepository } from "./repositories";
+import { requireAdmin } from "./_guards";
 
 type SqlCondition = NonNullable<Parameters<typeof and>[number]>;
 type SubjectRow = typeof Subject.$inferSelect;
@@ -167,7 +168,8 @@ export const fetchSubjects = defineAction({
 
 export const createSubject = defineAction({
   input: subjectPayloadSchema,
-  async handler(input) {
+  async handler(input, context: ActionAPIContext) {
+    requireAdmin(context);
     const payload = normalizeInput(input);
 
     const platform = await platformRepository.getById((table) => table.id, payload.platformId);
@@ -206,7 +208,8 @@ export const updateSubject = defineAction({
   input: subjectPayloadSchema.extend({
     id: z.number().int().min(1, "Subject id is required"),
   }),
-  async handler(input) {
+  async handler(input, context: ActionAPIContext) {
+    requireAdmin(context);
     const payload = normalizeInput(input);
     const { id } = input;
 
@@ -242,7 +245,8 @@ export const deleteSubject = defineAction({
   input: z.object({
     id: z.number().int().min(1, "Subject id is required"),
   }),
-  async handler({ id }) {
+  async handler({ id }, context: ActionAPIContext) {
+    requireAdmin(context);
     const deleted = await subjectRepository.delete((table) => eq(table.id, id));
 
     if (!deleted?.[0]) {

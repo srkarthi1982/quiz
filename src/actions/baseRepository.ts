@@ -81,14 +81,9 @@ export class BaseRepository<TTable, TSelect = unknown> {
 
   private async countRows(where?: WhereClause<TTable>) {
     const whereClause = where?.();
-
-    if (!whereClause) {
-      const result = await db.select({ value: count() }).from(this.table as any);
-      const rawTotal = result[0]?.value ?? 0;
-      return typeof rawTotal === "number" ? rawTotal : Number(rawTotal);
-    }
-
-    const rows = await this.getData({ where });
-    return rows.length;
+    const query = db.select({ value: count() }).from(this.table as any);
+    const result = whereClause ? await query.where(whereClause) : await query;
+    const rawTotal = result[0]?.value ?? 0;
+    return typeof rawTotal === "number" ? rawTotal : Number(rawTotal);
   }
 }

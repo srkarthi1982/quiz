@@ -203,3 +203,39 @@ Behavior:
 - Quiz summary grid set to equal column widths on desktop.
 - Added `x-cloak` to error panel to prevent initial flash.
 - Tested: `npm run build` (Astro build with remote DB) ✅
+
+---
+
+## 16. Landing V1 (Astra Notes Applied)
+
+- Quiz landing now uses live DB counts for Questions/Roadmaps/Platforms with compact formatting.
+- Hero bullets copy refined to match Astra’s wording.
+- Timeline “Pillar 02” copy updated to avoid over-promising explanations.
+- Added “Built like a system” proof section with architecture bullets.
+- Top platforms now show fallback text and description line-clamp.
+- Public route is `/quiz`; `/test` now redirects to `/quiz` (alias kept).
+- Results page links updated to `/quiz`.
+- Tested: `npm run build` (Astro build with remote DB) ✅
+- Landing page (`quiz.astro`) finalized and locked.
+
+---
+
+## 17. qCount Policy (V1)
+
+- `qCount` is intentionally manual in V1 (informational/admin-visible only).
+- No automation, triggers, or derived constraints until V2.
+
+---
+
+## 18. Actions Hardening (Pre-Lock)
+
+- Added action guards: `requireAdmin` for admin CRUD and `requireUser` for quiz fetches.
+- CRUD actions now enforce auth + admin role checks before mutation.
+- `BaseRepository.countRows()` now uses SQL count with `where` to avoid large in-memory loads.
+
+---
+
+## 19. Stores Polished (Astra Notes)
+
+- Quiz store roadmap search debounced (250ms) with request token to avoid stale list updates.
+- AdminQuestions explanation typing relaxed to optional/null for safer UI handling.

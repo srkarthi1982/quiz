@@ -1,4 +1,4 @@
-import { ActionError, defineAction } from "astro:actions";
+import { ActionError, defineAction, type ActionAPIContext } from "astro:actions";
 import { z } from "astro:schema";
 import { Platform, Roadmap, Subject, Topic, and, asc, desc, eq, gte, lte, sql } from "astro:db";
 import {
@@ -8,6 +8,7 @@ import {
   subjectRepository,
   topicRepository,
 } from "./repositories";
+import { requireAdmin } from "./_guards";
 
 type SqlCondition = NonNullable<Parameters<typeof and>[number]>;
 type RoadmapRow = typeof Roadmap.$inferSelect;
@@ -230,7 +231,8 @@ export const fetchRoadmaps = defineAction({
 
 export const createRoadmap = defineAction({
   input: roadmapPayloadSchema,
-  async handler(input) {
+  async handler(input, context: ActionAPIContext) {
+    requireAdmin(context);
     const payload = normalizeInput(input);
 
     const platform = await platformRepository.getById((table) => table.id, payload.platformId);
@@ -307,7 +309,8 @@ export const updateRoadmap = defineAction({
   input: roadmapPayloadSchema.extend({
     id: z.number().int().min(1, "Roadmap id is required"),
   }),
-  async handler(input) {
+  async handler(input, context: ActionAPIContext) {
+    requireAdmin(context);
     const payload = normalizeInput(input);
     const { id } = input;
 
@@ -381,7 +384,8 @@ export const deleteRoadmap = defineAction({
   input: z.object({
     id: z.number().int().min(1, "Roadmap id is required"),
   }),
-  async handler({ id }) {
+  async handler({ id }, context: ActionAPIContext) {
+    requireAdmin(context);
     const deleted = await roadmapRepository.delete((table) => eq(table.id, id));
 
     if (!deleted?.[0]) {

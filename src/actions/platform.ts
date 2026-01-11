@@ -1,7 +1,8 @@
-import { ActionError, defineAction } from "astro:actions";
+import { ActionError, defineAction, type ActionAPIContext } from "astro:actions";
 import { z } from "astro:schema";
 import { Platform, and, asc, desc, eq, gte, lte, sql } from "astro:db";
 import { platformRepository } from "./repositories";
+import { requireAdmin } from "./_guards";
 
 type SqlCondition = NonNullable<Parameters<typeof and>[number]>;
 type PlatformRow = typeof Platform.$inferSelect;
@@ -188,7 +189,8 @@ export const fetchPlatforms = defineAction({
 
 export const createPlatform = defineAction({
   input: platformPayloadSchema,
-  async handler(input) {
+  async handler(input, context: ActionAPIContext) {
+    requireAdmin(context);
     const payload = normalizeInput(input);
 
     try {
@@ -216,7 +218,8 @@ export const updatePlatform = defineAction({
     id: z.number().int().min(1),
     data: platformPayloadSchema,
   }),
-  async handler({ id, data }) {
+  async handler({ id, data }, context: ActionAPIContext) {
+    requireAdmin(context);
     const payload = normalizeInput(data);
 
     const existing = await platformRepository.getById((table) => table.id, id);
@@ -249,7 +252,8 @@ export const updatePlatform = defineAction({
 
 export const deletePlatform = defineAction({
   input: z.object({ id: z.number().int().min(1) }),
-  async handler({ id }) {
+  async handler({ id }, context: ActionAPIContext) {
+    requireAdmin(context);
     try {
       const deleted = await platformRepository.delete((table) => eq(table.id, id));
 

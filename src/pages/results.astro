@@ -246,7 +246,7 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
       <AvBreadcrumb
         items={[
           { label: "Home", href: "/" },
-          { label: "Quiz", href: "/test" },
+          { label: "Quiz", href: "/quiz" },
           { label: "Results" },
         ]}
       />
@@ -271,7 +271,7 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
               </p>
             </div>
             <div class="results-shell__actions">
-              <AvButton href="/test">Retake a quiz</AvButton>
+              <AvButton href="/quiz">Retake a quiz</AvButton>
             </div>
           </div>
 
@@ -280,7 +280,7 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
               headline="No results yet"
               description="Take your first quiz to start tracking your progress."
               ctaLabel="Start a quiz"
-              ctaHref="/test"
+              ctaHref="/quiz"
             />
           </template>
 

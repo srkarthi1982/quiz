@@ -15,21 +15,21 @@ import { actions } from "astro:actions";
 const title = "Quiz - Ansiversa";
 const description = "Pick a platform, topic, and level to launch your quiz.";
 
-const platformsResult = await Astro.callAction(actions.fetchPlatforms, {
+const platformsResult = await Astro.callAction(actions.quiz.fetchPlatforms, {
   page: 1,
   pageSize: 500,
   filters: { status: "active" },
   sort: { column: "name", direction: "asc" },
 });
 
-const subjectsResult = await Astro.callAction(actions.fetchSubjects, {
+const subjectsResult = await Astro.callAction(actions.quiz.fetchSubjects, {
   page: 1,
   pageSize: 500,
   filters: { status: "active" },
   sort: { column: "name", direction: "asc" },
 });
 
-const topicsResult = await Astro.callAction(actions.fetchTopics, {
+const topicsResult = await Astro.callAction(actions.quiz.fetchTopics, {
   page: 1,
   pageSize: 2000,
   filters: { status: "active" },
@@ -83,7 +83,7 @@ const initialState = {
   </section>
 
   <section class="av-section quiz-section">
-    <AvContainer>
+    <AvContainer size="default">
       <div
         class="av-auth-stack-lg"
         x-data="$store.quiz"
@@ -149,7 +149,14 @@ const initialState = {
           </div>
 
           <div class="quiz-shell__body">
-            <div class="quiz-error" x-show="error" x-text="error" x-cloak></div>
+            <div
+              class="quiz-error"
+              role="alert"
+              aria-live="polite"
+              x-show="error"
+              x-text="error"
+              x-cloak
+            ></div>
 
             <div x-show="step === 1" x-cloak>
               <template x-if="filteredPlatforms.length === 0 && !loading">
