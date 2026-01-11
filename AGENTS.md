@@ -264,3 +264,10 @@ Behavior:
 - Increased SSR roadmap list size for questions filter (2000).
 - Drawer platform/subject/topic selects now use Alpine lists with filtered templates.
 - Error alerts use `role="alert"` on the questions page.
+
+---
+
+## 23. Quiz Namespace + List Guards
+
+- Exposed `server.quiz` in `src/actions/index.ts` for /quiz SSR calls.
+- List actions now require authenticated users: fetchPlatforms/fetchSubjects/fetchTopics/fetchRoadmaps.

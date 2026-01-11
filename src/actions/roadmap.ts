@@ -8,7 +8,7 @@ import {
   subjectRepository,
   topicRepository,
 } from "./repositories";
-import { requireAdmin } from "./_guards";
+import { requireAdmin, requireUser } from "./_guards";
 
 type SqlCondition = NonNullable<Parameters<typeof and>[number]>;
 type RoadmapRow = typeof Roadmap.$inferSelect;
@@ -141,7 +141,8 @@ export const fetchRoadmaps = defineAction({
     filters: roadmapFiltersSchema.optional(),
     sort: roadmapSortSchema.optional(),
   }),
-  async handler({ page, pageSize, filters, sort }) {
+  async handler({ page, pageSize, filters, sort }, context: ActionAPIContext) {
+    requireUser(context);
     const normalizedFilters = normalizeFilters(filters);
     const normalizedSort = sort ?? null;
     const conditions: SqlCondition[] = [];

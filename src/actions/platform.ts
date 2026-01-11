@@ -2,7 +2,7 @@ import { ActionError, defineAction, type ActionAPIContext } from "astro:actions"
 import { z } from "astro:schema";
 import { Platform, and, asc, desc, eq, gte, lte, sql } from "astro:db";
 import { platformRepository } from "./repositories";
-import { requireAdmin } from "./_guards";
+import { requireAdmin, requireUser } from "./_guards";
 
 type SqlCondition = NonNullable<Parameters<typeof and>[number]>;
 type PlatformRow = typeof Platform.$inferSelect;
@@ -109,7 +109,8 @@ export const fetchPlatforms = defineAction({
     filters: platformFiltersSchema.optional(),
     sort: platformSortSchema.optional(),
   }),
-  async handler({ page, pageSize, filters, sort }) {
+  async handler({ page, pageSize, filters, sort }, context: ActionAPIContext) {
+    requireUser(context);
     const normalizedFilters = normalizeFilters(filters);
     const normalizedSort = sort ?? null;
     const conditions: SqlCondition[] = [];

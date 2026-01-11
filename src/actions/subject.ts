@@ -2,7 +2,7 @@ import { ActionError, defineAction, type ActionAPIContext } from "astro:actions"
 import { z } from "astro:schema";
 import { Platform, Subject, and, asc, desc, eq, gte, lte, sql } from "astro:db";
 import { platformRepository, subjectQueryRepository, subjectRepository } from "./repositories";
-import { requireAdmin } from "./_guards";
+import { requireAdmin, requireUser } from "./_guards";
 
 type SqlCondition = NonNullable<Parameters<typeof and>[number]>;
 type SubjectRow = typeof Subject.$inferSelect;
@@ -92,7 +92,8 @@ export const fetchSubjects = defineAction({
     filters: subjectFiltersSchema.optional(),
     sort: subjectSortSchema.optional(),
   }),
-  async handler({ page, pageSize, filters, sort }) {
+  async handler({ page, pageSize, filters, sort }, context: ActionAPIContext) {
+    requireUser(context);
     const normalizedFilters = normalizeFilters(filters);
     const normalizedSort = sort ?? null;
     const conditions: SqlCondition[] = [];

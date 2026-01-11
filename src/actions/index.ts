@@ -1,6 +1,7 @@
 import { quiz } from "./quiz";
 
 export const server = {
+  quiz,
   admin: {
     fetchPlatforms: quiz.fetchPlatforms,
     createPlatform: quiz.createPlatform,
