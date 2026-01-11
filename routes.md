@@ -4,12 +4,12 @@
 | Route | Source file | Done |
 | --- | --- | --- |
 | `/` | `index.astro` | ✅ |
-| `/quiz` | `quiz.astro` | ❌ |
-| `/results` | `results.astro` | ❌ |
 
 ## Account + admin
 | Route | Source file | Done |
 | --- | --- | --- |
+| `/quiz` | `quiz.astro` | ✅ |
+| `/results` | `results.astro` | ✅ |
 | `/admin` | `admin/index.astro` | ❌ |
 | `/admin/platforms` | `admin/platforms.astro` | ❌ |
 | `/admin/subjects` | `admin/subjects.astro` | ❌ |
