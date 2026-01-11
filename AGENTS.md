@@ -271,3 +271,12 @@ Behavior:
 
 - Exposed `server.quiz` in `src/actions/index.ts` for /quiz SSR calls.
 - List actions now require authenticated users: fetchPlatforms/fetchSubjects/fetchTopics/fetchRoadmaps.
+
+---
+
+## 24. Dashboard Summary (V1)
+
+- Added summary contract + builder: `src/dashboard/summary.schema.ts` with `QuizDashboardSummaryV1`.
+- Added action `fetchDashboardSummary` (user-scoped) in `src/actions/dashboard.ts`, exposed via `actions.quiz.fetchDashboardSummary`.
+- Added docs: `docs/dashboard-summary.md` with versioned JSON example.
+- Added React summary component: `src/components/Summary/QuizSummary.tsx` (to be moved to shared components later).

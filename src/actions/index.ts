@@ -45,5 +45,6 @@ export const server = {
   createQuestion: quiz.createQuestion,
   updateQuestion: quiz.updateQuestion,
   deleteQuestion: quiz.deleteQuestion,
+  fetchDashboardSummary: quiz.fetchDashboardSummary,
   saveResult: quiz.saveResult,
 };

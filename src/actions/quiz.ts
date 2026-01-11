@@ -4,6 +4,7 @@ import { createRoadmap, deleteRoadmap, fetchRoadmaps, updateRoadmap } from "./ro
 import { saveResult } from "./result";
 import { createSubject, deleteSubject, fetchSubjects, updateSubject } from "./subject";
 import { createTopic, deleteTopic, fetchTopics, updateTopic } from "./topic";
+import { fetchDashboardSummary } from "./dashboard";
 
 export const quiz = {
   fetchPlatforms,
@@ -28,6 +29,7 @@ export const quiz = {
   updateQuestion,
   deleteQuestion,
   saveResult,
+  fetchDashboardSummary,
 };
 
 export {
@@ -53,4 +55,5 @@ export {
   updateQuestion,
   deleteQuestion,
   saveResult,
+  fetchDashboardSummary,
 };
