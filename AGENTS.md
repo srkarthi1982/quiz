@@ -289,3 +289,12 @@ Behavior:
 - Added helper `src/lib/pushActivity.ts` to POST quiz activity signals to the parent app.
 - `saveResult` now calls `pushQuizActivity` after successful result insert.
 - Webhook is best-effort (fire-and-forget, errors swallowed, no impact on quiz submit).
+- Target endpoint: `${PARENT_APP_URL}/api/webhooks/quiz-activity.json`.
+- Header required: `X-Ansiversa-Signature: <ANSIVERSA_WEBHOOK_SECRET>`.
+- Payload: `{ "userId": "UUID-string", "appId": "quiz", "occurredAt": "ISO-8601" }`.
+
+## 26. Results Modal Answer Format (Feb 2025)
+
+- Results modal now uses labeled answer rows (Your answer, Correct answer, Explanation).
+- Answers render from normalized question options; falls back to "Not answered" when selection missing.
+- If legacy results lack selected answers but the score is perfect, the modal backfills selected answers with correct options for display.

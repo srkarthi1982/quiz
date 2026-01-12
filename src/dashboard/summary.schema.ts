@@ -3,7 +3,7 @@ import { Platform, Result, Roadmap, Subject, Topic, and, count, db, desc, eq, gt
 export type QuizDashboardSummaryV1 = {
   version: 1;
   appId: "quiz";
-  userId: number;
+  userId: string;
   updatedAt: string;
   kpis: {
     attemptsTotal: number;
@@ -47,9 +47,9 @@ const normalizeTotal = (value: unknown) => {
   return 0;
 };
 
-export const buildQuizDashboardSummary = async (userId: number): Promise<QuizDashboardSummaryV1> => {
+export const buildQuizDashboardSummary = async (userId: string): Promise<QuizDashboardSummaryV1> => {
   const updatedAt = new Date().toISOString();
-  const userIdString = String(userId);
+  const userIdString = userId;
 
   const [{ value: attemptsTotalRaw } = { value: 0 }] = await db
     .select({ value: count() })

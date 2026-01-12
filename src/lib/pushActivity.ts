@@ -1,6 +1,6 @@
 const getWebhookUrl = (baseUrl: string) => `${baseUrl.replace(/\/$/, "")}/api/webhooks/quiz-activity.json`;
 
-export const pushQuizActivity = (userId: number, occurredAtISO?: string): void => {
+export const pushQuizActivity = (userId: string, occurredAtISO?: string): void => {
   try {
     const baseUrl = import.meta.env.PARENT_APP_URL;
     const secret = import.meta.env.ANSIVERSA_WEBHOOK_SECRET;
