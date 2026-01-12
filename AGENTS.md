@@ -280,3 +280,12 @@ Behavior:
 - Added action `fetchDashboardSummary` (user-scoped) in `src/actions/dashboard.ts`, exposed via `actions.quiz.fetchDashboardSummary`.
 - Added docs: `docs/dashboard-summary.md` with versioned JSON example.
 - Added React summary component: `src/components/Summary/QuizSummary.tsx` (to be moved to shared components later).
+
+---
+
+## 25. Quiz Activity Webhook (V2 Push)
+
+- Added `PARENT_APP_URL` and `ANSIVERSA_WEBHOOK_SECRET` env vars for activity webhook auth/target.
+- Added helper `src/lib/pushActivity.ts` to POST quiz activity signals to the parent app.
+- `saveResult` now calls `pushQuizActivity` after successful result insert.
+- Webhook is best-effort (fire-and-forget, errors swallowed, no impact on quiz submit).

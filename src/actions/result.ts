@@ -2,6 +2,7 @@ import { ActionError, defineAction, type ActionAPIContext } from "astro:actions"
 import { z } from "astro:schema";
 import { Result } from "astro:db";
 import { resultRepository } from "./repositories";
+import { pushQuizActivity } from "../lib/pushActivity";
 
 const responseSchema = z.object({
   id: z.number().int().min(1),
@@ -53,6 +54,7 @@ export const saveResult = defineAction({
     };
 
     const [result] = await resultRepository.insert(payload);
+    pushQuizActivity(user.id);
     return { result };
   },
 });
