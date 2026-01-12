@@ -427,33 +427,25 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
                       <p x-text="question.questionText"></p>
                     </div>
                     <div class="results-modal__answers">
-                      <table>
-                        <tr>
-                          <td>Your answer:</td>
-                          <td>
-                            <span
-                              class="results-modal__answer"
-                              :class="question.selectedIndex === question.correctIndex ? 'is-correct' : 'is-wrong'"
-                              x-text="question.selectedIndex >= 0 ? question.options[question.selectedIndex] : 'Not answered'"
-                            ></span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Correct answer:</td>
-                          <td>
-                              <span
-                                class="results-modal__answer is-correct"
-                                x-text="question.correctIndex >= 0 ? question.options[question.correctIndex] : 'Unavailable'"
-                              ></span>
-                          </td>
-                        </tr>
-                        <tr x-show="question.explanation">
-                          <td>Explanation:</td>
-                          <td>
-                            <span class="results-modal__explanation" x-text="question.explanation"></span>
-                          </td>
-                        </tr>
-                      </table>
+                      <div class="results-modal__answer-row">
+                        <p class="results-modal__answer-label">Your answer:</p>
+                        <p
+                          class="results-modal__answer"
+                          :class="question.selectedIndex === question.correctIndex ? 'is-correct' : 'is-wrong'"
+                          x-text="question.selectedIndex >= 0 ? question.options[question.selectedIndex] : 'Not answered'"
+                        ></p>
+                      </div>
+                      <div class="results-modal__answer-row">
+                        <p class="results-modal__answer-label">Correct answer:</p>
+                        <p
+                          class="results-modal__answer is-correct"
+                          x-text="question.correctIndex >= 0 ? question.options[question.correctIndex] : 'Unavailable'"
+                        ></p>
+                      </div>
+                      <div class="results-modal__answer-row" x-show="question.explanation">
+                        <p class="results-modal__answer-label">Explanation:</p>
+                        <p class="results-modal__explanation" x-text="question.explanation"></p>
+                      </div>
                     </div>
                   </div>
                 </template>
@@ -734,18 +726,15 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
     font-size: 0.8rem;
     color: rgba(226, 232, 240, 0.85);
   }
-  .results-modal__answers table {
-    width: 100%;
-    border-collapse: collapse;
+  .results-modal__answer-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
   }
-  .results-modal__answers td {
-    padding: 0.2rem 0;
-    vertical-align: top;
+  .results-modal__answer-row + .results-modal__answer-row {
+    margin-top: 0.75rem;
   }
-  .results-modal__answers td:first-child {
-    width: 150px;
-    text-align: right;
-    padding-right: 0.75rem;
+  .results-modal__answer-label {
     color: rgba(148, 163, 184, 0.85);
     font-size: 0.7rem;
     text-transform: uppercase;
@@ -753,7 +742,7 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
   }
   .results-modal__answer {
     font-weight: 600;
-    margin-left: 0.35rem;
+    margin: 0;
   }
   .results-modal__answer.is-correct {
     color: #34d399;
@@ -763,7 +752,7 @@ const resultsSerialized = JSON.stringify(resultsPayload).replace(/</g, "\\u003c"
   }
   .results-modal__explanation {
     color: rgba(148, 163, 184, 0.9);
-    margin-top: 0.4rem;
+    margin: 0;
   }
   @media (max-width: 640px) {
     .results-shell__head {

@@ -390,30 +390,22 @@ const initialState = {
                         <p x-text="question.questionText"></p>
                       </div>
                       <div class="quiz-answer-review__body">
-                        <table>
-                          <tr>
-                            <td>Your answer:</td>
-                            <td>
-                              <span
-                                class="quiz-answer-review__answer"
-                                :class="selection.answers[index] === question.correctIndex ? 'is-correct' : 'is-wrong'"
-                                x-text="selection.answers[index] >= 0 ? question.options[selection.answers[index]] : 'Not answered'"
-                              ></span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Correct answer:</td>
-                            <td>
-                              <span class="quiz-answer-review__answer is-correct" x-text="question.options[question.correctIndex]"></span>
-                            </td>
-                          </tr>
-                          <tr x-show="question.explanation">
-                            <td>Explanation:</td>
-                            <td>
-                              <span class="quiz-answer-review__explanation" x-text="question.explanation"></span>
-                            </td>
-                          </tr>
-                        </table>
+                        <div class="quiz-answer-review__row">
+                          <p class="quiz-answer-review__label">Your answer:</p>
+                          <p
+                            class="quiz-answer-review__answer"
+                            :class="selection.answers[index] === question.correctIndex ? 'is-correct' : 'is-wrong'"
+                            x-text="selection.answers[index] >= 0 ? question.options[selection.answers[index]] : 'Not answered'"
+                          ></p>
+                        </div>
+                        <div class="quiz-answer-review__row">
+                          <p class="quiz-answer-review__label">Correct answer:</p>
+                          <p class="quiz-answer-review__answer is-correct" x-text="question.options[question.correctIndex]"></p>
+                        </div>
+                        <div class="quiz-answer-review__row" x-show="question.explanation">
+                          <p class="quiz-answer-review__label">Explanation:</p>
+                          <p class="quiz-answer-review__explanation" x-text="question.explanation"></p>
+                        </div>
                       </div>
                     </div>
                   </template>
@@ -778,18 +770,15 @@ const initialState = {
     font-size: 0.8rem;
     color: rgba(226, 232, 240, 0.85);
   }
-  .quiz-answer-review__body table {
-    width: 100%;
-    border-collapse: collapse;
+  .quiz-answer-review__row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
   }
-  .quiz-answer-review__body td {
-    padding: 0.2rem 0;
-    vertical-align: top;
+  .quiz-answer-review__row + .quiz-answer-review__row {
+    margin-top: 0.75rem;
   }
-  .quiz-answer-review__body td:first-child {
-    width: 150px;
-    text-align: right;
-    padding-right: 0.75rem;
+  .quiz-answer-review__label {
     color: rgba(148, 163, 184, 0.85);
     font-size: 0.7rem;
     text-transform: uppercase;
@@ -797,7 +786,7 @@ const initialState = {
   }
   .quiz-answer-review__answer {
     font-weight: 600;
-    margin-left: 0.35rem;
+    margin: 0;
   }
   .quiz-answer-review__answer.is-correct {
     color: #34d399;
@@ -806,8 +795,8 @@ const initialState = {
     color: #f87171;
   }
   .quiz-answer-review__explanation {
-    margin-top: 0.4rem;
     color: rgba(148, 163, 184, 0.9);
+    margin: 0;
   }
   @media (max-width: 640px) {
     .quiz-shell__head {
