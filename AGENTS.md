@@ -302,4 +302,9 @@ Behavior:
 ## 27. Task Log (Recent)
 
 - Keep newest first; include date and short summary.
+- 2026-01-15 Routed AppShell through local WebLayout so unread badge logic runs on quiz pages.
+- 2026-01-15 Added bearer token fallback for unread count fetch to avoid cookie gaps.
+- 2026-01-15 Forwarded session cookie explicitly when fetching unread count from parent in quiz layout.
+- 2026-01-15 Set dev fallback root app URL for notification badge fetch.
+- 2026-01-15 Wired navbar unread notification badge via parent API in quiz layout.
 - 2026-01-14 Updated `@ansiversa/components` to `0.0.104` in `quiz/package.json` and lockfile.

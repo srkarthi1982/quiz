@@ -7,7 +7,8 @@ const COOKIE_DOMAIN =
 
 // Root app URL
 const ROOT_APP_URL =
-  import.meta.env.PUBLIC_ROOT_APP_URL ?? `https://${COOKIE_DOMAIN}`;
+  import.meta.env.PUBLIC_ROOT_APP_URL ??
+  (import.meta.env.DEV ? "http://localhost:2000" : `https://${COOKIE_DOMAIN}`);
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const { cookies, locals, url } = context;
