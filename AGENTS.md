@@ -298,3 +298,8 @@ Behavior:
 - Results modal now uses labeled answer rows (Your answer, Correct answer, Explanation).
 - Answers render from normalized question options; falls back to "Not answered" when selection missing.
 - If legacy results lack selected answers but the score is perfect, the modal backfills selected answers with correct options for display.
+
+## 27. Task Log (Recent)
+
+- Keep newest first; include date and short summary.
+- 2026-01-14 Updated `@ansiversa/components` to `0.0.104` in `quiz/package.json` and lockfile.
