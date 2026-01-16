@@ -7,7 +7,7 @@ type TopicRow = typeof Topic.$inferSelect;
 type RoadmapRow = typeof Roadmap.$inferSelect;
 type QuestionRow = typeof Question.$inferSelect;
 
-export const platformRepository = new BaseRepository(Platform);
+export const platformRepository = new BaseRepository<typeof Platform, PlatformRow>(Platform);
 
 export type SubjectSelect = {
   subject: SubjectRow;

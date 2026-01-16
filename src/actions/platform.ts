@@ -81,8 +81,10 @@ const normalizeFilters = (filters?: PlatformFiltersInput) => {
     typeof safe.maxQuestions === "number" &&
     Number.isFinite(safe.maxQuestions) &&
     safe.maxQuestions > 0;
-  let minQuestions = hasMin ? Math.max(0, Math.floor(safe.minQuestions)) : null;
-  let maxQuestions = hasMax ? Math.max(0, Math.floor(safe.maxQuestions)) : null;
+  const minSource = safe.minQuestions ?? 0;
+  const maxSource = safe.maxQuestions ?? 0;
+  let minQuestions = hasMin ? Math.max(0, Math.floor(minSource)) : null;
+  let maxQuestions = hasMax ? Math.max(0, Math.floor(maxSource)) : null;
 
   if (minQuestions !== null && maxQuestions !== null && maxQuestions < minQuestions) {
     const swapped = minQuestions;

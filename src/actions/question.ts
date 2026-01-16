@@ -425,7 +425,7 @@ export const fetchRandomQuestions = defineAction({
     const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
     const pageSize = 10;
 
-    let countQuery = db.select({ value: count() }).from(Question);
+    let countQuery: any = db.select({ value: count() }).from(Question);
     if (whereClause) {
       countQuery = countQuery.where(whereClause);
     }

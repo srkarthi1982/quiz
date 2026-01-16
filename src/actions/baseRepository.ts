@@ -20,7 +20,7 @@ type QueryOptions<TTable> = {
 export class BaseRepository<TTable, TSelect = unknown> {
   constructor(protected table: TTable) {}
 
-  protected createSelectQuery() {
+  protected createSelectQuery(): any {
     return db.select().from(this.table as any);
   }
 
@@ -30,16 +30,23 @@ export class BaseRepository<TTable, TSelect = unknown> {
     return record ?? null;
   }
 
-  async insert(values: any) {
-    return db.insert(this.table as any).values(values).returning();
+  async insert(values: any): Promise<any[]> {
+    const result = await db.insert(this.table as any).values(values).returning();
+    return result as any[];
   }
 
-  async update(values: any, where: (table: TTable) => any) {
-    return db.update(this.table as any).set(values).where(where(this.table)).returning();
+  async update(values: any, where: (table: TTable) => any): Promise<any[]> {
+    const result = await db
+      .update(this.table as any)
+      .set(values)
+      .where(where(this.table))
+      .returning();
+    return result as any[];
   }
 
-  async delete(where: (table: TTable) => any) {
-    return db.delete(this.table as any).where(where(this.table)).returning();
+  async delete(where: (table: TTable) => any): Promise<any[]> {
+    const result = await db.delete(this.table as any).where(where(this.table)).returning();
+    return result as any[];
   }
 
   async getPaginatedData({ page, pageSize, where, orderBy }: PaginatedQueryOptions<TTable>) {
@@ -76,7 +83,8 @@ export class BaseRepository<TTable, TSelect = unknown> {
       query = query.offset(offset);
     }
 
-    return query as TSelect[];
+    const result = await query;
+    return result as TSelect[];
   }
 
   private async countRows(where?: WhereClause<TTable>) {

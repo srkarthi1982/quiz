@@ -305,6 +305,7 @@ Behavior:
 - 2026-01-16 Quiz now uses shared Av layouts via AppShell/AppAdminShell.
 - 2026-01-16 Removed unsupported `user`/`appId` props from AppShell AvWebLayout usage to fix props typing error.
 - 2026-01-16 Moved unread count into AppShell with SSR cookie-forwarding, confirmed no local WebLayout in repo, added typecheck/check scripts.
+- 2026-01-16 Switched typecheck to astro check; fixed remaining TS issues.
 - 2026-01-16 Unread notification count fetched in AppShell via parent API.
 - 2026-01-15 Routed AppShell through local WebLayout so unread badge logic runs on quiz pages.
 - 2026-01-15 Added bearer token fallback for unread count fetch to avoid cookie gaps.

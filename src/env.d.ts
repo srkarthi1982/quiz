@@ -33,7 +33,7 @@ declare namespace App {
       id: string;
       email: string;
       name?: string;
-      roleId?: string;
+      roleId?: number;
       stripeCustomerId?: string;
     };
     sessionToken?: string | null;
@@ -46,3 +46,8 @@ interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
 
+declare namespace JSX {
+  interface IntrinsicElements {
+    [elemName: string]: any;
+  }
+}

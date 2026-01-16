@@ -112,8 +112,10 @@ const normalizeFilters = (filters?: RoadmapFiltersInput) => {
     safe.topicId && Number.isFinite(safe.topicId) ? Math.floor(safe.topicId) : null;
   const hasMin = typeof safe.minQuestions === "number" && Number.isFinite(safe.minQuestions);
   const hasMax = typeof safe.maxQuestions === "number" && Number.isFinite(safe.maxQuestions);
-  let minQuestions = hasMin ? Math.max(0, Math.floor(safe.minQuestions)) : null;
-  let maxQuestions = hasMax ? Math.max(0, Math.floor(safe.maxQuestions)) : null;
+  const minSource = safe.minQuestions ?? 0;
+  const maxSource = safe.maxQuestions ?? 0;
+  let minQuestions = hasMin ? Math.max(0, Math.floor(minSource)) : null;
+  let maxQuestions = hasMax ? Math.max(0, Math.floor(maxSource)) : null;
 
   if (minQuestions !== null && maxQuestions !== null && maxQuestions < minQuestions) {
     const swapped = minQuestions;
