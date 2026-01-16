@@ -1,6 +1,6 @@
 ---
-import WebLayout from "./WebLayout.astro";
 import { AvBreadcrumb, AvContainer } from "@ansiversa/components";
+import AppShell from "./AppShell.astro";
 
 interface CrumbItem {
   label: string;
@@ -16,7 +16,7 @@ interface Props {
 const { title, description, crumbItems } = Astro.props as Props;
 ---
 
-<WebLayout title={title} description={description}>
+<AppShell title={title} description={description}>
   <section class="av-admin-section">
     <AvContainer size="default">
       <div class="av-auth-stack-md">
@@ -31,4 +31,4 @@ const { title, description, crumbItems } = Astro.props as Props;
       </div>
     </AvContainer>
   </section>
-</WebLayout>
+</AppShell>

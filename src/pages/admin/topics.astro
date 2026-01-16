@@ -1,5 +1,5 @@
 ---
-import AdminLayout from "../../layouts/AdminLayout.astro";
+import AppAdminShell from "../../layouts/AppAdminShell.astro";
 import {
   AvButton,
   AvCard,
@@ -79,7 +79,7 @@ const initialState = {
 };
 ---
 
-<AdminLayout
+<AppAdminShell
   title="Topics – Ansiversa"
   description="Manage quiz topics."
   crumbItems={[
@@ -408,4 +408,4 @@ const initialState = {
       @av-cancel="pendingDeleteId = null; pendingDeleteName = null"
     />
   </div>
-</AdminLayout>
+</AppAdminShell>
