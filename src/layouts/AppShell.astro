@@ -22,14 +22,10 @@ const locals = Astro.locals as {
   };
 };
 
-const rootAppUrl = locals?.rootAppUrl ?? "https://ansiversa.com";
+const rootAppUrl = locals?.rootAppUrl;
 const cookieHeader = Astro.request.headers.get("cookie") ?? "";
 const existingToken = locals?.sessionToken ?? Astro.cookies.get(SESSION_COOKIE_NAME)?.value;
 const sessionToken = existingToken ?? null;
-const sessionCookie = sessionToken ? `${SESSION_COOKIE_NAME}=${sessionToken}` : "";
-const outboundCookie = cookieHeader.includes(`${SESSION_COOKIE_NAME}=`)
-  ? cookieHeader
-  : [cookieHeader, sessionCookie].filter(Boolean).join("; ");
 
 const sessionPayload = sessionToken ? verifySessionToken(sessionToken) : null;
 const user = locals?.user ??
@@ -48,12 +44,11 @@ if (user) {
 }
 
 let notificationUnreadCount = 0;
-if ((locals?.isAuthenticated || user) && outboundCookie) {
+if (rootAppUrl && cookieHeader && (locals?.isAuthenticated || user)) {
   try {
     const response = await fetch(`${rootAppUrl}/api/notifications/unread-count`, {
       headers: {
-        cookie: outboundCookie,
-        ...(sessionToken ? { authorization: `Bearer ${sessionToken}` } : {}),
+        cookie: cookieHeader,
       },
     });
     if (response.ok) {
