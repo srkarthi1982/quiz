@@ -303,6 +303,7 @@ Behavior:
 
 - Keep newest first; include date and short summary.
 - 2026-01-16 Quiz now uses shared Av layouts via AppShell/AppAdminShell.
+- 2026-01-16 Removed unsupported `user`/`appId` props from AppShell AvWebLayout usage to fix props typing error.
 - 2026-01-16 Unread notification count fetched in AppShell via parent API.
 - 2026-01-15 Routed AppShell through local WebLayout so unread badge logic runs on quiz pages.
 - 2026-01-15 Added bearer token fallback for unread count fetch to avoid cookie gaps.
