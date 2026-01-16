@@ -1,5 +1,5 @@
 ---
-import AdminLayout from "../../layouts/AdminLayout.astro";
+import AppAdminShell from "../../layouts/AppAdminShell.astro";
 import { AvButton, AvCard, AvIcon, AvInput, AvTableToolbar } from "@ansiversa/components";
 
 const adminItems = [
@@ -17,7 +17,7 @@ const filteredItems = normalizedQuery
   : adminItems;
 ---
 
-<AdminLayout
+<AppAdminShell
   title="Admin Dashboard – Ansiversa"
   description="Manage Ansiversa administration."
   crumbItems={[
@@ -86,4 +86,4 @@ const filteredItems = normalizedQuery
       <p class="av-text-soft av-m-0">No admin links match “{query}”.</p>
     )}
   </AvCard>
-</AdminLayout>
+</AppAdminShell>

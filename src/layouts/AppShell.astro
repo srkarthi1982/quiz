@@ -1,15 +1,76 @@
 ---
 import "@ansiversa/components/styles/global.css";
-import WebLayout from "./WebLayout.astro";
+import { WebLayout as AvWebLayout } from "@ansiversa/components";
+import { SESSION_COOKIE_NAME, verifySessionToken } from "../lib/auth";
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const props = Astro.props;
+const props = Astro.props as Props;
+const locals = Astro.locals as {
+  isAuthenticated?: boolean;
+  rootAppUrl?: string;
+  sessionToken?: string | null;
+  user?: {
+    id: string;
+    email: string;
+    name?: string;
+    roleId?: number;
+    stripeCustomerId?: string;
+  };
+};
+
+const rootAppUrl = locals?.rootAppUrl ?? "https://ansiversa.com";
+const cookieHeader = Astro.request.headers.get("cookie") ?? "";
+const existingToken = locals?.sessionToken ?? Astro.cookies.get(SESSION_COOKIE_NAME)?.value;
+const sessionToken = existingToken ?? null;
+const sessionCookie = sessionToken ? `${SESSION_COOKIE_NAME}=${sessionToken}` : "";
+const outboundCookie = cookieHeader.includes(`${SESSION_COOKIE_NAME}=`)
+  ? cookieHeader
+  : [cookieHeader, sessionCookie].filter(Boolean).join("; ");
+
+const sessionPayload = sessionToken ? verifySessionToken(sessionToken) : null;
+const user = locals?.user ??
+  (sessionPayload?.userId
+    ? {
+        id: sessionPayload.userId,
+        email: sessionPayload.email,
+        name: sessionPayload.name,
+        roleId: sessionPayload.roleId ? Number(sessionPayload.roleId) : undefined,
+        stripeCustomerId: sessionPayload.stripeCustomerId ?? undefined,
+      }
+    : undefined);
+
+if (user) {
+  locals.user = user;
+}
+
+let notificationUnreadCount = 0;
+if ((locals?.isAuthenticated || user) && outboundCookie) {
+  try {
+    const response = await fetch(`${rootAppUrl}/api/notifications/unread-count`, {
+      headers: {
+        cookie: outboundCookie,
+        ...(sessionToken ? { authorization: `Bearer ${sessionToken}` } : {}),
+      },
+    });
+    if (response.ok) {
+      const data = await response.json();
+      notificationUnreadCount = Number(data?.count ?? 0);
+    }
+  } catch {
+    notificationUnreadCount = 0;
+  }
+}
 ---
 
-<WebLayout {...props}>
+<AvWebLayout
+  {...props}
+  user={user}
+  appId="quiz"
+  notificationUnreadCount={notificationUnreadCount}
+>
   <slot />
-</WebLayout>
+</AvWebLayout>
