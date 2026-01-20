@@ -302,6 +302,11 @@ Behavior:
 ## 27. Task Log (Recent)
 
 - Keep newest first; include date and short summary.
+- 2026-01-18 Updated Question answers using 4-finance-wrong-part-1.csv via temp table bulk update (129 items).
+- 2026-01-18 Updated Question answers using 3-law-wrong-only.json via temp table bulk update (627 items). Readbacks blocked by remote DB plan.
+- 2026-01-18 Updated Question answers using 2-engineering-wrong-only.json via temp table and bulk update (586 items).
+- 2026-01-18 Exported duplicate q groups with counts and ids to automation/quiz-migration/duplicate-q-values.csv.
+- 2026-01-18 Deactivated duplicate questions by q-only in remote DB; kept lowest id active per q and verified no active duplicates remain.
 - 2026-01-16 Quiz now uses shared Av layouts via AppShell/AppAdminShell.
 - 2026-01-16 Removed unsupported `user`/`appId` props from AppShell AvWebLayout usage to fix props typing error.
 - 2026-01-16 Moved unread count into AppShell with SSR cookie-forwarding, confirmed no local WebLayout in repo, added typecheck/check scripts.
