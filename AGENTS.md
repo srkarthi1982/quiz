@@ -302,6 +302,7 @@ Behavior:
 ## 27. Task Log (Recent)
 
 - Keep newest first; include date and short summary.
+- 2026-01-25 Fixed Astro DB scripts overriding remote DB URL by removing hardcoded envs and documenting .env.example for local/prod usage so Vercel can use runtime vars.
 - 2026-01-25 Standardized Astro DB workflow to file-based remote mode for dev/build and added single `db:push` script.
 - 2026-01-18 Updated Question answers using 4-finance-wrong-part-1.csv via temp table bulk update (129 items).
 - 2026-01-18 Updated Question answers using 3-law-wrong-only.json via temp table bulk update (627 items). Readbacks blocked by remote DB plan.
