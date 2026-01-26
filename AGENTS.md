@@ -320,3 +320,4 @@ Behavior:
 - 2026-01-15 Set dev fallback root app URL for notification badge fetch.
 - 2026-01-15 Wired navbar unread notification badge via parent API in quiz layout.
 - 2026-01-14 Updated `@ansiversa/components` to `0.0.104` in `quiz/package.json` and lockfile.
+- 2026-01-26 Bumped @ansiversa/components to ^0.0.117 to align with latest resume schema (declaration field).
