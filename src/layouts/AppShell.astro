@@ -1,6 +1,7 @@
 ---
 import "@ansiversa/components/styles/global.css";
 import { WebLayout as AvWebLayout } from "@ansiversa/components";
+import { APP_KEY } from "../app.meta";
 import { SESSION_COOKIE_NAME, verifySessionToken } from "../lib/auth";
 
 interface Props {
@@ -63,6 +64,7 @@ if (rootAppUrl && cookieHeader && (locals?.isAuthenticated || user)) {
 
 <AvWebLayout
   {...props}
+  miniAppKey={APP_KEY}
   notificationUnreadCount={notificationUnreadCount}
 >
   <slot />
