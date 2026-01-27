@@ -15,6 +15,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const pathname = url.pathname;
 
   const publicRoutes = new Set(["/"]);
+  const apiAuthBypassRoutes = new Set(["/api/flashnote/questions"]);
 
   // Allow static assets
   if (
@@ -60,7 +61,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   // ✅ ENFORCE AUTH (protect everything in mini-app)
   if (!locals.isAuthenticated) {
-    if (publicRoutes.has(pathname)) {
+    if (publicRoutes.has(pathname) || apiAuthBypassRoutes.has(pathname)) {
       return next();
     }
     const loginUrl = new URL("/login", ROOT_APP_URL);
