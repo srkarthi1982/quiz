@@ -302,6 +302,8 @@ Behavior:
 ## 27. Task Log (Recent)
 
 - Keep newest first; include date and short summary.
+- 2026-01-28 Bumped @ansiversa/components to ^0.0.119 for WebLayout mini-app links.
+- 2026-01-28 Added quiz mini-app links (Home, Quiz, Results) via AppShell props for AvMiniAppBar.
 - 2026-01-28 Added local/remote dev+build scripts for dual DB mode support.
 - 2026-01-27 Bumped @ansiversa/components to ^0.0.118, enabled AvMiniAppBar via APP_KEY, and added read-only /api/flashnote/questions with auth + filters.
 - 2026-01-25 Fixed Astro DB scripts overriding remote DB URL by removing hardcoded envs and documenting .env.example for local/prod usage so Vercel can use runtime vars.

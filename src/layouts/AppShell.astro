@@ -60,11 +60,18 @@ if (rootAppUrl && cookieHeader && (locals?.isAuthenticated || user)) {
     notificationUnreadCount = 0;
   }
 }
+
+const miniAppLinks = [
+  { label: "Home", href: "/" },
+  { label: "Quiz", href: "/quiz" },
+  { label: "Results", href: "/results" },
+];
 ---
 
 <AvWebLayout
   {...props}
   miniAppKey={APP_KEY}
+  links={miniAppLinks}
   notificationUnreadCount={notificationUnreadCount}
 >
   <slot />
