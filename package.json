@@ -5,7 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev --remote",
+    "dev:local": "astro dev",
+    "dev:remote": "astro dev --remote",
     "build": "astro build --remote",
+    "build:local": "astro build",
+    "build:remote": "astro build --remote",
     "typecheck": "astro check",
     "typecheck:tsc": "tsc --noEmit",
     "check": "npm run typecheck && npm run build",

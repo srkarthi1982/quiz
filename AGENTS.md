@@ -302,6 +302,7 @@ Behavior:
 ## 27. Task Log (Recent)
 
 - Keep newest first; include date and short summary.
+- 2026-01-28 Added local/remote dev+build scripts for dual DB mode support.
 - 2026-01-27 Bumped @ansiversa/components to ^0.0.118, enabled AvMiniAppBar via APP_KEY, and added read-only /api/flashnote/questions with auth + filters.
 - 2026-01-25 Fixed Astro DB scripts overriding remote DB URL by removing hardcoded envs and documenting .env.example for local/prod usage so Vercel can use runtime vars.
 - 2026-01-25 Standardized Astro DB workflow to file-based remote mode for dev/build and added single `db:push` script.
