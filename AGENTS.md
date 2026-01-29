@@ -302,6 +302,7 @@ Behavior:
 ## 27. Task Log (Recent)
 
 - 2026-01-29 Added parent notification helper and wired quiz create/result notifications.
+- 2026-01-29 Manual smoke test confirmed: Quiz completion triggers notifications ("Quiz completed", "Results saved") visible in parent `/notifications` UI.
 
 - Keep newest first; include date and short summary.
 - 2026-01-28 Bumped @ansiversa/components to ^0.0.119 for WebLayout mini-app links.
@@ -332,4 +333,4 @@ Behavior:
 
 - 2026-01-29 `npm run typecheck` (pass; 6 hints in admin pages/baseRepository).
 - 2026-01-29 `npm run build` (pass).
-- 2026-01-29 Smoke test: not run (requires admin session to create roadmap / submit quiz).
+- 2026-01-29 Smoke test: quiz completion triggers notifications visible in parent `/notifications` UI.
