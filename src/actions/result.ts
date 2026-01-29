@@ -3,6 +3,7 @@ import { z } from "astro:schema";
 import { Result } from "astro:db";
 import { resultRepository } from "./repositories";
 import { pushQuizActivity } from "../lib/pushActivity";
+import { notifyParent } from "../lib/notifyParent";
 
 const responseSchema = z.object({
   id: z.number().int().min(1),
@@ -55,6 +56,33 @@ export const saveResult = defineAction({
 
     const [result] = await resultRepository.insert(payload);
     pushQuizActivity(user.id);
+
+    void notifyParent({
+      appKey: "quiz",
+      userId: user.id,
+      title: "Quiz completed",
+      message: `Score ${input.mark}/${responses.length}.`,
+      level: "success",
+      meta: {
+        resultId: result?.id,
+        roadmapId: input.roadmapId,
+        subjectId: input.subjectId,
+        topicId: input.topicId,
+      },
+    });
+
+    void notifyParent({
+      appKey: "quiz",
+      userId: user.id,
+      title: "Results saved",
+      message: "Your quiz results have been saved.",
+      level: "info",
+      meta: {
+        resultId: result?.id,
+        roadmapId: input.roadmapId,
+      },
+    });
+
     return { result };
   },
 });

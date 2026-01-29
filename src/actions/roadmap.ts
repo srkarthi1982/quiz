@@ -9,6 +9,7 @@ import {
   topicRepository,
 } from "./repositories";
 import { requireAdmin, requireUser } from "./_guards";
+import { notifyParent } from "../lib/notifyParent";
 
 type SqlCondition = NonNullable<Parameters<typeof and>[number]>;
 type RoadmapRow = typeof Roadmap.$inferSelect;
@@ -235,7 +236,7 @@ export const fetchRoadmaps = defineAction({
 export const createRoadmap = defineAction({
   input: roadmapPayloadSchema,
   async handler(input, context: ActionAPIContext) {
-    requireAdmin(context);
+    const user = requireAdmin(context);
     const payload = normalizeInput(input);
 
     const platform = await platformRepository.getById((table) => table.id, payload.platformId);
@@ -292,6 +293,20 @@ export const createRoadmap = defineAction({
           subjectName: subjectRow.name ?? null,
           topicName: topicRow.name ?? null,
         } as const);
+
+      void notifyParent({
+        appKey: "quiz",
+        userId: user.id,
+        title: "Quiz created",
+        message: `Roadmap “${payload.name}” is ready.`,
+        level: "success",
+        meta: {
+          roadmapId: record.id,
+          platformId: payload.platformId,
+          subjectId: payload.subjectId,
+          topicId: payload.topicId,
+        },
+      });
 
       return normalizeRoadmap({
         ...result.roadmap,
