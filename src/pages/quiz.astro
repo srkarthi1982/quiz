@@ -14,6 +14,7 @@ import { actions } from "astro:actions";
 
 const title = "Quiz - Ansiversa";
 const description = "Pick a platform, topic, and level to launch your quiz.";
+const isPaid = Astro.locals.user?.isPaid === true;
 
 const platformsResult = await Astro.callAction(actions.quiz.fetchPlatforms, {
   page: 1,
@@ -63,6 +64,8 @@ const initialState = {
   mark: 0,
   showAnswers: false,
   loading: false,
+  isPaid,
+  paywallMessage: null,
   error: null,
   roadmapPage: 1,
   roadmapTotal: 0,
@@ -270,15 +273,28 @@ const initialState = {
                     class="quiz-option"
                     :class="selection.levelId === level.id ? 'is-selected' : ''"
                     @click.prevent="chooseLevel(level.id)"
-                    :disabled="loading"
+                    :disabled="loading || isLevelLocked(level)"
                     type="button"
                   >
                     <div class="quiz-option__header">
                       <p class="quiz-option__title" x-text="level.name"></p>
-                      <span class="quiz-pill" x-text="level.id"></span>
+                      <div class="quiz-option__badges">
+                        <span class="quiz-pill" x-text="level.id"></span>
+                        <span class="av-badge av-badge-soft" x-show="isLevelLocked(level)" x-cloak>Pro</span>
+                      </div>
                     </div>
                   </button>
                 </template>
+              </div>
+              <div class="quiz-paywall" x-show="paywallMessage" x-cloak>
+                <p class="av-text-soft av-m-0" x-text="paywallMessage"></p>
+                <AvButton
+                  href="https://ansiversa.com/pricing"
+                  variant="ghost"
+                  size="sm"
+                >
+                  View pricing
+                </AvButton>
               </div>
             </div>
 
@@ -587,6 +603,11 @@ const initialState = {
     justify-content: space-between;
     gap: 0.75rem;
   }
+  .quiz-option__badges {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
   .quiz-option:hover {
     border-color: rgba(14, 165, 233, 0.5);
     transform: translateY(-1px);
@@ -616,6 +637,13 @@ const initialState = {
     color: #7dd3fc;
     font-size: 0.7rem;
     font-weight: 600;
+  }
+  .quiz-paywall {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
   }
   .quiz-loadmore {
     margin-top: 1rem;

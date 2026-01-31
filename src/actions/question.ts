@@ -372,8 +372,14 @@ export const fetchRandomQuestions = defineAction({
     excludeIds: z.array(z.number().int().min(1)).optional(),
   }),
   async handler({ filters, excludeIds }, context: ActionAPIContext) {
-    requireUser(context);
+    const user = requireUser(context);
     const normalizedFilters = normalizeFilters(filters);
+    if (normalizedFilters.level === "D" && !user.isPaid) {
+      throw new ActionError({
+        code: "PAYWALL",
+        message: "Difficult level requires Pro.",
+      });
+    }
     const normalizedExcludeIds = Array.isArray(excludeIds)
       ? Array.from(
           new Set(

@@ -13,6 +13,10 @@ export type SessionPayload = {
   name?: string;
   roleId?: number;
   stripeCustomerId?: string;
+  plan?: string | null;
+  planStatus?: string | null;
+  isPaid?: boolean;
+  renewalAt?: number | null;
   issuedAt: number;
 };
 

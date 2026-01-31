@@ -94,6 +94,8 @@ const defaultState = () => ({
   mark: 0,
   showAnswers: false,
   loading: false,
+  isPaid: false,
+  paywallMessage: null as string | null,
   error: null as string | null,
   roadmapPage: 1,
   roadmapTotal: 0,
@@ -137,6 +139,8 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
   mark = 0;
   showAnswers = false;
   loading = false;
+  isPaid = false;
+  paywallMessage: string | null = null;
   error: string | null = null;
   roadmapPage = 1;
   roadmapTotal = 0;
@@ -267,6 +271,14 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
     return this.list.levels.find((level) => level.id === this.selection.levelId)?.name ?? "--";
   }
 
+  get isPro() {
+    return this.isPaid === true;
+  }
+
+  isLevelLocked(level: LevelItem) {
+    return level.id === "D" && !this.isPro;
+  }
+
   get filteredPlatforms() {
     const term = normalizeSearch(this.search);
     return this.list.platforms
@@ -376,6 +388,11 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
   }
 
   chooseLevel(id: LevelItem["id"]) {
+    if (id === "D" && !this.isPro) {
+      this.paywallMessage = "Difficult level is available in Pro.";
+      return;
+    }
+    this.paywallMessage = null;
     this.selection.levelId = id;
     this.selection.answers = [];
     this.list.questions = [];
@@ -456,6 +473,7 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
 
     this.loading = true;
     this.error = null;
+    this.paywallMessage = null;
     this.list.questions = [];
     this.selection.answers = [];
     this.currentQuestion = 0;
@@ -471,6 +489,11 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
           status: "active",
         },
       });
+
+      if (res?.error?.code === "PAYWALL") {
+        this.paywallMessage = res.error.message || "Difficult level is available in Pro.";
+        return;
+      }
 
       const data = this.unwrapResult(res);
       const items = (data?.items ?? []) as Array<

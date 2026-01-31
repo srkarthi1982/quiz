@@ -301,6 +301,9 @@ Behavior:
 
 ## 27. Task Log (Recent)
 
+- 2026-01-31 Locked difficult level behind Pro in quiz UI + server guard; added paywall messaging and pricing link.
+- 2026-01-31 Normalized payment fields in `Astro.locals.user` to avoid undefined values (stripeCustomerId/plan/planStatus/isPaid/renewalAt).
+- 2026-01-31 Added locals.session payment flags in middleware/types and a temporary `/admin/session` debug page for Phase 2 verification.
 - 2026-01-29 Added parent notification helper and wired quiz create/result notifications.
 - 2026-01-29 Manual smoke test confirmed: Quiz completion triggers notifications ("Quiz completed", "Results saved") visible in parent `/notifications` UI.
 
@@ -331,6 +334,9 @@ Behavior:
 
 ## Verification Log
 
+- 2026-01-31 Pending manual check: free user sees Difficult disabled + paywall, paid user can start Difficult; server returns PAYWALL on forced difficult for free user.
+- 2026-01-31 Pending manual check: paid user sees non-null fields; free user sees null/false in `Astro.locals.user`.
+- 2026-01-31 Pending manual check: `/admin/session` shows isPaid true for paid user and false for free user.
 - 2026-01-29 `npm run typecheck` (pass; 6 hints in admin pages/baseRepository).
 - 2026-01-29 `npm run build` (pass).
 - 2026-01-29 Smoke test: quiz completion triggers notifications visible in parent `/notifications` UI.
