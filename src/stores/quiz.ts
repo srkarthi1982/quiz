@@ -490,7 +490,7 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
         },
       });
 
-      if (res?.error?.code === "PAYWALL") {
+      if (res?.error?.code === "PAYMENT_REQUIRED") {
         this.paywallMessage = res.error.message || "Difficult level is available in Pro.";
         return;
       }

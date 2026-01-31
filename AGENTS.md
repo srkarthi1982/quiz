@@ -334,7 +334,7 @@ Behavior:
 
 ## Verification Log
 
-- 2026-01-31 Pending manual check: free user sees Difficult disabled + paywall, paid user can start Difficult; server returns PAYWALL on forced difficult for free user.
+- 2026-01-31 Verified: free user sees Difficult disabled + paywall, paid user can start Difficult; server returns PAYMENT_REQUIRED on forced difficult for free user.
 - 2026-01-31 Pending manual check: paid user sees non-null fields; free user sees null/false in `Astro.locals.user`.
 - 2026-01-31 Pending manual check: `/admin/session` shows isPaid true for paid user and false for free user.
 - 2026-01-29 `npm run typecheck` (pass; 6 hints in admin pages/baseRepository).

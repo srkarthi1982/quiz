@@ -376,7 +376,7 @@ export const fetchRandomQuestions = defineAction({
     const normalizedFilters = normalizeFilters(filters);
     if (normalizedFilters.level === "D" && !user.isPaid) {
       throw new ActionError({
-        code: "PAYWALL",
+        code: "PAYMENT_REQUIRED",
         message: "Difficult level requires Pro.",
       });
     }
