@@ -22,6 +22,7 @@ type QuestionRow = {
   l: string;
   topicId: number;
   subjectId: number;
+  platformId: number;
   roadmapId: number;
 };
 
@@ -133,18 +134,29 @@ export const GET: APIRoute = async ({ cookies, request }) => {
 
   const url = new URL(request.url);
   const quizId = parseFilterNumber(url.searchParams.get("quizId"));
+  const roadmapId = parseFilterNumber(url.searchParams.get("roadmapId"));
   const topicId = parseFilterNumber(url.searchParams.get("topicId"));
+  const subjectId = parseFilterNumber(url.searchParams.get("subjectId"));
+  const platformId = parseFilterNumber(url.searchParams.get("platformId"));
   const limit = parseLimit(url.searchParams.get("limit"));
 
   const conditions: SqlCondition[] = [eq(Question.isActive, true)];
 
-  if (quizId) {
+  if (roadmapId || quizId) {
     // FlashNote uses quizId; map it to roadmapId in the Quiz schema.
-    conditions.push(eq(Question.roadmapId, quizId));
+    conditions.push(eq(Question.roadmapId, roadmapId ?? quizId!));
   }
 
   if (topicId) {
     conditions.push(eq(Question.topicId, topicId));
+  }
+
+  if (subjectId) {
+    conditions.push(eq(Question.subjectId, subjectId));
+  }
+
+  if (platformId) {
+    conditions.push(eq(Question.platformId, platformId));
   }
 
   const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
@@ -159,6 +171,7 @@ export const GET: APIRoute = async ({ cookies, request }) => {
       l: Question.l,
       topicId: Question.topicId,
       subjectId: Question.subjectId,
+      platformId: Question.platformId,
       roadmapId: Question.roadmapId,
     })
     .from(Question)
@@ -178,6 +191,8 @@ export const GET: APIRoute = async ({ cookies, request }) => {
       explanation: explanation.length > 0 ? explanation : null,
       topicId: row.topicId ? String(row.topicId) : null,
       subjectId: row.subjectId ? String(row.subjectId) : null,
+      platformId: row.platformId ? String(row.platformId) : null,
+      roadmapId: row.roadmapId ? String(row.roadmapId) : null,
       difficulty: toDifficulty(row.l),
     };
   });

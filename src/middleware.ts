@@ -15,7 +15,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const pathname = url.pathname;
 
   const publicRoutes = new Set(["/"]);
-  const apiAuthBypassRoutes = new Set(["/api/flashnote/questions"]);
+  const apiAuthBypassRoutes = new Set(["/api/flashnote/questions", "/api/flashnote/sources"]);
 
   // Allow static assets
   if (
