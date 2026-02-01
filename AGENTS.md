@@ -301,6 +301,7 @@ Behavior:
 
 ## 27. Task Log (Recent)
 
+- 2026-02-01 Added `/help` page and wired Help link into the mini-app menu.
 - 2026-02-01 Added FlashNote AI source suggestions API and extended FlashNote questions API to accept platform/subject/roadmap filters.
 - 2026-01-31 Locked difficult level behind Pro in quiz UI + server guard; added paywall messaging and pricing link.
 - 2026-01-31 Normalized payment fields in `Astro.locals.user` to avoid undefined values (stripeCustomerId/plan/planStatus/isPaid/renewalAt).
