@@ -1,3 +1,8 @@
+⚠️ Mandatory: AI agents must read this file before writing or modifying any code.
+
+MANDATORY: After completing each task, update this repo’s AGENTS.md Task Log (newest-first) before marking the task done.
+This file complements the workspace-level Ansiversa-workspace/AGENTS.md (source of truth). Read workspace first.
+
 ⚠️ Mandatory: AI agents must read this file before writing or modifying any code in the quiz repo.
 
 # AGENTS.md
@@ -344,3 +349,8 @@ Behavior:
 - 2026-01-29 `npm run typecheck` (pass; 6 hints in admin pages/baseRepository).
 - 2026-01-29 `npm run build` (pass).
 - 2026-01-29 Smoke test: quiz completion triggers notifications visible in parent `/notifications` UI.
+
+## Task Log (Recent)
+- Keep newest first; include date and short summary.
+- 2026-02-09 Enforced repo-level AGENTS mandatory task-log update rule for Codex/AI execution.
+- 2026-02-09 Verified repo AGENTS contract linkage to workspace source-of-truth.
