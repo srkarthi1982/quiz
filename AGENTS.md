@@ -352,5 +352,6 @@ Behavior:
 
 ## Task Log (Recent)
 - Keep newest first; include date and short summary.
+- 2026-02-14 Upgraded `@ansiversa/components` to `^0.0.128` (lockfile resolved to `0.0.128`) and verified with `npm run typecheck` (pass; 0 errors, existing 6 hints).
 - 2026-02-09 Enforced repo-level AGENTS mandatory task-log update rule for Codex/AI execution.
 - 2026-02-09 Verified repo AGENTS contract linkage to workspace source-of-truth.
