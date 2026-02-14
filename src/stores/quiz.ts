@@ -1,6 +1,7 @@
 import type Alpine from "alpinejs";
 import { AvBaseStore, safeErrorMessage } from "@ansiversa/components/alpine";
 import { actions } from "astro:actions";
+import { resolveEffectiveCorrect } from "../lib/quiz/effectiveCorrect";
 
 type PlatformItem = {
   id: number;
@@ -44,9 +45,14 @@ type QuestionItem = {
   options: string[];
   answerKey: string;
   explanation?: string | null;
-  verificationStatus?: "unverified" | "verified" | "flagged" | "unsure";
+  verificationStatus: "unverified" | "verified" | "flagged" | "unsure";
+  verificationSuggestedChoiceIndex?: number | null;
   level: "E" | "M" | "D";
-  correctIndex: number;
+  storedCorrectIndex: number;
+  effectiveCorrectIndex: number;
+  isProvisional: boolean;
+  isDisputed: boolean;
+  badgeText: string | null;
 };
 
 type LevelItem = {
@@ -104,28 +110,6 @@ const defaultState = () => ({
 });
 
 const normalizeSearch = (value: string) => value.trim().toLowerCase();
-
-const resolveCorrectIndex = (options: string[], answerKey: string) => {
-  if (!Array.isArray(options) || options.length === 0) return -1;
-  const key = (answerKey || "").trim();
-  if (!key) return -1;
-
-  const numericKey = Number.parseInt(key, 10);
-  if (!Number.isNaN(numericKey)) {
-    if (numericKey >= 0 && numericKey < options.length) return numericKey;
-    const zeroBased = numericKey - 1;
-    if (zeroBased >= 0 && zeroBased < options.length) return zeroBased;
-  }
-
-  if (key.length === 1) {
-    const alphaIndex = key.toLowerCase().charCodeAt(0) - 97;
-    if (alphaIndex >= 0 && alphaIndex < options.length) return alphaIndex;
-  }
-
-  const lowerKey = key.toLowerCase();
-  const matchIndex = options.findIndex((option) => option.trim().toLowerCase() === lowerKey);
-  return matchIndex >= 0 ? matchIndex : -1;
-};
 
 export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultState> {
   private _roadmapQueryTimer: number | null = null;
@@ -497,12 +481,24 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
       }
 
       const data = this.unwrapResult(res);
-      const items = (data?.items ?? []) as Array<
-        Omit<QuestionItem, "correctIndex"> & { answerKey: string }
-      >;
+      const items = (data?.items ?? []) as Array<{
+        id: number;
+        questionText: string;
+        options: string[];
+        answerKey: string;
+        explanation?: string | null;
+        verificationStatus?: "unverified" | "verified" | "flagged" | "unsure";
+        verificationSuggestedChoiceIndex?: number | null;
+        level: "E" | "M" | "D";
+      }>;
       const questions = items.map((item) => ({
         ...item,
-        correctIndex: resolveCorrectIndex(item.options ?? [], item.answerKey ?? ""),
+        ...resolveEffectiveCorrect({
+          options: item.options ?? [],
+          answerKey: item.answerKey ?? "",
+          verificationStatus: item.verificationStatus ?? "unverified",
+          verificationSuggestedChoiceIndex: item.verificationSuggestedChoiceIndex ?? null,
+        }),
       })) as QuestionItem[];
 
       this.list.questions = questions;
@@ -551,10 +547,50 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
     this.currentQuestion += 1;
   }
 
+  private isAcceptedAnswer(question: QuestionItem, selectedIndex: number) {
+    if (selectedIndex < 0) return false;
+    if (selectedIndex === question.effectiveCorrectIndex) return true;
+
+    // If flagged answer changed, keep legacy answer non-punitive during review.
+    if (question.isDisputed && selectedIndex === question.storedCorrectIndex) {
+      return true;
+    }
+
+    return false;
+  }
+
+  getAnswerToneClass(question: QuestionItem, index: number) {
+    const selected = Number(this.selection.answers[index] ?? -1);
+    if (selected < 0) return "";
+    if (question.isProvisional) return "is-pending";
+    if (question.isDisputed && selected === question.storedCorrectIndex) return "is-disputed";
+    return this.isAcceptedAnswer(question, selected) ? "is-correct" : "is-wrong";
+  }
+
+  getCorrectAnswerText(question: QuestionItem) {
+    if (question.isProvisional) {
+      return "Answer check pending";
+    }
+    if (question.effectiveCorrectIndex < 0) {
+      return "Answer not available";
+    }
+    return question.options[question.effectiveCorrectIndex] ?? "Answer not available";
+  }
+
+  getReviewNote(question: QuestionItem, index: number) {
+    const selected = Number(this.selection.answers[index] ?? -1);
+    if (question.isProvisional) return "Result is provisional while verification runs.";
+    if (question.isDisputed && selected === question.storedCorrectIndex) {
+      return "Legacy answer accepted while this question is under review.";
+    }
+    return "";
+  }
+
   async finishQuiz() {
     if (!this.canSubmit) return;
     const score = this.list.questions.reduce((total, question, index) => {
-      return total + (this.selection.answers[index] === question.correctIndex ? 1 : 0);
+      const selected = Number(this.selection.answers[index] ?? -1);
+      return total + (this.isAcceptedAnswer(question, selected) ? 1 : 0);
     }, 0);
 
     this.mark = score;
@@ -568,7 +604,11 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
 
     const responses = this.list.questions.map((question, index) => ({
       id: question.id,
-      a: question.correctIndex,
+      a:
+        question.isDisputed &&
+        Number(this.selection.answers[index] ?? -1) === question.storedCorrectIndex
+          ? question.storedCorrectIndex
+          : question.effectiveCorrectIndex,
       s: typeof this.selection.answers[index] === "number" ? this.selection.answers[index] : -1,
     }));
 

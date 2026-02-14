@@ -112,6 +112,10 @@ const normalizeQuestion = (
       row.verificationStatus === "unsure"
         ? row.verificationStatus
         : "unverified",
+    verificationSuggestedChoiceIndex:
+      typeof row.verificationSuggestedChoiceIndex === "number"
+        ? row.verificationSuggestedChoiceIndex
+        : null,
     level,
     isActive: Boolean(row.isActive),
     platformName: row.platformName ?? null,

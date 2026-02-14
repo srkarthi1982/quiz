@@ -318,10 +318,10 @@ const initialState = {
                     <h3 class="quiz-question-card__title" x-text="currentQuestionItem?.questionText"></h3>
                     <p
                       class="quiz-question-card__verification-note"
-                      x-show="currentQuestionItem?.verificationStatus === 'flagged' || currentQuestionItem?.verificationStatus === 'unsure'"
+                      x-show="currentQuestionItem?.badgeText"
                       x-cloak
+                      x-text="currentQuestionItem?.badgeText"
                     >
-                      This question is being verified.
                     </p>
                   </div>
 
@@ -410,20 +410,32 @@ const initialState = {
                     <div class="quiz-answer-review__item">
                       <div class="quiz-answer-review__title">
                         <span class="quiz-answer-review__index" x-text="index + 1"></span>
-                        <p x-text="question.questionText"></p>
+                        <div class="quiz-answer-review__title-copy">
+                          <p x-text="question.questionText"></p>
+                          <p
+                            class="quiz-answer-review__status-note"
+                            x-show="question.badgeText"
+                            x-cloak
+                            x-text="question.badgeText"
+                          ></p>
+                        </div>
                       </div>
                       <div class="quiz-answer-review__body">
                         <div class="quiz-answer-review__row">
                           <p class="quiz-answer-review__label">Your answer:</p>
                           <p
                             class="quiz-answer-review__answer"
-                            :class="selection.answers[index] === question.correctIndex ? 'is-correct' : 'is-wrong'"
+                            :class="getAnswerToneClass(question, index)"
                             x-text="selection.answers[index] >= 0 ? question.options[selection.answers[index]] : 'Not answered'"
                           ></p>
                         </div>
                         <div class="quiz-answer-review__row">
                           <p class="quiz-answer-review__label">Correct answer:</p>
-                          <p class="quiz-answer-review__answer is-correct" x-text="question.options[question.correctIndex]"></p>
+                          <p class="quiz-answer-review__answer is-correct" x-text="getCorrectAnswerText(question)"></p>
+                        </div>
+                        <div class="quiz-answer-review__row" x-show="getReviewNote(question, index)">
+                          <p class="quiz-answer-review__label">Status:</p>
+                          <p class="quiz-answer-review__explanation" x-text="getReviewNote(question, index)"></p>
                         </div>
                         <div class="quiz-answer-review__row" x-show="question.explanation">
                           <p class="quiz-answer-review__label">Explanation:</p>
@@ -794,6 +806,16 @@ const initialState = {
     font-weight: 600;
     color: #e2e8f0;
   }
+  .quiz-answer-review__title-copy {
+    display: grid;
+    gap: 0.35rem;
+  }
+  .quiz-answer-review__status-note {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #7dd3fc;
+  }
   .quiz-answer-review__index {
     display: inline-flex;
     align-items: center;
@@ -833,6 +855,10 @@ const initialState = {
   }
   .quiz-answer-review__answer.is-wrong {
     color: #f87171;
+  }
+  .quiz-answer-review__answer.is-pending,
+  .quiz-answer-review__answer.is-disputed {
+    color: #fbbf24;
   }
   .quiz-answer-review__explanation {
     color: rgba(148, 163, 184, 0.9);
