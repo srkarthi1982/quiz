@@ -352,6 +352,7 @@ Behavior:
 
 ## Task Log (Recent)
 - Keep newest first; include date and short summary.
+- 2026-02-14 Implemented Quiz Progressive Verification V1 (safe/no-overwrite): added `Question` verification metadata columns + new `QuestionVerification` history table in `db/tables.ts`/`db/config.ts`; added canonical parent origin helper `src/server/resolveParentOrigin.ts`; added same-origin AI proxy `src/pages/api/ai/suggest.ts`; standardized notifications proxy to shared resolver; added authenticated chunked verifier endpoint `POST /api/quiz/verify-questions.json` (max 3, updates metadata only, append-only history); triggered one best-effort verify call from `loadQuestions()` for served question IDs; added minimal UI note for `flagged|unsure`; no question text/options/answers/explanations are auto-overwritten.
 - 2026-02-14 Upgraded `@ansiversa/components` to `^0.0.128` (lockfile resolved to `0.0.128`) and verified with `npm run typecheck` (pass; 0 errors, existing 6 hints).
 - 2026-02-09 Enforced repo-level AGENTS mandatory task-log update rule for Codex/AI execution.
 - 2026-02-09 Verified repo AGENTS contract linkage to workspace source-of-truth.

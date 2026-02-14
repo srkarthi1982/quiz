@@ -106,6 +106,12 @@ const normalizeQuestion = (
     answer: deriveAnswerFromKey(options, answerKey),
     answerKey,
     explanation,
+    verificationStatus:
+      row.verificationStatus === "verified" ||
+      row.verificationStatus === "flagged" ||
+      row.verificationStatus === "unsure"
+        ? row.verificationStatus
+        : "unverified",
     level,
     isActive: Boolean(row.isActive),
     platformName: row.platformName ?? null,

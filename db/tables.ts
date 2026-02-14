@@ -59,6 +59,26 @@ export const Question = defineTable({
     e: column.text(),
     l: column.text({ enum: ["E", "M", "D"] }),
     isActive: column.boolean({ default: true }),
+    verificationStatus: column.text({ default: "unverified" }),
+    verificationCheckedAt: column.date({ optional: true }),
+    verificationPayloadJson: column.text({ optional: true }),
+    verificationReason: column.text({ optional: true }),
+    verificationSuggestedChoiceIndex: column.number({ optional: true }),
+    verificationSuggestedChoiceText: column.text({ optional: true }),
+    verificationModel: column.text({ optional: true }),
+    verificationAttempts: column.number({ default: 0 }),
+  },
+});
+
+export const QuestionVerification = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true, autoIncrement: true }),
+    questionId: column.number({ references: () => Question.columns.id }),
+    status: column.text(),
+    payloadJson: column.text(),
+    model: column.text({ optional: true }),
+    userId: column.text({ optional: true }),
+    createdAt: column.date({ default: NOW }),
   },
 });
 
@@ -83,5 +103,6 @@ export const quizTables = {
   Topic,
   Roadmap,
   Question,
+  QuestionVerification,
   Result,
 } as const;

@@ -316,6 +316,13 @@ const initialState = {
                       <span class="quiz-question-card__badge" x-text="levelLabel"></span>
                     </div>
                     <h3 class="quiz-question-card__title" x-text="currentQuestionItem?.questionText"></h3>
+                    <p
+                      class="quiz-question-card__verification-note"
+                      x-show="currentQuestionItem?.verificationStatus === 'flagged' || currentQuestionItem?.verificationStatus === 'unsure'"
+                      x-cloak
+                    >
+                      This question is being verified.
+                    </p>
                   </div>
 
                   <ul class="quiz-options">
@@ -687,6 +694,11 @@ const initialState = {
     font-size: 1.05rem;
     font-weight: 600;
     color: #f8fafc;
+  }
+  .quiz-question-card__verification-note {
+    margin-top: 0.35rem;
+    font-size: 0.8rem;
+    color: rgba(148, 163, 184, 0.85);
   }
   .quiz-options {
     margin-top: 1rem;

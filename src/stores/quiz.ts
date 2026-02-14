@@ -44,6 +44,7 @@ type QuestionItem = {
   options: string[];
   answerKey: string;
   explanation?: string | null;
+  verificationStatus?: "unverified" | "verified" | "flagged" | "unsure";
   level: "E" | "M" | "D";
   correctIndex: number;
 };
@@ -507,10 +508,36 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
       this.list.questions = questions;
       this.selection.answers = questions.map(() => -1);
       this.step = 6;
+      void this.requestProgressiveVerification(questions.map((item) => item.id));
     } catch (err) {
       this.error = safeErrorMessage(err, "Failed to load questions.");
     } finally {
       this.loading = false;
+    }
+  }
+
+  private async requestProgressiveVerification(questionIds: number[]) {
+    if (!Array.isArray(questionIds) || questionIds.length === 0) return;
+    if (!this.selection.platformId || !this.selection.topicId || !this.selection.levelId) return;
+
+    try {
+      await fetch("/api/quiz/verify-questions.json", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          questionIds: questionIds.map((id) => String(id)),
+          context: {
+            platformId: String(this.selection.platformId),
+            topicId: String(this.selection.topicId),
+            levelId: String(this.selection.levelId),
+          },
+        }),
+      });
+    } catch {
+      // Best-effort verification signal; do not block quiz flow.
     }
   }
 

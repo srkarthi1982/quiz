@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { SESSION_COOKIE_NAME } from "../../../lib/auth";
+import { resolveParentOrigin } from "../../../server/resolveParentOrigin";
 
 const json = (status: number, body: Record<string, unknown>) =>
   new Response(JSON.stringify(body), {
@@ -20,20 +21,12 @@ const resolveToken = (cookies: APIRoute["prototype"]["cookies"], authHeader?: st
   return value;
 };
 
-const getRootAppUrl = () => {
-  const raw =
-    import.meta.env.PUBLIC_ROOT_APP_URL ||
-    import.meta.env.PARENT_APP_URL ||
-    (import.meta.env.DEV ? "http://localhost:2000" : "https://ansiversa.com");
-  return raw.replace(/\/+$/, "");
-};
-
-export const GET: APIRoute = async ({ cookies, request }) => {
+export const GET: APIRoute = async ({ cookies, locals, request }) => {
   const token = resolveToken(cookies, request.headers.get("authorization"));
   if (!token) return json(401, { error: "Unauthorized" });
 
   try {
-    const response = await fetch(`${getRootAppUrl()}/api/notifications/unread-count`, {
+    const response = await fetch(`${resolveParentOrigin(locals)}/api/notifications/unread-count`, {
       headers: {
         authorization: `Bearer ${token}`,
       },
