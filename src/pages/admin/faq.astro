@@ -1,0 +1,16 @@
+---
+import { FaqManager } from "@ansiversa/components";
+import AppAdminShell from "../../layouts/AppAdminShell.astro";
+---
+
+<AppAdminShell
+  title="FAQ Admin – Ansiversa Quiz"
+  description="Manage quiz FAQs shown on public and admin views."
+  crumbItems={[
+    { label: "Home", href: "/" },
+    { label: "Administration", href: "/admin" },
+    { label: "FAQ" },
+  ]}
+>
+  <FaqManager title="FAQs" basePath="" defaultAudience="user" showAudienceToggle={true} />
+</AppAdminShell>

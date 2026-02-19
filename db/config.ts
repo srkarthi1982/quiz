@@ -1,5 +1,5 @@
 import { defineDb } from "astro:db";
-import { Platform, Question, QuestionVerification, Result, Roadmap, Subject, Topic } from "./tables";
+import { Faq, Platform, Question, QuestionVerification, Result, Roadmap, Subject, Topic } from "./tables";
 
 // https://astro.build/db/config
 export default defineDb({
@@ -11,5 +11,6 @@ export default defineDb({
     Question,
     QuestionVerification,
     Result,
+    Faq,
   },
 });

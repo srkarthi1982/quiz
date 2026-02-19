@@ -97,6 +97,30 @@ export const Result = defineTable({
   },
 });
 
+export const Faq = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true, autoIncrement: true }),
+    audience: column.text({ default: "user" }),
+    category: column.text({ optional: true }),
+    question: column.text(),
+    answer_md: column.text(),
+    sort_order: column.number({ default: 0 }),
+    is_published: column.boolean({ default: false }),
+    created_at: column.date({ default: NOW }),
+    updated_at: column.date({ default: NOW }),
+  },
+  indexes: [
+    {
+      name: "faq_audience_published_idx",
+      on: ["audience", "is_published"],
+    },
+    {
+      name: "faq_sort_order_idx",
+      on: "sort_order",
+    },
+  ],
+});
+
 export const quizTables = {
   Platform,
   Subject,
@@ -105,4 +129,5 @@ export const quizTables = {
   Question,
   QuestionVerification,
   Result,
+  Faq,
 } as const;
