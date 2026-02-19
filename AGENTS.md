@@ -315,6 +315,7 @@ Behavior:
 - 2026-01-29 Manual smoke test confirmed: Quiz completion triggers notifications ("Quiz completed", "Results saved") visible in parent `/notifications` UI.
 
 - Keep newest first; include date and short summary.
+- 2026-02-19 Bumped `/components` to `0.0.140` and refreshed lockfile to consume the latest shared release; verification: `npm run build` ✅.
 - 2026-02-19 Bumped `@ansiversa/components` to `0.0.139` (AvMiniAppBar AppLogo support) and verified with `npm run build` (pass).
 - 2026-01-28 Bumped @ansiversa/components to ^0.0.119 for WebLayout mini-app links.
 - 2026-01-28 Added quiz mini-app links (Home, Quiz, Results) via AppShell props for AvMiniAppBar.
