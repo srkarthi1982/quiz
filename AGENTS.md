@@ -353,6 +353,7 @@ Behavior:
 
 ## Task Log (Recent)
 - Keep newest first; include date and short summary.
+- 2026-02-19 Fixed Quiz public FAQ feed accessibility for parent aggregation by allowing unauthenticated access to `/api/faqs.json` in middleware (`apiPublicRoutes`), so `ansiversa.com/faq?app=quiz` can fetch published Quiz FAQs without login redirects. Verification: `npm run build` ✅, `npm run typecheck` ✅ (0 errors, existing hints only).
 - 2026-02-19 Bumped `@ansiversa/components` to `0.0.139` (AvMiniAppBar AppLogo support) and verified with `npm run build` (pass).
 - 2026-02-19 FAQ V1 added: faqs table + public endpoint + admin CRUD + /admin/faq using shared FaqManager.
 - 2026-02-14 Added Quiz V1 safety scoring/review layer (no DB changes): introduced `src/lib/quiz/effectiveCorrect.ts` to compute stored vs effective correct answer with verification-aware states; updated question action payload to include `verificationSuggestedChoiceIndex`; updated quiz store scoring to use effective answers and treat flagged legacy-answer mismatch as disputed (non-punitive); updated `src/pages/quiz.astro` review UI with calm status badges/messages (`Answer validated live` / `Answer check pending`) and provisional/disputed styling.
