@@ -355,6 +355,8 @@ Behavior:
 
 ## Task Log (Recent)
 - Keep newest first; include date and short summary.
+- 2026-02-20 Migrated Bookmarks UI to `@ansiversa/components` (`AvBookmarkButton`, `AvBookmarksEmpty`, `AvBookmarksList`) and updated quiz to consume shared components; removed local `src/components/bookmarks`; added gated mini-app menu Bookmarks link via `bookmarksHref="/bookmarks"` (quiz-only opt-in). Verification: `npm run typecheck` ✅, `npm run build` ✅.
+- 2026-02-20 Refined Quiz platform bookmark UI: moved bookmark control into platform card header row (right of q-count), replaced heart visuals with bookmark/bookmark-check icons, and stabilized toggle rendering to avoid layout shift; no action/DB changes. Verification: `npm run typecheck` ✅.
 - 2026-02-20 Quiz Bookmarks V1 (Platforms) implemented: DB `bookmarks` table + actions (`listBookmarks`/`toggleBookmark`) + `/bookmarks` page + platform-list bookmark button; menu link deferred. Verification: `npm run typecheck` ✅, `npm run build` ✅.
 - 2026-02-19 Fixed Quiz public FAQ feed accessibility for parent aggregation by allowing unauthenticated access to `/api/faqs.json` in middleware (`apiPublicRoutes`), so `ansiversa.com/faq?app=quiz` can fetch published Quiz FAQs without login redirects. Verification: `npm run build` ✅, `npm run typecheck` ✅ (0 errors, existing hints only).
 - 2026-02-19 Bumped `@ansiversa/components` to `0.0.139` (AvMiniAppBar AppLogo support) and verified with `npm run build` (pass).

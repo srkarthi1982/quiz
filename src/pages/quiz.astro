@@ -2,6 +2,7 @@
 import AppShell from "../layouts/AppShell.astro";
 import {
   AvBreadcrumb,
+  AvBookmarkButton,
   AvButton,
   AvCard,
   AvContainer,
@@ -11,7 +12,6 @@ import {
   AvLoading,
 } from "@ansiversa/components";
 import { actions } from "astro:actions";
-import BookmarkButton from "../components/bookmarks/BookmarkButton.astro";
 
 const title = "Quiz - Ansiversa";
 const description = "Pick a platform, topic, and level to launch your quiz.";
@@ -182,28 +182,29 @@ const initialState = {
               </template>
               <div class="quiz-grid">
                 <template x-for="platform in filteredPlatforms" :key="`platform-${platform.id}`">
-                  <div class="quiz-option-wrap">
-                    <button
-                      class="quiz-option"
-                      :class="selection.platformId === platform.id ? 'is-selected' : ''"
-                      @click.prevent="choosePlatform(platform.id)"
-                      :disabled="loading"
-                      type="button"
-                    >
-                      <div class="quiz-option__header">
-                        <p class="quiz-option__title" x-text="platform.name"></p>
+                  <div
+                    class="quiz-option quiz-option--clickable"
+                    :class="`${selection.platformId === platform.id ? 'is-selected ' : ''}${loading ? 'is-disabled' : ''}`"
+                    @click.prevent="if (!loading) choosePlatform(platform.id)"
+                    @keydown.enter.prevent="if (!loading) choosePlatform(platform.id)"
+                    @keydown.space.prevent="if (!loading) choosePlatform(platform.id)"
+                    role="button"
+                    tabindex="0"
+                    :aria-disabled="loading"
+                  >
+                    <div class="quiz-option__header">
+                      <p class="quiz-option__title" x-text="platform.name"></p>
+                      <div class="quiz-option__header-right">
                         <span class="quiz-pill" x-text="platform.qCount ? platform.qCount.toLocaleString() : '0'"></span>
+                        <AvBookmarkButton
+                          active={false}
+                          activeExpr="isPlatformBookmarked(platform.id)"
+                          title="Save bookmark"
+                          activeTitle="Remove bookmark"
+                          onClick="togglePlatformBookmark(platform.id, platform.name)"
+                          size="sm"
+                        />
                       </div>
-                    </button>
-                    <div class="quiz-option-bookmark">
-                      <BookmarkButton
-                        entityType="platform"
-                        entityId=""
-                        label=""
-                        activeExpr="isPlatformBookmarked(platform.id)"
-                        onToggle="togglePlatformBookmark(platform.id, platform.name)"
-                        size="sm"
-                      />
                     </div>
                   </div>
                 </template>
@@ -628,15 +629,6 @@ const initialState = {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
-  .quiz-option-wrap {
-    position: relative;
-  }
-  .quiz-option-bookmark {
-    position: absolute;
-    top: 0.6rem;
-    right: 0.6rem;
-    z-index: 2;
-  }
   .quiz-option {
     display: flex;
     flex-direction: column;
@@ -649,11 +641,21 @@ const initialState = {
     text-align: left;
     transition: border 0.2s ease, transform 0.2s ease;
   }
+  .quiz-option--clickable {
+    cursor: pointer;
+  }
   .quiz-option__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
+  }
+  .quiz-option__header-right {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.45rem;
+    flex-shrink: 0;
   }
   .quiz-option__badges {
     display: inline-flex;
@@ -668,7 +670,8 @@ const initialState = {
     border-color: rgba(14, 165, 233, 0.9);
     background: rgba(14, 116, 144, 0.25);
   }
-  .quiz-option:disabled {
+  .quiz-option:disabled,
+  .quiz-option.is-disabled {
     opacity: 0.6;
     cursor: not-allowed;
   }

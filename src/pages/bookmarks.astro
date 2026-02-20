@@ -1,8 +1,6 @@
 ---
 import { actions } from "astro:actions";
-import { AvBreadcrumb, AvContainer, AvPageHeader } from "@ansiversa/components";
-import BookmarksEmpty from "../components/bookmarks/BookmarksEmpty.astro";
-import BookmarksList from "../components/bookmarks/BookmarksList.astro";
+import { AvBookmarksEmpty, AvBookmarksList, AvBreadcrumb, AvContainer, AvPageHeader } from "@ansiversa/components";
 import AppShell from "../layouts/AppShell.astro";
 
 const user = Astro.locals.user;
@@ -17,6 +15,20 @@ if (!user) {
 const listResult = await Astro.callAction(actions.quiz.listBookmarks, {});
 const bookmarkData = (listResult as any)?.data ?? listResult ?? {};
 const items = Array.isArray(bookmarkData?.items) ? bookmarkData.items : [];
+const bookmarkListItems = items.map((item: any) => ({
+  title: item.platformTitle,
+  subtitle: item.platformQCount ? `${item.platformQCount.toLocaleString()} questions` : "Questions unavailable",
+  description: item.platformDescription ?? "",
+  href: `/quiz?platformId=${item.entityId}`,
+  rightSlot: {
+    active: true,
+    activeExpr: "true",
+    title: "Save bookmark",
+    activeTitle: "Remove bookmark",
+    size: "sm" as const,
+    onClick: `toggleBookmarkItem('${String(item.entityId).replace(/'/g, "\\'")}', ${JSON.stringify(item.platformTitle)})`,
+  },
+}));
 
 const title = "Bookmarks - Ansiversa";
 const description = "Saved in Quiz";
@@ -64,7 +76,7 @@ const description = "Saved in Quiz";
           }
         }"
       >
-        {items.length === 0 ? <BookmarksEmpty /> : <BookmarksList items={items} />}
+        {items.length === 0 ? <AvBookmarksEmpty /> : <AvBookmarksList items={bookmarkListItems} />}
       </div>
     </AvContainer>
   </section>
