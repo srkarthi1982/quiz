@@ -355,6 +355,7 @@ Behavior:
 
 ## Task Log (Recent)
 - Keep newest first; include date and short summary.
+- 2026-02-20 Quiz Bookmarks V1 (Platforms) implemented: DB `bookmarks` table + actions (`listBookmarks`/`toggleBookmark`) + `/bookmarks` page + platform-list bookmark button; menu link deferred. Verification: `npm run typecheck` ✅, `npm run build` ✅.
 - 2026-02-19 Fixed Quiz public FAQ feed accessibility for parent aggregation by allowing unauthenticated access to `/api/faqs.json` in middleware (`apiPublicRoutes`), so `ansiversa.com/faq?app=quiz` can fetch published Quiz FAQs without login redirects. Verification: `npm run build` ✅, `npm run typecheck` ✅ (0 errors, existing hints only).
 - 2026-02-19 Bumped `@ansiversa/components` to `0.0.139` (AvMiniAppBar AppLogo support) and verified with `npm run build` (pass).
 - 2026-02-19 FAQ V1 added: faqs table + public endpoint + admin CRUD + /admin/faq using shared FaqManager.

@@ -5,6 +5,7 @@ import { saveResult } from "./result";
 import { createSubject, deleteSubject, fetchSubjects, updateSubject } from "./subject";
 import { createTopic, deleteTopic, fetchTopics, updateTopic } from "./topic";
 import { fetchDashboardSummary } from "./dashboard";
+import { listBookmarks, toggleBookmark } from "./bookmarks";
 
 export const quiz = {
   fetchPlatforms,
@@ -30,6 +31,8 @@ export const quiz = {
   deleteQuestion,
   saveResult,
   fetchDashboardSummary,
+  listBookmarks,
+  toggleBookmark,
 };
 
 export {
@@ -56,4 +59,6 @@ export {
   deleteQuestion,
   saveResult,
   fetchDashboardSummary,
+  listBookmarks,
+  toggleBookmark,
 };

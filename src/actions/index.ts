@@ -47,4 +47,6 @@ export const server = {
   deleteQuestion: quiz.deleteQuestion,
   fetchDashboardSummary: quiz.fetchDashboardSummary,
   saveResult: quiz.saveResult,
+  listBookmarks: quiz.listBookmarks,
+  toggleBookmark: quiz.toggleBookmark,
 };
