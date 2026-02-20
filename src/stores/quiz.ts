@@ -107,6 +107,7 @@ const defaultState = () => ({
   roadmapPage: 1,
   roadmapTotal: 0,
   roadmapPageSize: 48,
+  bookmarkedPlatformIds: [] as string[],
 });
 
 const normalizeSearch = (value: string) => value.trim().toLowerCase();
@@ -130,6 +131,7 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
   roadmapPage = 1;
   roadmapTotal = 0;
   roadmapPageSize = 48;
+  bookmarkedPlatformIds: string[] = [];
 
   init(initial?: Partial<ReturnType<typeof defaultState>>) {
     if (!initial) return;
@@ -180,6 +182,13 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
     if (a?.saveResult) return await a.saveResult(payload);
     if (a?.quiz?.saveResult) return await a.quiz.saveResult(payload);
     throw new Error("saveResult action not found.");
+  }
+
+  private async callToggleBookmark(payload: any) {
+    const a: any = actions as any;
+    if (a?.toggleBookmark) return await a.toggleBookmark(payload);
+    if (a?.quiz?.toggleBookmark) return await a.quiz.toggleBookmark(payload);
+    throw new Error("toggleBookmark action not found.");
   }
 
   get totalQuestions() {
@@ -262,6 +271,45 @@ export class QuizStore extends AvBaseStore implements ReturnType<typeof defaultS
 
   isLevelLocked(level: LevelItem) {
     return level.id === "D" && !this.isPro;
+  }
+
+  isPlatformBookmarked(id: number) {
+    return this.bookmarkedPlatformIds.includes(String(id));
+  }
+
+  async togglePlatformBookmark(platformId: number, label?: string) {
+    const key = String(platformId);
+    const wasActive = this.isPlatformBookmarked(platformId);
+    if (wasActive) {
+      this.bookmarkedPlatformIds = this.bookmarkedPlatformIds.filter((item) => item !== key);
+    } else {
+      this.bookmarkedPlatformIds = [...this.bookmarkedPlatformIds, key];
+    }
+
+    try {
+      const res = await this.callToggleBookmark({
+        entityType: "platform",
+        entityId: key,
+        label: label ?? undefined,
+      });
+      const data = this.unwrapResult<{ active: boolean }>(res);
+      if (data.active) {
+        if (!this.bookmarkedPlatformIds.includes(key)) {
+          this.bookmarkedPlatformIds = [...this.bookmarkedPlatformIds, key];
+        }
+      } else {
+        this.bookmarkedPlatformIds = this.bookmarkedPlatformIds.filter((item) => item !== key);
+      }
+    } catch (err) {
+      if (wasActive) {
+        if (!this.bookmarkedPlatformIds.includes(key)) {
+          this.bookmarkedPlatformIds = [...this.bookmarkedPlatformIds, key];
+        }
+      } else {
+        this.bookmarkedPlatformIds = this.bookmarkedPlatformIds.filter((item) => item !== key);
+      }
+      this.error = safeErrorMessage(err, "Failed to update bookmark.");
+    }
   }
 
   get filteredPlatforms() {

@@ -11,6 +11,7 @@ import {
   AvLoading,
 } from "@ansiversa/components";
 import { actions } from "astro:actions";
+import BookmarkButton from "../components/bookmarks/BookmarkButton.astro";
 
 const title = "Quiz - Ansiversa";
 const description = "Pick a platform, topic, and level to launch your quiz.";
@@ -37,9 +38,19 @@ const topicsResult = await Astro.callAction(actions.quiz.fetchTopics, {
   sort: { column: "name", direction: "asc" },
 });
 
+const bookmarksResult = await Astro.callAction(actions.quiz.listBookmarks, {});
+
 const platformData = (platformsResult as any)?.data ?? platformsResult ?? {};
 const subjectData = (subjectsResult as any)?.data ?? subjectsResult ?? {};
 const topicData = (topicsResult as any)?.data ?? topicsResult ?? {};
+const bookmarkData = (bookmarksResult as any)?.data ?? bookmarksResult ?? {};
+const bookmarkedPlatformIds = Array.isArray(bookmarkData?.items)
+  ? bookmarkData.items.map((item: any) => String(item.entityId))
+  : [];
+
+const requestedPlatformIdRaw = Astro.url.searchParams.get("platformId") ?? "";
+const requestedPlatformId = Number.parseInt(requestedPlatformIdRaw, 10);
+const hasRequestedPlatform = Number.isFinite(requestedPlatformId) && (platformData?.items ?? []).some((item: any) => item.id === requestedPlatformId);
 
 const initialState = {
   list: {
@@ -49,10 +60,10 @@ const initialState = {
     roadmaps: [],
     questions: [],
   },
-  step: 1,
+  step: hasRequestedPlatform ? 2 : 1,
   search: "",
   selection: {
-    platformId: null,
+    platformId: hasRequestedPlatform ? requestedPlatformId : null,
     subjectId: null,
     topicId: null,
     roadmapId: null,
@@ -70,6 +81,7 @@ const initialState = {
   roadmapPage: 1,
   roadmapTotal: 0,
   roadmapPageSize: 48,
+  bookmarkedPlatformIds,
 };
 ---
 
@@ -170,18 +182,30 @@ const initialState = {
               </template>
               <div class="quiz-grid">
                 <template x-for="platform in filteredPlatforms" :key="`platform-${platform.id}`">
-                  <button
-                    class="quiz-option"
-                    :class="selection.platformId === platform.id ? 'is-selected' : ''"
-                    @click.prevent="choosePlatform(platform.id)"
-                    :disabled="loading"
-                    type="button"
-                  >
-                    <div class="quiz-option__header">
-                      <p class="quiz-option__title" x-text="platform.name"></p>
-                      <span class="quiz-pill" x-text="platform.qCount ? platform.qCount.toLocaleString() : '0'"></span>
+                  <div class="quiz-option-wrap">
+                    <button
+                      class="quiz-option"
+                      :class="selection.platformId === platform.id ? 'is-selected' : ''"
+                      @click.prevent="choosePlatform(platform.id)"
+                      :disabled="loading"
+                      type="button"
+                    >
+                      <div class="quiz-option__header">
+                        <p class="quiz-option__title" x-text="platform.name"></p>
+                        <span class="quiz-pill" x-text="platform.qCount ? platform.qCount.toLocaleString() : '0'"></span>
+                      </div>
+                    </button>
+                    <div class="quiz-option-bookmark">
+                      <BookmarkButton
+                        entityType="platform"
+                        entityId=""
+                        label=""
+                        activeExpr="isPlatformBookmarked(platform.id)"
+                        onToggle="togglePlatformBookmark(platform.id, platform.name)"
+                        size="sm"
+                      />
                     </div>
-                  </button>
+                  </div>
                 </template>
               </div>
             </div>
@@ -603,6 +627,15 @@ const initialState = {
     .quiz-grid--roadmap {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+  }
+  .quiz-option-wrap {
+    position: relative;
+  }
+  .quiz-option-bookmark {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    z-index: 2;
   }
   .quiz-option {
     display: flex;

@@ -97,6 +97,33 @@ export const Result = defineTable({
   },
 });
 
+export const Bookmark = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true, autoIncrement: true }),
+    userId: column.text(),
+    entityType: column.text(),
+    entityId: column.text(),
+    label: column.text({ optional: true }),
+    meta: column.text({ optional: true }),
+    createdAt: column.date({ default: NOW }),
+  },
+  indexes: [
+    {
+      name: "bookmark_user_entity_unique",
+      on: ["userId", "entityType", "entityId"],
+      unique: true,
+    },
+    {
+      name: "bookmark_user_entity_type_idx",
+      on: ["userId", "entityType"],
+    },
+    {
+      name: "bookmark_entity_idx",
+      on: ["entityType", "entityId"],
+    },
+  ],
+});
+
 export const Faq = defineTable({
   columns: {
     id: column.number({ primaryKey: true, autoIncrement: true }),
@@ -129,5 +156,6 @@ export const quizTables = {
   Question,
   QuestionVerification,
   Result,
+  Bookmark,
   Faq,
 } as const;
