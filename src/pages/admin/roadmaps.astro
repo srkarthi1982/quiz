@@ -314,7 +314,7 @@ const initialState = {
                           type="button"
                           title="Delete"
                           aria-label="Delete roadmap"
-                          @click.prevent="pendingDeleteId = roadmap.id; pendingDeleteName = roadmap.name; window.AvDialog?.open('roadmaps-delete-dialog')"
+                          @click.prevent="pendingDeleteId = roadmap.id; pendingDeleteName = roadmap.name; const dialogTitle = document.getElementById('roadmaps-delete-dialog-title'); if (dialogTitle) dialogTitle.textContent = pendingDeleteName ? `Delete roadmap '${pendingDeleteName}'?` : 'Delete this item?'; window.AvDialog?.open('roadmaps-delete-dialog')"
                           :disabled="loading"
                         >
                           <AvIcon name="trash" size="sm" />
@@ -449,7 +449,7 @@ const initialState = {
 
     <AvConfirmDialog
       id="roadmaps-delete-dialog"
-      :headline="pendingDeleteName ? `Delete roadmap '${pendingDeleteName}'?` : 'Delete this item?'"
+      headline="Delete this item?"
       description="This action cannot be undone."
       confirmLabel="Delete"
       cancelLabel="Cancel"

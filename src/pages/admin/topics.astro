@@ -278,7 +278,7 @@ const initialState = {
                           type="button"
                           title="Delete"
                           aria-label="Delete topic"
-                          @click.prevent="pendingDeleteId = topic.id; pendingDeleteName = topic.name; window.AvDialog?.open('topics-delete-dialog')"
+                          @click.prevent="pendingDeleteId = topic.id; pendingDeleteName = topic.name; const dialogTitle = document.getElementById('topics-delete-dialog-title'); if (dialogTitle) dialogTitle.textContent = pendingDeleteName ? `Delete topic '${pendingDeleteName}'?` : 'Delete this item?'; window.AvDialog?.open('topics-delete-dialog')"
                           :disabled="loading"
                         >
                           <AvIcon name="trash" size="sm" />
@@ -399,7 +399,7 @@ const initialState = {
 
     <AvConfirmDialog
       id="topics-delete-dialog"
-      :headline="pendingDeleteName ? `Delete topic '${pendingDeleteName}'?` : 'Delete this item?'"
+      headline="Delete this item?"
       description="This action cannot be undone."
       confirmLabel="Delete"
       cancelLabel="Cancel"
