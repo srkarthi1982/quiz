@@ -355,6 +355,7 @@ Behavior:
 
 ## Task Log (Recent)
 - Keep newest first; include date and short summary.
+- 2026-02-22 Mini-app navbar home-link rollout: upgraded `@ansiversa/components` to `0.0.145` so `AvMiniAppBar` app title/icon area is clickable and navigates to mini-app home (`links[0].href`, fallback `/`) with accessible aria-label + focus-visible state; verified no behavior changes to 3-dot menu. Verification: `npm run build` ✅.
 - 2026-02-22 FAQ shared rollout: upgraded `@ansiversa/components` to `0.0.144` (shared `FaqManager` now includes debounced search + icon actions + no numeric order UI + no sort-order input), and updated `src/pages/api/admin/faqs.json.ts` GET to support `q` filtering across question/category/audience while preserving audience filter and existing CRUD/reorder behavior. Verification: `npm run build` ✅.
 - 2026-02-22 Fix: delete confirmation modal item names now render correctly in admin pages by setting dialog title text at click-time before `AvDialog.open(...)` (platforms/subjects/topics/roadmaps/questions); this resolves `AvConfirmDialog` static-prop limitation where Alpine `:headline` binding showed default "Confirm". Verification: `npm run typecheck` ✅, `npm run build` ✅.
 - 2026-02-22 UX polish: admin delete confirmation dialogs now include the selected entity name (Platform, Subject, Topic, Roadmap, Question) via `AvConfirmDialog` dynamic headlines with fallback `Delete this item?`; delete behavior unchanged.
