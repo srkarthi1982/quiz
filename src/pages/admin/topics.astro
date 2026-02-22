@@ -399,7 +399,7 @@ const initialState = {
 
     <AvConfirmDialog
       id="topics-delete-dialog"
-      headline="Delete topic?"
+      :headline="pendingDeleteName ? `Delete topic '${pendingDeleteName}'?` : 'Delete this item?'"
       description="This action cannot be undone."
       confirmLabel="Delete"
       cancelLabel="Cancel"

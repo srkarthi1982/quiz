@@ -449,7 +449,7 @@ const initialState = {
 
     <AvConfirmDialog
       id="roadmaps-delete-dialog"
-      headline="Delete roadmap?"
+      :headline="pendingDeleteName ? `Delete roadmap '${pendingDeleteName}'?` : 'Delete this item?'"
       description="This action cannot be undone."
       confirmLabel="Delete"
       cancelLabel="Cancel"
