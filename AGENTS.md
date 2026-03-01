@@ -315,8 +315,8 @@ Behavior:
 - 2026-01-29 Manual smoke test confirmed: Quiz completion triggers notifications ("Quiz completed", "Results saved") visible in parent `/notifications` UI.
 
 - Keep newest first; include date and short summary.
-- 2026-02-19 Bumped `/components` to `0.0.141` and refreshed lockfile for latest shared FAQ order-arrow release; verification: `npm run build` ✅.
-- 2026-02-19 Bumped `/components` to `0.0.140` and refreshed lockfile to consume the latest shared release; verification: `npm run build` ✅.
+- 2026-02-19 Bumped `@ansiversa/components` to `0.0.141` and refreshed lockfile for latest shared FAQ order-arrow release; verification: `npm run build` ✅.
+- 2026-02-19 Bumped `@ansiversa/components` to `0.0.140` and refreshed lockfile to consume the latest shared release; verification: `npm run build` ✅.
 - 2026-02-19 Bumped `@ansiversa/components` to `0.0.139` (AvMiniAppBar AppLogo support) and verified with `npm run build` (pass).
 - 2026-01-28 Bumped @ansiversa/components to ^0.0.119 for WebLayout mini-app links.
 - 2026-01-28 Added quiz mini-app links (Home, Quiz, Results) via AppShell props for AvMiniAppBar.
@@ -354,6 +354,7 @@ Behavior:
 - 2026-01-29 Smoke test: quiz completion triggers notifications visible in parent `/notifications` UI.
 
 ## Task Log (Recent)
+- 2026-03-01 Live-app shared UI sync: upgraded `@ansiversa/components` to `^0.0.163` (or confirmed already aligned in `web`) and refreshed install state for this repo. Verification: `npm run build` ✅.
 - Keep newest first; include date and short summary.
 - 2026-02-27 Middleware Standard V1 normalization: introduced config-driven middleware via `src/lib/middlewareConfig.ts` + shared template `src/middleware.ts` (asset bypass invariants, prod cookie-domain enforcement, ordered flow, safe numeric admin role check, dev-bypass gating). Preserved quiz behavior with `protectMost`, public route `/`, and `apiBypassRoutes` (`/api/flashnote/questions`, `/api/flashnote/sources`, `/api/faqs.json`); dev bypass remains disabled. Updated `.env.example` to include `ANSIVERSA_COOKIE_DOMAIN`, `PUBLIC_ROOT_APP_URL`, and standardized `DEV_BYPASS_*` flags. Verification: `npm run typecheck` ✅, `npm run build` ✅.
 - 2026-02-27 Footer parent-origin rollout: bumped `@ansiversa/components` to `0.0.149` (lockfile refreshed) to consume shared footer absolute-parent links (`https://ansiversa.com/...` in prod; configurable via `PUBLIC_ANSIVERSA_PARENT_ORIGIN` for local parent dev). Verification: `npm run build` ✅.
