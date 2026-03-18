@@ -1,17 +1,17 @@
 import { count, db, eq } from "astro:db";
 
-type WhereClause<TTable> = () => any;
+type WhereClause = () => any;
 type OrderByClause = () => unknown[];
 
-type PaginatedQueryOptions<TTable> = {
+type PaginatedQueryOptions = {
   page: number;
   pageSize: number;
-  where?: WhereClause<TTable>;
+  where?: WhereClause;
   orderBy?: OrderByClause;
 };
 
-type QueryOptions<TTable> = {
-  where?: WhereClause<TTable>;
+type QueryOptions = {
+  where?: WhereClause;
   orderBy?: OrderByClause;
   limit?: number;
   offset?: number;
@@ -49,7 +49,7 @@ export class BaseRepository<TTable, TSelect = unknown> {
     return result as any[];
   }
 
-  async getPaginatedData({ page, pageSize, where, orderBy }: PaginatedQueryOptions<TTable>) {
+  async getPaginatedData({ page, pageSize, where, orderBy }: PaginatedQueryOptions) {
     const data = await this.getData({
       where,
       orderBy,
@@ -62,7 +62,7 @@ export class BaseRepository<TTable, TSelect = unknown> {
     return { data, total, page, pageSize };
   }
 
-  async getData({ where, orderBy, limit, offset }: QueryOptions<TTable>) {
+  async getData({ where, orderBy, limit, offset }: QueryOptions) {
     let query = this.createSelectQuery() as any;
 
     const whereClause = where?.();
@@ -87,7 +87,7 @@ export class BaseRepository<TTable, TSelect = unknown> {
     return result as TSelect[];
   }
 
-  private async countRows(where?: WhereClause<TTable>) {
+  private async countRows(where?: WhereClause) {
     const whereClause = where?.();
     const query = db.select({ value: count() }).from(this.table as any);
     const result = whereClause ? await query.where(whereClause) : await query;
