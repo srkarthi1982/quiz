@@ -66,7 +66,6 @@ const topics = (topicData?.items ?? []).map((topic: any) => ({
 const total = data?.total ?? 0;
 const page = data?.page ?? 1;
 const pageSize = data?.pageSize ?? PAGE_SIZE;
-const totalPages = Math.max(1, Math.ceil(total / pageSize));
 
 const initialState = {
   items,

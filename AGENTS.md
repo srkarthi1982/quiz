@@ -344,6 +344,8 @@ Behavior:
 
 ## Verification Log
 
+- 2026-03-18 `npm run typecheck` (pass; 0 errors, 0 warnings, 0 hints).
+- 2026-03-18 `npm run build` (pass).
 - 2026-02-01 `npm run build` (pass).
 - 2026-02-01 `npm run typecheck` (pass; 6 hints in admin pages/baseRepository).
 - 2026-01-31 Verified: free user sees Difficult disabled + paywall, paid user can start Difficult; server returns PAYMENT_REQUIRED on forced difficult for free user.
@@ -354,6 +356,8 @@ Behavior:
 - 2026-01-29 Smoke test: quiz completion triggers notifications visible in parent `/notifications` UI.
 
 ## Task Log (Recent)
+- 2026-03-18 Launch cleanup: removed unused debug route `src/pages/admin/session.astro` to eliminate `/admin/session` exposure before launch; no replacement UI added. Verification: `npm run typecheck` ✅, `npm run build` ✅.
+- 2026-03-18 Launch verification sweep (pre-launch): completed full page/flow audit across public, quiz, results, bookmarks, APIs, and admin routes; applied only low-risk fixes (removed stale unused SSR pagination variables to reduce noise, simplified BaseRepository where-clause typing to clear unused generic hint, and updated Help copy to remove potentially misleading “timed questions” wording). Verification: `npm run typecheck` ✅, `npm run build` ✅.
 - 2026-03-01 Live-app shared UI sync: upgraded `@ansiversa/components` to `^0.0.163` (or confirmed already aligned in `web`) and refreshed install state for this repo. Verification: `npm run build` ✅.
 - Keep newest first; include date and short summary.
 - 2026-02-27 Middleware Standard V1 normalization: introduced config-driven middleware via `src/lib/middlewareConfig.ts` + shared template `src/middleware.ts` (asset bypass invariants, prod cookie-domain enforcement, ordered flow, safe numeric admin role check, dev-bypass gating). Preserved quiz behavior with `protectMost`, public route `/`, and `apiBypassRoutes` (`/api/flashnote/questions`, `/api/flashnote/sources`, `/api/faqs.json`); dev bypass remains disabled. Updated `.env.example` to include `ANSIVERSA_COOKIE_DOMAIN`, `PUBLIC_ROOT_APP_URL`, and standardized `DEV_BYPASS_*` flags. Verification: `npm run typecheck` ✅, `npm run build` ✅.
