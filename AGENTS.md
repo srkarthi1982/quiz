@@ -356,6 +356,7 @@ Behavior:
 - 2026-01-29 Smoke test: quiz completion triggers notifications visible in parent `/notifications` UI.
 
 ## Task Log (Recent)
+- 2026-03-18 Components lock sync: upgraded `@ansiversa/components` to `^0.0.169` and refreshed the lockfile for the pre-launch ecosystem lock. Verification: `npm run typecheck` ✅, `npm run build` ✅.
 - 2026-03-18 Launch cleanup: removed unused debug route `src/pages/admin/session.astro` to eliminate `/admin/session` exposure before launch; no replacement UI added. Verification: `npm run typecheck` ✅, `npm run build` ✅.
 - 2026-03-18 Launch verification sweep (pre-launch): completed full page/flow audit across public, quiz, results, bookmarks, APIs, and admin routes; applied only low-risk fixes (removed stale unused SSR pagination variables to reduce noise, simplified BaseRepository where-clause typing to clear unused generic hint, and updated Help copy to remove potentially misleading “timed questions” wording). Verification: `npm run typecheck` ✅, `npm run build` ✅.
 - 2026-03-01 Live-app shared UI sync: upgraded `@ansiversa/components` to `^0.0.163` (or confirmed already aligned in `web`) and refreshed install state for this repo. Verification: `npm run build` ✅.
